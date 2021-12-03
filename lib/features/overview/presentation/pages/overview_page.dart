@@ -1,4 +1,6 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:neon_web/core/domain/entities/pattern_lists.dart';
 import 'package:neon_web/core/style/constants.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -7,6 +9,16 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
+
+
+  List<String> getListOfPatterns(){
+    EnumToString.convertToString(enumItem)
+  }
+
+  Widget getTextWidgets(List<PatternLists> strings) {
+    return Column(children: strings.map((item) => Text(item)).toList());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +26,7 @@ class _OverviewPageState extends State<OverviewPage> {
         backgroundColor: kColorWhite,
         shape: Border.all(color: kColorDarkBlue),
         title: const Text(
-          'Neon Mobbin222',
+          'Neon Mobbin',
           style: TextStyle(color: kColorBlack),
         ),
         centerTitle: true,
@@ -23,20 +35,28 @@ class _OverviewPageState extends State<OverviewPage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(width: 2, color: kColorDarkBlue)),
                   width: 200,
                   height: 700,
+                  child: Column(
+                    children: getTextWidgets,
+                  ),
                 ),
                 const SizedBox(
                   width: 20,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Container(
@@ -44,43 +64,82 @@ class _OverviewPageState extends State<OverviewPage> {
                           border: Border.all(width: 2, color: kColorDarkBlue)),
                       width: 800,
                       child: const TextField(
-                        decoration: InputDecoration(hintText: 'Search'),
+                        decoration: InputDecoration(
+                            hintText: 'Search',
+                            contentPadding: EdgeInsets.all(8)),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            print('Filter');
+                          },
+                          child: Container(
                             height: 30,
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                     width: 2, color: kColorDarkBlue)),
-                            child: const Text('Filter nach Art'),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: const Text('Filter nach Art'),
+                            ),
                           ),
-                          const SizedBox(width: 20),
-                          Container(
+                        ),
+                        const SizedBox(width: 20),
+                        GestureDetector(
+                          onTap: () {
+                            print('Filter');
+                          },
+                          child: Container(
                               alignment: Alignment.center,
                               height: 30,
                               decoration: BoxDecoration(
                                   border: Border.all(
                                       width: 2, color: kColorDarkBlue)),
-                              child: const Text('Filter nach Patterns')),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Container(
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: const Text('Filter nach Patterns'),
+                              )),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            print('Filter');
+                          },
+                          child: Container(
                               alignment: Alignment.center,
                               height: 30,
                               decoration: BoxDecoration(
                                   border: Border.all(
                                       width: 2, color: kColorDarkBlue)),
-                              child: const Text('Filter nach Elements')),
-                        ],
-                      ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4),
+                                child: const Text('Filter nach Elements'),
+                              )),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Sortiert nach Projekten',
+                          style: TextStyle(color: kColorDarkBlue),
+                        ),
+                        SizedBox(width: 20),
+                        Text('Sortiert nach Screens'),
+                      ],
                     )
                   ],
                 )

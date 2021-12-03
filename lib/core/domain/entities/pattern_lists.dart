@@ -1,6 +1,6 @@
 import 'package:neon_web/core/enums.dart';
 
-abstract class Pattern {
+abstract class PatternLists {
   final List<OnboardingPatterns> onboardingPatterns;
   final List<DataPatterns> dataPatterns;
   final List<UserCollectionsPatterns> userCollectionPatterns;
@@ -12,7 +12,7 @@ abstract class Pattern {
   final List<ContentPatterns> contenPatterns;
   final List<ActionsPatterns> actionPatterns;
 
-  Pattern(
+  PatternLists(
       {required this.onboardingPatterns,
       required this.dataPatterns,
       required this.userCollectionPatterns,
