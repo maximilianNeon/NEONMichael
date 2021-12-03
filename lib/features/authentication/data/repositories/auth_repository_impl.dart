@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:neon_web/features/authentication/data/data_sources/remote_authentication_data_source.dart';
 import 'package:neon_web/features/authentication/domain/repositories/auth_repository.dart';
 

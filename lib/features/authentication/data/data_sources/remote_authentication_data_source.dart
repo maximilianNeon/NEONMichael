@@ -16,10 +16,10 @@ class RemoteAuthenticationDataSource {
   }
 
   Future<UserCredential> signInWithEmailAndPassword(
-      {required String email, required String password}) {
+      {required String email, required String password}) async {
     try {
-      final userCredential =
-          _auth.signInWithEmailAndPassword(email: email, password: password);
+      final userCredential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
       return userCredential;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
