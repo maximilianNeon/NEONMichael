@@ -1,3 +1,5 @@
+//Elements
+
 enum ElementHeader {
   BarElements,
   OverlayElements,
@@ -72,6 +74,21 @@ enum ImageElements {
   Photo,
   AnimationAndVideo,
   Logo
+}
+
+// Patterns
+
+enum PatternHeaders {
+  OnboardingPatterns,
+  DataPatterns,
+  UserCollectionsPatterns,
+  CommunicationPatterns,
+  MisPatterns,
+  CommerceAndFinancePatterns,
+  SocialPatterns,
+  UtilityPatterns,
+  ContentPatterns,
+  ActionsPatterns
 }
 
 enum OnboardingPatterns {
@@ -208,5 +225,7 @@ enum ActionsPatterns {
   TransferAndSendMoney,
   OtherAction
 }
+
+//Project Type
 
 enum ProjectType { App, WebDesktop, WebMobile }

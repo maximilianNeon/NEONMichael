@@ -22,6 +22,8 @@ class _OverviewPageState extends State<OverviewPage> {
   void getHeadersAndItems() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
     globalTypeList = EnumToString.toList<Object>(OverlayElements.values);
+    // globalTypeList = EnumToString.toList<dynamic>(
+    //     BuildElementLists.overlay.elementList.toList());
   }
 
   Widget getMenuList() {
