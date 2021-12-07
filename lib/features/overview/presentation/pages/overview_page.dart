@@ -1,6 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
@@ -18,13 +19,12 @@ class _OverviewPageState extends State<OverviewPage> {
   List<String> elementHeaders = [];
   List<String> patternHeaders = [];
 
-  void getListOfPatterns() {
+  void getHeadersAndItems() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
-    globalTypeList = EnumToString.toList<Object>(
-        BuildPatternLists.userCollection.patternList);
+    globalTypeList = EnumToString.toList<Object>(OverlayElements.values);
   }
 
-  Widget getTextWidgets() {
+  Widget getMenuList() {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: elementHeaders.length,
@@ -45,8 +45,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   ),
                   ListView.builder(
                     shrinkWrap: true,
-                    itemCount:
-                        BuildPatternLists.userCollection.patternList.length,
+                    itemCount: globalTypeList.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -65,7 +64,7 @@ class _OverviewPageState extends State<OverviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    getListOfPatterns();
+    getHeadersAndItems();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kColorWhite,
@@ -94,7 +93,7 @@ class _OverviewPageState extends State<OverviewPage> {
                       border: Border.all(width: 2, color: kColorDarkBlue)),
                   width: 200,
                   height: 700,
-                  child: getTextWidgets(),
+                  child: getMenuList(),
                 ),
                 const SizedBox(
                   width: 20,
