@@ -1,9 +1,11 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:neon_web/core/domain/entities/elemen_lists.dart';
-import 'package:neon_web/core/domain/entities/pattern_lists.dart';
+import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
+import 'package:neon_web/features/overview/presentation/widgets/search_bar.dart';
+import 'package:neon_web/features/overview/presentation/widgets/sort_button.dart';
 
 class OverviewPage extends StatefulWidget {
   @override
@@ -17,7 +19,15 @@ class _OverviewPageState extends State<OverviewPage> {
   }
 
   Widget getTextWidgets() {
-    return Column(children: enumResult.map((item) => Text(item)).toList());
+    return ListView.builder(
+      itemCount: enumResult.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          child: Text(enumResult[index]),
+        );
+      },
+      //children: enumResult.map((item) => Text(item)).toList(),
+    );
   }
 
   @override
@@ -41,10 +51,12 @@ class _OverviewPageState extends State<OverviewPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
+                  alignment: Alignment.topCenter,
                   decoration: BoxDecoration(
                       border: Border.all(width: 2, color: kColorDarkBlue)),
                   width: 200,
@@ -59,17 +71,8 @@ class _OverviewPageState extends State<OverviewPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: kColorDarkBlue)),
-                      width: 800,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                            hintText: 'Search',
-                            contentPadding: EdgeInsets.all(8)),
-                      ),
-                    ),
-                    SizedBox(
+                    const SearchBar(),
+                    const SizedBox(
                       height: 20,
                     ),
                     Row(
@@ -90,12 +93,9 @@ class _OverviewPageState extends State<OverviewPage> {
                     ),
                     Row(
                       children: [
-                        Text(
-                          'Sortiert nach Projekten',
-                          style: TextStyle(color: kColorDarkBlue),
-                        ),
-                        SizedBox(width: 20),
-                        Text('Sortiert nach Screens'),
+                        const SortButton(buttonName: 'Sortiert nach Projekten'),
+                        const SizedBox(width: 20),
+                        const SortButton(buttonName: 'Sortiert nach Screens'),
                       ],
                     )
                   ],
