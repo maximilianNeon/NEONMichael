@@ -21,8 +21,7 @@ class _OverviewPageState extends State<OverviewPage> {
 
   void getHeadersAndItems() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
-    globalTypeList =
-        EnumToString.toList<Object>(BuildElementLists.globalItemList);
+    // globalTypeList = EnumToString.toList<Object>(BuildElementLists.secondList);
   }
 
   Widget getMenuList() {
@@ -46,14 +45,17 @@ class _OverviewPageState extends State<OverviewPage> {
                   ),
                   ListView.builder(
                     shrinkWrap: true,
-                    itemCount: globalTypeList.length,
+                    itemCount:
+                        BuildElementLists.globalItemList[i].length as int?,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: () {
-                          print(globalTypeList[index]);
-                        },
-                        child: Text(globalTypeList[index]),
-                      );
+                          onTap: () {
+                            print(BuildElementLists.globalItemList[i][index]);
+                          },
+                          child: Text(
+                            BuildElementLists.globalItemList[i][index]
+                                .toString(),
+                          ));
                     },
                   ),
                 ])
