@@ -14,22 +14,24 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  String enumResult = "";
+  List<String> globalTypeList = [];
   List<String> elementHeaders = [];
+  List<String> patternHeaders = [];
 
   void getListOfPatterns() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
-    enumResult = EnumToString.convertToString(ElementHeader.values[1]);
+    globalTypeList = EnumToString.toList<Object>(
+        BuildPatternLists.userCollection.patternList);
   }
 
   Widget getTextWidgets() {
     return ListView.builder(
+      shrinkWrap: true,
       itemCount: elementHeaders.length,
       itemBuilder: (context, i) {
-        var specificEnum = ElementHeader.values[i];
         return Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Column(
@@ -37,20 +39,22 @@ class _OverviewPageState extends State<OverviewPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(elementHeaders[i]),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount:
-                          BuildPatternLists.userCollection.patternList.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            print(enumResult[index]);
-                          },
-                          child: Text(enumResult[index]),
-                        );
-                      },
-                    ),
+                  Text(
+                    elementHeaders[i],
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount:
+                        BuildPatternLists.userCollection.patternList.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          print(globalTypeList[index]);
+                        },
+                        child: Text(globalTypeList[index]),
+                      );
+                    },
                   ),
                 ])
           ],

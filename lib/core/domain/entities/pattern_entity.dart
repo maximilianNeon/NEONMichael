@@ -1,7 +1,7 @@
 import 'package:neon_web/core/enums.dart';
 
 abstract class PatternEntity {
-  List patternList;
+  List<Object> patternList;
 
   PatternEntity({required this.patternList});
 }
