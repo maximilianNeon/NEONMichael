@@ -1,6 +1,7 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
@@ -13,20 +14,48 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  List<String> enumResult = [];
+  String enumResult = "";
+  List<String> elementHeaders = [];
+
   void getListOfPatterns() {
-    enumResult = EnumToString.toList(OverlayElements.values);
+    elementHeaders = EnumToString.toList(ElementHeader.values);
+    enumResult = EnumToString.convertToString(ElementHeader.values[1]);
   }
 
   Widget getTextWidgets() {
     return ListView.builder(
-      itemCount: enumResult.length,
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          child: Text(enumResult[index]),
+      itemCount: elementHeaders.length,
+      itemBuilder: (context, i) {
+        var specificEnum = ElementHeader.values[i];
+        return Column(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(elementHeaders[i]),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount:
+                          BuildPatternLists.userCollection.patternList.length,
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            print(enumResult[index]);
+                          },
+                          child: Text(enumResult[index]),
+                        );
+                      },
+                    ),
+                  ),
+                ])
+          ],
         );
       },
-      //children: enumResult.map((item) => Text(item)).toList(),
     );
   }
 

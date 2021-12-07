@@ -1,3 +1,11 @@
+enum ElementHeader {
+  BarElements,
+  OverlayElements,
+  ControlElements,
+  ViewElements,
+  ImageElements
+}
+
 enum BarElements {
   Navigationbar,
   Tabbar,
