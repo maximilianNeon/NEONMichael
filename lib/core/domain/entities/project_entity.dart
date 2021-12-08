@@ -4,7 +4,7 @@ import 'package:neon_web/core/enums.dart';
 
 class ProjectEntity {
   final String title;
-  final List<ProjectType> projectType;
+  final ProjectType projectType;
   final String description;
   final List<AssetEntity> assets;
   final Icon icon;

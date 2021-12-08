@@ -1,6 +1,6 @@
 import 'package:neon_web/core/enums.dart';
 
-abstract class PatternEntity {
+class PatternEntity {
   String? header;
   List<Object> patternList;
 

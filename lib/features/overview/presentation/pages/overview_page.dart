@@ -1,9 +1,9 @@
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
-import 'package:neon_web/core/enums.dart';
+import 'package:flutter/rendering.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
+import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
+import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
 import 'package:neon_web/features/overview/presentation/widgets/search_bar.dart';
 import 'package:neon_web/features/overview/presentation/widgets/sort_button.dart';
 
@@ -13,56 +13,6 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  List<String> elementHeaders = [];
-  List<String> patternHeaders = [];
-
-  void getHeadersAndItems() {
-    elementHeaders = EnumToString.toList(ElementHeader.values);
-    patternHeaders = EnumToString.toList(PatternHeaders.values);
-  }
-
-  Widget getMenuList() {
-    getHeadersAndItems();
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: patternHeaders.length,
-      itemBuilder: (context, i) {
-        return Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    patternHeaders[i],
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount:
-                        BuildPatternLists.globalItemList[i].length as int?,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                          onTap: () {
-                            print(BuildPatternLists.globalItemList[i][index]);
-                          },
-                          child: Text(
-                            BuildPatternLists.globalItemList[i][index]
-                                .toString(),
-                          ));
-                    },
-                  ),
-                ])
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +43,7 @@ class _OverviewPageState extends State<OverviewPage> {
                       border: Border.all(width: 2, color: kColorDarkBlue)),
                   width: 200,
                   // height: 700,
-                  child: getMenuList(),
+                  child: MenuItems.getMenu(),
                 ),
                 const SizedBox(
                   width: 20,
@@ -129,7 +79,12 @@ class _OverviewPageState extends State<OverviewPage> {
                         const SizedBox(width: 20),
                         const SortButton(buttonName: 'Sortiert nach Screens'),
                       ],
-                    )
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                        height: 700, width: 400, child: Projects.getProjects()),
                   ],
                 )
               ],

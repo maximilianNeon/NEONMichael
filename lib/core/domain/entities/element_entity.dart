@@ -1,6 +1,6 @@
 import 'package:neon_web/core/enums.dart';
 
-abstract class ElementEntity {
+class ElementEntity {
   String? header;
   List elementList;
   ElementEntity({
@@ -26,7 +26,8 @@ class View extends ElementEntity {
       : super(elementList: viewElements, header: header);
 }
 
-class Image extends ElementEntity {
-  Image({required List<ImageElements> imageElements, final String? header})
+class ImageElement extends ElementEntity {
+  ImageElement(
+      {required List<ImageElements> imageElements, final String? header})
       : super(elementList: imageElements, header: header);
 }
