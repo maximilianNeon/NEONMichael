@@ -7,6 +7,7 @@ import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/features/overview/presentation/pages/detail_screen.dart';
 
 mixin Projects {
   static List<ProjectEntity> mockProjects1 = [
@@ -139,7 +140,10 @@ mixin Projects {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(mockProjects1[index].title),
+            Text(
+              mockProjects1[index].title,
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
             const SizedBox(
               height: 10,
             ),
@@ -157,17 +161,29 @@ mixin Projects {
                     itemBuilder: (context, i) {
                       return Row(
                         children: [
-                          Container(
-                              decoration:
-                                  const BoxDecoration(color: kColorBlue),
-                              width: 150,
-                              height: 150,
-                              child: Image.network(
-                                mockProjects1[index].assets[i].imageUrl,
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              )),
+                          GestureDetector(
+                            onTap: () {
+                              print(mockProjects1[index].assets[i].id);
+                              Navigator.push<dynamic>(context,
+                                  MaterialPageRoute<dynamic>(
+                                      builder: (context) {
+                                return DetailScreen(
+                                  index: mockProjects1[index].assets[i].id,
+                                );
+                              }));
+                            },
+                            child: Container(
+                                decoration:
+                                    const BoxDecoration(color: kColorBlue),
+                                width: 150,
+                                height: 150,
+                                child: Image.network(
+                                  mockProjects1[index].assets[i].imageUrl,
+                                  width: 100,
+                                  height: 100,
+                                  fit: BoxFit.cover,
+                                )),
+                          ),
                           const SizedBox(
                             width: 10,
                           )

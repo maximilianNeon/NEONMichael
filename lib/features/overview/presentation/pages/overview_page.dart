@@ -42,7 +42,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   decoration: BoxDecoration(
                       border: Border.all(width: 2, color: kColorDarkBlue)),
                   width: 200,
-                  // height: 700,
+                  height: 2000,
                   child: MenuItems.getMenu(),
                 ),
                 const SizedBox(
