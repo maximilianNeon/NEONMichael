@@ -1,7 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:neon_web/core/domain/entities/pattern_entity.dart';
-import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
@@ -24,6 +22,7 @@ class _OverviewPageState extends State<OverviewPage> {
   }
 
   Widget getMenuList() {
+    getHeadersAndItems();
     return ListView.builder(
       shrinkWrap: true,
       itemCount: patternHeaders.length,
@@ -66,7 +65,6 @@ class _OverviewPageState extends State<OverviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    getHeadersAndItems();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kColorWhite,
@@ -94,7 +92,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   decoration: BoxDecoration(
                       border: Border.all(width: 2, color: kColorDarkBlue)),
                   width: 200,
-                  height: 700,
+                  // height: 700,
                   child: getMenuList(),
                 ),
                 const SizedBox(
