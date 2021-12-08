@@ -15,19 +15,18 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  List<String> globalTypeList = [];
   List<String> elementHeaders = [];
   List<String> patternHeaders = [];
 
   void getHeadersAndItems() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
-    // globalTypeList = EnumToString.toList<Object>(BuildElementLists.secondList);
+    patternHeaders = EnumToString.toList(PatternHeaders.values);
   }
 
   Widget getMenuList() {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: elementHeaders.length,
+      itemCount: patternHeaders.length,
       itemBuilder: (context, i) {
         return Column(
           children: [
@@ -40,20 +39,20 @@ class _OverviewPageState extends State<OverviewPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    elementHeaders[i],
+                    patternHeaders[i],
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   ListView.builder(
                     shrinkWrap: true,
                     itemCount:
-                        BuildElementLists.globalItemList[i].length as int?,
+                        BuildPatternLists.globalItemList[i].length as int?,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                           onTap: () {
-                            print(BuildElementLists.globalItemList[i][index]);
+                            print(BuildPatternLists.globalItemList[i][index]);
                           },
                           child: Text(
-                            BuildElementLists.globalItemList[i][index]
+                            BuildPatternLists.globalItemList[i][index]
                                 .toString(),
                           ));
                     },

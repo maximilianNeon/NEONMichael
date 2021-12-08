@@ -1,14 +1,31 @@
-import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:neon_web/core/enums.dart';
 
 mixin BuildPatternLists {
-  final userCollection =
-      UserCollection(userCollection: UserCollectionsPatterns.values.toList());
+  static final onboarding = EnumToString.toList(OnboardingPatterns.values);
+  static final data = EnumToString.toList(DataPatterns.values);
+  static final userCollection =
+      EnumToString.toList(UserCollectionsPatterns.values);
+  static final communication =
+      EnumToString.toList(CommunicationPatterns.values);
+  static final mis = EnumToString.toList(MisPatterns.values);
+  static final commerceAndFinance =
+      EnumToString.toList(CommerceAndFinancePatterns.values);
+  static final social = EnumToString.toList(SocialPatterns.values);
+  static final utility = EnumToString.toList(UtilityPatterns.values);
+  static final content = EnumToString.toList(ContentPatterns.values);
+  static final actions = EnumToString.toList(ActionsPatterns.values);
 
-  final communication =
-      Communication(communication: CommunicationPatterns.values.toList());
-
-  final mis = Mis(mis: MisPatterns.values.toList());
-
-  ///
+  static final List globalItemList = <List<String>>[
+    onboarding,
+    data,
+    userCollection,
+    communication,
+    mis,
+    commerceAndFinance,
+    social,
+    utility,
+    content,
+    actions
+  ];
 }
