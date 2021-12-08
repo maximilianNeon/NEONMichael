@@ -155,16 +155,24 @@ mixin Projects {
                     scrollDirection: Axis.horizontal,
                     itemCount: mockProjects1[index].assets.length,
                     itemBuilder: (context, i) {
-                      return Container(
-                          decoration: const BoxDecoration(color: kColorBlue),
-                          child: Image.network(
-                            mockProjects1[index].assets[i].imageUrl,
-                            width: 100,
-                            height: 100,
-                            fit: BoxFit.cover,
-                          ),
-                          width: 150,
-                          height: 150);
+                      return Row(
+                        children: [
+                          Container(
+                              decoration:
+                                  const BoxDecoration(color: kColorBlue),
+                              width: 150,
+                              height: 150,
+                              child: Image.network(
+                                mockProjects1[index].assets[i].imageUrl,
+                                width: 100,
+                                height: 100,
+                                fit: BoxFit.cover,
+                              )),
+                          const SizedBox(
+                            width: 10,
+                          )
+                        ],
+                      );
                     },
                   ),
                 ),

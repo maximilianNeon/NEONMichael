@@ -83,8 +83,8 @@ class _OverviewPageState extends State<OverviewPage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                        height: 700, width: 400, child: Projects.getProjects()),
+                    SizedBox(
+                        height: 700, width: 800, child: Projects.getProjects()),
                   ],
                 )
               ],
