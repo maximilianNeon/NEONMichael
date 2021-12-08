@@ -33,19 +33,23 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Row(children: [
         Padding(
           padding: const EdgeInsets.all(30),
-          child: Container(
+          child: SizedBox(
             width: 200,
             height: 400,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text('Projekt'), Text('Patterns'), Text('Elements')],
+              children: [
+                const Text('Projekt'),
+                const Text('Patterns'),
+                const Text('Elements')
+              ],
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 200,
         ),
-        Container(
+        SizedBox(
             width: 200,
             height: 400,
             child: Image.network(

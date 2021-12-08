@@ -28,3 +28,7 @@ const kColorEnabledBorder = Color(0xffF3F2F2);
 final kColorDeactiveButton = const Color(0xff100084).withOpacity(0.1);
 const kColorTopupGreen = Color(0xff39AE65);
 const kColorTopupRed = Color(0xffDC5B5B);
+
+// PADDING CONSTANTS ----------------------------------------------------------
+
+const kPad16 = EdgeInsets.all(16);
