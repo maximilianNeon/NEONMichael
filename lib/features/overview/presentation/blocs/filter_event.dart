@@ -5,7 +5,8 @@ abstract class FilterEvent extends Equatable {}
 
 class FilterMenuEvent extends FilterEvent {
   final List<bool> filterButtons;
-  FilterMenuEvent({required this.filterButtons});
+  final List globalItemList;
+  FilterMenuEvent({required this.filterButtons, required this.globalItemList});
   @override
-  List<Object?> get props => [filterButtons];
+  List<Object?> get props => [filterButtons, globalItemList];
 }

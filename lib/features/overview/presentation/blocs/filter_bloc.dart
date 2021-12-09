@@ -16,8 +16,11 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
   ) async* {
     if (event is FilterMenuEvent) {
       List<bool> filterButtons;
+      List globalItemList;
+      globalItemList = event.globalItemList;
       filterButtons = event.filterButtons;
-      yield FilterMenuState(filterButtons: filterButtons);
+      yield FilterMenuState(
+          filterButtons: filterButtons, globalItemList: globalItemList);
     }
   }
 }

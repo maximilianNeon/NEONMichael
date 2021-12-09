@@ -10,8 +10,9 @@ class FilterInitial extends FilterState {
 
 class FilterMenuState extends FilterState {
   final List<bool> filterButtons;
-  FilterMenuState({required this.filterButtons});
+  final List globalItemList;
+  FilterMenuState({required this.filterButtons, required this.globalItemList});
 
   @override
-  List<Object?> get props => [filterButtons];
+  List<Object?> get props => [filterButtons, globalItemList];
 }
