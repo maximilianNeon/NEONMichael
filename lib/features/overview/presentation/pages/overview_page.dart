@@ -31,11 +31,11 @@ class _OverviewPageState extends State<OverviewPage> {
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            //  crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+                // mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
@@ -50,7 +50,7 @@ class _OverviewPageState extends State<OverviewPage> {
                     width: 20,
                   ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    //mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -77,11 +77,10 @@ class _OverviewPageState extends State<OverviewPage> {
                         height: 20,
                       ),
                       Row(
-                        children: [
-                          const SortButton(
-                              buttonName: 'Sortiert nach Projekten'),
-                          const SizedBox(width: 20),
-                          const SortButton(buttonName: 'Sortiert nach Screens'),
+                        children: const [
+                          SortButton(buttonName: 'Sortiert nach Projekten'),
+                          SizedBox(width: 20),
+                          SortButton(buttonName: 'Sortiert nach Screens'),
                         ],
                       ),
                       const SizedBox(

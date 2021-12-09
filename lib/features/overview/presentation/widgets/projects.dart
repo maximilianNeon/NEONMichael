@@ -64,13 +64,81 @@ mixin Projects {
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.data)
-              ])
+              ]),
+          // AssetEntity(
+          //     imageUrl: 'https://picsum.photos/200/300',
+          //     title: 'title6',
+          //     id: 6,
+          //     elements: [
+          //       ElementEntity(elementList: BuildElementLists.globalItemList)
+          //     ],
+          //     patterns: [
+          //       PatternEntity(patternList: BuildPatternLists.data)
+          //     ])
         ],
         description: 'Blablablabla',
         projectType: ProjectType.App,
         icon: const Icon(Icons.access_alarm)),
     ProjectEntity(
         title: 'New Project',
+        assets: [
+          AssetEntity(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'NEWtitle1',
+              id: 1,
+              elements: [
+                ElementEntity(elementList: BuildElementLists.barList),
+                ElementEntity(elementList: BuildElementLists.controlList)
+              ],
+              patterns: [
+                PatternEntity(patternList: BuildPatternLists.actions)
+              ]),
+          AssetEntity(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'NEWtitle2',
+              id: 2,
+              elements: [
+                ElementEntity(elementList: BuildElementLists.globalItemList)
+              ],
+              patterns: [
+                PatternEntity(patternList: BuildPatternLists.actions)
+              ]),
+          AssetEntity(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'NEWtitle3',
+              id: 3,
+              elements: [
+                ElementEntity(elementList: BuildElementLists.imageList)
+              ],
+              patterns: [
+                PatternEntity(patternList: BuildPatternLists.mis)
+              ]),
+          AssetEntity(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'NEWtitle4',
+              id: 4,
+              elements: [
+                ElementEntity(elementList: BuildElementLists.viewList)
+              ],
+              patterns: [
+                PatternEntity(patternList: BuildPatternLists.social)
+              ]),
+          AssetEntity(
+              imageUrl: 'https://picsum.photos/200/300',
+              title: 'NEWtitle5',
+              id: 5,
+              elements: [
+                ElementEntity(elementList: BuildElementLists.globalItemList)
+              ],
+              patterns: [
+                PatternEntity(patternList: BuildPatternLists.data)
+              ])
+        ],
+        description: 'Blablablabla',
+        projectType: ProjectType.App,
+        icon: const Icon(Icons.access_alarm)),
+    ProjectEntity(
+        title: 'Mac Life',
         assets: [
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -142,7 +210,7 @@ mixin Projects {
           children: [
             Text(
               mockProjects1[index].title,
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 10,
@@ -155,39 +223,43 @@ mixin Projects {
                   // width: 900,
                   height: 150,
                   child: ListView.builder(
+                    physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemCount: mockProjects1[index].assets.length,
                     itemBuilder: (context, i) {
-                      return Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {
-                              print(mockProjects1[index].assets[i].id);
-                              Navigator.push<dynamic>(context,
-                                  MaterialPageRoute<dynamic>(
-                                      builder: (context) {
-                                return DetailScreen(
-                                  index: mockProjects1[index].assets[i].id,
-                                );
-                              }));
-                            },
-                            child: Container(
-                                decoration:
-                                    const BoxDecoration(color: kColorBlue),
-                                width: 150,
-                                height: 150,
-                                child: Image.network(
-                                  mockProjects1[index].assets[i].imageUrl,
-                                  width: 100,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                )),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          )
-                        ],
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                print(mockProjects1[index].assets[i].id);
+                                Navigator.push<dynamic>(context,
+                                    MaterialPageRoute<dynamic>(
+                                        builder: (context) {
+                                  return DetailScreen(
+                                    index: mockProjects1[index].assets[i].id,
+                                  );
+                                }));
+                              },
+                              child: Container(
+                                  decoration:
+                                      const BoxDecoration(color: kColorBlue),
+                                  width: 150,
+                                  height: 150,
+                                  child: Image.network(
+                                    mockProjects1[index].assets[i].imageUrl,
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  )),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            )
+                          ],
+                        ),
                       );
                     },
                   ),
