@@ -17,10 +17,14 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     if (event is FilterMenuEvent) {
       List<bool> filterButtons;
       List globalItemList;
+      List headers;
       globalItemList = event.globalItemList;
       filterButtons = event.filterButtons;
+      headers = event.headers;
       yield FilterMenuState(
-          filterButtons: filterButtons, globalItemList: globalItemList);
+          filterButtons: filterButtons,
+          globalItemList: globalItemList,
+          headers: headers);
     }
   }
 }

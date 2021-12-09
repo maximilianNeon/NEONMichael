@@ -23,7 +23,8 @@ class _OverviewPageState extends State<OverviewPage> {
     super.initState();
     BlocProvider.of<FilterBloc>(context).add(FilterMenuEvent(
         filterButtons: FilterButtonList.filterButtons,
-        globalItemList: BuildElementLists.globalItemList));
+        globalItemList: BuildElementLists.globalItemList,
+        headers: MenuItems.elementHeaders));
   }
 
   @override
@@ -89,7 +90,9 @@ class _OverviewPageState extends State<OverviewPage> {
                                               filterButtons: FilterButtonList
                                                   .filterButtons,
                                               globalItemList: BuildElementLists
-                                                  .globalItemList));
+                                                  .globalItemList,
+                                              headers:
+                                                  MenuItems.elementHeaders));
                                     },
                                     buttonName: 'Filter nach Art'),
                                 const SizedBox(width: 20),
@@ -104,7 +107,9 @@ class _OverviewPageState extends State<OverviewPage> {
                                               filterButtons: FilterButtonList
                                                   .filterButtons,
                                               globalItemList: BuildPatternLists
-                                                  .globalItemList));
+                                                  .globalItemList,
+                                              headers:
+                                                  MenuItems.patternHeaders));
                                     },
                                     buttonName: 'Filter nach Patterns'),
                                 const SizedBox(
@@ -121,7 +126,9 @@ class _OverviewPageState extends State<OverviewPage> {
                                               filterButtons: FilterButtonList
                                                   .filterButtons,
                                               globalItemList: BuildElementLists
-                                                  .globalItemList));
+                                                  .globalItemList,
+                                              headers:
+                                                  MenuItems.elementHeaders));
                                     },
                                     buttonName: 'Filter nach Elements'),
                               ],
