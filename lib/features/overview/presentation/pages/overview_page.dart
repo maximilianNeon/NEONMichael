@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
+import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
@@ -14,90 +17,135 @@ class OverviewPage extends StatefulWidget {
 
 class _OverviewPageState extends State<OverviewPage> {
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<FilterBloc>(context)
+        .add(FilterMenuEvent(filterButtons: FilterButtonList.filterButtons));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kColorWhite,
-        shape: Border.all(color: kColorDarkBlue),
-        title: const Text(
-          'Neon Mobbin',
-          style: TextStyle(color: kColorBlack),
-        ),
-        centerTitle: true,
-        titleSpacing: 1,
-      ),
-      body: Padding(
-        padding: kPad16,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            //  crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                // mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    alignment: Alignment.topCenter,
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 2, color: kColorDarkBlue)),
-                    width: 200,
-                    height: 1500,
-                    child: MenuItems.getMenu(),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    //mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      const SearchBar(),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const FilterButton(buttonName: 'Filter nach Art'),
-                          const SizedBox(width: 20),
-                          const FilterButton(
-                              buttonName: 'Filter nach Patterns'),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          const FilterButton(
-                              buttonName: 'Filter nach Elements'),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        children: const [
-                          SortButton(buttonName: 'Sortiert nach Projekten'),
-                          SizedBox(width: 20),
-                          SortButton(buttonName: 'Sortiert nach Screens'),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SizedBox(
-                          height: 700,
-                          width: 800,
-                          child: Projects.getProjects()),
-                    ],
-                  )
-                ],
-              )
-            ],
+        appBar: AppBar(
+          backgroundColor: kColorWhite,
+          shape: Border.all(color: kColorDarkBlue),
+          title: const Text(
+            'Neon Mobbin',
+            style: TextStyle(color: kColorBlack),
           ),
+          centerTitle: true,
+          titleSpacing: 1,
         ),
-      ),
-    );
+        body: BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
+          if (state is FilterMenuState) {
+            return Padding(
+              padding: kPad16,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  //  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      // mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          alignment: Alignment.topCenter,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 2, color: kColorDarkBlue)),
+                          width: 200,
+                          height: 1500,
+                          child: MenuItems.getMenu(),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        Column(
+                          //mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            const SearchBar(),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                FilterButton(
+                                    activeColor: state.filterButtons[0] == true
+                                        ? kColorPink
+                                        : kColorWhite,
+                                    onpress: () {
+                                      FilterButtonList.changeFilterButton(0);
+                                      BlocProvider.of<FilterBloc>(context).add(
+                                          FilterMenuEvent(
+                                              filterButtons: FilterButtonList
+                                                  .filterButtons));
+                                    },
+                                    buttonName: 'Filter nach Art'),
+                                const SizedBox(width: 20),
+                                FilterButton(
+                                    activeColor: state.filterButtons[1] == true
+                                        ? kColorPink
+                                        : kColorWhite,
+                                    onpress: () {
+                                      FilterButtonList.changeFilterButton(1);
+                                      BlocProvider.of<FilterBloc>(context).add(
+                                          FilterMenuEvent(
+                                              filterButtons: FilterButtonList
+                                                  .filterButtons));
+                                    },
+                                    buttonName: 'Filter nach Patterns'),
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                FilterButton(
+                                    activeColor: state.filterButtons[2] == true
+                                        ? kColorPink
+                                        : kColorWhite,
+                                    onpress: () {
+                                      FilterButtonList.changeFilterButton(2);
+                                      BlocProvider.of<FilterBloc>(context).add(
+                                          FilterMenuEvent(
+                                              filterButtons: FilterButtonList
+                                                  .filterButtons));
+                                    },
+                                    buttonName: 'Filter nach Elements'),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Row(
+                              children: const [
+                                SortButton(
+                                    buttonName: 'Sortiert nach Projekten'),
+                                SizedBox(width: 20),
+                                SortButton(buttonName: 'Sortiert nach Screens'),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            SizedBox(
+                                height: 700,
+                                width: 800,
+                                child: Projects.getProjects()),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            );
+          } else {
+            return const CircularProgressIndicator();
+          }
+        }));
   }
 }
