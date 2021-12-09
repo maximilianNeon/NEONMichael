@@ -8,10 +8,11 @@ class AssetEntity {
   final List<PatternEntity> patterns;
   final List<ElementEntity> elements;
 
-  AssetEntity(
-      {required this.imageUrl,
-      required this.title,
-      required this.id,
-      required this.elements,
-      required this.patterns});
+  AssetEntity({
+    required this.imageUrl,
+    required this.title,
+    required this.id,
+    required this.elements,
+    required this.patterns,
+  });
 }

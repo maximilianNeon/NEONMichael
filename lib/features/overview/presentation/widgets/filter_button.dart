@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
-import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 
 class FilterButton extends StatelessWidget {
-  FilterButton({
+  const FilterButton({
     required this.buttonName,
     required this.activeColor,
     required this.onpress,
@@ -13,7 +10,7 @@ class FilterButton extends StatelessWidget {
   }) : super(key: key);
 
   final String buttonName;
-  Color activeColor;
+  final Color activeColor;
   final VoidCallback onpress;
 
   @override

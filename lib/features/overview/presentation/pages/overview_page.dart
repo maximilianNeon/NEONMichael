@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
+import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
@@ -21,10 +22,13 @@ class _OverviewPageState extends State<OverviewPage> {
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<FilterBloc>(context).add(FilterMenuEvent(
-        filterButtons: FilterButtonList.filterButtons,
-        globalItemList: BuildElementLists.globalItemList,
-        headers: MenuItems.elementHeaders));
+    setState(() {
+      FilterButtonList.filterButtons[0] = true;
+      BlocProvider.of<FilterBloc>(context).add(FilterMenuEvent(
+          filterButtons: FilterButtonList.filterButtons,
+          globalItemList: BuildTypeLists.appTypeList,
+          headers: MenuItems.typeHeaders));
+    });
   }
 
   @override
@@ -47,11 +51,9 @@ class _OverviewPageState extends State<OverviewPage> {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  //  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.max,
-                      // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
@@ -60,14 +62,13 @@ class _OverviewPageState extends State<OverviewPage> {
                               border:
                                   Border.all(width: 2, color: kColorDarkBlue)),
                           width: 200,
-                          height: 1500,
+                          height: 1000,
                           child: MenuItems.getMenu(),
                         ),
                         const SizedBox(
                           width: 20,
                         ),
                         Column(
-                          //mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -89,10 +90,9 @@ class _OverviewPageState extends State<OverviewPage> {
                                           FilterMenuEvent(
                                               filterButtons: FilterButtonList
                                                   .filterButtons,
-                                              globalItemList: BuildElementLists
-                                                  .globalItemList,
-                                              headers:
-                                                  MenuItems.elementHeaders));
+                                              globalItemList:
+                                                  BuildTypeLists.appTypeList,
+                                              headers: MenuItems.typeHeaders));
                                     },
                                     buttonName: 'Filter nach Art'),
                                 const SizedBox(width: 20),

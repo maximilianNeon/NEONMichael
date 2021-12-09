@@ -135,7 +135,7 @@ mixin Projects {
               ])
         ],
         description: 'Blablablabla',
-        projectType: ProjectType.App,
+        projectType: ProjectType.WebDesktop,
         icon: const Icon(Icons.access_alarm)),
     ProjectEntity(
         title: 'Mac Life',
@@ -193,7 +193,7 @@ mixin Projects {
               ])
         ],
         description: 'Blablablabla',
-        projectType: ProjectType.App,
+        projectType: ProjectType.WebMobile,
         icon: const Icon(Icons.access_alarm)),
   ];
 

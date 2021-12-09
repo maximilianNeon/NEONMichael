@@ -8,10 +8,12 @@ import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 mixin MenuItems {
   static List<String> elementHeaders = [];
   static List<String> patternHeaders = [];
+  static List<String> typeHeaders = [];
 
   static void getHeadersAndItems() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
     patternHeaders = EnumToString.toList(PatternHeaders.values);
+    typeHeaders = EnumToString.toList(ProjectType.values);
   }
 
   static Widget getMenu() {
@@ -38,19 +40,13 @@ mixin MenuItems {
                         ),
                         ListView.builder(
                           shrinkWrap: true,
-                          itemCount:
-                              //BuildPatternLists.globalItemList[i].length
-                              //  as int?,
-                              state.globalItemList[i].length as int?,
+                          itemCount: state.globalItemList[i].length as int?,
                           itemBuilder: (context, index) {
                             return GestureDetector(
                                 onTap: () {
-                                  print(BuildPatternLists.globalItemList[i]
-                                      [index]);
+                                  print(state.globalItemList[i][index]);
                                 },
                                 child: Text(
-                                    //  BuildPatternLists.globalItemList[i][index]
-                                    //    .toString(),
                                     state.globalItemList[i][index].toString()));
                           },
                         ),
@@ -59,7 +55,7 @@ mixin MenuItems {
               );
             });
       } else {
-        return const CircularProgressIndicator();
+        return const Center(child: CircularProgressIndicator());
       }
     });
   }
