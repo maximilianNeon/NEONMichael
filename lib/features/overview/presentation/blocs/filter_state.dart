@@ -10,13 +10,22 @@ class FilterInitial extends FilterState {
 
 class FilterMenuState extends FilterState {
   final List<bool> filterButtons;
-  final List globalItemList;
+  final List<List<String>> globalItemList;
   final List headers;
-  FilterMenuState(
-      {required this.filterButtons,
-      required this.globalItemList,
-      required this.headers});
+  FilterMenuState({
+    required this.filterButtons,
+    required this.globalItemList,
+    required this.headers,
+  });
 
   @override
   List<Object?> get props => [filterButtons, globalItemList, headers];
+}
+
+class FilterProjectState extends FilterState {
+  final List<ProjectEntity> chosenProjectType;
+
+  FilterProjectState({required this.chosenProjectType});
+  @override
+  List<Object?> get props => [chosenProjectType];
 }

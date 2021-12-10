@@ -1,3 +1,4 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
@@ -91,7 +92,7 @@ mixin Projects {
                 ElementEntity(elementList: BuildElementLists.controlList)
               ],
               patterns: [
-                PatternEntity(patternList: BuildPatternLists.actions)
+                PatternEntity(patternList: BuildPatternLists.userCollection)
               ]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -101,7 +102,7 @@ mixin Projects {
                 ElementEntity(elementList: BuildElementLists.globalItemList)
               ],
               patterns: [
-                PatternEntity(patternList: BuildPatternLists.actions)
+                PatternEntity(patternList: BuildPatternLists.userCollection)
               ]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -149,7 +150,7 @@ mixin Projects {
                 ElementEntity(elementList: BuildElementLists.controlList)
               ],
               patterns: [
-                PatternEntity(patternList: BuildPatternLists.actions)
+                PatternEntity(patternList: BuildPatternLists.utility)
               ]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -159,7 +160,7 @@ mixin Projects {
                 ElementEntity(elementList: BuildElementLists.globalItemList)
               ],
               patterns: [
-                PatternEntity(patternList: BuildPatternLists.actions)
+                PatternEntity(patternList: BuildPatternLists.utility)
               ]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -169,7 +170,7 @@ mixin Projects {
                 ElementEntity(elementList: BuildElementLists.imageList)
               ],
               patterns: [
-                PatternEntity(patternList: BuildPatternLists.mis)
+                PatternEntity(patternList: BuildPatternLists.content)
               ]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -179,7 +180,7 @@ mixin Projects {
                 ElementEntity(elementList: BuildElementLists.viewList)
               ],
               patterns: [
-                PatternEntity(patternList: BuildPatternLists.social)
+                PatternEntity(patternList: BuildPatternLists.utility)
               ]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
@@ -196,6 +197,39 @@ mixin Projects {
         projectType: ProjectType.WebMobile,
         icon: const Icon(Icons.access_alarm)),
   ];
+
+  static List<ProjectEntity> chosenProjectTypeList = [];
+
+  static List<ProjectEntity> chooseListItemsForElements(String filterItem) {
+    final chosenProjects = mockProjects1.where((project) {
+      final assetIndex = project.assets.indexWhere((asset) {
+        final elementIndex = asset.elements
+            .indexWhere((element) => element.elementList.contains(filterItem));
+        return elementIndex >= 0;
+      });
+      return assetIndex >= 0;
+    }).toList();
+    return chosenProjects;
+  }
+
+  static List<ProjectEntity> chooseListItemForPatterns(String filterItem) {
+    final chosenProjects = mockProjects1.where((project) {
+      final assetIndex = project.assets.indexWhere((asset) {
+        final patternIndex = asset.patterns
+            .indexWhere((pattern) => pattern.patternList.contains(filterItem));
+        return patternIndex >= 0;
+      });
+      return assetIndex >= 0;
+    }).toList();
+    return chosenProjects;
+  }
+
+  static List<ProjectEntity> chooseListItemForType(String filterItem) {
+    final chosenProjects = mockProjects1
+        .where((project) => project.projectType.toString().contains(filterItem))
+        .toList();
+    return chosenProjects;
+  }
 
   static Widget getProjects() {
     return ListView.builder(
@@ -221,7 +255,7 @@ mixin Projects {
               children: [
                 Container(
                   // width: 900,
-                  height: 150,
+                  height: 250,
                   child: ListView.builder(
                     physics: const ClampingScrollPhysics(),
                     shrinkWrap: true,
@@ -244,15 +278,17 @@ mixin Projects {
                                 }));
                               },
                               child: Container(
-                                  decoration:
-                                      const BoxDecoration(color: kColorBlue),
+                                  decoration: BoxDecoration(
+                                      color: kColorBlue,
+                                      border: Border.all(),
+                                      borderRadius: BorderRadius.circular(9)),
                                   width: 150,
-                                  height: 150,
+                                  height: 250,
                                   child: Image.network(
                                     mockProjects1[index].assets[i].imageUrl,
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
+                                    width: 150,
+                                    height: 250,
+                                    fit: BoxFit.contain,
                                   )),
                             ),
                             const SizedBox(

@@ -12,7 +12,7 @@ mixin BuildElementLists {
 
   static final imageList = EnumToString.toList(ImageElements.values);
 
-  static final List globalItemList = <List<String>>[
+  static final List<List<String>> globalItemList = [
     barList,
     overlayList,
     controlList,

@@ -2,8 +2,10 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
+import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
+import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
 
 mixin MenuItems {
   static List<String> elementHeaders = [];
@@ -40,14 +42,19 @@ mixin MenuItems {
                         ),
                         ListView.builder(
                           shrinkWrap: true,
-                          itemCount: state.globalItemList[i].length as int?,
+                          itemCount: state.globalItemList[i].length,
                           itemBuilder: (context, index) {
                             return GestureDetector(
                                 onTap: () {
-                                  print(state.globalItemList[i][index]);
+                                  final chosenItem =
+                                      state.globalItemList[i][index];
+                                  print(chosenItem);
+                                  final projectsToShow =
+                                      Projects.chooseListItemForPatterns(
+                                          chosenItem);
+                                  print(projectsToShow[0]);
                                 },
-                                child: Text(
-                                    state.globalItemList[i][index].toString()));
+                                child: Text(state.globalItemList[i][index]));
                           },
                         ),
                       ])

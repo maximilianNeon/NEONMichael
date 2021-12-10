@@ -22,13 +22,11 @@ class _OverviewPageState extends State<OverviewPage> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      FilterButtonList.filterButtons[0] = true;
-      BlocProvider.of<FilterBloc>(context).add(FilterMenuEvent(
-          filterButtons: FilterButtonList.filterButtons,
-          globalItemList: BuildTypeLists.appTypeList,
-          headers: MenuItems.typeHeaders));
-    });
+    FilterButtonList.filterButtons[0] = true;
+    BlocProvider.of<FilterBloc>(context).add(FilterMenuEvent(
+        filterButtons: FilterButtonList.filterButtons,
+        globalItemList: BuildTypeLists.appTypeList,
+        headers: MenuItems.typeHeaders));
   }
 
   @override
@@ -59,10 +57,10 @@ class _OverviewPageState extends State<OverviewPage> {
                         Container(
                           alignment: Alignment.topCenter,
                           decoration: BoxDecoration(
-                              border:
-                                  Border.all(width: 2, color: kColorDarkBlue)),
+                              borderRadius: BorderRadius.circular(9),
+                              border: Border.all(width: 2, color: kColorBlack)),
                           width: 200,
-                          height: 1000,
+                          height: 800,
                           child: MenuItems.getMenu(),
                         ),
                         const SizedBox(
@@ -82,7 +80,7 @@ class _OverviewPageState extends State<OverviewPage> {
                               children: [
                                 FilterButton(
                                     activeColor: state.filterButtons[0] == true
-                                        ? kColorPink
+                                        ? kColorTopupRed
                                         : kColorWhite,
                                     onpress: () {
                                       FilterButtonList.changeFilterButton(0);
@@ -98,7 +96,7 @@ class _OverviewPageState extends State<OverviewPage> {
                                 const SizedBox(width: 20),
                                 FilterButton(
                                     activeColor: state.filterButtons[1] == true
-                                        ? kColorPink
+                                        ? kColorTopupRed
                                         : kColorWhite,
                                     onpress: () {
                                       FilterButtonList.changeFilterButton(1);
@@ -117,7 +115,7 @@ class _OverviewPageState extends State<OverviewPage> {
                                 ),
                                 FilterButton(
                                     activeColor: state.filterButtons[2] == true
-                                        ? kColorPink
+                                        ? kColorTopupRed
                                         : kColorWhite,
                                     onpress: () {
                                       FilterButtonList.changeFilterButton(2);
@@ -148,7 +146,7 @@ class _OverviewPageState extends State<OverviewPage> {
                               height: 20,
                             ),
                             SizedBox(
-                                height: 700,
+                                height: 630,
                                 width: 800,
                                 child: Projects.getProjects()),
                           ],
