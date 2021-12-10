@@ -23,10 +23,7 @@ class _OverviewPageState extends State<OverviewPage> {
   void initState() {
     super.initState();
     FilterButtonList.filterButtons[0] = true;
-    BlocProvider.of<FilterBloc>(context).add(FilterMenuEvent(
-        filterButtons: FilterButtonList.filterButtons,
-        globalItemList: BuildTypeLists.appTypeList,
-        headers: MenuItems.typeHeaders));
+    BlocProvider.of<FilterBloc>(context).add(FilterMenuEventType());
   }
 
   @override
@@ -84,13 +81,8 @@ class _OverviewPageState extends State<OverviewPage> {
                                         : kColorWhite,
                                     onpress: () {
                                       FilterButtonList.changeFilterButton(0);
-                                      BlocProvider.of<FilterBloc>(context).add(
-                                          FilterMenuEvent(
-                                              filterButtons: FilterButtonList
-                                                  .filterButtons,
-                                              globalItemList:
-                                                  BuildTypeLists.appTypeList,
-                                              headers: MenuItems.typeHeaders));
+                                      BlocProvider.of<FilterBloc>(context)
+                                          .add(FilterMenuEventType());
                                     },
                                     buttonName: 'Filter nach Art'),
                                 const SizedBox(width: 20),
@@ -100,14 +92,8 @@ class _OverviewPageState extends State<OverviewPage> {
                                         : kColorWhite,
                                     onpress: () {
                                       FilterButtonList.changeFilterButton(1);
-                                      BlocProvider.of<FilterBloc>(context).add(
-                                          FilterMenuEvent(
-                                              filterButtons: FilterButtonList
-                                                  .filterButtons,
-                                              globalItemList: BuildPatternLists
-                                                  .globalItemList,
-                                              headers:
-                                                  MenuItems.patternHeaders));
+                                      BlocProvider.of<FilterBloc>(context)
+                                          .add(FilterMenuEventPattern());
                                     },
                                     buttonName: 'Filter nach Patterns'),
                                 const SizedBox(
@@ -119,14 +105,8 @@ class _OverviewPageState extends State<OverviewPage> {
                                         : kColorWhite,
                                     onpress: () {
                                       FilterButtonList.changeFilterButton(2);
-                                      BlocProvider.of<FilterBloc>(context).add(
-                                          FilterMenuEvent(
-                                              filterButtons: FilterButtonList
-                                                  .filterButtons,
-                                              globalItemList: BuildElementLists
-                                                  .globalItemList,
-                                              headers:
-                                                  MenuItems.elementHeaders));
+                                      BlocProvider.of<FilterBloc>(context)
+                                          .add(FilterMenuEventElement());
                                     },
                                     buttonName: 'Filter nach Elements'),
                               ],
