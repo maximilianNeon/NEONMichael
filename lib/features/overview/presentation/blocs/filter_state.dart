@@ -23,9 +23,9 @@ class FilterMenuState extends FilterState {
 }
 
 class FilterProjectState extends FilterState {
-  final List<ProjectEntity> chosenProjectType;
+  final List<ProjectEntity> chosenProjectByItem;
 
-  FilterProjectState({required this.chosenProjectType});
+  FilterProjectState({required this.chosenProjectByItem});
   @override
-  List<Object?> get props => [chosenProjectType];
+  List<Object?> get props => [chosenProjectByItem];
 }

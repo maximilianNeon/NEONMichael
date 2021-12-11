@@ -1,5 +1,5 @@
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
@@ -8,6 +8,8 @@ import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
+import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/detail_screen.dart';
 
 mixin Projects {
@@ -66,16 +68,6 @@ mixin Projects {
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.data)
               ]),
-          // AssetEntity(
-          //     imageUrl: 'https://picsum.photos/200/300',
-          //     title: 'title6',
-          //     id: 6,
-          //     elements: [
-          //       ElementEntity(elementList: BuildElementLists.globalItemList)
-          //     ],
-          //     patterns: [
-          //       PatternEntity(patternList: BuildPatternLists.data)
-          //     ])
         ],
         description: 'Blablablabla',
         projectType: ProjectType.App,
@@ -198,7 +190,7 @@ mixin Projects {
         icon: const Icon(Icons.access_alarm)),
   ];
 
-  static List<ProjectEntity> chosenProjectTypeList = [];
+  static List<ProjectEntity> chosenProjectTypeList = mockProjects1;
 
   static List<ProjectEntity> chooseListItemsForElements(String filterItem) {
     final chosenProjects = mockProjects1.where((project) {
@@ -231,82 +223,208 @@ mixin Projects {
     return chosenProjects;
   }
 
+  static List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
+    if (FilterButtonList.filterButtons[0]) {
+      chosenProjectTypeList.clear();
+      return chosenProjectTypeList = Projects.chooseListItemForType(filterItem);
+    } else if (FilterButtonList.filterButtons[1]) {
+      chosenProjectTypeList.clear();
+      return chosenProjectTypeList =
+          Projects.chooseListItemForPatterns(filterItem);
+    } else if (FilterButtonList.filterButtons[2]) {
+      chosenProjectTypeList.clear();
+      return chosenProjectTypeList =
+          Projects.chooseListItemsForElements(filterItem);
+    }
+    return chosenProjectTypeList;
+  }
+
   static Widget getProjects() {
-    return ListView.builder(
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      itemCount: mockProjects1.length,
-      itemBuilder: (context, index) {
-        return Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              mockProjects1[index].title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              textDirection: TextDirection.ltr,
-              children: [
-                Container(
-                  // width: 900,
-                  height: 250,
-                  child: ListView.builder(
-                    physics: const ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: mockProjects1[index].assets.length,
-                    itemBuilder: (context, i) {
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Row(
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                print(mockProjects1[index].assets[i].id);
-                                Navigator.push<dynamic>(context,
-                                    MaterialPageRoute<dynamic>(
-                                        builder: (context) {
-                                  return DetailScreen(
-                                    index: mockProjects1[index].assets[i].id,
-                                  );
-                                }));
-                              },
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      color: kColorBlue,
-                                      border: Border.all(),
-                                      borderRadius: BorderRadius.circular(9)),
-                                  width: 150,
-                                  height: 250,
-                                  child: Image.network(
-                                    mockProjects1[index].assets[i].imageUrl,
-                                    width: 150,
-                                    height: 250,
-                                    fit: BoxFit.contain,
-                                  )),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            )
-                          ],
-                        ),
-                      );
-                    },
+    return BlocBuilder<FilterBloc, FilterState>(
+      builder: (context, state) {
+        if (state is FilterProjectState) {
+          return ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: state.chosenProjectByItem.isEmpty
+                ? mockProjects1.length
+                : state.chosenProjectByItem.length,
+            itemBuilder: (context, index) {
+              return Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    state.chosenProjectByItem.isEmpty
+                        ? mockProjects1[index].title
+                        : state.chosenProjectByItem[index].title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 5,
-            )
-          ],
-        );
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    textDirection: TextDirection.ltr,
+                    children: [
+                      SizedBox(
+                        // width: 900,
+                        height: 350,
+                        child: ListView.builder(
+                          physics: const ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: state.chosenProjectByItem.isEmpty
+                              ? mockProjects1[index].assets.length
+                              : state.chosenProjectByItem[index].assets.length,
+                          itemBuilder: (context, i) {
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      print(chosenProjectTypeList[index]
+                                          .assets[i]
+                                          .id);
+                                      Navigator.push<dynamic>(context,
+                                          MaterialPageRoute<dynamic>(
+                                              builder: (context) {
+                                        return DetailScreen(
+                                            index: state
+                                                .chosenProjectByItem[index]
+                                                .assets[i]
+                                                .id);
+                                      }));
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                            color: kColorBlue,
+                                            border: Border.all(),
+                                            borderRadius:
+                                                BorderRadius.circular(9)),
+                                        width: 150,
+                                        height: 250,
+                                        child: Image.network(
+                                          state.chosenProjectByItem.isEmpty
+                                              ? mockProjects1[index]
+                                                  .assets[i]
+                                                  .imageUrl
+                                              : state.chosenProjectByItem[index]
+                                                  .assets[i].imageUrl,
+                                          width: 150,
+                                          height: 250,
+                                          fit: BoxFit.fill,
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  )
+                ],
+              );
+            },
+          );
+        } else if (state is FilterMenuState) {
+          return ListView.builder(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: mockProjects1.length,
+            itemBuilder: (context, index) {
+              return Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    mockProjects1[index].title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    textDirection: TextDirection.ltr,
+                    children: [
+                      SizedBox(
+                        // width: 900,
+                        height: 250,
+                        child: ListView.builder(
+                          physics: const ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: mockProjects1[index].assets.length,
+                          itemBuilder: (context, i) {
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      print(chosenProjectTypeList[index]
+                                          .assets[i]
+                                          .id);
+                                      Navigator.push<dynamic>(context,
+                                          MaterialPageRoute<dynamic>(
+                                              builder: (context) {
+                                        return DetailScreen(
+                                          index:
+                                              mockProjects1[index].assets[i].id,
+                                        );
+                                      }));
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                            color: kColorBlue,
+                                            border: Border.all(),
+                                            borderRadius:
+                                                BorderRadius.circular(9)),
+                                        width: 150,
+                                        height: 250,
+                                        child: Image.network(
+                                          mockProjects1[index]
+                                              .assets[i]
+                                              .imageUrl,
+                                          width: 150,
+                                          height: 250,
+                                          fit: BoxFit.fill,
+                                        )),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  )
+                                ],
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  )
+                ],
+              );
+            },
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
       },
     );
   }

@@ -2,6 +2,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/enums.dart';
+import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
 
@@ -46,9 +47,9 @@ mixin MenuItems {
                                 onTap: () {
                                   final chosenItem =
                                       state.globalItemList[i][index];
-                                  final projectsToShow =
-                                      Projects.chooseListItemForPatterns(
-                                          chosenItem);
+                                  BlocProvider.of<FilterBloc>(context).add(
+                                      FilterProjectEvent(
+                                          filterItem: chosenItem));
                                 },
                                 child: Text(state.globalItemList[i][index]));
                           },
