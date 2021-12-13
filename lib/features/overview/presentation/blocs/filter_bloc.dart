@@ -6,6 +6,7 @@ import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
+import 'package:neon_web/features/overview/data/project_helpers.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
@@ -32,7 +33,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         filterButtons: filterButtons,
         globalItemList: globalItemList,
         headers: headers,
-        chosenProjectByItem: Projects.mockProjects1,
+        chosenProjectByItem: ProjectHelpers.mockProjects1,
       );
     }
 
@@ -48,7 +49,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         filterButtons: filterButtons,
         globalItemList: globalItemList,
         headers: headers,
-        chosenProjectByItem: Projects.mockProjects1,
+        chosenProjectByItem: ProjectHelpers.mockProjects1,
       );
     }
 
@@ -64,7 +65,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         filterButtons: filterButtons,
         globalItemList: globalItemList,
         headers: headers,
-        chosenProjectByItem: Projects.mockProjects1,
+        chosenProjectByItem: ProjectHelpers.mockProjects1,
       );
     }
 
