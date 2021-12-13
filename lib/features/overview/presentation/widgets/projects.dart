@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/data/project_helpers.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/detail_screen.dart';
 
@@ -33,8 +32,7 @@ class Projects extends StatelessWidget {
                     textDirection: TextDirection.ltr,
                     children: [
                       SizedBox(
-                        // width: 900,
-                        height: 350,
+                        height: 280,
                         child: ListView.builder(
                           physics: const ClampingScrollPhysics(),
                           shrinkWrap: true,
@@ -70,7 +68,7 @@ class Projects extends StatelessWidget {
                                           state.chosenProjectByItem[index]
                                               .assets[i].imageUrl,
                                           width: 150,
-                                          height: 250,
+                                          height: 200,
                                           fit: BoxFit.fill,
                                         )),
                                   ),
@@ -85,9 +83,9 @@ class Projects extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  )
+                  // const SizedBox(
+                  //   height: 5,
+                  // )
                 ],
               );
             },

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
-import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
-import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
@@ -129,7 +126,7 @@ class _OverviewPageState extends State<OverviewPage> {
                               height: 20,
                             ),
                             SizedBox(
-                                height: 630, width: 800, child: Projects()),
+                                height: 680, width: 800, child: Projects()),
                           ],
                         )
                       ],
