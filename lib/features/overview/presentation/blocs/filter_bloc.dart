@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
@@ -8,7 +7,6 @@ import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
-import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
 
@@ -71,11 +69,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     }
 
     if (event is FilterProjectEvent) {
+      final projects = Projects();
       List<ProjectEntity> chosenProjectByItem;
       List<bool> filterButtons;
       List<List<String>> globalItemList;
       List headers;
-      chosenProjectByItem = Projects.chooseFilterByFilterType(event.filterItem);
+      chosenProjectByItem = projects.chooseFilterByFilterType(event.filterItem);
       globalItemList = BuildElementLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuItems.elementHeaders;

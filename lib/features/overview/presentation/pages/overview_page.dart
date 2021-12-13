@@ -129,9 +129,7 @@ class _OverviewPageState extends State<OverviewPage> {
                               height: 20,
                             ),
                             SizedBox(
-                                height: 630,
-                                width: 800,
-                                child: Projects.getProjects()),
+                                height: 630, width: 800, child: Projects()),
                           ],
                         )
                       ],
