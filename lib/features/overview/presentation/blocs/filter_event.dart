@@ -4,8 +4,12 @@ part of 'filter_bloc.dart';
 abstract class FilterEvent extends Equatable {}
 
 class FilterMenuEventType extends FilterEvent {
+  final List<List<String>>? globalItemList;
+  FilterMenuEventType({
+    this.globalItemList,
+  });
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [globalItemList];
 }
 
 class FilterMenuEventPattern extends FilterEvent {

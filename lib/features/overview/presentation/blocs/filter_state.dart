@@ -21,5 +21,6 @@ class FilterMenuState extends FilterState {
   });
 
   @override
-  List<Object?> get props => [filterButtons, globalItemList, headers];
+  List<Object?> get props =>
+      [filterButtons, globalItemList, headers, chosenProjectByItem];
 }

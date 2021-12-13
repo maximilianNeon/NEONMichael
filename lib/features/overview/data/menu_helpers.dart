@@ -6,7 +6,7 @@ mixin MenuHelpers {
   static List<String> patternHeaders = [];
   static List<String> typeHeaders = [];
 
-  static void getHeadersAndItems() {
+  static void getMenuHeaders() {
     elementHeaders = EnumToString.toList(ElementHeader.values);
     patternHeaders = EnumToString.toList(PatternHeaders.values);
     typeHeaders = EnumToString.toList(ProjectType.values);

@@ -7,7 +7,7 @@ import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 class MenuItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MenuHelpers.getHeadersAndItems();
+    MenuHelpers.getMenuHeaders();
     return BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
       if (state is FilterMenuState) {
         return ListView.builder(
