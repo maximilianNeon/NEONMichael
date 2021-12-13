@@ -6,6 +6,7 @@ import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/enums.dart';
+import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 
 mixin ProjectHelpers {
   static List<ProjectEntity> mockProjects1 = [
@@ -186,4 +187,46 @@ mixin ProjectHelpers {
   ];
 
   static List<ProjectEntity> chosenProjectTypeList = [];
+
+  static List<ProjectEntity> chooseListItemsForElements(String filterItem) {
+    final chosenProjects = mockProjects1.where((project) {
+      final assetIndex = project.assets.indexWhere((asset) {
+        final elementIndex = asset.elements
+            .indexWhere((element) => element.elementList.contains(filterItem));
+        return elementIndex >= 0;
+      });
+      return assetIndex >= 0;
+    }).toList();
+    return chosenProjects;
+  }
+
+  static List<ProjectEntity> chooseListItemForPatterns(String filterItem) {
+    final chosenProjects = mockProjects1.where((project) {
+      final assetIndex = project.assets.indexWhere((asset) {
+        final patternIndex = asset.patterns
+            .indexWhere((pattern) => pattern.patternList.contains(filterItem));
+        return patternIndex >= 0;
+      });
+      return assetIndex >= 0;
+    }).toList();
+    return chosenProjects;
+  }
+
+  static List<ProjectEntity> chooseListItemForType(String filterItem) {
+    final chosenProjects = mockProjects1
+        .where((project) => project.projectType.toString().contains(filterItem))
+        .toList();
+    return chosenProjects;
+  }
+
+  static List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
+    if (FilterButtonList.filterButtons[0]) {
+      return chosenProjectTypeList = chooseListItemForType(filterItem);
+    } else if (FilterButtonList.filterButtons[1]) {
+      return chosenProjectTypeList = chooseListItemForPatterns(filterItem);
+    } else if (FilterButtonList.filterButtons[2]) {
+      return chosenProjectTypeList = chooseListItemsForElements(filterItem);
+    }
+    return ProjectHelpers.chosenProjectTypeList;
+  }
 }

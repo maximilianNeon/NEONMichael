@@ -70,12 +70,12 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     }
 
     if (event is FilterProjectEvent) {
-      final projects = Projects();
       List<ProjectEntity> chosenProjectByItem;
       List<bool> filterButtons;
       List<List<String>> globalItemList;
       List headers;
-      chosenProjectByItem = projects.chooseFilterByFilterType(event.filterItem);
+      chosenProjectByItem =
+          ProjectHelpers.chooseFilterByFilterType(event.filterItem);
       globalItemList = BuildElementLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuItems.elementHeaders;
