@@ -1,58 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/data/project_helpers.dart';
-import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/detail_screen.dart';
 
 class Projects extends StatelessWidget {
-  // List<ProjectEntity> chooseListItemsForElements(String filterItem) {
-  //   final chosenProjects = ProjectHelpers.mockProjects1.where((project) {
-  //     final assetIndex = project.assets.indexWhere((asset) {
-  //       final elementIndex = asset.elements
-  //           .indexWhere((element) => element.elementList.contains(filterItem));
-  //       return elementIndex >= 0;
-  //     });
-  //     return assetIndex >= 0;
-  //   }).toList();
-  //   return chosenProjects;
-  // }
-
-  // List<ProjectEntity> chooseListItemForPatterns(String filterItem) {
-  //   final chosenProjects = ProjectHelpers.mockProjects1.where((project) {
-  //     final assetIndex = project.assets.indexWhere((asset) {
-  //       final patternIndex = asset.patterns
-  //           .indexWhere((pattern) => pattern.patternList.contains(filterItem));
-  //       return patternIndex >= 0;
-  //     });
-  //     return assetIndex >= 0;
-  //   }).toList();
-  //   return chosenProjects;
-  // }
-
-  // List<ProjectEntity> chooseListItemForType(String filterItem) {
-  //   final chosenProjects = ProjectHelpers.mockProjects1
-  //       .where((project) => project.projectType.toString().contains(filterItem))
-  //       .toList();
-  //   return chosenProjects;
-  // }
-
-  // List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
-  //   if (FilterButtonList.filterButtons[0]) {
-  //     return ProjectHelpers.chosenProjectTypeList =
-  //         chooseListItemForType(filterItem);
-  //   } else if (FilterButtonList.filterButtons[1]) {
-  //     return ProjectHelpers.chosenProjectTypeList =
-  //         chooseListItemForPatterns(filterItem);
-  //   } else if (FilterButtonList.filterButtons[2]) {
-  //     return ProjectHelpers.chosenProjectTypeList =
-  //         chooseListItemsForElements(filterItem);
-  //   }
-  //   return ProjectHelpers.chosenProjectTypeList;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FilterBloc, FilterState>(
@@ -95,10 +48,6 @@ class Projects extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      print(ProjectHelpers
-                                          .chosenProjectTypeList[index]
-                                          .assets[i]
-                                          .id);
                                       Navigator.push<dynamic>(context,
                                           MaterialPageRoute<dynamic>(
                                               builder: (context) {

@@ -60,7 +60,7 @@ class _OverviewPageState extends State<OverviewPage> {
                           height: 850,
                           child: Padding(
                             padding: const EdgeInsets.all(8),
-                            child: MenuItems.getMenu(),
+                            child: MenuItems(),
                           ),
                         ),
                         const SizedBox(

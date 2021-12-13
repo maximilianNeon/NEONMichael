@@ -23,10 +23,3 @@ class FilterMenuState extends FilterState {
   @override
   List<Object?> get props => [filterButtons, globalItemList, headers];
 }
-
-// class FilterProjectState extends FilterState {
-
-//   FilterProjectState({required this.chosenProjectByItem});
-//   @override
-//   List<Object?> get props => [chosenProjectByItem];
-// }

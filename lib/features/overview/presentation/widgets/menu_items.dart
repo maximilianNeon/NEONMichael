@@ -1,25 +1,13 @@
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neon_web/core/enums.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
+import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
-import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
 
-mixin MenuItems {
-  static List<String> elementHeaders = [];
-  static List<String> patternHeaders = [];
-  static List<String> typeHeaders = [];
-
-  static void getHeadersAndItems() {
-    elementHeaders = EnumToString.toList(ElementHeader.values);
-    patternHeaders = EnumToString.toList(PatternHeaders.values);
-    typeHeaders = EnumToString.toList(ProjectType.values);
-  }
-
-  static Widget getMenu() {
-    getHeadersAndItems();
+class MenuItems extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    MenuHelpers.getHeadersAndItems();
     return BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
       if (state is FilterMenuState) {
         return ListView.builder(
