@@ -34,6 +34,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         filterButtons: filterButtons,
         globalItemList: globalItemList,
         headers: headers,
+        chosenProjectByItem: Projects.mockProjects1,
       );
     }
 
@@ -49,6 +50,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         filterButtons: filterButtons,
         globalItemList: globalItemList,
         headers: headers,
+        chosenProjectByItem: Projects.mockProjects1,
       );
     }
 
@@ -64,13 +66,25 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
         filterButtons: filterButtons,
         globalItemList: globalItemList,
         headers: headers,
+        chosenProjectByItem: Projects.mockProjects1,
       );
     }
 
     if (event is FilterProjectEvent) {
       List<ProjectEntity> chosenProjectByItem;
+      List<bool> filterButtons;
+      List<List<String>> globalItemList;
+      List headers;
       chosenProjectByItem = Projects.chooseFilterByFilterType(event.filterItem);
-      yield FilterProjectState(chosenProjectByItem: chosenProjectByItem);
+      globalItemList = BuildElementLists.globalItemList;
+      filterButtons = FilterButtonList.filterButtons;
+      headers = MenuItems.elementHeaders;
+      yield FilterMenuState(
+        filterButtons: filterButtons,
+        globalItemList: globalItemList,
+        headers: headers,
+        chosenProjectByItem: chosenProjectByItem,
+      );
     }
   }
 }

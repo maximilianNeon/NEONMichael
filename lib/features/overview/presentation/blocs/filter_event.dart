@@ -20,8 +20,9 @@ class FilterMenuEventElement extends FilterEvent {
 
 class FilterProjectEvent extends FilterEvent {
   final String filterItem;
+  final List<ProjectEntity>? chosenProjectByItem;
 
-  FilterProjectEvent({required this.filterItem});
+  FilterProjectEvent({required this.filterItem, this.chosenProjectByItem});
   @override
-  List<Object?> get props => [filterItem];
+  List<Object?> get props => [filterItem, chosenProjectByItem];
 }

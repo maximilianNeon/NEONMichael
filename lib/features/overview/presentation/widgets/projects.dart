@@ -225,14 +225,14 @@ mixin Projects {
 
   static List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
     if (FilterButtonList.filterButtons[0]) {
-      chosenProjectTypeList.clear();
+      //chosenProjectTypeList.clear();
       return chosenProjectTypeList = Projects.chooseListItemForType(filterItem);
     } else if (FilterButtonList.filterButtons[1]) {
-      chosenProjectTypeList.clear();
+      // chosenProjectTypeList.clear();
       return chosenProjectTypeList =
           Projects.chooseListItemForPatterns(filterItem);
     } else if (FilterButtonList.filterButtons[2]) {
-      chosenProjectTypeList.clear();
+      // chosenProjectTypeList.clear();
       return chosenProjectTypeList =
           Projects.chooseListItemsForElements(filterItem);
     }
@@ -242,13 +242,11 @@ mixin Projects {
   static Widget getProjects() {
     return BlocBuilder<FilterBloc, FilterState>(
       builder: (context, state) {
-        if (state is FilterProjectState) {
+        if (state is FilterMenuState) {
           return ListView.builder(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
-            itemCount: state.chosenProjectByItem.isEmpty
-                ? mockProjects1.length
-                : state.chosenProjectByItem.length,
+            itemCount: state.chosenProjectByItem.length,
             itemBuilder: (context, index) {
               return Column(
                 mainAxisSize: MainAxisSize.max,
@@ -256,9 +254,7 @@ mixin Projects {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    state.chosenProjectByItem.isEmpty
-                        ? mockProjects1[index].title
-                        : state.chosenProjectByItem[index].title,
+                    state.chosenProjectByItem[index].title,
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
@@ -275,9 +271,8 @@ mixin Projects {
                           physics: const ClampingScrollPhysics(),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
-                          itemCount: state.chosenProjectByItem.isEmpty
-                              ? mockProjects1[index].assets.length
-                              : state.chosenProjectByItem[index].assets.length,
+                          itemCount:
+                              state.chosenProjectByItem[index].assets.length,
                           itemBuilder: (context, i) {
                             return SingleChildScrollView(
                               scrollDirection: Axis.vertical,
@@ -307,12 +302,8 @@ mixin Projects {
                                         width: 150,
                                         height: 250,
                                         child: Image.network(
-                                          state.chosenProjectByItem.isEmpty
-                                              ? mockProjects1[index]
-                                                  .assets[i]
-                                                  .imageUrl
-                                              : state.chosenProjectByItem[index]
-                                                  .assets[i].imageUrl,
+                                          state.chosenProjectByItem[index]
+                                              .assets[i].imageUrl,
                                           width: 150,
                                           height: 250,
                                           fit: BoxFit.fill,

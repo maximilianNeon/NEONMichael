@@ -12,20 +12,21 @@ class FilterMenuState extends FilterState {
   final List<bool> filterButtons;
   final List<List<String>> globalItemList;
   final List headers;
+  final List<ProjectEntity> chosenProjectByItem;
   FilterMenuState({
     required this.filterButtons,
     required this.globalItemList,
     required this.headers,
+    required this.chosenProjectByItem,
   });
 
   @override
   List<Object?> get props => [filterButtons, globalItemList, headers];
 }
 
-class FilterProjectState extends FilterState {
-  final List<ProjectEntity> chosenProjectByItem;
+// class FilterProjectState extends FilterState {
 
-  FilterProjectState({required this.chosenProjectByItem});
-  @override
-  List<Object?> get props => [chosenProjectByItem];
-}
+//   FilterProjectState({required this.chosenProjectByItem});
+//   @override
+//   List<Object?> get props => [chosenProjectByItem];
+// }

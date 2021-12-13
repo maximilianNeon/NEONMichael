@@ -54,11 +54,14 @@ class _OverviewPageState extends State<OverviewPage> {
                         Container(
                           alignment: Alignment.topCenter,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),
+                              borderRadius: BorderRadius.circular(20),
                               border: Border.all(width: 2, color: kColorBlack)),
-                          width: 200,
-                          height: 800,
-                          child: MenuItems.getMenu(),
+                          width: 220,
+                          height: 850,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: MenuItems.getMenu(),
+                          ),
                         ),
                         const SizedBox(
                           width: 20,
