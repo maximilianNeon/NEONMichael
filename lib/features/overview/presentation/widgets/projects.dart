@@ -10,7 +10,7 @@ class Projects extends StatelessWidget {
     return BlocBuilder<FilterBloc, FilterState>(
       builder: (context, state) {
         return state.map(
-            initial: (_) => const Text(''),
+            initial: (_) => const CircularProgressIndicator(),
             filterMenuState: (state) {
               return ListView.builder(
                 scrollDirection: Axis.vertical,
