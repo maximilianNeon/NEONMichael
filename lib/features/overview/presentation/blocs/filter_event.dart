@@ -1,32 +1,12 @@
 part of 'filter_bloc.dart';
 
-@immutable
-abstract class FilterEvent extends Equatable {}
-
-class FilterMenuEventType extends FilterEvent {
-  final List<List<String>>? globalItemList;
-  FilterMenuEventType({
-    this.globalItemList,
-  });
-  @override
-  List<Object?> get props => [globalItemList];
-}
-
-class FilterMenuEventPattern extends FilterEvent {
-  @override
-  List<Object?> get props => [];
-}
-
-class FilterMenuEventElement extends FilterEvent {
-  @override
-  List<Object?> get props => [];
-}
-
-class FilterProjectEvent extends FilterEvent {
-  final String filterItem;
-  final List<ProjectEntity>? chosenProjectByItem;
-
-  FilterProjectEvent({required this.filterItem, this.chosenProjectByItem});
-  @override
-  List<Object?> get props => [filterItem, chosenProjectByItem];
+@freezed
+class FilterEvent with _$FilterEvent {
+  const factory FilterEvent.started() = _Started;
+  const factory FilterEvent.filterMenuEventType() = _FilterMenuEventType;
+  const factory FilterEvent.filterMenuEventPattern() = _FilterMenuEventPattern;
+  const factory FilterEvent.filterMenuEventElement() = _FilterMenuEventElement;
+  const factory FilterEvent.filterProjectEvent({
+    required String filterItem,
+  }) = _FilterProjectEvent;
 }

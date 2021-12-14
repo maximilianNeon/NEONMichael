@@ -16,12 +16,11 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   FilterButtonList.changeFilterButton(0);
-  //   BlocProvider.of<FilterBloc>(context).add(FilterMenuEventType());
-  // }
+  @override
+  void initState() {
+    super.initState();
+    FilterButtonList.changeFilterButton(0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,107 +36,214 @@ class _OverviewPageState extends State<OverviewPage> {
           titleSpacing: 1,
         ),
         body: BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
-          if (state is FilterMenuState) {
-            return Padding(
-              padding: kPad16,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+          return state.map(
+              initial: (_) => const Text('data'),
+              filterMenuState: (state) {
+                return Padding(
+                  padding: kPad16,
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          alignment: Alignment.topCenter,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(width: 2, color: kColorBlack)),
-                          width: 220,
-                          height: 850,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: MenuItems(),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
                           mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SearchBar(),
-                            const SizedBox(
-                              height: 20,
+                            Container(
+                              alignment: Alignment.topCenter,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  border:
+                                      Border.all(width: 2, color: kColorBlack)),
+                              width: 220,
+                              height: 850,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: MenuItems(),
+                              ),
                             ),
-                            Row(
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.max,
                               children: [
-                                FilterButton(
-                                    activeColor: state.filterButtons[0] == true
-                                        ? kColorTopupRed
-                                        : kColorWhite,
-                                    onpress: () {
-                                      FilterButtonList.changeFilterButton(0);
-                                      BlocProvider.of<FilterBloc>(context)
-                                          .add(FilterMenuEventType());
-                                    },
-                                    buttonName: 'Filter nach Art'),
-                                const SizedBox(width: 20),
-                                FilterButton(
-                                    activeColor: state.filterButtons[1] == true
-                                        ? kColorTopupRed
-                                        : kColorWhite,
-                                    onpress: () {
-                                      FilterButtonList.changeFilterButton(1);
-                                      BlocProvider.of<FilterBloc>(context)
-                                          .add(FilterMenuEventPattern());
-                                    },
-                                    buttonName: 'Filter nach Patterns'),
+                                const SearchBar(),
                                 const SizedBox(
-                                  width: 20,
+                                  height: 20,
                                 ),
-                                FilterButton(
-                                    activeColor: state.filterButtons[2] == true
-                                        ? kColorTopupRed
-                                        : kColorWhite,
-                                    onpress: () {
-                                      FilterButtonList.changeFilterButton(2);
-                                      BlocProvider.of<FilterBloc>(context)
-                                          .add(FilterMenuEventElement());
-                                    },
-                                    buttonName: 'Filter nach Elements'),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    FilterButton(
+                                        activeColor:
+                                            state.filterButtons[0] == true
+                                                ? kColorTopupRed
+                                                : kColorWhite,
+                                        onpress: () {
+                                          FilterButtonList.changeFilterButton(
+                                              0);
+                                          BlocProvider.of<FilterBloc>(context)
+                                              .add(const FilterEvent
+                                                  .filterMenuEventType());
+                                        },
+                                        buttonName: 'Filter nach Art'),
+                                    const SizedBox(width: 20),
+                                    FilterButton(
+                                        activeColor:
+                                            state.filterButtons[1] == true
+                                                ? kColorTopupRed
+                                                : kColorWhite,
+                                        onpress: () {
+                                          FilterButtonList.changeFilterButton(
+                                              1);
+                                          BlocProvider.of<FilterBloc>(context)
+                                              .add(const FilterEvent
+                                                  .filterMenuEventPattern());
+                                        },
+                                        buttonName: 'Filter nach Patterns'),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    FilterButton(
+                                        activeColor:
+                                            state.filterButtons[2] == true
+                                                ? kColorTopupRed
+                                                : kColorWhite,
+                                        onpress: () {
+                                          FilterButtonList.changeFilterButton(
+                                              2);
+                                          BlocProvider.of<FilterBloc>(context)
+                                              .add(const FilterEvent
+                                                  .filterMenuEventElement());
+                                        },
+                                        buttonName: 'Filter nach Elements'),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: const [
+                                    SortButton(
+                                        buttonName: 'Sortiert nach Projekten'),
+                                    SizedBox(width: 20),
+                                    SortButton(
+                                        buttonName: 'Sortiert nach Screens'),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                SizedBox(
+                                    height: 680, width: 800, child: Projects()),
                               ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              children: const [
-                                SortButton(
-                                    buttonName: 'Sortiert nach Projekten'),
-                                SizedBox(width: 20),
-                                SortButton(buttonName: 'Sortiert nach Screens'),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            SizedBox(
-                                height: 680, width: 800, child: Projects()),
+                            )
                           ],
                         )
                       ],
-                    )
-                  ],
-                ),
-              ),
-            );
-          } else {
-            return const CircularProgressIndicator();
-          }
+                    ),
+                  ),
+                );
+              });
+
+          // Padding(
+          //   padding: kPad16,
+          //   child: SingleChildScrollView(
+          //     child: Column(
+          //       mainAxisAlignment: MainAxisAlignment.start,
+          //       children: [
+          //         Row(
+          //           mainAxisSize: MainAxisSize.max,
+          //           crossAxisAlignment: CrossAxisAlignment.start,
+          //           children: [
+          //             Container(
+          //               alignment: Alignment.topCenter,
+          //               decoration: BoxDecoration(
+          //                   borderRadius: BorderRadius.circular(20),
+          //                   border: Border.all(width: 2, color: kColorBlack)),
+          //               width: 220,
+          //               height: 850,
+          //               child: Padding(
+          //                 padding: const EdgeInsets.all(8),
+          //                 child: MenuItems(),
+          //               ),
+          //             ),
+          //             const SizedBox(
+          //               width: 20,
+          //             ),
+          //             Column(
+          //               crossAxisAlignment: CrossAxisAlignment.start,
+          //               mainAxisSize: MainAxisSize.max,
+          //               children: [
+          //                 const SearchBar(),
+          //                 const SizedBox(
+          //                   height: 20,
+          //                 ),
+          //                 Row(
+          //                   crossAxisAlignment: CrossAxisAlignment.start,
+          //                   mainAxisAlignment: MainAxisAlignment.start,
+          //                   children: [
+          //                     FilterButton(
+          //                         activeColor: state.filterButtons[0] == true
+          //                             ? kColorTopupRed
+          //                             : kColorWhite,
+          //                         onpress: () {
+          //                           FilterButtonList.changeFilterButton(0);
+          //                           BlocProvider.of<FilterBloc>(context)
+          //                               .add(FilterMenuEventType());
+          //                         },
+          //                         buttonName: 'Filter nach Art'),
+          //                     const SizedBox(width: 20),
+          //                     FilterButton(
+          //                         activeColor: state.filterButtons[1] == true
+          //                             ? kColorTopupRed
+          //                             : kColorWhite,
+          //                         onpress: () {
+          //                           FilterButtonList.changeFilterButton(1);
+          //                           BlocProvider.of<FilterBloc>(context)
+          //                               .add(FilterMenuEventPattern());
+          //                         },
+          //                         buttonName: 'Filter nach Patterns'),
+          //                     const SizedBox(
+          //                       width: 20,
+          //                     ),
+          //                     FilterButton(
+          //                         activeColor: state.filterButtons[2] == true
+          //                             ? kColorTopupRed
+          //                             : kColorWhite,
+          //                         onpress: () {
+          //                           FilterButtonList.changeFilterButton(2);
+          //                           BlocProvider.of<FilterBloc>(context)
+          //                               .add(FilterMenuEventElement());
+          //                         },
+          //                         buttonName: 'Filter nach Elements'),
+          //                   ],
+          //                 ),
+          //                 const SizedBox(
+          //                   height: 20,
+          //                 ),
+          //                 Row(
+          //                   children: const [
+          //                     SortButton(buttonName: 'Sortiert nach Projekten'),
+          //                     SizedBox(width: 20),
+          //                     SortButton(buttonName: 'Sortiert nach Screens'),
+          //                   ],
+          //                 ),
+          //                 const SizedBox(
+          //                   height: 20,
+          //                 ),
+          //                 SizedBox(height: 680, width: 800, child: Projects()),
+          //               ],
+          //             )
+          //           ],
+          //         )
+          //       ],
+          //     ),
+          //   ),
+          // );
         }));
   }
 }

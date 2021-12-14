@@ -1,7 +1,7 @@
 import 'dart:async';
+
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
@@ -12,68 +12,63 @@ import 'package:neon_web/features/overview/domain/usecases/filter_button_list.da
 
 part 'filter_event.dart';
 part 'filter_state.dart';
+part 'filter_bloc.freezed.dart';
 
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
   List<bool>? filterButtons;
   List<List<String>>? globalItemList;
   List? headers;
 
-  FilterBloc({this.filterButtons, this.globalItemList, this.headers})
-      : super(FilterInitial());
-
-  @override
-  Stream<FilterState> mapEventToState(
-    FilterEvent event,
-  ) async* {
-    if (event is FilterMenuEventType) {
+  FilterBloc() : super(const _Initial()) {
+    on<_FilterMenuEventType>((event, emit) {
       globalItemList = BuildTypeLists.appTypeList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.typeHeaders;
-      yield FilterMenuState(
+      emit(_FilterMenuState(
         filterButtons: filterButtons!,
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
-      );
-    }
+      ));
+    });
 
-    if (event is FilterMenuEventPattern) {
+    on<_FilterMenuEventPattern>((event, emit) {
       globalItemList = BuildPatternLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.patternHeaders;
-      yield FilterMenuState(
+      emit(_FilterMenuState(
         filterButtons: filterButtons!,
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
-      );
-    }
+      ));
+    });
 
-    if (event is FilterMenuEventElement) {
+    on<_FilterMenuEventElement>((event, emit) {
       globalItemList = BuildElementLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.elementHeaders;
-      yield FilterMenuState(
+      emit(_FilterMenuState(
         filterButtons: filterButtons!,
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
-      );
-    }
+      ));
+    });
 
-    if (event is FilterProjectEvent) {
+    on<_FilterProjectEvent>((event, emit) {
       List<ProjectEntity> chosenProjectByItem;
       chosenProjectByItem =
           ProjectHelpers.chooseFilterByFilterType(event.filterItem);
       globalItemList = BuildElementLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.elementHeaders;
-      yield FilterMenuState(
+      emit(_FilterMenuState(
         filterButtons: filterButtons!,
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: chosenProjectByItem,
-      );
-    }
+      ));
+    });
   }
 }
