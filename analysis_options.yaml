@@ -20,6 +20,7 @@
 #    - "lib/i18n/messages_*.dart"
 # - "lib/src/domain/models/entity/*.g.dart"
 #    - "lib/src/test_driver/**"
+include: package:flutter_lints/flutter.yaml
 
 analyzer:
 
