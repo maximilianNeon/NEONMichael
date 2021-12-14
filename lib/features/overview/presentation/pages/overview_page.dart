@@ -16,12 +16,12 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  @override
-  void initState() {
-    super.initState();
-    FilterButtonList.changeFilterButton(0);
-    BlocProvider.of<FilterBloc>(context).add(FilterMenuEventType());
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   FilterButtonList.changeFilterButton(0);
+  //   BlocProvider.of<FilterBloc>(context).add(FilterMenuEventType());
+  // }
 
   @override
   Widget build(BuildContext context) {

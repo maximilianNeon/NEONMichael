@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
 
 class MenuItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MenuHelpers.getMenuHeaders();
     return BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
       if (state is FilterMenuState) {
         return ListView.builder(
