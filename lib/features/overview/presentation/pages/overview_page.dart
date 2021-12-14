@@ -19,7 +19,7 @@ class _OverviewPageState extends State<OverviewPage> {
   @override
   void initState() {
     super.initState();
-    FilterButtonList.filterButtons[0] = true;
+    FilterButtonList.changeFilterButton(0);
     BlocProvider.of<FilterBloc>(context).add(FilterMenuEventType());
   }
 

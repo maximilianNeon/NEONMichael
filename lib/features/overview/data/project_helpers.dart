@@ -29,7 +29,7 @@ mixin ProjectHelpers {
               title: 'title2',
               id: 2,
               elements: [
-                ElementEntity(elementList: BuildElementLists.globalItemList)
+                ElementEntity(elementList: BuildElementLists.controlList)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.actions)
@@ -59,7 +59,7 @@ mixin ProjectHelpers {
               title: 'title5',
               id: 5,
               elements: [
-                ElementEntity(elementList: BuildElementLists.globalItemList)
+                ElementEntity(elementList: BuildElementLists.viewList)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.data)
@@ -87,7 +87,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle2',
               id: 2,
               elements: [
-                ElementEntity(elementList: BuildElementLists.globalItemList)
+                ElementEntity(elementList: BuildElementLists.overlayList)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.userCollection)
@@ -117,7 +117,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle5',
               id: 5,
               elements: [
-                ElementEntity(elementList: BuildElementLists.globalItemList)
+                ElementEntity(elementList: BuildElementLists.overlayList)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.data)
@@ -145,7 +145,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle2',
               id: 2,
               elements: [
-                ElementEntity(elementList: BuildElementLists.globalItemList)
+                ElementEntity(elementList: BuildElementLists.controlList)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.utility)
@@ -175,7 +175,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle5',
               id: 5,
               elements: [
-                ElementEntity(elementList: BuildElementLists.globalItemList)
+                ElementEntity(elementList: BuildElementLists.imageList)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.data)

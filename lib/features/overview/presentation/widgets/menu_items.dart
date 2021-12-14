@@ -10,7 +10,6 @@ class MenuItems extends StatelessWidget {
     MenuHelpers.getMenuHeaders();
     return BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
       if (state is FilterMenuState) {
-        BlocProvider.of<FilterBloc>(context).add(FilterMenuEventType());
         return ListView.builder(
             shrinkWrap: true,
             itemCount: state.headers.length,
