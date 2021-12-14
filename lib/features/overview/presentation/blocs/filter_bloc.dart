@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
@@ -60,9 +58,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       List<ProjectEntity> chosenProjectByItem;
       chosenProjectByItem =
           ProjectHelpers.chooseFilterByFilterType(event.filterItem);
-      globalItemList = BuildElementLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
-      headers = MenuHelpers.elementHeaders;
       emit(_FilterMenuState(
         filterButtons: filterButtons!,
         globalItemList: globalItemList!,
