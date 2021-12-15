@@ -2,77 +2,67 @@ import 'package:neon_web/core/enums.dart';
 
 class PatternEntity {
   String? header;
-  List<Object> patternList;
+  final Object item;
 
-  PatternEntity({required this.patternList, this.header});
+  PatternEntity({required this.item, this.header});
 }
 
 class Onboarding extends PatternEntity {
   Onboarding({
-    required List<OnboardingPatterns> onboarding,
     final String? header,
-  }) : super(patternList: onboarding, header: header);
+  }) : super(item: OnboardingPatterns, header: header);
 }
 
 class Data extends PatternEntity {
   Data({
-    required List<DataPatterns> pData,
     final String? header,
-  }) : super(patternList: pData, header: header);
+  }) : super(item: DataPatterns, header: header);
 }
 
 class UserCollection extends PatternEntity {
   UserCollection({
-    required List<UserCollectionsPatterns> userCollection,
     final String? header,
-  }) : super(patternList: userCollection, header: header);
+  }) : super(item: UserCollectionsPatterns, header: header);
 }
 
 class Communication extends PatternEntity {
   Communication({
-    required List<CommunicationPatterns> communication,
     final String? header,
-  }) : super(patternList: communication, header: header);
+  }) : super(item: CommunicationPatterns, header: header);
 }
 
 class Mis extends PatternEntity {
   Mis({
-    required List<MisPatterns> mis,
     final String? header,
-  }) : super(patternList: mis, header: header);
+  }) : super(item: MisPatterns, header: header);
 }
 
 class CommerceAndFinance extends PatternEntity {
   CommerceAndFinance({
-    required List<CommerceAndFinancePatterns> commerceAndFinance,
     final String? header,
-  }) : super(patternList: commerceAndFinance, header: header);
+  }) : super(item: CommerceAndFinancePatterns, header: header);
 }
 
 class Social extends PatternEntity {
   Social({
-    required List<SocialPatterns> socialPattern,
     final String? header,
-  }) : super(patternList: socialPattern, header: header);
+  }) : super(item: SocialPatterns, header: header);
 }
 
 class Utility extends PatternEntity {
   Utility({
-    required List<UtilityPatterns> utilitypatterns,
     final String? header,
-  }) : super(patternList: utilitypatterns, header: header);
+  }) : super(item: UtilityPatterns, header: header);
 }
 
 class Content extends PatternEntity {
   Content({
-    required List<ContentPatterns> contentPatterns,
     final String? header,
-  }) : super(patternList: contentPatterns, header: header);
+  }) : super(item: ContentPatterns, header: header);
 }
 
 class Actions extends PatternEntity {
   Actions({
-    required List<ActionsPatterns> actionpatterns,
     final String? header,
-  }) : super(patternList: actionpatterns, header: header);
+  }) : super(item: ActionsPatterns, header: header);
 }
