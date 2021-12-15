@@ -18,8 +18,8 @@ mixin ProjectHelpers {
               title: 'title1',
               id: 1,
               elements: [
-                ElementEntity(elementList: BuildElementLists.barList),
-                ElementEntity(elementList: BuildElementLists.controlList)
+                ElementEntity(item: BarElements.NavigationDrawer),
+                ElementEntity(item: BarElements.Searchbar)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.actions)
@@ -29,7 +29,7 @@ mixin ProjectHelpers {
               title: 'title2',
               id: 2,
               elements: [
-                ElementEntity(elementList: BuildElementLists.controlList)
+                ElementEntity(item: ControlElements.Button)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.actions)
@@ -38,32 +38,20 @@ mixin ProjectHelpers {
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title3',
               id: 3,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.imageList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.mis)
-              ]),
+              elements: [ElementEntity(item: ImageElements.AnimationAndVideo)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.mis)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title4',
               id: 4,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.viewList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.social)
-              ]),
+              elements: [ElementEntity(item: ViewElements.Badge)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.social)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title5',
               id: 5,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.viewList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.data)
-              ]),
+              elements: [ElementEntity(item: ViewElements.Banner)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.data)]),
         ],
         description: 'Blablablabla',
         projectType: ProjectType.App,
@@ -76,8 +64,8 @@ mixin ProjectHelpers {
               title: 'NEWtitle1',
               id: 1,
               elements: [
-                ElementEntity(elementList: BuildElementLists.barList),
-                ElementEntity(elementList: BuildElementLists.controlList)
+                ElementEntity(item: BarElements.Tabbar),
+                ElementEntity(item: ControlElements.FloatingActionButton)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.userCollection)
@@ -87,7 +75,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle2',
               id: 2,
               elements: [
-                ElementEntity(elementList: BuildElementLists.overlayList)
+                ElementEntity(item: OverlayElements.ActionSheet)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.userCollection)
@@ -96,32 +84,20 @@ mixin ProjectHelpers {
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle3',
               id: 3,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.imageList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.mis)
-              ]),
+              elements: [ElementEntity(item: ImageElements.Avatar)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.mis)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle4',
               id: 4,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.viewList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.social)
-              ]),
+              elements: [ElementEntity(item: ViewElements.Divider)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.social)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle5',
               id: 5,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.overlayList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.data)
-              ])
+              elements: [ElementEntity(item: OverlayElements.Toast)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.data)])
         ],
         description: 'Blablablabla',
         projectType: ProjectType.WebDesktop,
@@ -134,8 +110,8 @@ mixin ProjectHelpers {
               title: 'NEWtitle1',
               id: 1,
               elements: [
-                ElementEntity(elementList: BuildElementLists.barList),
-                ElementEntity(elementList: BuildElementLists.controlList)
+                ElementEntity(item: BarElements.Toolbar),
+                ElementEntity(item: ControlElements.SingleSelect)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.utility)
@@ -145,7 +121,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle2',
               id: 2,
               elements: [
-                ElementEntity(elementList: BuildElementLists.controlList)
+                ElementEntity(item: ControlElements.ColorPicker)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.utility)
@@ -155,7 +131,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle3',
               id: 3,
               elements: [
-                ElementEntity(elementList: BuildElementLists.imageList)
+                ElementEntity(item: ImageElements.Illustration)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.content)
@@ -165,7 +141,7 @@ mixin ProjectHelpers {
               title: 'NEWtitle4',
               id: 4,
               elements: [
-                ElementEntity(elementList: BuildElementLists.viewList)
+                ElementEntity(item: ViewElements.List)
               ],
               patterns: [
                 PatternEntity(patternList: BuildPatternLists.utility)
@@ -174,12 +150,8 @@ mixin ProjectHelpers {
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle5',
               id: 5,
-              elements: [
-                ElementEntity(elementList: BuildElementLists.imageList)
-              ],
-              patterns: [
-                PatternEntity(patternList: BuildPatternLists.data)
-              ])
+              elements: [ElementEntity(item: ImageElements.Thumbnail)],
+              patterns: [PatternEntity(patternList: BuildPatternLists.data)])
         ],
         description: 'Blablablabla',
         projectType: ProjectType.WebMobile,
@@ -191,8 +163,10 @@ mixin ProjectHelpers {
   static List<ProjectEntity> chooseListItemsForElements(String filterItem) {
     final chosenProjects = mockProjects1.where((project) {
       final assetIndex = project.assets.indexWhere((asset) {
-        final elementIndex = asset.elements
-            .indexWhere((element) => element.elementList.contains(filterItem));
+        final elementIndex = asset.elements.indexWhere((element) {
+          final itemIndex = element.item.toString().contains(filterItem);
+          return itemIndex;
+        });
         return elementIndex >= 0;
       });
       return assetIndex >= 0;
