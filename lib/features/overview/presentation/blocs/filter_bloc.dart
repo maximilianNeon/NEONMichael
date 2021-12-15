@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
@@ -12,6 +13,7 @@ part 'filter_event.dart';
 part 'filter_state.dart';
 part 'filter_bloc.freezed.dart';
 
+@injectable
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
   List<bool>? filterButtons;
   List<List<String>>? globalItemList;
