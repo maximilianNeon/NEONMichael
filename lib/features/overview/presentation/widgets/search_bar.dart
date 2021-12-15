@@ -10,7 +10,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(10),
           border: Border.all(width: 2, color: kColorBlack)),
       width: 800,
       child: const TextField(

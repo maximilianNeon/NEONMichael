@@ -21,7 +21,7 @@ class FilterButton extends StatelessWidget {
         height: 30,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(10),
             border: Border.all(width: 2, color: kColorBlack),
             color: activeColor),
         child: Padding(
