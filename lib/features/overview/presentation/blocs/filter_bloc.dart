@@ -15,6 +15,7 @@ part 'filter_bloc.freezed.dart';
 
 @injectable
 class FilterBloc extends Bloc<FilterEvent, FilterState> {
+//final LoadRemoteDataBloc loadRemoteDataBloc;
   List<bool>? filterButtons;
   List<List<String>>? globalItemList;
   List? headers;
