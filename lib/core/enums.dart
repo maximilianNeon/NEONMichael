@@ -229,3 +229,11 @@ enum ActionsPatterns {
 //Project Type
 
 enum ProjectType { App, WebDesktop, WebMobile }
+
+// Choosed Filter
+
+enum ChoosenFilter {Art, Pattern, Elementen}
+
+// Sort Filter
+
+enum SortFilter {Project, Screen}

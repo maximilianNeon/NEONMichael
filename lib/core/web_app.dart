@@ -10,6 +10,7 @@ class WebApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<FilterBloc>(
+          
             create: (context) => getIt<FilterBloc>()
               ..add(const FilterEvent.filterMenuEventType()))
       ],

@@ -6,7 +6,7 @@ import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
 import 'package:neon_web/features/overview/data/menu_helpers.dart';
-import 'package:neon_web/features/overview/data/project_helpers.dart';
+import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 
 part 'filter_event.dart';
