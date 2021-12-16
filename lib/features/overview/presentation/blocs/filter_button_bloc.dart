@@ -9,19 +9,23 @@ import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 
-part 'filter_event.dart';
-part 'filter_state.dart';
-part 'filter_bloc.freezed.dart';
+import 'load_remote_data_bloc.dart';
+
+part 'filter_button_event.dart';
+part 'filter_button_state.dart';
+part 'filter_button_bloc.freezed.dart';
 
 @injectable
-class FilterBloc extends Bloc<FilterEvent, FilterState> {
-//final LoadRemoteDataBloc loadRemoteDataBloc;
+class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
+  LoadRemoteDataBloc loadRemoteDataBloc;
   List<bool>? filterButtons;
   List<List<String>>? globalItemList;
   List? headers;
 
-  FilterBloc() : super(const _Initial()) {
-    on<_FilterMenuEventType>((event, emit) {
+  
+  
+  FilterBloc({required this.loadRemoteDataBloc}) : super(const _Initial()) {
+    on<_FilterButtonEventType>((event, emit) {
       globalItemList = BuildTypeLists.appTypeList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.typeHeaders;
@@ -33,7 +37,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       ));
     });
 
-    on<_FilterMenuEventPattern>((event, emit) {
+    on<_FilterButtonEventPattern>((event, emit) {
       globalItemList = BuildPatternLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.patternHeaders;
@@ -45,7 +49,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       ));
     });
 
-    on<_FilterMenuEventElement>((event, emit) {
+    on<_FilterButtonEventElement>((event, emit) {
       globalItemList = BuildElementLists.globalItemList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.elementHeaders;
@@ -57,7 +61,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       ));
     });
 
-    on<_FilterProjectEvent>((event, emit) {
+    on<_FilterButtonEventProject>((event, emit) {
       List<ProjectEntity> chosenProjectByItem;
       chosenProjectByItem =
           ProjectHelpers.chooseFilterByFilterType(event.filterItem);

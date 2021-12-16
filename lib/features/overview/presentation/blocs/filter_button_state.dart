@@ -1,4 +1,4 @@
-part of 'filter_bloc.dart';
+part of 'filter_button_bloc.dart';
 
 @freezed
 class FilterState with _$FilterState {

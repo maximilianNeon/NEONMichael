@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
-import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
@@ -83,8 +83,8 @@ class _OverviewPageState extends State<OverviewPage> {
                                       FilterButtonList.changeFilterButton(
                                           0);
                                       BlocProvider.of<FilterBloc>(context)
-                                          .add(const FilterEvent
-                                              .filterMenuEventType());
+                                          .add(const FilterButtonEvent
+                                              .filterButtonEventType());
                                     },
                                     buttonName: 'Filter nach Art'),
                                 const SizedBox(width: 20),
@@ -97,8 +97,8 @@ class _OverviewPageState extends State<OverviewPage> {
                                       FilterButtonList.changeFilterButton(
                                           1);
                                       BlocProvider.of<FilterBloc>(context)
-                                          .add(const FilterEvent
-                                              .filterMenuEventPattern());
+                                          .add(const FilterButtonEvent
+                                              .filterButtonEventPattern());
                                     },
                                     buttonName: 'Filter nach Patterns'),
                                 const SizedBox(
@@ -113,8 +113,8 @@ class _OverviewPageState extends State<OverviewPage> {
                                       FilterButtonList.changeFilterButton(
                                           2);
                                       BlocProvider.of<FilterBloc>(context)
-                                          .add(const FilterEvent
-                                              .filterMenuEventElement());
+                                          .add(const FilterButtonEvent
+                                              .filterButtonEventElement());
                                     },
                                     buttonName: 'Filter nach Elements'),
                               ],

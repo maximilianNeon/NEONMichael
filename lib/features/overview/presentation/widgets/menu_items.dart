@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/presentation/blocs/filter_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 
 class MenuItems extends StatelessWidget {
   @override
@@ -38,7 +38,7 @@ class MenuItems extends StatelessWidget {
                                       final chosenItem =
                                           state.globalItemList[i][index];
                                       BlocProvider.of<FilterBloc>(context).add(
-                                          FilterEvent.filterProjectEvent(
+                                          FilterButtonEvent.filterButtonEventProject(
                                               filterItem: chosenItem));
                                     },
                                     child: Text(
