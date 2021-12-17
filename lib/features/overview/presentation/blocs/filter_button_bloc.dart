@@ -26,6 +26,7 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
   
   FilterBloc({required this.loadRemoteDataBloc}) : super(const _Initial()) {
     on<_FilterButtonEventType>((event, emit) {
+     
       globalItemList = BuildTypeLists.appTypeList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.typeHeaders;

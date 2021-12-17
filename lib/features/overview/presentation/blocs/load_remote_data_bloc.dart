@@ -24,9 +24,9 @@ class LoadRemoteDataBloc
       });
       final result = await loadProjectData.call(NoParams());
       result.fold(
-        (l) => emit(_Error()),
-        (r) {
-          projectData = r;
+        (failure) => emit(_Error()),
+        (success) {
+          projectData = success;
           emit(_Loaded());},
       );
     });
