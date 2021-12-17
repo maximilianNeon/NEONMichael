@@ -65,9 +65,10 @@ class _OverviewPageState extends State<OverviewPage> {
                         const SizedBox(
                           width: 20,
                         ),
-                        Flexible(
-                          fit: FlexFit.loose,
+                        Expanded(
+                          flex: 10,
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [

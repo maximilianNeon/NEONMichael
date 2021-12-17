@@ -13,7 +13,6 @@ class Projects extends StatelessWidget {
             initial: (_) => const CircularProgressIndicator(),
             filterMenuState: (state) {
               return ListView.builder(
-                
                 scrollDirection: Axis.vertical,
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -31,64 +30,62 @@ class Projects extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        textDirection: TextDirection.ltr,
-                        children: [
-                          SizedBox(
-                            height: 280,
-                            child: ListView.builder(
-                              physics: const ClampingScrollPhysics(),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: state
-                                  .chosenProjectByItem[index].assets.length,
-                              itemBuilder: (context, i) {
-                                return SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: Row(
-                                    children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          Navigator.push<dynamic>(context,
-                                              MaterialPageRoute<dynamic>(
-                                                  builder: (context) {
-                                            return DetailScreen(
-                                                index: state
-                                                    .chosenProjectByItem[index]
-                                                    .assets[i]
-                                                    .id);
-                                          }));
-                                        },
-                                        child: Container(
-                                            decoration: BoxDecoration(
-                                                color: kColorBlue,
-                                                border: Border.all(),
-                                                borderRadius:
-                                                    BorderRadius.circular(9)),
-                                            width: 150,
-                                            height: 250,
-                                            child: Image.network(
-                                              state.chosenProjectByItem[index]
-                                                  .assets[i].imageUrl,
-                                              width: 150,
-                                              height: 200,
-                                              fit: BoxFit.fill,
-                                            )),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      )
-                                    ],
-                                  ),
-                                );
-                              },
+
+                      ConstrainedBox(
+                        constraints: BoxConstraints(
+                            maxHeight: 200,
+                            maxWidth: double.infinity,
+                            minHeight: 50,
+                            minWidth: 50),
+                        child: Expanded(
+                          child: Container(
+                            alignment: Alignment.topLeft,
+                            color: Colors.red,
+                           child:  ListView.builder(
+                         shrinkWrap: true,
+                         scrollDirection: Axis.horizontal,
+                         itemCount:
+                             state.chosenProjectByItem[index].assets.length,
+                         itemBuilder: (context, i) {
+                           return GestureDetector(
+                          onTap: () {
+                            Navigator.push<dynamic>(
+                              context,
+                              MaterialPageRoute<dynamic>(
+                                builder: (context) {
+                                  return DetailScreen(
+                                      index: state
+                                          .chosenProjectByItem[index]
+                                          .assets[i]
+                                          .id);
+                                },
+                              ),
+                            );
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(right: 10),
+                            decoration: BoxDecoration(
+                                color: kColorBlue,
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(9)),
+                            width: 150,
+                            height: 250,
+                            child: Image.network(
+                              state.chosenProjectByItem[index].assets[i]
+                                  .imageUrl,
+                              width: 150,
+                              height: 200,
+                              fit: BoxFit.fill,
                             ),
+                            ) );
+                          } ),
                           ),
-                        ],
+                        ),
                       ),
+
+                      
+                    
+                       
                     ],
                   );
                 },
