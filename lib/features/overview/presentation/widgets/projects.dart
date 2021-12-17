@@ -13,7 +13,9 @@ class Projects extends StatelessWidget {
             initial: (_) => const CircularProgressIndicator(),
             filterMenuState: (state) {
               return ListView.builder(
+                
                 scrollDirection: Axis.vertical,
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: state.chosenProjectByItem.length,
                 itemBuilder: (context, index) {
@@ -30,7 +32,9 @@ class Projects extends StatelessWidget {
                         height: 10,
                       ),
                       Row(
-                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         textDirection: TextDirection.ltr,
                         children: [
                           SizedBox(

@@ -45,98 +45,100 @@ class _OverviewPageState extends State<OverviewPage> {
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Container(
-                          alignment: Alignment.topCenter,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 2, color: kColorBlack)),
-                          width: 220,
-                          height: 850,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: MenuItems(),
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: Container(
+                            alignment: Alignment.topCenter,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border:
+                                    Border.all(width: 2, color: kColorBlack)),
+                            width: 220,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: MenuItems(),
+                            ),
                           ),
                         ),
                         const SizedBox(
                           width: 20,
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            const SearchBar(),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                FilterButton(
-                                    activeColor:
-                                        state.filterButtons[0] == true
-                                            ? kColorTopupRed
-                                            : kColorWhite,
-                                    onpress: () {
-                                      FilterButtonList.changeFilterButton(
-                                          0);
-                                      BlocProvider.of<FilterBloc>(context)
-                                          .add(const FilterButtonEvent
-                                              .filterButtonEventType());
-                                    },
-                                    buttonName: 'Filter nach Art'),
-                                const SizedBox(width: 20),
-                                FilterButton(
-                                    activeColor:
-                                        state.filterButtons[1] == true
-                                            ? kColorTopupRed
-                                            : kColorWhite,
-                                    onpress: () {
-                                      FilterButtonList.changeFilterButton(
-                                          1);
-                                      BlocProvider.of<FilterBloc>(context)
-                                          .add(const FilterButtonEvent
-                                              .filterButtonEventPattern());
-                                    },
-                                    buttonName: 'Filter nach Patterns'),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                FilterButton(
-                                    activeColor:
-                                        state.filterButtons[2] == true
-                                            ? kColorTopupRed
-                                            : kColorWhite,
-                                    onpress: () {
-                                      FilterButtonList.changeFilterButton(
-                                          2);
-                                      BlocProvider.of<FilterBloc>(context)
-                                          .add(const FilterButtonEvent
-                                              .filterButtonEventElement());
-                                    },
-                                    buttonName: 'Filter nach Elements'),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            Row(
-                              children: const [
-                                SortButton(
-                                    buttonName: 'Sortiert nach Projekten'),
-                                SizedBox(width: 20),
-                                SortButton(
-                                    buttonName: 'Sortiert nach Screens'),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            SizedBox(
-                                height: 680, width: 800, child: Projects()),
-                          ],
+                        Flexible(
+                          fit: FlexFit.loose,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              const SearchBar(),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  FilterButton(
+                                      activeColor:
+                                          state.filterButtons[0] == true
+                                              ? kColorTopupRed
+                                              : kColorWhite,
+                                      onpress: () {
+                                        FilterButtonList.changeFilterButton(0);
+                                        BlocProvider.of<FilterBloc>(context)
+                                            .add(const FilterButtonEvent
+                                                .filterButtonEventType());
+                                      },
+                                      buttonName: 'Filter nach Art'),
+                                  const SizedBox(width: 20),
+                                  FilterButton(
+                                      activeColor:
+                                          state.filterButtons[1] == true
+                                              ? kColorTopupRed
+                                              : kColorWhite,
+                                      onpress: () {
+                                        FilterButtonList.changeFilterButton(1);
+                                        BlocProvider.of<FilterBloc>(context)
+                                            .add(const FilterButtonEvent
+                                                .filterButtonEventPattern());
+                                      },
+                                      buttonName: 'Filter nach Patterns'),
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  FilterButton(
+                                      activeColor:
+                                          state.filterButtons[2] == true
+                                              ? kColorTopupRed
+                                              : kColorWhite,
+                                      onpress: () {
+                                        FilterButtonList.changeFilterButton(2);
+                                        BlocProvider.of<FilterBloc>(context)
+                                            .add(const FilterButtonEvent
+                                                .filterButtonEventElement());
+                                      },
+                                      buttonName: 'Filter nach Elements'),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Row(
+                                children: const [
+                                  SortButton(
+                                      buttonName: 'Sortiert nach Projekten'),
+                                  SizedBox(width: 20),
+                                  SortButton(
+                                      buttonName: 'Sortiert nach Screens'),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Projects(),
+                            ],
+                          ),
                         )
                       ],
                     ),
