@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
-import 'package:neon_web/features/overview/presentation/pages/detail_screen.dart';
+import 'package:neon_web/features/details/presentation/detail_screen.dart';
 
 class Projects extends StatelessWidget {
   @override
@@ -30,7 +30,6 @@ class Projects extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-
                       ConstrainedBox(
                         constraints: BoxConstraints(
                             maxHeight: 200,
@@ -41,51 +40,54 @@ class Projects extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.topLeft,
                             color: Colors.red,
-                           child:  ListView.builder(
-                         shrinkWrap: true,
-                         scrollDirection: Axis.horizontal,
-                         itemCount:
-                             state.chosenProjectByItem[index].assets.length,
-                         itemBuilder: (context, i) {
-                           return GestureDetector(
-                          onTap: () {
-                            Navigator.push<dynamic>(
-                              context,
-                              MaterialPageRoute<dynamic>(
-                                builder: (context) {
-                                  return DetailScreen(
-                                      index: state
-                                          .chosenProjectByItem[index]
-                                          .assets[i]
-                                          .id);
-                                },
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.only(right: 10),
-                            decoration: BoxDecoration(
-                                color: kColorBlue,
-                                border: Border.all(),
-                                borderRadius: BorderRadius.circular(9)),
-                            width: 150,
-                            height: 250,
-                            child: Image.network(
-                              state.chosenProjectByItem[index].assets[i]
-                                  .imageUrl,
-                              width: 150,
-                              height: 200,
-                              fit: BoxFit.fill,
-                            ),
-                            ) );
-                          } ),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: state
+                                    .chosenProjectByItem[index].assets.length,
+                                itemBuilder: (context, i) {
+                                  return GestureDetector(
+                                      onTap: () {
+                                        Navigator.push<dynamic>(
+                                          context,
+                                          MaterialPageRoute<dynamic>(
+                                            builder: (context) {
+                                              return DetailScreen(
+                                                  index: state
+                                                      .chosenProjectByItem[
+                                                          index]
+                                                      .assets[i]
+                                                      .id);
+                                            },
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.only(right: 10),
+                                        decoration: BoxDecoration(
+                                            color: kColorBlue,
+                                            border: Border.all(),
+                                            borderRadius:
+                                                BorderRadius.circular(9)),
+                                        width: 150,
+                                        height: 250,
+                                        child: Hero(
+                                          tag: state.chosenProjectByItem[index]
+                                              .assets[i].id
+                                              .toString(),
+                                          child: Image.network(
+                                            state.chosenProjectByItem[index]
+                                                .assets[i].imageUrl,
+                                            width: 150,
+                                            height: 200,
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                      ));
+                                }),
                           ),
                         ),
                       ),
-
-                      
-                    
-                       
                     ],
                   );
                 },

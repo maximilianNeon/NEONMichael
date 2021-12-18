@@ -15,7 +15,7 @@ mixin ProjectHelpers {
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title1',
-              id: 1,
+              id: 11,
               elements: [
                 ElementEntity(item: BarElements.NavigationDrawer),
                 ElementEntity(item: BarElements.Searchbar)
@@ -26,25 +26,25 @@ mixin ProjectHelpers {
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title2',
-              id: 2,
+              id: 12,
               elements: [ElementEntity(item: ControlElements.Button)],
               patterns: [PatternEntity(item: ActionsPatterns.BanAndBlock)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title3',
-              id: 3,
+              id: 13,
               elements: [ElementEntity(item: ImageElements.AnimationAndVideo)],
               patterns: [PatternEntity(item: MisPatterns.Misc)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title4',
-              id: 4,
+              id: 14,
               elements: [ElementEntity(item: ViewElements.Badge)],
               patterns: [PatternEntity(item: SocialPatterns.Leaderboard)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'title5',
-              id: 5,
+              id: 15,
               elements: [ElementEntity(item: ViewElements.Banner)],
               patterns: [PatternEntity(item: DataPatterns.Progress)]),
         ],
@@ -57,7 +57,7 @@ mixin ProjectHelpers {
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle1',
-              id: 1,
+              id: 21,
               elements: [
                 ElementEntity(item: BarElements.Tabbar),
                 ElementEntity(item: ControlElements.FloatingActionButton)
@@ -68,25 +68,25 @@ mixin ProjectHelpers {
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle2',
-              id: 2,
+              id: 22,
               elements: [ElementEntity(item: OverlayElements.ActionSheet)],
               patterns: [PatternEntity(item: UserCollectionsPatterns.Trash)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle3',
-              id: 3,
+              id: 23,
               elements: [ElementEntity(item: ImageElements.Avatar)],
               patterns: [PatternEntity(item: MisPatterns.Confetti)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle4',
-              id: 4,
+              id: 24,
               elements: [ElementEntity(item: ViewElements.Divider)],
               patterns: [PatternEntity(item: SocialPatterns.SocialFeed)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle5',
-              id: 5,
+              id: 25,
               elements: [ElementEntity(item: OverlayElements.Toast)],
               patterns: [PatternEntity(item: DataPatterns.SizeGiude)])
         ],
@@ -99,7 +99,7 @@ mixin ProjectHelpers {
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle1',
-              id: 1,
+              id: 31,
               elements: [
                 ElementEntity(item: BarElements.Toolbar),
                 ElementEntity(item: ControlElements.SingleSelect)
@@ -110,25 +110,25 @@ mixin ProjectHelpers {
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle2',
-              id: 2,
+              id: 32,
               elements: [ElementEntity(item: ControlElements.ColorPicker)],
               patterns: [PatternEntity(item: UtilityPatterns.Calendar)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle3',
-              id: 3,
+              id: 33,
               elements: [ElementEntity(item: ImageElements.Illustration)],
               patterns: [PatternEntity(item: ContentPatterns.Event)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle4',
-              id: 4,
+              id: 34,
               elements: [ElementEntity(item: ViewElements.List)],
               patterns: [PatternEntity(item: UtilityPatterns.DateAndTime)]),
           AssetEntity(
               imageUrl: 'https://picsum.photos/200/300',
               title: 'NEWtitle5',
-              id: 5,
+              id: 35,
               elements: [ElementEntity(item: ImageElements.Thumbnail)],
               patterns: [PatternEntity(item: DataPatterns.DashboardAndStats)])
         ],
