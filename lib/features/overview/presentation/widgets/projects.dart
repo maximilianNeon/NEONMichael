@@ -38,8 +38,9 @@ class Projects extends StatelessWidget {
                             minWidth: 50),
                         child: Expanded(
                           child: Container(
+                            margin: EdgeInsets.only(bottom: 10),
                             alignment: Alignment.topLeft,
-                            color: Colors.red,
+                           //color: Colors.red,
                             child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,

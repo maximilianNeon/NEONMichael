@@ -47,8 +47,8 @@ class _OverviewPageState extends State<OverviewPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Flexible(
-                          fit: FlexFit.loose,
+                        ConstrainedBox(
+                          constraints: BoxConstraints(maxWidth: 220, minWidth: 220, maxHeight: double.infinity, minHeight: 0,),
                           child: Container(
                             alignment: Alignment.topCenter,
                             decoration: BoxDecoration(
