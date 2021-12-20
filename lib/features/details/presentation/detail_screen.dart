@@ -39,7 +39,7 @@ class _DetailScreenState extends State<DetailScreen> {
     List<Text> newPatternList = [];
     for (int i = 0; i < patterns.length; i++) {
       for (List<PatternEntity> item in patterns) {
-        newPatternList.add(Text(item[i].toString()));
+        newPatternList.add(Text(EnumToString.convertToString(item[i].item)));
       }
       return newPatternList;
     }
@@ -51,7 +51,7 @@ class _DetailScreenState extends State<DetailScreen> {
     List<Text> newElementList = [];
     for (int i = 0; i < elements.length; i++) {
       for (List<ElementEntity> item in elements) {
-        newElementList.add(Text(item[i].toString()));
+        newElementList.add(Text(EnumToString.convertToString(item[i].item)));
       }
       return newElementList;
     }
