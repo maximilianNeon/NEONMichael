@@ -1,5 +1,6 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
@@ -8,12 +9,14 @@ import 'package:neon_web/core/style/constants.dart';
 class DetailScreen extends StatefulWidget {
   @override
   _DetailScreenState createState() => _DetailScreenState();
-  final int index;
+  final int projectIndex;
+  final String imageUrl;
   final ProjectEntity project;
   const DetailScreen({
     Key? key,
+    required this.imageUrl,
     required this.project,
-    required this.index,
+    required this.projectIndex,
   }) : super(key: key);
 }
 
@@ -82,7 +85,7 @@ class _DetailScreenState extends State<DetailScreen> {
             children: [
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Padding(
-                  padding: const EdgeInsets.all(30),
+                  padding: kPad30,
                   child: SizedBox(
                     width: 200,
                     height: 400,
@@ -135,19 +138,22 @@ class _DetailScreenState extends State<DetailScreen> {
                     width: 200,
                     height: 400,
                     child: Hero(
-                      tag: widget.index.toString(),
+                      tag: widget.projectIndex.toString(),
                       child: Image.network(
-                        'https://picsum.photos/200/300',
+                        widget.imageUrl,
                         fit: BoxFit.cover,
                       ),
                     ))
               ]),
               Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding: kPad16,
-                  child: Container(
-                    child: Text(widget.project.description),
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: 500,
+                  child: Padding(
+                    padding: kPad16,
+                    child: Container(
+                      child: Text(widget.project.description),
+                    ),
                   ),
                 ),
               )

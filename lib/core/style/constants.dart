@@ -33,6 +33,7 @@ const kColorTopupRed = Color(0xffDC5B5B);
 
 const kPad16 = EdgeInsets.all(16);
 const kPad8 = EdgeInsets.all(8);
+const kPad30 = EdgeInsets.all(30);
 
 // TextStyle CONSTANTS --------------------------------------------------------
 

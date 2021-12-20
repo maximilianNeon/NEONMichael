@@ -54,10 +54,15 @@ class Projects extends StatelessWidget {
                                           MaterialPageRoute<dynamic>(
                                             builder: (context) {
                                               return DetailScreen(
+                                                  imageUrl: state
+                                                      .chosenProjectByItem[
+                                                          index]
+                                                      .assets[i]
+                                                      .imageUrl,
                                                   project:
                                                       state.chosenProjectByItem[
                                                           index],
-                                                  index: state
+                                                  projectIndex: state
                                                       .chosenProjectByItem[
                                                           index]
                                                       .assets[i]
