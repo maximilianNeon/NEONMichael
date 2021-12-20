@@ -88,42 +88,35 @@ class _DetailScreenState extends State<DetailScreen> {
                     height: 400,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                            child: Column(
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: kPad8,
-                              child: const Text(
-                                'Projekt',
-                                style: kBold,
-                              ),
+                            const Text(
+                              'Projekt',
+                              style: kBold,
                             ),
                             Text(widget.project.title)
                           ],
-                        )),
-                        Container(
-                            child: Column(
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: kPad8,
-                              child: const Text(
-                                'Patterns',
-                                style: kBold,
-                              ),
+                            const Text(
+                              'Patterns',
+                              style: kBold,
                             ),
                             ListView(
                                 shrinkWrap: true, children: showPatterns()),
                           ],
-                        )),
+                        ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Padding(
-                              padding: kPad8,
-                              child: const Text(
-                                'Elements',
-                                style: kBold,
-                              ),
+                            const Text(
+                              'Elements',
+                              style: kBold,
                             ),
                             ListView(
                               shrinkWrap: true,
