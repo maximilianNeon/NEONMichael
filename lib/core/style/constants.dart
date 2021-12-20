@@ -32,7 +32,9 @@ const kColorTopupRed = Color(0xffDC5B5B);
 // PADDING CONSTANTS ----------------------------------------------------------
 
 const kPad16 = EdgeInsets.all(16);
+const kPad8 = EdgeInsets.all(8);
 
 // TextStyle CONSTANTS --------------------------------------------------------
 
 const kMenuItem = TextStyle(fontFamily: 'Spartan MB', fontSize: 14);
+const kBold = TextStyle(fontWeight: FontWeight.bold);

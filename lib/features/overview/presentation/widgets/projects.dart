@@ -40,7 +40,7 @@ class Projects extends StatelessWidget {
                           child: Container(
                             margin: EdgeInsets.only(bottom: 10),
                             alignment: Alignment.topLeft,
-                           //color: Colors.red,
+                            //color: Colors.red,
                             child: ListView.builder(
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
@@ -54,6 +54,9 @@ class Projects extends StatelessWidget {
                                           MaterialPageRoute<dynamic>(
                                             builder: (context) {
                                               return DetailScreen(
+                                                  project:
+                                                      state.chosenProjectByItem[
+                                                          index],
                                                   index: state
                                                       .chosenProjectByItem[
                                                           index]

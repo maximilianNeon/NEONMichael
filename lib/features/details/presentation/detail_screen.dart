@@ -1,19 +1,63 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neon_web/core/domain/entities/element_entity.dart';
+import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 
 class DetailScreen extends StatefulWidget {
   @override
   _DetailScreenState createState() => _DetailScreenState();
   final int index;
+  final ProjectEntity project;
   const DetailScreen({
     Key? key,
+    required this.project,
     required this.index,
   }) : super(key: key);
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  List<List<PatternEntity>> getListOfPatterns() {
+    List<List<PatternEntity>> patterns = [];
+    for (var pattern in widget.project.assets) {
+      patterns.add(pattern.patterns);
+    }
+    return patterns;
+  }
+
+  List<List<ElementEntity>> getListOfElements() {
+    List<List<ElementEntity>> elements = [];
+    for (var element in widget.project.assets) {
+      elements.add(element.elements);
+    }
+    return elements;
+  }
+
+  List<Text> showPatterns() {
+    final patterns = getListOfPatterns();
+    List<Text> newPatternList = [];
+    for (int i = 0; i < patterns.length; i++) {
+      for (List<PatternEntity> item in patterns) {
+        newPatternList.add(Text(item[i].toString()));
+      }
+      return newPatternList;
+    }
+    return newPatternList;
+  }
+
+  List<Text> showElements() {
+    final elements = getListOfElements();
+    List<Text> newElementList = [];
+    for (int i = 0; i < elements.length; i++) {
+      for (List<ElementEntity> item in elements) {
+        newElementList.add(Text(item[i].toString()));
+      }
+      return newElementList;
+    }
+    return newElementList;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +76,11 @@ class _DetailScreenState extends State<DetailScreen> {
               },
               icon: const Icon(Icons.arrow_back)),
         ),
-        body: BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
-          return state.map(
-            initial: (_) => const CircularProgressIndicator(),
-            filterMenuState: (state) {
-              return Row(children: [
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Padding(
                   padding: const EdgeInsets.all(30),
                   child: SizedBox(
@@ -45,9 +89,48 @@ class _DetailScreenState extends State<DetailScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text('Projekt'),
-                        const Text('Patterns'),
-                        const Text('Elements')
+                        Container(
+                            child: Column(
+                          children: [
+                            Padding(
+                              padding: kPad8,
+                              child: const Text(
+                                'Projekt',
+                                style: kBold,
+                              ),
+                            ),
+                            Text(widget.project.title)
+                          ],
+                        )),
+                        Container(
+                            child: Column(
+                          children: [
+                            Padding(
+                              padding: kPad8,
+                              child: const Text(
+                                'Patterns',
+                                style: kBold,
+                              ),
+                            ),
+                            ListView(
+                                shrinkWrap: true, children: showPatterns()),
+                          ],
+                        )),
+                        Column(
+                          children: [
+                            Padding(
+                              padding: kPad8,
+                              child: const Text(
+                                'Elements',
+                                style: kBold,
+                              ),
+                            ),
+                            ListView(
+                              shrinkWrap: true,
+                              children: showElements(),
+                            )
+                          ],
+                        )
                       ],
                     ),
                   ),
@@ -65,9 +148,18 @@ class _DetailScreenState extends State<DetailScreen> {
                         fit: BoxFit.cover,
                       ),
                     ))
-              ]);
-            },
-          );
-        }));
+              ]),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: kPad16,
+                  child: Container(
+                    child: Text(widget.project.description),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }

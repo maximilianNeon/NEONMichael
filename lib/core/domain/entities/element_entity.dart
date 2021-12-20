@@ -4,6 +4,11 @@ class ElementEntity {
   final String? header;
   final Object item;
   ElementEntity({this.header, required this.item});
+
+  @override
+  String toString() {
+    return '$item';
+  }
 }
 
 class Overlay extends ElementEntity {

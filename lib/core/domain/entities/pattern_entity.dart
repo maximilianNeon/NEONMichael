@@ -5,6 +5,11 @@ class PatternEntity {
   final Object item;
 
   PatternEntity({required this.item, this.header});
+
+  @override
+  String toString() {
+    return '$item';
+  }
 }
 
 class Onboarding extends PatternEntity {
