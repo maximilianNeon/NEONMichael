@@ -6,12 +6,14 @@ import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/features/overview/domain/repository/project_repository.dart';
 
 @lazySingleton
-class LoadProjectData implements UseCaseExternal<List<ProjectEntity>, NoParams> {
+class LoadProjectData
+    implements UseCaseExternal<List<ProjectEntity>, NoParams> {
   final ProjectRepository projectRepository;
 
   LoadProjectData({required this.projectRepository});
 
   @override
+  // ignore: avoid_types_as_parameter_names
   Future<Either<Failure, List<ProjectEntity>>> call(NoParams) async {
     return await projectRepository.loadProjectData();
   }

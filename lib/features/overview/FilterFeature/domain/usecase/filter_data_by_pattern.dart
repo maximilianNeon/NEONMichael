@@ -5,14 +5,15 @@ import 'package:neon_web/core/domain/usecases/usecase.dart';
 import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/features/overview/FilterFeature/domain/usecase/filter_data_by_type.dart';
 
-class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>,Params> {
-  
+class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>, Params> {
   @override
+  // ignore: avoid_types_as_parameter_names
   List<ProjectEntity> call(Params) {
-     return Params.projectEntityList.where((project) {
+    return Params.projectEntityList.where((project) {
       final assetIndex = project.assets.indexWhere((asset) {
         final patternIndex = asset.patterns.indexWhere((pattern) {
-          final itemIndex = pattern.item.toString().contains(Params.patternFilter);
+          final itemIndex =
+              pattern.item.toString().contains(Params.patternFilter);
           return itemIndex;
         });
         return patternIndex >= 0;
@@ -22,14 +23,13 @@ class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>,Params> {
   }
 }
 
-class Params extends Equatable{
+class Params extends Equatable {
   final List<ProjectEntity> projectEntityList;
   final String patternFilter;
 
   Params({required this.patternFilter, required this.projectEntityList});
-  
+
   @override
   // TODO: implement props
   List<Object?> get props => [patternFilter, projectEntityList];
-
 }

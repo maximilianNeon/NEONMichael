@@ -9,6 +9,7 @@ import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 
+// ignore: always_use_package_imports
 import 'load_remote_data_bloc.dart';
 
 part 'filter_button_event.dart';
@@ -22,11 +23,8 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
   List<List<String>>? globalItemList;
   List? headers;
 
-  
-  
   FilterBloc({required this.loadRemoteDataBloc}) : super(const _Initial()) {
     on<_FilterButtonEventType>((event, emit) {
-     
       globalItemList = BuildTypeLists.appTypeList;
       filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.typeHeaders;

@@ -6,11 +6,13 @@ import 'package:neon_web/core/error/failure.dart';
 
 class FilterDataByElement extends UseCaseInternal<List<ProjectEntity>, Params> {
   @override
+  // ignore: avoid_types_as_parameter_names
   List<ProjectEntity> call(Params) {
     return Params.projectEntityList.where((project) {
       final assetIndex = project.assets.indexWhere((asset) {
         final elementIndex = asset.elements.indexWhere((element) {
-          final itemIndex = element.item.toString().contains(Params.elemtentFilter);
+          final itemIndex =
+              element.item.toString().contains(Params.elemtentFilter);
           return itemIndex;
         });
         return elementIndex >= 0;

@@ -1,6 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
-import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
@@ -22,16 +21,16 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   List<List<PatternEntity>> getListOfPatterns() {
-    List<List<PatternEntity>> patterns = [];
-    for (var pattern in widget.project.assets) {
+    final patterns = <List<PatternEntity>>[];
+    for (final pattern in widget.project.assets) {
       patterns.add(pattern.patterns);
     }
     return patterns;
   }
 
   List<List<ElementEntity>> getListOfElements() {
-    List<List<ElementEntity>> elements = [];
-    for (var element in widget.project.assets) {
+    final elements = <List<ElementEntity>>[];
+    for (final element in widget.project.assets) {
       elements.add(element.elements);
     }
     return elements;
@@ -39,9 +38,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
   List<Text> showPatterns() {
     final patterns = getListOfPatterns();
-    List<Text> newPatternList = [];
-    for (int i = 0; i < patterns.length; i++) {
-      for (List<PatternEntity> item in patterns) {
+    final newPatternList = <Text>[];
+    for (var i = 0; i < patterns.length; i++) {
+      for (final item in patterns) {
         newPatternList.add(Text(EnumToString.convertToString(item[i].item)));
       }
       return newPatternList;
@@ -51,9 +50,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
   List<Text> showElements() {
     final elements = getListOfElements();
-    List<Text> newElementList = [];
-    for (int i = 0; i < elements.length; i++) {
-      for (List<ElementEntity> item in elements) {
+    final newElementList = <Text>[];
+    for (var i = 0; i < elements.length; i++) {
+      for (final item in elements) {
         newElementList.add(Text(EnumToString.convertToString(item[i].item)));
       }
       return newElementList;
@@ -151,9 +150,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   width: 500,
                   child: Padding(
                     padding: kPad16,
-                    child: Container(
-                      child: Text(widget.project.description),
-                    ),
+                    child: Text(widget.project.description),
                   ),
                 ),
               )
