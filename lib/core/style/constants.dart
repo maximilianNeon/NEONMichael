@@ -39,3 +39,10 @@ const kPad30 = EdgeInsets.all(30);
 
 const kMenuItem = TextStyle(fontFamily: 'Spartan MB', fontSize: 14);
 const kBold = TextStyle(fontWeight: FontWeight.bold);
+
+// Input Decoration CONSTANTS -------------------------------------------------
+const kInputDecoSearchbar = InputDecoration(
+    border: InputBorder.none,
+    prefixIcon: Icon(Icons.search),
+    hintText: 'Search',
+    contentPadding: EdgeInsets.all(16));

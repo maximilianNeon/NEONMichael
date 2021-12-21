@@ -7,7 +7,7 @@ import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc
 import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
-import 'package:neon_web/features/overview/presentation/widgets/search_bar.dart';
+import 'package:neon_web/features/overview/SearchFeature/presentation/widgets/search_bar.dart';
 import 'package:neon_web/features/overview/presentation/widgets/sort_button.dart';
 
 class OverviewPage extends StatefulWidget {
@@ -21,6 +21,8 @@ class _OverviewPageState extends State<OverviewPage> {
     super.initState();
     FilterButtonList.changeFilterButton(0);
   }
+
+  String userInput = '';
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,12 @@ class _OverviewPageState extends State<OverviewPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ConstrainedBox(
-                          constraints: BoxConstraints(maxWidth: 220, minWidth: 220, maxHeight: double.infinity, minHeight: 0,),
+                          constraints: const BoxConstraints(
+                            maxWidth: 220,
+                            minWidth: 220,
+                            maxHeight: double.infinity,
+                            minHeight: 0,
+                          ),
                           child: Container(
                             alignment: Alignment.topCenter,
                             decoration: BoxDecoration(
@@ -72,7 +79,9 @@ class _OverviewPageState extends State<OverviewPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              const SearchBar(),
+                              SearchBar(
+                                userInput: userInput,
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),

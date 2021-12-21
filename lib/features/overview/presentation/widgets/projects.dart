@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/constants.dart';
-import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/features/details/presentation/detail_screen.dart';
+import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 
 class Projects extends StatelessWidget {
   @override
@@ -14,7 +14,7 @@ class Projects extends StatelessWidget {
             filterMenuState: (state) {
               return ListView.builder(
                 scrollDirection: Axis.vertical,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: state.chosenProjectByItem.length,
                 itemBuilder: (context, index) {
@@ -31,14 +31,14 @@ class Projects extends StatelessWidget {
                         height: 10,
                       ),
                       ConstrainedBox(
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                             maxHeight: 200,
                             maxWidth: double.infinity,
                             minHeight: 50,
                             minWidth: 50),
                         child: Expanded(
                           child: Container(
-                            margin: EdgeInsets.only(bottom: 10),
+                            margin: const EdgeInsets.only(bottom: 10),
                             alignment: Alignment.topLeft,
                             //color: Colors.red,
                             child: ListView.builder(
@@ -72,7 +72,8 @@ class Projects extends StatelessWidget {
                                         );
                                       },
                                       child: Container(
-                                        margin: EdgeInsets.only(right: 10),
+                                        margin:
+                                            const EdgeInsets.only(right: 10),
                                         decoration: BoxDecoration(
                                             color: kColorBlue,
                                             border: Border.all(),
