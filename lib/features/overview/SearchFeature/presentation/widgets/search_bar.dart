@@ -34,7 +34,7 @@ class SearchBar extends StatelessWidget {
           }
         },
         textInputAction: TextInputAction.none,
-        controller: searchController,
+        // controller: searchController,
         onChanged: (value) {
           userInput = value;
         },

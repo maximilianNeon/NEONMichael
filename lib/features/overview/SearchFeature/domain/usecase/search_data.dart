@@ -5,21 +5,21 @@ mixin SearchData {
   static final searchData = ProjectHelpers.mockProjects1;
 
   static List<ProjectEntity> searchItem(String filterItem) {
-    var chosenProjectTypeList1 = <ProjectEntity>[];
-    var chosenProjectTypeList2 = <ProjectEntity>[];
-    var chosenProjectTypeList3 = <ProjectEntity>[];
-    var chosenProjectTypeList4 = <ProjectEntity>[];
+    var chosenProjectTypeList = <ProjectEntity>[];
+    var chosenProjectPatternList = <ProjectEntity>[];
+    var chosenProjectElementList = <ProjectEntity>[];
+    var chosenProjectTitleList = <ProjectEntity>[];
 
-    chosenProjectTypeList1 = ProjectHelpers.chooseListItemForType(filterItem);
-    chosenProjectTypeList2 =
+    chosenProjectTypeList = ProjectHelpers.chooseListItemForType(filterItem);
+    chosenProjectPatternList =
         ProjectHelpers.chooseListItemForPatterns(filterItem);
-    chosenProjectTypeList3 =
+    chosenProjectElementList =
         ProjectHelpers.chooseListItemsForElements(filterItem);
-    chosenProjectTypeList4 = ProjectHelpers.chooseListItemsByTitles(filterItem);
-    final projectList = chosenProjectTypeList1
-      ..addAll(chosenProjectTypeList2)
-      ..addAll(chosenProjectTypeList3)
-      ..addAll(chosenProjectTypeList4);
+    chosenProjectTitleList = ProjectHelpers.chooseListItemsByTitles(filterItem);
+    final projectList = chosenProjectTypeList
+      ..addAll(chosenProjectPatternList)
+      ..addAll(chosenProjectElementList)
+      ..addAll(chosenProjectTitleList);
     return projectList;
   }
 }
