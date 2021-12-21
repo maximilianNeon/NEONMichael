@@ -46,6 +46,12 @@ class _$FilterButtonEventTearOff {
       filterItem: filterItem,
     );
   }
+
+  _FilterProjectSearchBar filterProjectSearchBar({required String searchItem}) {
+    return _FilterProjectSearchBar(
+      searchItem: searchItem,
+    );
+  }
 }
 
 /// @nodoc
@@ -61,6 +67,7 @@ mixin _$FilterButtonEvent {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +78,7 @@ mixin _$FilterButtonEvent {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +89,7 @@ mixin _$FilterButtonEvent {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -97,6 +106,8 @@ mixin _$FilterButtonEvent {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +118,7 @@ mixin _$FilterButtonEvent {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -117,6 +129,7 @@ mixin _$FilterButtonEvent {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -183,6 +196,7 @@ class _$_Started implements _Started {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) {
     return started();
   }
@@ -196,6 +210,7 @@ class _$_Started implements _Started {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) {
     return started?.call();
   }
@@ -209,6 +224,7 @@ class _$_Started implements _Started {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -231,6 +247,8 @@ class _$_Started implements _Started {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) {
     return started(this);
   }
@@ -244,6 +262,7 @@ class _$_Started implements _Started {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) {
     return started?.call(this);
   }
@@ -257,6 +276,7 @@ class _$_Started implements _Started {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -317,6 +337,7 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) {
     return filterButtonEventType();
   }
@@ -330,6 +351,7 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) {
     return filterButtonEventType?.call();
   }
@@ -343,6 +365,7 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventType != null) {
@@ -365,6 +388,8 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) {
     return filterButtonEventType(this);
   }
@@ -378,6 +403,7 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) {
     return filterButtonEventType?.call(this);
   }
@@ -391,6 +417,7 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventType != null) {
@@ -453,6 +480,7 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) {
     return filterButtonEventPattern();
   }
@@ -466,6 +494,7 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) {
     return filterButtonEventPattern?.call();
   }
@@ -479,6 +508,7 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventPattern != null) {
@@ -501,6 +531,8 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) {
     return filterButtonEventPattern(this);
   }
@@ -514,6 +546,7 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) {
     return filterButtonEventPattern?.call(this);
   }
@@ -527,6 +560,7 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventPattern != null) {
@@ -589,6 +623,7 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) {
     return filterButtonEventElement();
   }
@@ -602,6 +637,7 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) {
     return filterButtonEventElement?.call();
   }
@@ -615,6 +651,7 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventElement != null) {
@@ -637,6 +674,8 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) {
     return filterButtonEventElement(this);
   }
@@ -650,6 +689,7 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) {
     return filterButtonEventElement?.call(this);
   }
@@ -663,6 +703,7 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventElement != null) {
@@ -750,6 +791,7 @@ class _$_FilterButtonEventProject implements _FilterButtonEventProject {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) {
     return filterButtonEventProject(filterItem);
   }
@@ -763,6 +805,7 @@ class _$_FilterButtonEventProject implements _FilterButtonEventProject {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) {
     return filterButtonEventProject?.call(filterItem);
   }
@@ -776,6 +819,7 @@ class _$_FilterButtonEventProject implements _FilterButtonEventProject {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventProject != null) {
@@ -798,6 +842,8 @@ class _$_FilterButtonEventProject implements _FilterButtonEventProject {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) {
     return filterButtonEventProject(this);
   }
@@ -811,6 +857,7 @@ class _$_FilterButtonEventProject implements _FilterButtonEventProject {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) {
     return filterButtonEventProject?.call(this);
   }
@@ -824,6 +871,7 @@ class _$_FilterButtonEventProject implements _FilterButtonEventProject {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterButtonEventProject != null) {
@@ -917,6 +965,7 @@ class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
     required TResult Function() filterButtonEventElement,
     required TResult Function(String filterItem) filterButtonEventProject,
     required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
   }) {
     return filterProjectButtonScreen(filterItem);
   }
@@ -930,6 +979,7 @@ class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
   }) {
     return filterProjectButtonScreen?.call(filterItem);
   }
@@ -943,6 +993,7 @@ class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
     TResult Function()? filterButtonEventElement,
     TResult Function(String filterItem)? filterButtonEventProject,
     TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterProjectButtonScreen != null) {
@@ -965,6 +1016,8 @@ class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
         filterButtonEventProject,
     required TResult Function(_FilterButtonEventScreen value)
         filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
   }) {
     return filterProjectButtonScreen(this);
   }
@@ -978,6 +1031,7 @@ class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
   }) {
     return filterProjectButtonScreen?.call(this);
   }
@@ -991,6 +1045,7 @@ class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
     TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
     TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     required TResult orElse(),
   }) {
     if (filterProjectButtonScreen != null) {
@@ -1007,6 +1062,179 @@ abstract class _FilterButtonEventScreen implements FilterButtonEvent {
   String get filterItem;
   @JsonKey(ignore: true)
   _$FilterButtonEventScreenCopyWith<_FilterButtonEventScreen> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$FilterProjectSearchBarCopyWith<$Res> {
+  factory _$FilterProjectSearchBarCopyWith(_FilterProjectSearchBar value,
+          $Res Function(_FilterProjectSearchBar) then) =
+      __$FilterProjectSearchBarCopyWithImpl<$Res>;
+  $Res call({String searchItem});
+}
+
+/// @nodoc
+class __$FilterProjectSearchBarCopyWithImpl<$Res>
+    extends _$FilterButtonEventCopyWithImpl<$Res>
+    implements _$FilterProjectSearchBarCopyWith<$Res> {
+  __$FilterProjectSearchBarCopyWithImpl(_FilterProjectSearchBar _value,
+      $Res Function(_FilterProjectSearchBar) _then)
+      : super(_value, (v) => _then(v as _FilterProjectSearchBar));
+
+  @override
+  _FilterProjectSearchBar get _value => super._value as _FilterProjectSearchBar;
+
+  @override
+  $Res call({
+    Object? searchItem = freezed,
+  }) {
+    return _then(_FilterProjectSearchBar(
+      searchItem: searchItem == freezed
+          ? _value.searchItem
+          : searchItem // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FilterProjectSearchBar implements _FilterProjectSearchBar {
+  const _$_FilterProjectSearchBar({required this.searchItem});
+
+  @override
+  final String searchItem;
+
+  @override
+  String toString() {
+    return 'FilterButtonEvent.filterProjectSearchBar(searchItem: $searchItem)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _FilterProjectSearchBar &&
+            const DeepCollectionEquality()
+                .equals(other.searchItem, searchItem));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(searchItem));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FilterProjectSearchBarCopyWith<_FilterProjectSearchBar> get copyWith =>
+      __$FilterProjectSearchBarCopyWithImpl<_FilterProjectSearchBar>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() filterButtonEventType,
+    required TResult Function() filterButtonEventPattern,
+    required TResult Function() filterButtonEventElement,
+    required TResult Function(String filterItem) filterButtonEventProject,
+    required TResult Function(String filterItem) filterProjectButtonScreen,
+    required TResult Function(String searchItem) filterProjectSearchBar,
+  }) {
+    return filterProjectSearchBar(searchItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? filterButtonEventType,
+    TResult Function()? filterButtonEventPattern,
+    TResult Function()? filterButtonEventElement,
+    TResult Function(String filterItem)? filterButtonEventProject,
+    TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
+  }) {
+    return filterProjectSearchBar?.call(searchItem);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? filterButtonEventType,
+    TResult Function()? filterButtonEventPattern,
+    TResult Function()? filterButtonEventElement,
+    TResult Function(String filterItem)? filterButtonEventProject,
+    TResult Function(String filterItem)? filterProjectButtonScreen,
+    TResult Function(String searchItem)? filterProjectSearchBar,
+    required TResult orElse(),
+  }) {
+    if (filterProjectSearchBar != null) {
+      return filterProjectSearchBar(searchItem);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FilterButtonEventType value)
+        filterButtonEventType,
+    required TResult Function(_FilterButtonEventPattern value)
+        filterButtonEventPattern,
+    required TResult Function(_FilterButtonEventElement value)
+        filterButtonEventElement,
+    required TResult Function(_FilterButtonEventProject value)
+        filterButtonEventProject,
+    required TResult Function(_FilterButtonEventScreen value)
+        filterProjectButtonScreen,
+    required TResult Function(_FilterProjectSearchBar value)
+        filterProjectSearchBar,
+  }) {
+    return filterProjectSearchBar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
+    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
+    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
+    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
+    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
+  }) {
+    return filterProjectSearchBar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
+    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
+    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
+    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
+    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
+    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
+    required TResult orElse(),
+  }) {
+    if (filterProjectSearchBar != null) {
+      return filterProjectSearchBar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilterProjectSearchBar implements FilterButtonEvent {
+  const factory _FilterProjectSearchBar({required String searchItem}) =
+      _$_FilterProjectSearchBar;
+
+  String get searchItem;
+  @JsonKey(ignore: true)
+  _$FilterProjectSearchBarCopyWith<_FilterProjectSearchBar> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

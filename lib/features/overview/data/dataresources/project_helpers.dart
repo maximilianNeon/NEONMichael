@@ -187,4 +187,11 @@ mixin ProjectHelpers {
     }
     return ProjectHelpers.chosenProjectTypeList;
   }
+
+  static List<ProjectEntity> chooseListItemsByTitles(String filterItem) {
+    final chosenProjectByTitle = mockProjects1
+        .where((element) => element.title.contains(filterItem))
+        .toList();
+    return chosenProjectByTitle;
+  }
 }

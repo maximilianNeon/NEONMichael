@@ -5,6 +5,7 @@ import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
 import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
+import 'package:neon_web/features/overview/SearchFeature/domain/usecase/search_data.dart';
 import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
 import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
@@ -65,6 +66,17 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
       chosenProjectByItem =
           ProjectHelpers.chooseFilterByFilterType(event.filterItem);
       filterButtons = FilterButtonList.filterButtons;
+      emit(_FilterMenuState(
+        filterButtons: filterButtons!,
+        globalItemList: globalItemList!,
+        headers: headers!,
+        chosenProjectByItem: chosenProjectByItem,
+      ));
+    });
+
+    on<_FilterProjectSearchBar>((event, emit) {
+      List<ProjectEntity> chosenProjectByItem;
+      chosenProjectByItem = SearchData.searchItem(event.searchItem);
       emit(_FilterMenuState(
         filterButtons: filterButtons!,
         globalItemList: globalItemList!,

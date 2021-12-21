@@ -25,8 +25,8 @@ class SearchBar extends StatelessWidget {
       child: TextFormField(
         onFieldSubmitted: (searchController) {
           BlocProvider.of<FilterBloc>(context).add(
-              FilterButtonEvent.filterButtonEventProject(
-                  filterItem: searchController));
+              FilterButtonEvent.filterProjectSearchBar(
+                  searchItem: searchController));
         },
         validator: (value) {
           if (value!.isEmpty == false) {
