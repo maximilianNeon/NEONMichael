@@ -4,6 +4,7 @@ import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 
 class SearchBar extends StatelessWidget {
+  
   SearchBar({
     this.userInput,
     this.searchController,

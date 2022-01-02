@@ -6,7 +6,7 @@ abstract class UseCaseExternal<Type,Params> {
   Future<Either<Failure, Type>> call(Params params);
 }
 abstract class UseCaseInternal<Type,Params> {
-  Type call(Params params);
+  Type call({required Params params});
 }
 
 

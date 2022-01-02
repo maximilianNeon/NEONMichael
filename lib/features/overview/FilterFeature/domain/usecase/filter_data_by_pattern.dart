@@ -8,12 +8,12 @@ import 'package:neon_web/features/overview/FilterFeature/domain/usecase/filter_d
 class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>, Params> {
   @override
   // ignore: avoid_types_as_parameter_names
-  List<ProjectEntity> call(Params) {
-    return Params.projectEntityList.where((project) {
+  List<ProjectEntity> call({required Params params}) {
+    return params.projectEntityList.where((project) {
       final assetIndex = project.assets.indexWhere((asset) {
         final patternIndex = asset.patterns.indexWhere((pattern) {
           final itemIndex =
-              pattern.item.toString().contains(Params.patternFilter);
+              pattern.item.toString().contains(params.patternFilter);
           return itemIndex;
         });
         return patternIndex >= 0;

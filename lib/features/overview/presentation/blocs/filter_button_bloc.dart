@@ -73,16 +73,5 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
         chosenProjectByItem: chosenProjectByItem,
       ));
     });
-
-    on<_FilterProjectSearchBar>((event, emit) {
-      List<ProjectEntity> chosenProjectByItem;
-      chosenProjectByItem = SearchData.searchItem(event.searchItem);
-      emit(_FilterMenuState(
-        filterButtons: filterButtons!,
-        globalItemList: globalItemList!,
-        headers: headers!,
-        chosenProjectByItem: chosenProjectByItem,
-      ));
-    });
   }
 }
