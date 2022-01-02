@@ -13,9 +13,10 @@ import 'features/overview/data/repositories/project_repository_impl.dart'
     as _i5;
 import 'features/overview/domain/repository/project_repository.dart' as _i4;
 import 'features/overview/domain/usecases/load_projectdata.dart' as _i6;
-import 'features/overview/presentation/blocs/filter_button_bloc.dart' as _i8;
-import 'features/overview/presentation/blocs/load_remote_data_bloc.dart'
-    as _i7; // ignore_for_file: unnecessary_lambdas
+import 'features/overview/presentation/blocs/filter_button_bloc.dart' as _i9;
+import 'features/overview/presentation/blocs/load_remote_data_bloc.dart' as _i7;
+import 'features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart'
+    as _i8; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -29,7 +30,9 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       _i6.LoadProjectData(projectRepository: get<_i4.ProjectRepository>()));
   gh.singleton<_i7.LoadRemoteDataBloc>(
       _i7.LoadRemoteDataBloc(get<_i6.LoadProjectData>()));
-  gh.factory<_i8.FilterBloc>(
-      () => _i8.FilterBloc(loadRemoteDataBloc: get<_i7.LoadRemoteDataBloc>()));
+  gh.factory<_i8.SearchDataBloc>(() =>
+      _i8.SearchDataBloc(loadRemoteDataBloc: get<_i7.LoadRemoteDataBloc>()));
+  gh.factory<_i9.FilterBloc>(
+      () => _i9.FilterBloc(loadRemoteDataBloc: get<_i7.LoadRemoteDataBloc>()));
   return get;
 }

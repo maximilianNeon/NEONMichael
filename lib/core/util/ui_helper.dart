@@ -17,20 +17,20 @@ class UIHelper {
 
 //Vertical Spacings
   double verticalSpaceSmall(BuildContext context) {
-    return displayWidth(context) * 0.1;
+    return displayWidth(context) * 0.006;
   }
 
   double verticalSpaceMedium(BuildContext context) {
-    return displayWidth(context) * 0.2;
+    return displayWidth(context) * 0.025;
   }
 
   double verticalSpaceLarge(BuildContext context) {
-    return displayWidth(context) * 0.6;
+    return displayWidth(context) * 0.05;
   }
 
 //Vertical Spacings
   double horizontalSpaceSmall(BuildContext context) {
-    return displayHeight(context) * 0.1;
+    return displayHeight(context) * 0.05;
   }
 
   double horizontalSpaceMedium(BuildContext context) {

@@ -34,11 +34,14 @@ const kColorTopupRed = Color(0xffDC5B5B);
 const kPad16 = EdgeInsets.all(16);
 const kPad8 = EdgeInsets.all(8);
 const kPad30 = EdgeInsets.all(30);
+const kPad10 = EdgeInsets.all(10);
 
 // TextStyle CONSTANTS --------------------------------------------------------
 
 const kMenuItem = TextStyle(fontFamily: 'Spartan MB', fontSize: 14);
-const kBold = TextStyle(fontWeight: FontWeight.bold);
+const kBold = TextStyle(fontWeight: FontWeight.bold, color: kColorBlack);
+const kHeaderTextStyle = TextStyle(fontFamily: 'Spartan MB', fontSize: 14);
+const kButtonTextStyle = TextStyle(fontFamily: 'Spartan MB', fontSize: 14, color: kColorWhite );
 
 // Input Decoration CONSTANTS -------------------------------------------------
 const kInputDecoSearchbar = InputDecoration(
