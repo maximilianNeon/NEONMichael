@@ -28,16 +28,6 @@ class _OverviewPageState extends State<OverviewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     // appBar: AppBar(
-     //   backgroundColor: kColorWhite,
-     //   shape: Border.all(color: kColorDarkBlue),
-     //   title: const Text(
-     //     'Neon Mobbin',
-     //     style: TextStyle(color: kColorBlack),
-     //   ),
-     //   centerTitle: true,
-     //   titleSpacing: 1,
-     // ),
       body: BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
         return state.map(
             initial: (_) => const Text('data'),
@@ -49,7 +39,7 @@ class _OverviewPageState extends State<OverviewPage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CustomAppBar(header: "NEON MOBBIN" ),
+                    CustomAppBar(header: "NEON MOBBIN", backArrow: false, uploadIcon: true, ),
                     Padding(
                     padding: kPad16,
                     child: Row(
