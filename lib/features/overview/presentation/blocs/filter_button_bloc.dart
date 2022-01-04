@@ -20,17 +20,14 @@ part 'filter_button_bloc.freezed.dart';
 @injectable
 class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
   LoadRemoteDataBloc loadRemoteDataBloc;
-  List<bool>? filterButtons;
   List<List<String>>? globalItemList;
   List? headers;
 
   FilterBloc({required this.loadRemoteDataBloc}) : super(const _Initial()) {
     on<_FilterButtonEventType>((event, emit) {
       globalItemList = BuildTypeLists.appTypeList;
-      filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.typeHeaders;
-      emit(_FilterMenuState(
-        filterButtons: filterButtons!,
+      emit(_FilterTypeState(
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
@@ -39,10 +36,9 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
 
     on<_FilterButtonEventPattern>((event, emit) {
       globalItemList = BuildPatternLists.globalItemList;
-      filterButtons = FilterButtonList.filterButtons;
+
       headers = MenuHelpers.patternHeaders;
-      emit(_FilterMenuState(
-        filterButtons: filterButtons!,
+      emit(_FilterPatternState(
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
@@ -51,27 +47,16 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
 
     on<_FilterButtonEventElement>((event, emit) {
       globalItemList = BuildElementLists.globalItemList;
-      filterButtons = FilterButtonList.filterButtons;
       headers = MenuHelpers.elementHeaders;
-      emit(_FilterMenuState(
-        filterButtons: filterButtons!,
+      emit(_FilterElementState(
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
       ));
     });
 
-    on<_FilterButtonEventProject>((event, emit) {
-      List<ProjectEntity> chosenProjectByItem;
-      chosenProjectByItem =
-          ProjectHelpers.chooseFilterByFilterType(event.filterItem);
-      filterButtons = FilterButtonList.filterButtons;
-      emit(_FilterMenuState(
-        filterButtons: filterButtons!,
-        globalItemList: globalItemList!,
-        headers: headers!,
-        chosenProjectByItem: chosenProjectByItem,
-      ));
+    on<_TurnOffFilter>((event, emit) {
+      emit(_FilterTurnOffState());
     });
   }
 }

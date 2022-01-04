@@ -177,16 +177,16 @@ mixin ProjectHelpers {
     return chosenProjects;
   }
 
-  static List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
-    if (FilterButtonList.filterButtons[0]) {
-      return chosenProjectTypeList = chooseListItemForType(filterItem);
-    } else if (FilterButtonList.filterButtons[1]) {
-      return chosenProjectTypeList = chooseListItemForPatterns(filterItem);
-    } else if (FilterButtonList.filterButtons[2]) {
-      return chosenProjectTypeList = chooseListItemsForElements(filterItem);
-    }
-    return ProjectHelpers.chosenProjectTypeList;
-  }
+  //static List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
+  //  if (FilterButtonList.filterButtons[0]) {
+  //    return chosenProjectTypeList = chooseListItemForType(filterItem);
+  //  } else if (FilterButtonList.filterButtons[1]) {
+  //    return chosenProjectTypeList = chooseListItemForPatterns(filterItem);
+  //  } else if (FilterButtonList.filterButtons[2]) {
+  //    return chosenProjectTypeList = chooseListItemsForElements(filterItem);
+  //  }
+  //  return ProjectHelpers.chosenProjectTypeList;
+  //}
 
   static List<ProjectEntity> chooseListItemsByTitles(String filterItem) {
     final chosenProjectByTitle = mockProjects1

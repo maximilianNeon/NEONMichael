@@ -17,4 +17,5 @@ class FilterButtonEvent with _$FilterButtonEvent {
   }) = _FilterButtonEventScreen;
   const factory FilterButtonEvent.filterProjectSearchBar(
       {required String searchItem}) = _FilterProjectSearchBar;
+  const factory FilterButtonEvent.turnOffFilter() = _TurnOffFilter;
 }
