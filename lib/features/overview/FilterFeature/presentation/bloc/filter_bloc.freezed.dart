@@ -17,10 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$FilterEventTearOff {
   const _$FilterEventTearOff();
 
-  _Started started() {
-    return const _Started();
-  }
-
   _ResetFilterEvent resetFilter() {
     return const _ResetFilterEvent();
   }
@@ -51,7 +47,6 @@ const $FilterEvent = _$FilterEventTearOff();
 mixin _$FilterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() resetFilter,
     required TResult Function(String filter) setElementFilter,
     required TResult Function(String filter) setPatternFilter,
@@ -60,7 +55,6 @@ mixin _$FilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -69,7 +63,6 @@ mixin _$FilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -79,7 +72,6 @@ mixin _$FilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_ResetFilterEvent value) resetFilter,
     required TResult Function(_ElementFilterEvent value) setElementFilter,
     required TResult Function(_PatternFilterEvent value) setPatternFilter,
@@ -88,7 +80,6 @@ mixin _$FilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -97,7 +88,6 @@ mixin _$FilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -121,126 +111,6 @@ class _$FilterEventCopyWithImpl<$Res> implements $FilterEventCopyWith<$Res> {
   final FilterEvent _value;
   // ignore: unused_field
   final $Res Function(FilterEvent) _then;
-}
-
-/// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$StartedCopyWithImpl<$Res> extends _$FilterEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
-
-  @override
-  _Started get _value => super._value as _Started;
-}
-
-/// @nodoc
-
-class _$_Started implements _Started {
-  const _$_Started();
-
-  @override
-  String toString() {
-    return 'FilterEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() resetFilter,
-    required TResult Function(String filter) setElementFilter,
-    required TResult Function(String filter) setPatternFilter,
-    required TResult Function(String filter) setTypeFilter,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? resetFilter,
-    TResult Function(String filter)? setElementFilter,
-    TResult Function(String filter)? setPatternFilter,
-    TResult Function(String filter)? setTypeFilter,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? resetFilter,
-    TResult Function(String filter)? setElementFilter,
-    TResult Function(String filter)? setPatternFilter,
-    TResult Function(String filter)? setTypeFilter,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_ResetFilterEvent value) resetFilter,
-    required TResult Function(_ElementFilterEvent value) setElementFilter,
-    required TResult Function(_PatternFilterEvent value) setPatternFilter,
-    required TResult Function(_TypeFilterEvent value) setTypeFilter,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_ResetFilterEvent value)? resetFilter,
-    TResult Function(_ElementFilterEvent value)? setElementFilter,
-    TResult Function(_PatternFilterEvent value)? setPatternFilter,
-    TResult Function(_TypeFilterEvent value)? setTypeFilter,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_ResetFilterEvent value)? resetFilter,
-    TResult Function(_ElementFilterEvent value)? setElementFilter,
-    TResult Function(_PatternFilterEvent value)? setPatternFilter,
-    TResult Function(_TypeFilterEvent value)? setTypeFilter,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements FilterEvent {
-  const factory _Started() = _$_Started;
 }
 
 /// @nodoc
@@ -284,7 +154,6 @@ class _$_ResetFilterEvent implements _ResetFilterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() resetFilter,
     required TResult Function(String filter) setElementFilter,
     required TResult Function(String filter) setPatternFilter,
@@ -296,7 +165,6 @@ class _$_ResetFilterEvent implements _ResetFilterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -308,7 +176,6 @@ class _$_ResetFilterEvent implements _ResetFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -324,7 +191,6 @@ class _$_ResetFilterEvent implements _ResetFilterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_ResetFilterEvent value) resetFilter,
     required TResult Function(_ElementFilterEvent value) setElementFilter,
     required TResult Function(_PatternFilterEvent value) setPatternFilter,
@@ -336,7 +202,6 @@ class _$_ResetFilterEvent implements _ResetFilterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -348,7 +213,6 @@ class _$_ResetFilterEvent implements _ResetFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -431,7 +295,6 @@ class _$_ElementFilterEvent implements _ElementFilterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() resetFilter,
     required TResult Function(String filter) setElementFilter,
     required TResult Function(String filter) setPatternFilter,
@@ -443,7 +306,6 @@ class _$_ElementFilterEvent implements _ElementFilterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -455,7 +317,6 @@ class _$_ElementFilterEvent implements _ElementFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -471,7 +332,6 @@ class _$_ElementFilterEvent implements _ElementFilterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_ResetFilterEvent value) resetFilter,
     required TResult Function(_ElementFilterEvent value) setElementFilter,
     required TResult Function(_PatternFilterEvent value) setPatternFilter,
@@ -483,7 +343,6 @@ class _$_ElementFilterEvent implements _ElementFilterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -495,7 +354,6 @@ class _$_ElementFilterEvent implements _ElementFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -584,7 +442,6 @@ class _$_PatternFilterEvent implements _PatternFilterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() resetFilter,
     required TResult Function(String filter) setElementFilter,
     required TResult Function(String filter) setPatternFilter,
@@ -596,7 +453,6 @@ class _$_PatternFilterEvent implements _PatternFilterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -608,7 +464,6 @@ class _$_PatternFilterEvent implements _PatternFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -624,7 +479,6 @@ class _$_PatternFilterEvent implements _PatternFilterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_ResetFilterEvent value) resetFilter,
     required TResult Function(_ElementFilterEvent value) setElementFilter,
     required TResult Function(_PatternFilterEvent value) setPatternFilter,
@@ -636,7 +490,6 @@ class _$_PatternFilterEvent implements _PatternFilterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -648,7 +501,6 @@ class _$_PatternFilterEvent implements _PatternFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -737,7 +589,6 @@ class _$_TypeFilterEvent implements _TypeFilterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() resetFilter,
     required TResult Function(String filter) setElementFilter,
     required TResult Function(String filter) setPatternFilter,
@@ -749,7 +600,6 @@ class _$_TypeFilterEvent implements _TypeFilterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -761,7 +611,6 @@ class _$_TypeFilterEvent implements _TypeFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? resetFilter,
     TResult Function(String filter)? setElementFilter,
     TResult Function(String filter)? setPatternFilter,
@@ -777,7 +626,6 @@ class _$_TypeFilterEvent implements _TypeFilterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_ResetFilterEvent value) resetFilter,
     required TResult Function(_ElementFilterEvent value) setElementFilter,
     required TResult Function(_PatternFilterEvent value) setPatternFilter,
@@ -789,7 +637,6 @@ class _$_TypeFilterEvent implements _TypeFilterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,
@@ -801,7 +648,6 @@ class _$_TypeFilterEvent implements _TypeFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_ResetFilterEvent value)? resetFilter,
     TResult Function(_ElementFilterEvent value)? setElementFilter,
     TResult Function(_PatternFilterEvent value)? setPatternFilter,

@@ -31,7 +31,6 @@ class FilterButtonBloc extends Bloc<FilterButtonEvent, FilterButtonState> {
       emit(_FilterButtonTypeState(
         globalItemList: globalItemList!,
         headers: headers!,
-        chosenProjectByItem: ProjectHelpers.mockProjects1,
       ));
     });
 
@@ -41,7 +40,6 @@ class FilterButtonBloc extends Bloc<FilterButtonEvent, FilterButtonState> {
       emit(_FilterButtonPatternState(
         globalItemList: globalItemList!,
         headers: headers!,
-        chosenProjectByItem: ProjectHelpers.mockProjects1,
       ));
     });
 
@@ -51,7 +49,6 @@ class FilterButtonBloc extends Bloc<FilterButtonEvent, FilterButtonState> {
       emit(_FilterButtonElementState(
         globalItemList: globalItemList!,
         headers: headers!,
-        chosenProjectByItem: ProjectHelpers.mockProjects1,
       ));
     });
 

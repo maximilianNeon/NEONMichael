@@ -1447,34 +1447,28 @@ class _$FilterButtonStateTearOff {
 
   _FilterButtonElementState elementFilterState(
       {required List<List<String>> globalItemList,
-      required List<dynamic> headers,
-      required List<ProjectEntity> chosenProjectByItem}) {
+      required List<dynamic> headers}) {
     return _FilterButtonElementState(
       globalItemList: globalItemList,
       headers: headers,
-      chosenProjectByItem: chosenProjectByItem,
     );
   }
 
   _FilterButtonTypeState typeFilterState(
       {required List<List<String>> globalItemList,
-      required List<dynamic> headers,
-      required List<ProjectEntity> chosenProjectByItem}) {
+      required List<dynamic> headers}) {
     return _FilterButtonTypeState(
       globalItemList: globalItemList,
       headers: headers,
-      chosenProjectByItem: chosenProjectByItem,
     );
   }
 
   _FilterButtonPatternState patternFilterState(
       {required List<List<String>> globalItemList,
-      required List<dynamic> headers,
-      required List<ProjectEntity> chosenProjectByItem}) {
+      required List<dynamic> headers}) {
     return _FilterButtonPatternState(
       globalItemList: globalItemList,
       headers: headers,
-      chosenProjectByItem: chosenProjectByItem,
     );
   }
 }
@@ -1487,42 +1481,36 @@ mixin _$FilterButtonState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) =>
@@ -1617,14 +1605,14 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
     return filterTurnedOff();
@@ -1634,14 +1622,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
     return filterTurnedOff?.call();
@@ -1651,14 +1636,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
@@ -1717,10 +1699,7 @@ abstract class _$FilterButtonElementStateCopyWith<$Res> {
   factory _$FilterButtonElementStateCopyWith(_FilterButtonElementState value,
           $Res Function(_FilterButtonElementState) then) =
       __$FilterButtonElementStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<List<String>> globalItemList,
-      List<dynamic> headers,
-      List<ProjectEntity> chosenProjectByItem});
+  $Res call({List<List<String>> globalItemList, List<dynamic> headers});
 }
 
 /// @nodoc
@@ -1739,7 +1718,6 @@ class __$FilterButtonElementStateCopyWithImpl<$Res>
   $Res call({
     Object? globalItemList = freezed,
     Object? headers = freezed,
-    Object? chosenProjectByItem = freezed,
   }) {
     return _then(_FilterButtonElementState(
       globalItemList: globalItemList == freezed
@@ -1750,10 +1728,6 @@ class __$FilterButtonElementStateCopyWithImpl<$Res>
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      chosenProjectByItem: chosenProjectByItem == freezed
-          ? _value.chosenProjectByItem
-          : chosenProjectByItem // ignore: cast_nullable_to_non_nullable
-              as List<ProjectEntity>,
     ));
   }
 }
@@ -1762,20 +1736,16 @@ class __$FilterButtonElementStateCopyWithImpl<$Res>
 
 class _$_FilterButtonElementState implements _FilterButtonElementState {
   const _$_FilterButtonElementState(
-      {required this.globalItemList,
-      required this.headers,
-      required this.chosenProjectByItem});
+      {required this.globalItemList, required this.headers});
 
   @override
   final List<List<String>> globalItemList;
   @override
   final List<dynamic> headers;
-  @override
-  final List<ProjectEntity> chosenProjectByItem;
 
   @override
   String toString() {
-    return 'FilterButtonState.elementFilterState(globalItemList: $globalItemList, headers: $headers, chosenProjectByItem: $chosenProjectByItem)';
+    return 'FilterButtonState.elementFilterState(globalItemList: $globalItemList, headers: $headers)';
   }
 
   @override
@@ -1785,17 +1755,14 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
             other is _FilterButtonElementState &&
             const DeepCollectionEquality()
                 .equals(other.globalItemList, globalItemList) &&
-            const DeepCollectionEquality().equals(other.headers, headers) &&
-            const DeepCollectionEquality()
-                .equals(other.chosenProjectByItem, chosenProjectByItem));
+            const DeepCollectionEquality().equals(other.headers, headers));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(globalItemList),
-      const DeepCollectionEquality().hash(headers),
-      const DeepCollectionEquality().hash(chosenProjectByItem));
+      const DeepCollectionEquality().hash(headers));
 
   @JsonKey(ignore: true)
   @override
@@ -1807,54 +1774,47 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
-    return elementFilterState(globalItemList, headers, chosenProjectByItem);
+    return elementFilterState(globalItemList, headers);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
-    return elementFilterState?.call(
-        globalItemList, headers, chosenProjectByItem);
+    return elementFilterState?.call(globalItemList, headers);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
     if (elementFilterState != null) {
-      return elementFilterState(globalItemList, headers, chosenProjectByItem);
+      return elementFilterState(globalItemList, headers);
     }
     return orElse();
   }
@@ -1901,14 +1861,11 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
 
 abstract class _FilterButtonElementState implements FilterButtonState {
   const factory _FilterButtonElementState(
-          {required List<List<String>> globalItemList,
-          required List<dynamic> headers,
-          required List<ProjectEntity> chosenProjectByItem}) =
-      _$_FilterButtonElementState;
+      {required List<List<String>> globalItemList,
+      required List<dynamic> headers}) = _$_FilterButtonElementState;
 
   List<List<String>> get globalItemList;
   List<dynamic> get headers;
-  List<ProjectEntity> get chosenProjectByItem;
   @JsonKey(ignore: true)
   _$FilterButtonElementStateCopyWith<_FilterButtonElementState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1919,10 +1876,7 @@ abstract class _$FilterButtonTypeStateCopyWith<$Res> {
   factory _$FilterButtonTypeStateCopyWith(_FilterButtonTypeState value,
           $Res Function(_FilterButtonTypeState) then) =
       __$FilterButtonTypeStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<List<String>> globalItemList,
-      List<dynamic> headers,
-      List<ProjectEntity> chosenProjectByItem});
+  $Res call({List<List<String>> globalItemList, List<dynamic> headers});
 }
 
 /// @nodoc
@@ -1940,7 +1894,6 @@ class __$FilterButtonTypeStateCopyWithImpl<$Res>
   $Res call({
     Object? globalItemList = freezed,
     Object? headers = freezed,
-    Object? chosenProjectByItem = freezed,
   }) {
     return _then(_FilterButtonTypeState(
       globalItemList: globalItemList == freezed
@@ -1951,10 +1904,6 @@ class __$FilterButtonTypeStateCopyWithImpl<$Res>
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      chosenProjectByItem: chosenProjectByItem == freezed
-          ? _value.chosenProjectByItem
-          : chosenProjectByItem // ignore: cast_nullable_to_non_nullable
-              as List<ProjectEntity>,
     ));
   }
 }
@@ -1963,20 +1912,16 @@ class __$FilterButtonTypeStateCopyWithImpl<$Res>
 
 class _$_FilterButtonTypeState implements _FilterButtonTypeState {
   const _$_FilterButtonTypeState(
-      {required this.globalItemList,
-      required this.headers,
-      required this.chosenProjectByItem});
+      {required this.globalItemList, required this.headers});
 
   @override
   final List<List<String>> globalItemList;
   @override
   final List<dynamic> headers;
-  @override
-  final List<ProjectEntity> chosenProjectByItem;
 
   @override
   String toString() {
-    return 'FilterButtonState.typeFilterState(globalItemList: $globalItemList, headers: $headers, chosenProjectByItem: $chosenProjectByItem)';
+    return 'FilterButtonState.typeFilterState(globalItemList: $globalItemList, headers: $headers)';
   }
 
   @override
@@ -1986,17 +1931,14 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
             other is _FilterButtonTypeState &&
             const DeepCollectionEquality()
                 .equals(other.globalItemList, globalItemList) &&
-            const DeepCollectionEquality().equals(other.headers, headers) &&
-            const DeepCollectionEquality()
-                .equals(other.chosenProjectByItem, chosenProjectByItem));
+            const DeepCollectionEquality().equals(other.headers, headers));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(globalItemList),
-      const DeepCollectionEquality().hash(headers),
-      const DeepCollectionEquality().hash(chosenProjectByItem));
+      const DeepCollectionEquality().hash(headers));
 
   @JsonKey(ignore: true)
   @override
@@ -2008,53 +1950,47 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
-    return typeFilterState(globalItemList, headers, chosenProjectByItem);
+    return typeFilterState(globalItemList, headers);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
-    return typeFilterState?.call(globalItemList, headers, chosenProjectByItem);
+    return typeFilterState?.call(globalItemList, headers);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
     if (typeFilterState != null) {
-      return typeFilterState(globalItemList, headers, chosenProjectByItem);
+      return typeFilterState(globalItemList, headers);
     }
     return orElse();
   }
@@ -2101,14 +2037,11 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
 
 abstract class _FilterButtonTypeState implements FilterButtonState {
   const factory _FilterButtonTypeState(
-          {required List<List<String>> globalItemList,
-          required List<dynamic> headers,
-          required List<ProjectEntity> chosenProjectByItem}) =
-      _$_FilterButtonTypeState;
+      {required List<List<String>> globalItemList,
+      required List<dynamic> headers}) = _$_FilterButtonTypeState;
 
   List<List<String>> get globalItemList;
   List<dynamic> get headers;
-  List<ProjectEntity> get chosenProjectByItem;
   @JsonKey(ignore: true)
   _$FilterButtonTypeStateCopyWith<_FilterButtonTypeState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2119,10 +2052,7 @@ abstract class _$FilterButtonPatternStateCopyWith<$Res> {
   factory _$FilterButtonPatternStateCopyWith(_FilterButtonPatternState value,
           $Res Function(_FilterButtonPatternState) then) =
       __$FilterButtonPatternStateCopyWithImpl<$Res>;
-  $Res call(
-      {List<List<String>> globalItemList,
-      List<dynamic> headers,
-      List<ProjectEntity> chosenProjectByItem});
+  $Res call({List<List<String>> globalItemList, List<dynamic> headers});
 }
 
 /// @nodoc
@@ -2141,7 +2071,6 @@ class __$FilterButtonPatternStateCopyWithImpl<$Res>
   $Res call({
     Object? globalItemList = freezed,
     Object? headers = freezed,
-    Object? chosenProjectByItem = freezed,
   }) {
     return _then(_FilterButtonPatternState(
       globalItemList: globalItemList == freezed
@@ -2152,10 +2081,6 @@ class __$FilterButtonPatternStateCopyWithImpl<$Res>
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      chosenProjectByItem: chosenProjectByItem == freezed
-          ? _value.chosenProjectByItem
-          : chosenProjectByItem // ignore: cast_nullable_to_non_nullable
-              as List<ProjectEntity>,
     ));
   }
 }
@@ -2164,20 +2089,16 @@ class __$FilterButtonPatternStateCopyWithImpl<$Res>
 
 class _$_FilterButtonPatternState implements _FilterButtonPatternState {
   const _$_FilterButtonPatternState(
-      {required this.globalItemList,
-      required this.headers,
-      required this.chosenProjectByItem});
+      {required this.globalItemList, required this.headers});
 
   @override
   final List<List<String>> globalItemList;
   @override
   final List<dynamic> headers;
-  @override
-  final List<ProjectEntity> chosenProjectByItem;
 
   @override
   String toString() {
-    return 'FilterButtonState.patternFilterState(globalItemList: $globalItemList, headers: $headers, chosenProjectByItem: $chosenProjectByItem)';
+    return 'FilterButtonState.patternFilterState(globalItemList: $globalItemList, headers: $headers)';
   }
 
   @override
@@ -2187,17 +2108,14 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
             other is _FilterButtonPatternState &&
             const DeepCollectionEquality()
                 .equals(other.globalItemList, globalItemList) &&
-            const DeepCollectionEquality().equals(other.headers, headers) &&
-            const DeepCollectionEquality()
-                .equals(other.chosenProjectByItem, chosenProjectByItem));
+            const DeepCollectionEquality().equals(other.headers, headers));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(globalItemList),
-      const DeepCollectionEquality().hash(headers),
-      const DeepCollectionEquality().hash(chosenProjectByItem));
+      const DeepCollectionEquality().hash(headers));
 
   @JsonKey(ignore: true)
   @override
@@ -2209,54 +2127,47 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(List<List<String>> globalItemList,
-            List<dynamic> headers, List<ProjectEntity> chosenProjectByItem)
+    required TResult Function(
+            List<List<String>> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
-    return patternFilterState(globalItemList, headers, chosenProjectByItem);
+    return patternFilterState(globalItemList, headers);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
-    return patternFilterState?.call(
-        globalItemList, headers, chosenProjectByItem);
+    return patternFilterState?.call(globalItemList, headers);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers,
-            List<ProjectEntity> chosenProjectByItem)?
+    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
     if (patternFilterState != null) {
-      return patternFilterState(globalItemList, headers, chosenProjectByItem);
+      return patternFilterState(globalItemList, headers);
     }
     return orElse();
   }
@@ -2303,14 +2214,11 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
 
 abstract class _FilterButtonPatternState implements FilterButtonState {
   const factory _FilterButtonPatternState(
-          {required List<List<String>> globalItemList,
-          required List<dynamic> headers,
-          required List<ProjectEntity> chosenProjectByItem}) =
-      _$_FilterButtonPatternState;
+      {required List<List<String>> globalItemList,
+      required List<dynamic> headers}) = _$_FilterButtonPatternState;
 
   List<List<String>> get globalItemList;
   List<dynamic> get headers;
-  List<ProjectEntity> get chosenProjectByItem;
   @JsonKey(ignore: true)
   _$FilterButtonPatternStateCopyWith<_FilterButtonPatternState> get copyWith =>
       throw _privateConstructorUsedError;

@@ -31,17 +31,22 @@ class Projects extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    state.map(
-                        filteredByElements: (state) =>
-                            state.filteredByElements[index].title,
-                        filteredByPattern: (state) =>
-                            state.filteredByPatternList[index].title,
-                        filteredByType: (state) =>
-                            state.filterdByTypeList[index].title,
-                        empty: (state) =>
-                            state.projectEntitesList[index].title),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: (){
+                      
+                    },
+                    child: Text(
+                      state.map(
+                          filteredByElements: (state) =>
+                              state.filteredByElements[index].title,
+                          filteredByPattern: (state) =>
+                              state.filteredByPatternList[index].title,
+                          filteredByType: (state) =>
+                              state.filterdByTypeList[index].title,
+                          empty: (state) =>
+                              state.projectEntitesList[index].title),
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                   const SizedBox(
                     height: 10,
