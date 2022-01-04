@@ -1,25 +1,18 @@
 part of 'filter_button_bloc.dart';
 
 @freezed
-class FilterState with _$FilterState {
-  const factory FilterState.initial() = _Initial;
-  const factory FilterState.filterMenuState({
-    required List<bool> filterButtons,
-    required List<List<String>> globalItemList,
-    required List headers,
-    required List<ProjectEntity> chosenProjectByItem,
-  }) = _FilterMenuState;
-  const factory FilterState.filterTurnedOff() = _FilterTurnOffState;
-  const factory FilterState.elementFilterState(
+class FilterButtonState with _$FilterButtonState {
+    const factory FilterButtonState.filterTurnedOff() = _FilterButtonTurnOffState;
+  const factory FilterButtonState.elementFilterState(
       {required List<List<String>> globalItemList,
       required List headers,
-      required List<ProjectEntity> chosenProjectByItem}) = _FilterElementState;
-  const factory FilterState.typeFilterState(
+      required List<ProjectEntity> chosenProjectByItem}) = _FilterButtonElementState;
+  const factory FilterButtonState.typeFilterState(
       {required List<List<String>> globalItemList,
       required List headers,
-      required List<ProjectEntity> chosenProjectByItem}) = _FilterTypeState;
-  const factory FilterState.patternFilterState(
+      required List<ProjectEntity> chosenProjectByItem}) = _FilterButtonTypeState;
+  const factory FilterButtonState.patternFilterState(
       {required List<List<String>> globalItemList,
       required List headers,
-      required List<ProjectEntity> chosenProjectByItem}) = _FilterPatternState;
+      required List<ProjectEntity> chosenProjectByItem}) = _FilterButtonPatternState;
 }

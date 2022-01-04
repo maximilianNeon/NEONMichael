@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/usecase.dart';
+import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
 import 'package:neon_web/features/overview/domain/usecases/load_projectdata.dart';
 
 part 'load_remote_data_event.dart';
@@ -13,22 +14,16 @@ part 'load_remote_data_bloc.freezed.dart';
 class LoadRemoteDataBloc
     extends Bloc<LoadRemoteDataEvent, LoadRemoteDataState> {
   final LoadProjectData loadProjectData;
-  List<ProjectEntity> projectData = [];
+  List<ProjectEntity> _projectData = [];
 
-  List<ProjectEntity> get loadedProjectData => projectData;
+  List<ProjectEntity> get loadedProjectData => _projectData;
 
   LoadRemoteDataBloc(this.loadProjectData) : super(_Initial()) {
-    on<LoadRemoteDataEvent>((event, emit) async {
-      event.map(loadProjectData: (_) {
-        emit(_Loading());
-      });
-      final result = await loadProjectData.call(NoParams());
-      result.fold(
-        (failure) => emit(_Error()),
-        (success) {
-          projectData = success;
-          emit(_Loaded());},
-      );
+    on<_LoadProjectData>((event, emit) async {
+      emit(_Loading());
+      _projectData = ProjectHelpers.mockProjects1;
+      print(_projectData.length);
+      emit(_Loaded());
     });
   }
 }

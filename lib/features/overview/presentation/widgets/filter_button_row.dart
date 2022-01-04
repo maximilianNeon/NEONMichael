@@ -9,8 +9,8 @@ class FilterButtonRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FilterBloc bloc = BlocProvider.of<FilterBloc>(context);
-    return BlocBuilder<FilterBloc, FilterState>(
+    FilterButtonBloc bloc = BlocProvider.of<FilterButtonBloc>(context);
+    return BlocBuilder<FilterButtonBloc, FilterButtonState>(
       builder: (context, state) {
         return Row(
           crossAxisAlignment: CrossAxisAlignment.start,

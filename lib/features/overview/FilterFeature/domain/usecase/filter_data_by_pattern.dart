@@ -1,14 +1,16 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/usecase.dart';
 import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/features/overview/FilterFeature/domain/usecase/filter_data_by_type.dart';
 
-class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>, Params> {
+@lazySingleton
+class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>, FilterPatterParams> {
   @override
   // ignore: avoid_types_as_parameter_names
-  List<ProjectEntity> call({required Params params}) {
+  List<ProjectEntity> call({required FilterPatterParams params}) {
     return params.projectEntityList.where((project) {
       final assetIndex = project.assets.indexWhere((asset) {
         final patternIndex = asset.patterns.indexWhere((pattern) {
@@ -23,11 +25,11 @@ class FilterDataByPattern extends UseCaseInternal<List<ProjectEntity>, Params> {
   }
 }
 
-class Params extends Equatable {
+class FilterPatterParams extends Equatable {
   final List<ProjectEntity> projectEntityList;
   final String patternFilter;
 
-  Params({required this.patternFilter, required this.projectEntityList});
+  FilterPatterParams({required this.patternFilter, required this.projectEntityList});
 
   @override
   // TODO: implement props

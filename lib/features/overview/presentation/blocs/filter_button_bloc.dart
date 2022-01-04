@@ -17,17 +17,18 @@ part 'filter_button_event.dart';
 part 'filter_button_state.dart';
 part 'filter_button_bloc.freezed.dart';
 
-@injectable
-class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
+@singleton
+class FilterButtonBloc extends Bloc<FilterButtonEvent, FilterButtonState> {
   LoadRemoteDataBloc loadRemoteDataBloc;
   List<List<String>>? globalItemList;
   List? headers;
 
-  FilterBloc({required this.loadRemoteDataBloc}) : super(const _Initial()) {
+  FilterButtonBloc({required this.loadRemoteDataBloc})
+      : super(const _FilterButtonTurnOffState()) {
     on<_FilterButtonEventType>((event, emit) {
       globalItemList = BuildTypeLists.appTypeList;
       headers = MenuHelpers.typeHeaders;
-      emit(_FilterTypeState(
+      emit(_FilterButtonTypeState(
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
@@ -36,9 +37,8 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
 
     on<_FilterButtonEventPattern>((event, emit) {
       globalItemList = BuildPatternLists.globalItemList;
-
       headers = MenuHelpers.patternHeaders;
-      emit(_FilterPatternState(
+      emit(_FilterButtonPatternState(
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
@@ -48,7 +48,7 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
     on<_FilterButtonEventElement>((event, emit) {
       globalItemList = BuildElementLists.globalItemList;
       headers = MenuHelpers.elementHeaders;
-      emit(_FilterElementState(
+      emit(_FilterButtonElementState(
         globalItemList: globalItemList!,
         headers: headers!,
         chosenProjectByItem: ProjectHelpers.mockProjects1,
@@ -56,7 +56,7 @@ class FilterBloc extends Bloc<FilterButtonEvent, FilterState> {
     });
 
     on<_TurnOffFilter>((event, emit) {
-      emit(_FilterTurnOffState());
+      emit(_FilterButtonTurnOffState());
     });
   }
 }

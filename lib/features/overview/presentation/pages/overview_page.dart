@@ -18,7 +18,6 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-
   String userInput = '';
 
   @override
@@ -42,9 +41,7 @@ class _OverviewPageState extends State<OverviewPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  
                   MenuItems(),
-                   
                   const SizedBox(
                     width: 20,
                   ),
@@ -73,7 +70,7 @@ class _OverviewPageState extends State<OverviewPage> {
                         const SizedBox(
                           height: 20,
                         ),
-                        //Projects(),
+                        Projects(),
                       ],
                     ),
                   )

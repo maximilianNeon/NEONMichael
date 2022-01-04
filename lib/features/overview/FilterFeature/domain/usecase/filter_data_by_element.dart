@@ -1,13 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/usecase.dart';
 import 'package:neon_web/core/error/failure.dart';
 
-class FilterDataByElement extends UseCaseInternal<List<ProjectEntity>, Params> {
+@lazySingleton 
+class FilterDataByElement extends UseCaseInternal<List<ProjectEntity>, ElementFilterParams> {
   @override
 
-  List<ProjectEntity> call({required Params params} ) {
+  List<ProjectEntity> call({required ElementFilterParams params }) {
     return params.projectEntityList.where((project) {
       final assetIndex = project.assets.indexWhere((asset) {
         final elementIndex = asset.elements.indexWhere((element) {
@@ -22,11 +24,11 @@ class FilterDataByElement extends UseCaseInternal<List<ProjectEntity>, Params> {
   }
 }
 
-class Params extends Equatable {
+class ElementFilterParams extends Equatable {
   final List<ProjectEntity> projectEntityList;
   final String elemtentFilter;
 
-  Params({required this.elemtentFilter, required this.projectEntityList});
+  ElementFilterParams({required this.elemtentFilter, required this.projectEntityList});
 
   @override
   List<Object?> get props => [elemtentFilter, projectEntityList];
