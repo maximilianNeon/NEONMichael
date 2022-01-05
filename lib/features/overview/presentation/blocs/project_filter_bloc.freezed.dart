@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ProjectFilterEventTearOff {
   const _$ProjectFilterEventTearOff();
 
-  _Started started() {
-    return const _Started();
+  _ResetFilterEvent reset() {
+    return const _ResetFilterEvent();
   }
 
   _SetProjectFilterEvent setProjectFilter(
@@ -38,7 +38,7 @@ const $ProjectFilterEvent = _$ProjectFilterEventTearOff();
 mixin _$ProjectFilterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)
         setProjectFilter,
@@ -46,7 +46,7 @@ mixin _$ProjectFilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)?
         setProjectFilter,
@@ -54,7 +54,7 @@ mixin _$ProjectFilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)?
         setProjectFilter,
@@ -63,19 +63,19 @@ mixin _$ProjectFilterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ResetFilterEvent value) reset,
     required TResult Function(_SetProjectFilterEvent value) setProjectFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ResetFilterEvent value)? reset,
     TResult Function(_SetProjectFilterEvent value)? setProjectFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ResetFilterEvent value)? reset,
     TResult Function(_SetProjectFilterEvent value)? setProjectFilter,
     required TResult orElse(),
   }) =>
@@ -100,36 +100,38 @@ class _$ProjectFilterEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$ResetFilterEventCopyWith<$Res> {
+  factory _$ResetFilterEventCopyWith(
+          _ResetFilterEvent value, $Res Function(_ResetFilterEvent) then) =
+      __$ResetFilterEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res>
+class __$ResetFilterEventCopyWithImpl<$Res>
     extends _$ProjectFilterEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+    implements _$ResetFilterEventCopyWith<$Res> {
+  __$ResetFilterEventCopyWithImpl(
+      _ResetFilterEvent _value, $Res Function(_ResetFilterEvent) _then)
+      : super(_value, (v) => _then(v as _ResetFilterEvent));
 
   @override
-  _Started get _value => super._value as _Started;
+  _ResetFilterEvent get _value => super._value as _ResetFilterEvent;
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_ResetFilterEvent implements _ResetFilterEvent {
+  const _$_ResetFilterEvent();
 
   @override
   String toString() {
-    return 'ProjectFilterEvent.started()';
+    return 'ProjectFilterEvent.reset()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
+        (other.runtimeType == runtimeType && other is _ResetFilterEvent);
   }
 
   @override
@@ -138,36 +140,36 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)
         setProjectFilter,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)?
         setProjectFilter,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)?
         setProjectFilter,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -175,37 +177,37 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ResetFilterEvent value) reset,
     required TResult Function(_SetProjectFilterEvent value) setProjectFilter,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ResetFilterEvent value)? reset,
     TResult Function(_SetProjectFilterEvent value)? setProjectFilter,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ResetFilterEvent value)? reset,
     TResult Function(_SetProjectFilterEvent value)? setProjectFilter,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ProjectFilterEvent {
-  const factory _Started() = _$_Started;
+abstract class _ResetFilterEvent implements ProjectFilterEvent {
+  const factory _ResetFilterEvent() = _$_ResetFilterEvent;
 }
 
 /// @nodoc
@@ -287,7 +289,7 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)
         setProjectFilter,
@@ -298,7 +300,7 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)?
         setProjectFilter,
@@ -309,7 +311,7 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(
             List<ProjectEntity> projectEntityList, String projectTitle)?
         setProjectFilter,
@@ -324,7 +326,7 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_ResetFilterEvent value) reset,
     required TResult Function(_SetProjectFilterEvent value) setProjectFilter,
   }) {
     return setProjectFilter(this);
@@ -333,7 +335,7 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ResetFilterEvent value)? reset,
     TResult Function(_SetProjectFilterEvent value)? setProjectFilter,
   }) {
     return setProjectFilter?.call(this);
@@ -342,7 +344,7 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_ResetFilterEvent value)? reset,
     TResult Function(_SetProjectFilterEvent value)? setProjectFilter,
     required TResult orElse(),
   }) {
@@ -369,8 +371,8 @@ abstract class _SetProjectFilterEvent implements ProjectFilterEvent {
 class _$ProjectFilterStateTearOff {
   const _$ProjectFilterStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  _ResetFilterState reset() {
+    return const _ResetFilterState();
   }
 
   _FilteredByProject filtered(
@@ -388,38 +390,38 @@ const $ProjectFilterState = _$ProjectFilterStateTearOff();
 mixin _$ProjectFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() reset,
     required TResult Function(List<ProjectEntity> projectEntityList) filtered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? reset,
     TResult Function(List<ProjectEntity> projectEntityList)? filtered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? reset,
     TResult Function(List<ProjectEntity> projectEntityList)? filtered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ResetFilterState value) reset,
     required TResult Function(_FilteredByProject value) filtered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ResetFilterState value)? reset,
     TResult Function(_FilteredByProject value)? filtered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ResetFilterState value)? reset,
     TResult Function(_FilteredByProject value)? filtered,
     required TResult orElse(),
   }) =>
@@ -444,36 +446,38 @@ class _$ProjectFilterStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$ResetFilterStateCopyWith<$Res> {
+  factory _$ResetFilterStateCopyWith(
+          _ResetFilterState value, $Res Function(_ResetFilterState) then) =
+      __$ResetFilterStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
+class __$ResetFilterStateCopyWithImpl<$Res>
     extends _$ProjectFilterStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+    implements _$ResetFilterStateCopyWith<$Res> {
+  __$ResetFilterStateCopyWithImpl(
+      _ResetFilterState _value, $Res Function(_ResetFilterState) _then)
+      : super(_value, (v) => _then(v as _ResetFilterState));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _ResetFilterState get _value => super._value as _ResetFilterState;
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_ResetFilterState implements _ResetFilterState {
+  const _$_ResetFilterState();
 
   @override
   String toString() {
-    return 'ProjectFilterState.initial()';
+    return 'ProjectFilterState.reset()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _ResetFilterState);
   }
 
   @override
@@ -482,30 +486,30 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() reset,
     required TResult Function(List<ProjectEntity> projectEntityList) filtered,
   }) {
-    return initial();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? reset,
     TResult Function(List<ProjectEntity> projectEntityList)? filtered,
   }) {
-    return initial?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? reset,
     TResult Function(List<ProjectEntity> projectEntityList)? filtered,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -513,37 +517,37 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ResetFilterState value) reset,
     required TResult Function(_FilteredByProject value) filtered,
   }) {
-    return initial(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ResetFilterState value)? reset,
     TResult Function(_FilteredByProject value)? filtered,
   }) {
-    return initial?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ResetFilterState value)? reset,
     TResult Function(_FilteredByProject value)? filtered,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements ProjectFilterState {
-  const factory _Initial() = _$_Initial;
+abstract class _ResetFilterState implements ProjectFilterState {
+  const factory _ResetFilterState() = _$_ResetFilterState;
 }
 
 /// @nodoc
@@ -612,7 +616,7 @@ class _$_FilteredByProject implements _FilteredByProject {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
+    required TResult Function() reset,
     required TResult Function(List<ProjectEntity> projectEntityList) filtered,
   }) {
     return filtered(projectEntityList);
@@ -621,7 +625,7 @@ class _$_FilteredByProject implements _FilteredByProject {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? reset,
     TResult Function(List<ProjectEntity> projectEntityList)? filtered,
   }) {
     return filtered?.call(projectEntityList);
@@ -630,7 +634,7 @@ class _$_FilteredByProject implements _FilteredByProject {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
+    TResult Function()? reset,
     TResult Function(List<ProjectEntity> projectEntityList)? filtered,
     required TResult orElse(),
   }) {
@@ -643,7 +647,7 @@ class _$_FilteredByProject implements _FilteredByProject {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_ResetFilterState value) reset,
     required TResult Function(_FilteredByProject value) filtered,
   }) {
     return filtered(this);
@@ -652,7 +656,7 @@ class _$_FilteredByProject implements _FilteredByProject {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ResetFilterState value)? reset,
     TResult Function(_FilteredByProject value)? filtered,
   }) {
     return filtered?.call(this);
@@ -661,7 +665,7 @@ class _$_FilteredByProject implements _FilteredByProject {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_ResetFilterState value)? reset,
     TResult Function(_FilteredByProject value)? filtered,
     required TResult orElse(),
   }) {

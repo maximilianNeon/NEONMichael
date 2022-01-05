@@ -16,6 +16,7 @@ class Projects extends StatelessWidget {
         BlocProvider.of<ProjectFilterBloc>(context);
     LoadRemoteDataBloc loadRemoteDataBloc =
         BlocProvider.of<LoadRemoteDataBloc>(context);
+    FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
     return BlocBuilder<LoadRemoteDataBloc, LoadRemoteDataState>(
       builder: (context, state) => state.maybeMap(
         orElse: () => CircularProgressIndicator(),
@@ -39,6 +40,9 @@ class Projects extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
+
+                      
+                      //setProjectFilter
                       projectFilterBloc.add(ProjectFilterEvent.setProjectFilter(
                         projectEntityList: loadRemoteDataBloc.loadedProjectData,
                         projectTitle: state.map(
@@ -52,6 +56,7 @@ class Projects extends StatelessWidget {
                                 .loadedProjectData[index].title),
                       ));
 
+                      //Navigate to ProjectFocusPage 
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => ProjectFocusPage(
@@ -67,6 +72,10 @@ class Projects extends StatelessWidget {
                           ),
                         ),
                       );
+
+                      //Reset Filter
+                      filterBloc.add(FilterEvent.resetFilter(
+                          loadRemoteDataBloc.loadedProjectData));
                     },
                     child: Text(
                       state.map(

@@ -12,7 +12,7 @@ part 'project_filter_bloc.freezed.dart';
 class ProjectFilterBloc extends Bloc<ProjectFilterEvent, ProjectFilterState> {
   FilterProjectByTitle filterProjectByTitle;
 
-  ProjectFilterBloc({required this.filterProjectByTitle}) : super(_Initial()) {
+  ProjectFilterBloc({required this.filterProjectByTitle}) : super(_ResetFilterState()) {
     on<_SetProjectFilterEvent>((event, emit) {
       emit(
         _FilteredByProject(
@@ -23,5 +23,7 @@ class ProjectFilterBloc extends Bloc<ProjectFilterEvent, ProjectFilterState> {
         ),
       );
     });
+
+    on<_ResetFilterEvent>((event, emit) => emit(_ResetFilterState()));
   }
 }

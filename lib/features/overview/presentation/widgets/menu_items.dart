@@ -5,11 +5,15 @@ import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/export_core_files.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 
 class MenuItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    LoadRemoteDataBloc loadRemoteDataBloc = BlocProvider.of(context);
+    ProjectFilterBloc projectFilterBloc =
+        BlocProvider.of<ProjectFilterBloc>(context);
+    LoadRemoteDataBloc loadRemoteDataBloc =
+        BlocProvider.of<LoadRemoteDataBloc>(context);
     FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
     return BlocBuilder<FilterButtonBloc, FilterButtonState>(
         builder: (context, state) {
@@ -85,24 +89,42 @@ class MenuItems extends StatelessWidget {
                                           onTap: () {
                                             state.maybeMap(
                                               orElse: () => "",
-                                              typeFilterState: (_) =>
-                                                  filterBloc.add(
-                                                      FilterEvent.setTypeFilter(
-                                                          filter: BuildTypeLists
-                                                                  .appTypeList[
-                                                              i][index], projectEntityList: loadRemoteDataBloc.loadedProjectData)),
-                                              elementFilterState: (_) =>
-                                                  filterBloc.add(FilterEvent
-                                                      .setElementFilter(
-                                                          filter: BuildElementLists
-                                                                  .globalItemList[
-                                                              i][index], projectEntityList: loadRemoteDataBloc.loadedProjectData)),
-                                              patternFilterState: (_) =>
-                                                  filterBloc.add(FilterEvent
-                                                      .setPatternFilter(
-                                                          filter: BuildPatternLists
-                                                                  .globalItemList[
-                                                              i][index], projectEntityList: loadRemoteDataBloc.loadedProjectData)),
+                                              typeFilterState: (_) => filterBloc
+                                                  .add(FilterEvent.setTypeFilter(
+                                                      filter: BuildTypeLists
+                                                              .appTypeList[i]
+                                                          [index],
+                                                      projectEntityList: projectFilterBloc.state.map(
+                                                          reset: (_) =>
+                                                              loadRemoteDataBloc
+                                                                  .loadedProjectData,
+                                                          filtered: (filterState) =>
+                                                              filterState
+                                                                  .projectEntityList))),
+                                              elementFilterState: (_) => filterBloc
+                                                  .add(FilterEvent.setElementFilter(
+                                                      filter: BuildElementLists
+                                                              .globalItemList[i]
+                                                          [index],
+                                                      projectEntityList: projectFilterBloc.state.map(
+                                                          reset: (_) =>
+                                                              loadRemoteDataBloc
+                                                                  .loadedProjectData,
+                                                          filtered: (filterState) =>
+                                                              filterState
+                                                                  .projectEntityList))),
+                                              patternFilterState: (_) => filterBloc
+                                                  .add(FilterEvent.setPatternFilter(
+                                                      filter: BuildPatternLists
+                                                              .globalItemList[i]
+                                                          [index],
+                                                      projectEntityList: projectFilterBloc.state.map(
+                                                          reset: (_) =>
+                                                              loadRemoteDataBloc
+                                                                  .loadedProjectData,
+                                                          filtered: (filterState) =>
+                                                              filterState
+                                                                  .projectEntityList))),
                                             );
                                           },
                                           child: Text(
