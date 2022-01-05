@@ -7,4 +7,5 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   injection.configureDependencies();
   runApp(WebApp());
+  
 }
