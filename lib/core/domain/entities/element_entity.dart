@@ -1,4 +1,4 @@
-import 'package:neon_web/core/enums.dart';
+import 'package:neon_web/core/util/enums.dart';
 
 class ElementEntity {
   final String? header;

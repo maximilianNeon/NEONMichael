@@ -8,7 +8,6 @@ import 'package:neon_web/core/domain/usecases/build_type_lists.dart';
 import 'package:neon_web/features/overview/SearchFeature/domain/usecase/search_data.dart';
 import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
-import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
 
 // ignore: always_use_package_imports
 import 'load_remote_data_bloc.dart';

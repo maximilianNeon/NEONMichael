@@ -23,17 +23,14 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       required this.filterDataByElement,
       required this.filterDataByPattern,
       required this.filterDataByType})
-      : super(_EmptyFilterState(
-            projectEntitesList: loadRemoteDataBloc.loadedProjectData)) {
-    
-
+      : super(_EmptyFilterState()) {
     on<_ElementFilterEvent>(
       (event, emit) => emit(
         _ElementFilterState(
           filteredByElements: filterDataByElement.call(
             params: ElementFilterParams(
               elemtentFilter: event.filter,
-              projectEntityList: loadRemoteDataBloc.loadedProjectData,
+              projectEntityList: event.projectEntityList,
             ),
           ),
         ),
@@ -46,7 +43,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
           filteredByPatternList: filterDataByPattern.call(
             params: FilterPatterParams(
                 patternFilter: event.filter,
-                projectEntityList: loadRemoteDataBloc.loadedProjectData),
+                projectEntityList: event.projectEntityList),
           ),
         ),
       ),
@@ -58,7 +55,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
           filterdByTypeList: filterDataByType.call(
             params: TypeFilterParams(
                 typeFilter: event.filter,
-                projectEntityList: loadRemoteDataBloc.loadedProjectData),
+                projectEntityList: event.projectEntityList),
           ),
         ),
       ),
@@ -66,8 +63,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
 
     on<_ResetFilterEvent>(
       (event, emit) => emit(
-        _EmptyFilterState(
-            projectEntitesList: loadRemoteDataBloc.loadedProjectData),
+        _EmptyFilterState(),
       ),
     );
   }

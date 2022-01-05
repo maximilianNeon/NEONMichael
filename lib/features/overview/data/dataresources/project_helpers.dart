@@ -4,8 +4,7 @@ import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
-import 'package:neon_web/core/enums.dart';
-import 'package:neon_web/features/overview/domain/usecases/filter_button_list.dart';
+import 'package:neon_web/core/util/enums.dart';
 
 mixin ProjectHelpers {
   static List<ProjectEntity> mockProjects1 = [

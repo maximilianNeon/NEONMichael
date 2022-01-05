@@ -4,7 +4,7 @@ part of 'filter_bloc.dart';
 class FilterState with _$FilterState {
   
   const factory FilterState.empty(
-      {required List<ProjectEntity> projectEntitesList}) = _EmptyFilterState;
+      ) = _EmptyFilterState;
   const factory FilterState.filteredByPattern(
           {required List<ProjectEntity> filteredByPatternList}) =
       _PatternFilterState;

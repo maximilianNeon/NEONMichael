@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
-import 'package:neon_web/core/enums.dart';
+import 'package:neon_web/core/util/enums.dart';
 
 class ProjectEntity {
   final String title;

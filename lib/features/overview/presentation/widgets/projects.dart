@@ -10,6 +10,8 @@ import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_b
 class Projects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    LoadRemoteDataBloc loadRemoteDataBloc =
+        BlocProvider.of<LoadRemoteDataBloc>(context);
     return BlocBuilder<LoadRemoteDataBloc, LoadRemoteDataState>(
       builder: (context, state) => state.maybeMap(
         orElse: () => CircularProgressIndicator(),
@@ -24,7 +26,7 @@ class Projects extends StatelessWidget {
                 filteredByPattern: (state) =>
                     state.filteredByPatternList.length,
                 filteredByType: (state) => state.filterdByTypeList.length,
-                empty: (state) => state.projectEntitesList.length),
+                empty: (_) => loadRemoteDataBloc.loadedProjectData.length),
             itemBuilder: (context, index) {
               return Column(
                 mainAxisSize: MainAxisSize.max,
@@ -32,9 +34,7 @@ class Projects extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: (){
-                      
-                    },
+                    onTap: () {},
                     child: Text(
                       state.map(
                           filteredByElements: (state) =>
@@ -43,8 +43,8 @@ class Projects extends StatelessWidget {
                               state.filteredByPatternList[index].title,
                           filteredByType: (state) =>
                               state.filterdByTypeList[index].title,
-                          empty: (state) =>
-                              state.projectEntitesList[index].title),
+                          empty: (_) => loadRemoteDataBloc
+                              .loadedProjectData[index].title),
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -72,8 +72,8 @@ class Projects extends StatelessWidget {
                                     .filteredByPatternList[index].assets.length,
                                 filteredByType: (state) => state
                                     .filterdByTypeList[index].assets.length,
-                                empty: (state) => state
-                                    .projectEntitesList[index].assets.length),
+                                empty: (state) => loadRemoteDataBloc
+                                    .loadedProjectData[index].assets.length),
                             itemBuilder: (context, i) {
                               return GestureDetector(
                                   onTap: () {
@@ -99,8 +99,8 @@ class Projects extends StatelessWidget {
                                                     .filterdByTypeList[index]
                                                     .assets[i]
                                                     .imageUrl,
-                                                empty: (state) => state
-                                                    .projectEntitesList[index]
+                                                empty: (_) => loadRemoteDataBloc
+                                                    .loadedProjectData[index]
                                                     .assets[i]
                                                     .imageUrl),
                                             project: state.map(
@@ -112,8 +112,8 @@ class Projects extends StatelessWidget {
                                                         index],
                                                 filteredByType: (state) => state
                                                     .filterdByTypeList[index],
-                                                empty: (state) => state
-                                                    .projectEntitesList[index]),
+                                                empty: (_) => loadRemoteDataBloc
+                                                    .loadedProjectData[index]),
                                             projectIndex: state.map(
                                                 filteredByElements: (state) =>
                                                     state
@@ -131,10 +131,12 @@ class Projects extends StatelessWidget {
                                                     .filterdByTypeList[index]
                                                     .assets[i]
                                                     .id,
-                                                empty: (state) => state
-                                                    .projectEntitesList[index]
-                                                    .assets[i]
-                                                    .id),
+                                                empty: (state) =>
+                                                    loadRemoteDataBloc
+                                                        .loadedProjectData[
+                                                            index]
+                                                        .assets[i]
+                                                        .id),
                                           );
                                         },
                                       ),
@@ -150,8 +152,8 @@ class Projects extends StatelessWidget {
                                     height: 250,
                                     child: Hero(
                                       tag: state.map(
-                                        empty: (state) => state
-                                            .projectEntitesList[index]
+                                        empty: (_) => loadRemoteDataBloc
+                                            .loadedProjectData[index]
                                             .assets[i]
                                             .id
                                             .toString(),
@@ -173,8 +175,8 @@ class Projects extends StatelessWidget {
                                       ),
                                       child: Image.network(
                                         state.map(
-                                          empty: (state) => state
-                                              .projectEntitesList[index]
+                                          empty: (state) => loadRemoteDataBloc
+                                              .loadedProjectData[index]
                                               .assets[i]
                                               .imageUrl,
                                           filteredByPattern: (state) => state

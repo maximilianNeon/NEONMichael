@@ -25,11 +25,11 @@ class WebApp extends StatelessWidget {
         ),
         BlocProvider<FilterButtonBloc>(
             create: (context) => getIt<FilterButtonBloc>()),
-        BlocProvider(create: (context) => getIt<FilterBloc>()..add(FilterEvent.resetFilter()))
+        BlocProvider(create: (context) => getIt<FilterBloc>())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:  OverviewPage(),
+        home: OverviewPage(),
       ),
     );
   }

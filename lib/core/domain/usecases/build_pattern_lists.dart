@@ -1,5 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:neon_web/core/enums.dart';
+import 'package:neon_web/core/util/enums.dart';
 
 mixin BuildPatternLists {
   static final onboarding = EnumToString.toList(OnboardingPatterns.values);

@@ -4,10 +4,12 @@ import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filte
 import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/export_core_files.dart';
+import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 
 class MenuItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    LoadRemoteDataBloc loadRemoteDataBloc = BlocProvider.of(context);
     FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
     return BlocBuilder<FilterButtonBloc, FilterButtonState>(
         builder: (context, state) {
@@ -88,19 +90,19 @@ class MenuItems extends StatelessWidget {
                                                       FilterEvent.setTypeFilter(
                                                           filter: BuildTypeLists
                                                                   .appTypeList[
-                                                              i][index])),
+                                                              i][index], projectEntityList: loadRemoteDataBloc.loadedProjectData)),
                                               elementFilterState: (_) =>
                                                   filterBloc.add(FilterEvent
                                                       .setElementFilter(
                                                           filter: BuildElementLists
                                                                   .globalItemList[
-                                                              i][index])),
+                                                              i][index], projectEntityList: loadRemoteDataBloc.loadedProjectData)),
                                               patternFilterState: (_) =>
                                                   filterBloc.add(FilterEvent
                                                       .setPatternFilter(
                                                           filter: BuildPatternLists
                                                                   .globalItemList[
-                                                              i][index])),
+                                                              i][index], projectEntityList: loadRemoteDataBloc.loadedProjectData)),
                                             );
                                           },
                                           child: Text(
