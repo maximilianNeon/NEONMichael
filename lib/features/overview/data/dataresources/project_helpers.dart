@@ -46,76 +46,8 @@ mixin ProjectHelpers {
               id: 15,
               elements: [ElementEntity(item: ViewElements.Banner)],
               patterns: [PatternEntity(item: DataPatterns.Progress)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title1',
-              id: 11,
-              elements: [
-                ElementEntity(item: BarElements.NavigationDrawer),
-                ElementEntity(item: BarElements.Searchbar)
-              ],
-              patterns: [
-                PatternEntity(item: ActionsPatterns.AddAndCreate)
-              ]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title2',
-              id: 12,
-              elements: [ElementEntity(item: ControlElements.Button)],
-              patterns: [PatternEntity(item: ActionsPatterns.BanAndBlock)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title3',
-              id: 13,
-              elements: [ElementEntity(item: ImageElements.AnimationAndVideo)],
-              patterns: [PatternEntity(item: MisPatterns.Misc)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title4',
-              id: 14,
-              elements: [ElementEntity(item: ViewElements.Badge)],
-              patterns: [PatternEntity(item: SocialPatterns.Leaderboard)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title5',
-              id: 15,
-              elements: [ElementEntity(item: ViewElements.Banner)],
-              patterns: [PatternEntity(item: DataPatterns.Progress)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title1',
-              id: 11,
-              elements: [
-                ElementEntity(item: BarElements.NavigationDrawer),
-                ElementEntity(item: BarElements.Searchbar)
-              ],
-              patterns: [
-                PatternEntity(item: ActionsPatterns.AddAndCreate)
-              ]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title2',
-              id: 12,
-              elements: [ElementEntity(item: ControlElements.Button)],
-              patterns: [PatternEntity(item: ActionsPatterns.BanAndBlock)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title3',
-              id: 13,
-              elements: [ElementEntity(item: ImageElements.AnimationAndVideo)],
-              patterns: [PatternEntity(item: MisPatterns.Misc)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title4',
-              id: 14,
-              elements: [ElementEntity(item: ViewElements.Badge)],
-              patterns: [PatternEntity(item: SocialPatterns.Leaderboard)]),
-          AssetEntity(
-              imageUrl: 'https://picsum.photos/200/300',
-              title: 'title5',
-              id: 15,
-              elements: [ElementEntity(item: ViewElements.Banner)],
-              patterns: [PatternEntity(item: DataPatterns.Progress)]),
+          
+         
         ],
         description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
