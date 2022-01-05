@@ -6,10 +6,14 @@ import 'package:neon_web/features/details/presentation/detail_screen.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
+import 'package:neon_web/features/overview/presentation/pages/project_focus_page.dart';
 
 class Projects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ProjectFilterBloc projectFilterBloc =
+        BlocProvider.of<ProjectFilterBloc>(context);
     LoadRemoteDataBloc loadRemoteDataBloc =
         BlocProvider.of<LoadRemoteDataBloc>(context);
     return BlocBuilder<LoadRemoteDataBloc, LoadRemoteDataState>(
@@ -34,7 +38,36 @@ class Projects extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      projectFilterBloc.add(ProjectFilterEvent.setProjectFilter(
+                        projectEntityList: loadRemoteDataBloc.loadedProjectData,
+                        projectTitle: state.map(
+                            filteredByElements: (state) =>
+                                state.filteredByElements[index].title,
+                            filteredByPattern: (state) =>
+                                state.filteredByPatternList[index].title,
+                            filteredByType: (state) =>
+                                state.filterdByTypeList[index].title,
+                            empty: (_) => loadRemoteDataBloc
+                                .loadedProjectData[index].title),
+                      ));
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ProjectFocusPage(
+                            projectTitle: state.map(
+                                filteredByElements: (state) =>
+                                    state.filteredByElements[index].title,
+                                filteredByPattern: (state) =>
+                                    state.filteredByPatternList[index].title,
+                                filteredByType: (state) =>
+                                    state.filterdByTypeList[index].title,
+                                empty: (_) => loadRemoteDataBloc
+                                    .loadedProjectData[index].title),
+                          ),
+                        ),
+                      );
+                    },
                     child: Text(
                       state.map(
                           filteredByElements: (state) =>

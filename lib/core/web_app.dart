@@ -5,6 +5,7 @@ import 'package:neon_web/features/overview/SearchFeature/presentation/bloc/searc
 import 'package:neon_web/features/overview/domain/usecases/load_projectdata.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/overview_page.dart';
 import 'package:neon_web/features/overview/presentation/pages/project_focus_page.dart';
 // ignore: always_use_package_imports
@@ -25,11 +26,13 @@ class WebApp extends StatelessWidget {
         ),
         BlocProvider<FilterButtonBloc>(
             create: (context) => getIt<FilterButtonBloc>()),
-        BlocProvider(create: (context) => getIt<FilterBloc>())
+        BlocProvider(create: (context) => getIt<FilterBloc>()),
+        BlocProvider(create: (context) => getIt<ProjectFilterBloc>())
+
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: OverviewPage(),
+        home:   OverviewPage(),
       ),
     );
   }

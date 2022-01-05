@@ -22,9 +22,11 @@ class _$ProjectFilterEventTearOff {
   }
 
   _SetProjectFilterEvent setProjectFilter(
-      {required List<ProjectEntity> projectEntityList}) {
+      {required List<ProjectEntity> projectEntityList,
+      required String projectTitle}) {
     return _SetProjectFilterEvent(
       projectEntityList: projectEntityList,
+      projectTitle: projectTitle,
     );
   }
 }
@@ -37,20 +39,25 @@ mixin _$ProjectFilterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(List<ProjectEntity> projectEntityList)
+    required TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)
         setProjectFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<ProjectEntity> projectEntityList)? setProjectFilter,
+    TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)?
+        setProjectFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<ProjectEntity> projectEntityList)? setProjectFilter,
+    TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)?
+        setProjectFilter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +139,8 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(List<ProjectEntity> projectEntityList)
+    required TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)
         setProjectFilter,
   }) {
     return started();
@@ -142,7 +150,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<ProjectEntity> projectEntityList)? setProjectFilter,
+    TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)?
+        setProjectFilter,
   }) {
     return started?.call();
   }
@@ -151,7 +161,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<ProjectEntity> projectEntityList)? setProjectFilter,
+    TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)?
+        setProjectFilter,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -201,7 +213,7 @@ abstract class _$SetProjectFilterEventCopyWith<$Res> {
   factory _$SetProjectFilterEventCopyWith(_SetProjectFilterEvent value,
           $Res Function(_SetProjectFilterEvent) then) =
       __$SetProjectFilterEventCopyWithImpl<$Res>;
-  $Res call({List<ProjectEntity> projectEntityList});
+  $Res call({List<ProjectEntity> projectEntityList, String projectTitle});
 }
 
 /// @nodoc
@@ -218,12 +230,17 @@ class __$SetProjectFilterEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object? projectEntityList = freezed,
+    Object? projectTitle = freezed,
   }) {
     return _then(_SetProjectFilterEvent(
       projectEntityList: projectEntityList == freezed
           ? _value.projectEntityList
           : projectEntityList // ignore: cast_nullable_to_non_nullable
               as List<ProjectEntity>,
+      projectTitle: projectTitle == freezed
+          ? _value.projectTitle
+          : projectTitle // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -231,14 +248,17 @@ class __$SetProjectFilterEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
-  const _$_SetProjectFilterEvent({required this.projectEntityList});
+  const _$_SetProjectFilterEvent(
+      {required this.projectEntityList, required this.projectTitle});
 
   @override
   final List<ProjectEntity> projectEntityList;
+  @override
+  final String projectTitle;
 
   @override
   String toString() {
-    return 'ProjectFilterEvent.setProjectFilter(projectEntityList: $projectEntityList)';
+    return 'ProjectFilterEvent.setProjectFilter(projectEntityList: $projectEntityList, projectTitle: $projectTitle)';
   }
 
   @override
@@ -247,12 +267,16 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
         (other.runtimeType == runtimeType &&
             other is _SetProjectFilterEvent &&
             const DeepCollectionEquality()
-                .equals(other.projectEntityList, projectEntityList));
+                .equals(other.projectEntityList, projectEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.projectTitle, projectTitle));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(projectEntityList));
+      runtimeType,
+      const DeepCollectionEquality().hash(projectEntityList),
+      const DeepCollectionEquality().hash(projectTitle));
 
   @JsonKey(ignore: true)
   @override
@@ -264,30 +288,35 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(List<ProjectEntity> projectEntityList)
+    required TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)
         setProjectFilter,
   }) {
-    return setProjectFilter(projectEntityList);
+    return setProjectFilter(projectEntityList, projectTitle);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<ProjectEntity> projectEntityList)? setProjectFilter,
+    TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)?
+        setProjectFilter,
   }) {
-    return setProjectFilter?.call(projectEntityList);
+    return setProjectFilter?.call(projectEntityList, projectTitle);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<ProjectEntity> projectEntityList)? setProjectFilter,
+    TResult Function(
+            List<ProjectEntity> projectEntityList, String projectTitle)?
+        setProjectFilter,
     required TResult orElse(),
   }) {
     if (setProjectFilter != null) {
-      return setProjectFilter(projectEntityList);
+      return setProjectFilter(projectEntityList, projectTitle);
     }
     return orElse();
   }
@@ -326,10 +355,11 @@ class _$_SetProjectFilterEvent implements _SetProjectFilterEvent {
 
 abstract class _SetProjectFilterEvent implements ProjectFilterEvent {
   const factory _SetProjectFilterEvent(
-          {required List<ProjectEntity> projectEntityList}) =
-      _$_SetProjectFilterEvent;
+      {required List<ProjectEntity> projectEntityList,
+      required String projectTitle}) = _$_SetProjectFilterEvent;
 
   List<ProjectEntity> get projectEntityList;
+  String get projectTitle;
   @JsonKey(ignore: true)
   _$SetProjectFilterEventCopyWith<_SetProjectFilterEvent> get copyWith =>
       throw _privateConstructorUsedError;

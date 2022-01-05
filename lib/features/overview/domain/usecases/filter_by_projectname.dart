@@ -6,7 +6,7 @@ import 'package:neon_web/core/domain/usecases/usecase.dart';
 import 'package:neon_web/core/error/failure.dart';
 
 @lazySingleton
-class FilterDataByElement
+class FilterProjectByTitle
     extends UseCaseInternal<List<ProjectEntity>, ProjectFilterParams> {
   @override
   List<ProjectEntity> call({required ProjectFilterParams params}) {
