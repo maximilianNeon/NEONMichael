@@ -4,9 +4,25 @@ import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/presentation/widgets/project_data_input.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_container.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 
 class ProjectUploadPage extends StatelessWidget {
-  const ProjectUploadPage({Key? key}) : super(key: key);
+  ProjectUploadPage({Key? key}) : super(key: key);
+
+  late DropzoneViewController dropzoneViewController;
+
+  Future acceptFile(dynamic event) async {
+    print(event);
+    String mime = await dropzoneViewController.getFileMIME(event);
+    String url = await dropzoneViewController.createFileUrl(event);
+    int fileSize = await dropzoneViewController.getFileSize(event);
+    String fileName = await dropzoneViewController.getFilename(event);
+
+    print(url);
+    print(fileSize);
+    print(fileName);
+    print(mime);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +78,23 @@ class ProjectUploadPage extends StatelessWidget {
                           height: 200,
                           width: 200,
                           color: Colors.grey,
+                          child: Stack(children: [
+                            DropzoneView(
+                              onDrop: (dynamic event) => acceptFile(event),
+                              onCreated: (controller) =>
+                                  this.dropzoneViewController = controller,
+                            ),
+                            Center(
+                              child: GestureDetector(
+                                  onTap: () async {
+                                    final event = await dropzoneViewController.pickFiles();
+
+                                    if(event.isEmpty) return;
+
+                                    acceptFile(event.first);
+                                  }, child: Text("Dropzone")),
+                            )
+                          ]),
                         )
                       ])
                 ],

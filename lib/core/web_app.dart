@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
 import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart';
@@ -28,7 +29,8 @@ class WebApp extends StatelessWidget {
         BlocProvider<FilterButtonBloc>(
             create: (context) => getIt<FilterButtonBloc>()),
         BlocProvider(create: (context) => getIt<FilterBloc>()),
-        BlocProvider(create: (context) => getIt<ProjectFilterBloc>())
+        BlocProvider(create: (context) => getIt<ProjectFilterBloc>()),
+        BlocProvider(create: (context) => getIt<ProjectEditingBloc>())
 
       ],
       child: MaterialApp(

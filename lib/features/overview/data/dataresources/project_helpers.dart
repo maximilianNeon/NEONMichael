@@ -52,7 +52,7 @@ mixin ProjectHelpers {
         description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
         projectType: ProjectType.App,
-        icon: const Icon(Icons.access_alarm)),
+        imageUrl: 'https://picsum.photos/200/300' ),
     ProjectEntity(
         title: 'New Project',
         assets: [
@@ -95,7 +95,7 @@ mixin ProjectHelpers {
         description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
         projectType: ProjectType.WebDesktop,
-        icon: const Icon(Icons.access_alarm)),
+         imageUrl: 'https://picsum.photos/200/300'),
     ProjectEntity(
         title: 'Mac Life',
         assets: [
@@ -144,61 +144,5 @@ mixin ProjectHelpers {
         description:
             'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
         projectType: ProjectType.WebMobile,
-        icon: const Icon(Icons.access_alarm)),
-  ];
-
-  static List<ProjectEntity> chosenProjectTypeList = [];
-
-  static List<ProjectEntity> chooseListItemsForElements(String filterItem) {
-    final chosenProjects = mockProjects1.where((project) {
-      final assetIndex = project.assets.indexWhere((asset) {
-        final elementIndex = asset.elements.indexWhere((element) {
-          final itemIndex = element.item.toString().contains(filterItem);
-          return itemIndex;
-        });
-        return elementIndex >= 0;
-      });
-      return assetIndex >= 0;
-    }).toList();
-    return chosenProjects;
-  }
-
-  static List<ProjectEntity> chooseListItemForPatterns(String filterItem) {
-    final chosenProjects = mockProjects1.where((project) {
-      final assetIndex = project.assets.indexWhere((asset) {
-        final patternIndex = asset.patterns.indexWhere((pattern) {
-          final itemIndex = pattern.item.toString().contains(filterItem);
-          return itemIndex;
-        });
-        return patternIndex >= 0;
-      });
-      return assetIndex >= 0;
-    }).toList();
-    return chosenProjects;
-  }
-
-  static List<ProjectEntity> chooseListItemForType(String filterItem) {
-    final chosenProjects = mockProjects1
-        .where((project) => project.projectType.toString().contains(filterItem))
-        .toList();
-    return chosenProjects;
-  }
-
-  //static List<ProjectEntity> chooseFilterByFilterType(String filterItem) {
-  //  if (FilterButtonList.filterButtons[0]) {
-  //    return chosenProjectTypeList = chooseListItemForType(filterItem);
-  //  } else if (FilterButtonList.filterButtons[1]) {
-  //    return chosenProjectTypeList = chooseListItemForPatterns(filterItem);
-  //  } else if (FilterButtonList.filterButtons[2]) {
-  //    return chosenProjectTypeList = chooseListItemsForElements(filterItem);
-  //  }
-  //  return ProjectHelpers.chosenProjectTypeList;
-  //}
-
-  static List<ProjectEntity> chooseListItemsByTitles(String filterItem) {
-    final chosenProjectByTitle = mockProjects1
-        .where((element) => element.title.contains(filterItem))
-        .toList();
-    return chosenProjectByTitle;
-  }
-}
+         imageUrl: 'https://picsum.photos/200/300'),
+  ]; }

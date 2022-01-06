@@ -9,8 +9,6 @@ abstract class UseCaseInternal<Type,Params> {
   Type call({required Params params});
 }
 
-
-
 class NoParams extends Equatable {
   @override
   List<Object?> get props => [];

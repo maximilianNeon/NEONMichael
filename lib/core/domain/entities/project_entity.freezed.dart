@@ -22,13 +22,13 @@ class _$ProjectEntityTearOff {
       required ProjectType projectType,
       required String description,
       required List<AssetEntity> assets,
-      required Icon icon}) {
+      required String imageUrl}) {
     return _ProjectEntity(
       title: title,
       projectType: projectType,
       description: description,
       assets: assets,
-      icon: icon,
+      imageUrl: imageUrl,
     );
   }
 }
@@ -42,7 +42,7 @@ mixin _$ProjectEntity {
   ProjectType get projectType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<AssetEntity> get assets => throw _privateConstructorUsedError;
-  Icon get icon => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProjectEntityCopyWith<ProjectEntity> get copyWith =>
@@ -59,7 +59,7 @@ abstract class $ProjectEntityCopyWith<$Res> {
       ProjectType projectType,
       String description,
       List<AssetEntity> assets,
-      Icon icon});
+      String imageUrl});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$ProjectEntityCopyWithImpl<$Res>
     Object? projectType = freezed,
     Object? description = freezed,
     Object? assets = freezed,
-    Object? icon = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -96,10 +96,10 @@ class _$ProjectEntityCopyWithImpl<$Res>
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
-      icon: icon == freezed
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as Icon,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -116,7 +116,7 @@ abstract class _$ProjectEntityCopyWith<$Res>
       ProjectType projectType,
       String description,
       List<AssetEntity> assets,
-      Icon icon});
+      String imageUrl});
 }
 
 /// @nodoc
@@ -136,7 +136,7 @@ class __$ProjectEntityCopyWithImpl<$Res>
     Object? projectType = freezed,
     Object? description = freezed,
     Object? assets = freezed,
-    Object? icon = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_ProjectEntity(
       title: title == freezed
@@ -155,10 +155,10 @@ class __$ProjectEntityCopyWithImpl<$Res>
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
-      icon: icon == freezed
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as Icon,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -171,7 +171,7 @@ class _$_ProjectEntity implements _ProjectEntity {
       required this.projectType,
       required this.description,
       required this.assets,
-      required this.icon});
+      required this.imageUrl});
 
   @override
   final String title;
@@ -182,11 +182,11 @@ class _$_ProjectEntity implements _ProjectEntity {
   @override
   final List<AssetEntity> assets;
   @override
-  final Icon icon;
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, icon: $icon)';
+    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, imageUrl: $imageUrl)';
   }
 
   @override
@@ -200,7 +200,7 @@ class _$_ProjectEntity implements _ProjectEntity {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.assets, assets) &&
-            const DeepCollectionEquality().equals(other.icon, icon));
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
@@ -210,7 +210,7 @@ class _$_ProjectEntity implements _ProjectEntity {
       const DeepCollectionEquality().hash(projectType),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(assets),
-      const DeepCollectionEquality().hash(icon));
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -224,7 +224,7 @@ abstract class _ProjectEntity implements ProjectEntity {
       required ProjectType projectType,
       required String description,
       required List<AssetEntity> assets,
-      required Icon icon}) = _$_ProjectEntity;
+      required String imageUrl}) = _$_ProjectEntity;
 
   @override
   String get title;
@@ -235,7 +235,7 @@ abstract class _ProjectEntity implements ProjectEntity {
   @override
   List<AssetEntity> get assets;
   @override
-  Icon get icon;
+  String get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$ProjectEntityCopyWith<_ProjectEntity> get copyWith =>

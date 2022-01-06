@@ -21,8 +21,22 @@ class _$ProjectEditingEventTearOff {
     return const _Started();
   }
 
-  _Add add() {
-    return const _Add();
+  _AddName addName({required String name}) {
+    return _AddName(
+      name: name,
+    );
+  }
+
+  _AddType addType({required String type}) {
+    return _AddType(
+      type: type,
+    );
+  }
+
+  _AddDescription addDescription({required String description}) {
+    return _AddDescription(
+      description: description,
+    );
   }
 }
 
@@ -34,38 +48,50 @@ mixin _$ProjectEditingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() add,
+    required TResult Function(String name) addName,
+    required TResult Function(String type) addType,
+    required TResult Function(String description) addDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? add,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? add,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Add value) add,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Add value)? add,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Add value)? add,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,7 +154,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() add,
+    required TResult Function(String name) addName,
+    required TResult Function(String type) addType,
+    required TResult Function(String description) addDescription,
   }) {
     return started();
   }
@@ -137,7 +165,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? add,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
   }) {
     return started?.call();
   }
@@ -146,7 +176,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? add,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -159,7 +191,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Add value) add,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
   }) {
     return started(this);
   }
@@ -168,7 +202,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Add value)? add,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
   }) {
     return started?.call(this);
   }
@@ -177,7 +213,9 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Add value)? add,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -192,67 +230,98 @@ abstract class _Started implements ProjectEditingEvent {
 }
 
 /// @nodoc
-abstract class _$AddCopyWith<$Res> {
-  factory _$AddCopyWith(_Add value, $Res Function(_Add) then) =
-      __$AddCopyWithImpl<$Res>;
+abstract class _$AddNameCopyWith<$Res> {
+  factory _$AddNameCopyWith(_AddName value, $Res Function(_AddName) then) =
+      __$AddNameCopyWithImpl<$Res>;
+  $Res call({String name});
 }
 
 /// @nodoc
-class __$AddCopyWithImpl<$Res> extends _$ProjectEditingEventCopyWithImpl<$Res>
-    implements _$AddCopyWith<$Res> {
-  __$AddCopyWithImpl(_Add _value, $Res Function(_Add) _then)
-      : super(_value, (v) => _then(v as _Add));
+class __$AddNameCopyWithImpl<$Res>
+    extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$AddNameCopyWith<$Res> {
+  __$AddNameCopyWithImpl(_AddName _value, $Res Function(_AddName) _then)
+      : super(_value, (v) => _then(v as _AddName));
 
   @override
-  _Add get _value => super._value as _Add;
+  _AddName get _value => super._value as _AddName;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_AddName(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_Add implements _Add {
-  const _$_Add();
+class _$_AddName implements _AddName {
+  const _$_AddName({required this.name});
+
+  @override
+  final String name;
 
   @override
   String toString() {
-    return 'ProjectEditingEvent.add()';
+    return 'ProjectEditingEvent.addName(name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Add);
+        (other.runtimeType == runtimeType &&
+            other is _AddName &&
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(name));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddNameCopyWith<_AddName> get copyWith =>
+      __$AddNameCopyWithImpl<_AddName>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function() add,
+    required TResult Function(String name) addName,
+    required TResult Function(String type) addType,
+    required TResult Function(String description) addDescription,
   }) {
-    return add();
+    return addName(name);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? add,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
   }) {
-    return add?.call();
+    return addName?.call(name);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function()? add,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
     required TResult orElse(),
   }) {
-    if (add != null) {
-      return add();
+    if (addName != null) {
+      return addName(name);
     }
     return orElse();
   }
@@ -261,36 +330,339 @@ class _$_Add implements _Add {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_Add value) add,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
   }) {
-    return add(this);
+    return addName(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Add value)? add,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
   }) {
-    return add?.call(this);
+    return addName?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_Add value)? add,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
     required TResult orElse(),
   }) {
-    if (add != null) {
-      return add(this);
+    if (addName != null) {
+      return addName(this);
     }
     return orElse();
   }
 }
 
-abstract class _Add implements ProjectEditingEvent {
-  const factory _Add() = _$_Add;
+abstract class _AddName implements ProjectEditingEvent {
+  const factory _AddName({required String name}) = _$_AddName;
+
+  String get name;
+  @JsonKey(ignore: true)
+  _$AddNameCopyWith<_AddName> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddTypeCopyWith<$Res> {
+  factory _$AddTypeCopyWith(_AddType value, $Res Function(_AddType) then) =
+      __$AddTypeCopyWithImpl<$Res>;
+  $Res call({String type});
+}
+
+/// @nodoc
+class __$AddTypeCopyWithImpl<$Res>
+    extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$AddTypeCopyWith<$Res> {
+  __$AddTypeCopyWithImpl(_AddType _value, $Res Function(_AddType) _then)
+      : super(_value, (v) => _then(v as _AddType));
+
+  @override
+  _AddType get _value => super._value as _AddType;
+
+  @override
+  $Res call({
+    Object? type = freezed,
+  }) {
+    return _then(_AddType(
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddType implements _AddType {
+  const _$_AddType({required this.type});
+
+  @override
+  final String type;
+
+  @override
+  String toString() {
+    return 'ProjectEditingEvent.addType(type: $type)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddType &&
+            const DeepCollectionEquality().equals(other.type, type));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(type));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddTypeCopyWith<_AddType> get copyWith =>
+      __$AddTypeCopyWithImpl<_AddType>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String name) addName,
+    required TResult Function(String type) addType,
+    required TResult Function(String description) addDescription,
+  }) {
+    return addType(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
+  }) {
+    return addType?.call(type);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
+    required TResult orElse(),
+  }) {
+    if (addType != null) {
+      return addType(type);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
+  }) {
+    return addType(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+  }) {
+    return addType?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    required TResult orElse(),
+  }) {
+    if (addType != null) {
+      return addType(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddType implements ProjectEditingEvent {
+  const factory _AddType({required String type}) = _$_AddType;
+
+  String get type;
+  @JsonKey(ignore: true)
+  _$AddTypeCopyWith<_AddType> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddDescriptionCopyWith<$Res> {
+  factory _$AddDescriptionCopyWith(
+          _AddDescription value, $Res Function(_AddDescription) then) =
+      __$AddDescriptionCopyWithImpl<$Res>;
+  $Res call({String description});
+}
+
+/// @nodoc
+class __$AddDescriptionCopyWithImpl<$Res>
+    extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$AddDescriptionCopyWith<$Res> {
+  __$AddDescriptionCopyWithImpl(
+      _AddDescription _value, $Res Function(_AddDescription) _then)
+      : super(_value, (v) => _then(v as _AddDescription));
+
+  @override
+  _AddDescription get _value => super._value as _AddDescription;
+
+  @override
+  $Res call({
+    Object? description = freezed,
+  }) {
+    return _then(_AddDescription(
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddDescription implements _AddDescription {
+  const _$_AddDescription({required this.description});
+
+  @override
+  final String description;
+
+  @override
+  String toString() {
+    return 'ProjectEditingEvent.addDescription(description: $description)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddDescription &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(description));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddDescriptionCopyWith<_AddDescription> get copyWith =>
+      __$AddDescriptionCopyWithImpl<_AddDescription>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String name) addName,
+    required TResult Function(String type) addType,
+    required TResult Function(String description) addDescription,
+  }) {
+    return addDescription(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
+  }) {
+    return addDescription?.call(description);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String name)? addName,
+    TResult Function(String type)? addType,
+    TResult Function(String description)? addDescription,
+    required TResult orElse(),
+  }) {
+    if (addDescription != null) {
+      return addDescription(description);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
+  }) {
+    return addDescription(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+  }) {
+    return addDescription?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    required TResult orElse(),
+  }) {
+    if (addDescription != null) {
+      return addDescription(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddDescription implements ProjectEditingEvent {
+  const factory _AddDescription({required String description}) =
+      _$_AddDescription;
+
+  String get description;
+  @JsonKey(ignore: true)
+  _$AddDescriptionCopyWith<_AddDescription> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -301,8 +673,10 @@ class _$ProjectEditingStateTearOff {
     return const _Initial();
   }
 
-  _Editing editing() {
-    return const _Editing();
+  _Editing editing({required ProjectEntity projectEntity}) {
+    return _Editing(
+      projectEntity: projectEntity,
+    );
   }
 }
 
@@ -314,19 +688,19 @@ mixin _$ProjectEditingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() editing,
+    required TResult Function(ProjectEntity projectEntity) editing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? editing,
+    TResult Function(ProjectEntity projectEntity)? editing,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? editing,
+    TResult Function(ProjectEntity projectEntity)? editing,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -408,7 +782,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() editing,
+    required TResult Function(ProjectEntity projectEntity) editing,
   }) {
     return initial();
   }
@@ -417,7 +791,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? editing,
+    TResult Function(ProjectEntity projectEntity)? editing,
   }) {
     return initial?.call();
   }
@@ -426,7 +800,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? editing,
+    TResult Function(ProjectEntity projectEntity)? editing,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -475,6 +849,9 @@ abstract class _Initial implements ProjectEditingState {
 abstract class _$EditingCopyWith<$Res> {
   factory _$EditingCopyWith(_Editing value, $Res Function(_Editing) then) =
       __$EditingCopyWithImpl<$Res>;
+  $Res call({ProjectEntity projectEntity});
+
+  $ProjectEntityCopyWith<$Res> get projectEntity;
 }
 
 /// @nodoc
@@ -486,54 +863,85 @@ class __$EditingCopyWithImpl<$Res>
 
   @override
   _Editing get _value => super._value as _Editing;
+
+  @override
+  $Res call({
+    Object? projectEntity = freezed,
+  }) {
+    return _then(_Editing(
+      projectEntity: projectEntity == freezed
+          ? _value.projectEntity
+          : projectEntity // ignore: cast_nullable_to_non_nullable
+              as ProjectEntity,
+    ));
+  }
+
+  @override
+  $ProjectEntityCopyWith<$Res> get projectEntity {
+    return $ProjectEntityCopyWith<$Res>(_value.projectEntity, (value) {
+      return _then(_value.copyWith(projectEntity: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_Editing implements _Editing {
-  const _$_Editing();
+  const _$_Editing({required this.projectEntity});
+
+  @override
+  final ProjectEntity projectEntity;
 
   @override
   String toString() {
-    return 'ProjectEditingState.editing()';
+    return 'ProjectEditingState.editing(projectEntity: $projectEntity)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Editing);
+        (other.runtimeType == runtimeType &&
+            other is _Editing &&
+            const DeepCollectionEquality()
+                .equals(other.projectEntity, projectEntity));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(projectEntity));
+
+  @JsonKey(ignore: true)
+  @override
+  _$EditingCopyWith<_Editing> get copyWith =>
+      __$EditingCopyWithImpl<_Editing>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() editing,
+    required TResult Function(ProjectEntity projectEntity) editing,
   }) {
-    return editing();
+    return editing(projectEntity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? editing,
+    TResult Function(ProjectEntity projectEntity)? editing,
   }) {
-    return editing?.call();
+    return editing?.call(projectEntity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? editing,
+    TResult Function(ProjectEntity projectEntity)? editing,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing();
+      return editing(projectEntity);
     }
     return orElse();
   }
@@ -571,5 +979,10 @@ class _$_Editing implements _Editing {
 }
 
 abstract class _Editing implements ProjectEditingState {
-  const factory _Editing() = _$_Editing;
+  const factory _Editing({required ProjectEntity projectEntity}) = _$_Editing;
+
+  ProjectEntity get projectEntity;
+  @JsonKey(ignore: true)
+  _$EditingCopyWith<_Editing> get copyWith =>
+      throw _privateConstructorUsedError;
 }

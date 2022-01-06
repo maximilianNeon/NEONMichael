@@ -12,6 +12,6 @@ class ProjectEntity with _$ProjectEntity{
   required ProjectType projectType,
   required String description,
   required List<AssetEntity> assets,
-  required Icon icon,}) = _ProjectEntity;
+  required String imageUrl,}) = _ProjectEntity;
   
 }
