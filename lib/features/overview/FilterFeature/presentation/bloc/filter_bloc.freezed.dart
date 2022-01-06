@@ -829,23 +829,29 @@ class _$FilterStateTearOff {
   }
 
   _PatternFilterState filteredByPattern(
-      {required List<ProjectEntity> filteredByPatternList}) {
+      {required List<ProjectEntity> filteredByPatternList,
+      required String actitvatedFilter}) {
     return _PatternFilterState(
       filteredByPatternList: filteredByPatternList,
+      actitvatedFilter: actitvatedFilter,
     );
   }
 
   _ElementFilterState filteredByElements(
-      {required List<ProjectEntity> filteredByElements}) {
+      {required List<ProjectEntity> filteredByElements,
+      required String actitvatedFilter}) {
     return _ElementFilterState(
       filteredByElements: filteredByElements,
+      actitvatedFilter: actitvatedFilter,
     );
   }
 
   _TypeFilterState filteredByType(
-      {required List<ProjectEntity> filterdByTypeList}) {
+      {required List<ProjectEntity> filterdByTypeList,
+      required String actitvatedFilter}) {
     return _TypeFilterState(
       filterdByTypeList: filterdByTypeList,
+      actitvatedFilter: actitvatedFilter,
     );
   }
 }
@@ -858,32 +864,43 @@ mixin _$FilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(List<ProjectEntity> filteredByPatternList)
+    required TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)
         filteredByPattern,
-    required TResult Function(List<ProjectEntity> filteredByElements)
+    required TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)
         filteredByElements,
-    required TResult Function(List<ProjectEntity> filterdByTypeList)
+    required TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)
         filteredByType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -972,11 +989,14 @@ class _$_EmptyFilterState implements _EmptyFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(List<ProjectEntity> filteredByPatternList)
+    required TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)
         filteredByPattern,
-    required TResult Function(List<ProjectEntity> filteredByElements)
+    required TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)
         filteredByElements,
-    required TResult Function(List<ProjectEntity> filterdByTypeList)
+    required TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)
         filteredByType,
   }) {
     return empty();
@@ -986,11 +1006,15 @@ class _$_EmptyFilterState implements _EmptyFilterState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
   }) {
     return empty?.call();
   }
@@ -999,11 +1023,15 @@ class _$_EmptyFilterState implements _EmptyFilterState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1059,7 +1087,8 @@ abstract class _$PatternFilterStateCopyWith<$Res> {
   factory _$PatternFilterStateCopyWith(
           _PatternFilterState value, $Res Function(_PatternFilterState) then) =
       __$PatternFilterStateCopyWithImpl<$Res>;
-  $Res call({List<ProjectEntity> filteredByPatternList});
+  $Res call(
+      {List<ProjectEntity> filteredByPatternList, String actitvatedFilter});
 }
 
 /// @nodoc
@@ -1076,12 +1105,17 @@ class __$PatternFilterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? filteredByPatternList = freezed,
+    Object? actitvatedFilter = freezed,
   }) {
     return _then(_PatternFilterState(
       filteredByPatternList: filteredByPatternList == freezed
           ? _value.filteredByPatternList
           : filteredByPatternList // ignore: cast_nullable_to_non_nullable
               as List<ProjectEntity>,
+      actitvatedFilter: actitvatedFilter == freezed
+          ? _value.actitvatedFilter
+          : actitvatedFilter // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1089,14 +1123,17 @@ class __$PatternFilterStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PatternFilterState implements _PatternFilterState {
-  const _$_PatternFilterState({required this.filteredByPatternList});
+  const _$_PatternFilterState(
+      {required this.filteredByPatternList, required this.actitvatedFilter});
 
   @override
   final List<ProjectEntity> filteredByPatternList;
+  @override
+  final String actitvatedFilter;
 
   @override
   String toString() {
-    return 'FilterState.filteredByPattern(filteredByPatternList: $filteredByPatternList)';
+    return 'FilterState.filteredByPattern(filteredByPatternList: $filteredByPatternList, actitvatedFilter: $actitvatedFilter)';
   }
 
   @override
@@ -1105,12 +1142,16 @@ class _$_PatternFilterState implements _PatternFilterState {
         (other.runtimeType == runtimeType &&
             other is _PatternFilterState &&
             const DeepCollectionEquality()
-                .equals(other.filteredByPatternList, filteredByPatternList));
+                .equals(other.filteredByPatternList, filteredByPatternList) &&
+            const DeepCollectionEquality()
+                .equals(other.actitvatedFilter, actitvatedFilter));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(filteredByPatternList));
+      runtimeType,
+      const DeepCollectionEquality().hash(filteredByPatternList),
+      const DeepCollectionEquality().hash(actitvatedFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -1121,42 +1162,53 @@ class _$_PatternFilterState implements _PatternFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(List<ProjectEntity> filteredByPatternList)
+    required TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)
         filteredByPattern,
-    required TResult Function(List<ProjectEntity> filteredByElements)
+    required TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)
         filteredByElements,
-    required TResult Function(List<ProjectEntity> filterdByTypeList)
+    required TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)
         filteredByType,
   }) {
-    return filteredByPattern(filteredByPatternList);
+    return filteredByPattern(filteredByPatternList, actitvatedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
   }) {
-    return filteredByPattern?.call(filteredByPatternList);
+    return filteredByPattern?.call(filteredByPatternList, actitvatedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
     required TResult orElse(),
   }) {
     if (filteredByPattern != null) {
-      return filteredByPattern(filteredByPatternList);
+      return filteredByPattern(filteredByPatternList, actitvatedFilter);
     }
     return orElse();
   }
@@ -1201,10 +1253,11 @@ class _$_PatternFilterState implements _PatternFilterState {
 
 abstract class _PatternFilterState implements FilterState {
   const factory _PatternFilterState(
-          {required List<ProjectEntity> filteredByPatternList}) =
-      _$_PatternFilterState;
+      {required List<ProjectEntity> filteredByPatternList,
+      required String actitvatedFilter}) = _$_PatternFilterState;
 
   List<ProjectEntity> get filteredByPatternList;
+  String get actitvatedFilter;
   @JsonKey(ignore: true)
   _$PatternFilterStateCopyWith<_PatternFilterState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1215,7 +1268,7 @@ abstract class _$ElementFilterStateCopyWith<$Res> {
   factory _$ElementFilterStateCopyWith(
           _ElementFilterState value, $Res Function(_ElementFilterState) then) =
       __$ElementFilterStateCopyWithImpl<$Res>;
-  $Res call({List<ProjectEntity> filteredByElements});
+  $Res call({List<ProjectEntity> filteredByElements, String actitvatedFilter});
 }
 
 /// @nodoc
@@ -1232,12 +1285,17 @@ class __$ElementFilterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? filteredByElements = freezed,
+    Object? actitvatedFilter = freezed,
   }) {
     return _then(_ElementFilterState(
       filteredByElements: filteredByElements == freezed
           ? _value.filteredByElements
           : filteredByElements // ignore: cast_nullable_to_non_nullable
               as List<ProjectEntity>,
+      actitvatedFilter: actitvatedFilter == freezed
+          ? _value.actitvatedFilter
+          : actitvatedFilter // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1245,14 +1303,17 @@ class __$ElementFilterStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ElementFilterState implements _ElementFilterState {
-  const _$_ElementFilterState({required this.filteredByElements});
+  const _$_ElementFilterState(
+      {required this.filteredByElements, required this.actitvatedFilter});
 
   @override
   final List<ProjectEntity> filteredByElements;
+  @override
+  final String actitvatedFilter;
 
   @override
   String toString() {
-    return 'FilterState.filteredByElements(filteredByElements: $filteredByElements)';
+    return 'FilterState.filteredByElements(filteredByElements: $filteredByElements, actitvatedFilter: $actitvatedFilter)';
   }
 
   @override
@@ -1261,12 +1322,16 @@ class _$_ElementFilterState implements _ElementFilterState {
         (other.runtimeType == runtimeType &&
             other is _ElementFilterState &&
             const DeepCollectionEquality()
-                .equals(other.filteredByElements, filteredByElements));
+                .equals(other.filteredByElements, filteredByElements) &&
+            const DeepCollectionEquality()
+                .equals(other.actitvatedFilter, actitvatedFilter));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(filteredByElements));
+      runtimeType,
+      const DeepCollectionEquality().hash(filteredByElements),
+      const DeepCollectionEquality().hash(actitvatedFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -1277,42 +1342,53 @@ class _$_ElementFilterState implements _ElementFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(List<ProjectEntity> filteredByPatternList)
+    required TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)
         filteredByPattern,
-    required TResult Function(List<ProjectEntity> filteredByElements)
+    required TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)
         filteredByElements,
-    required TResult Function(List<ProjectEntity> filterdByTypeList)
+    required TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)
         filteredByType,
   }) {
-    return filteredByElements(this.filteredByElements);
+    return filteredByElements(this.filteredByElements, actitvatedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
   }) {
-    return filteredByElements?.call(this.filteredByElements);
+    return filteredByElements?.call(this.filteredByElements, actitvatedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
     required TResult orElse(),
   }) {
     if (filteredByElements != null) {
-      return filteredByElements(this.filteredByElements);
+      return filteredByElements(this.filteredByElements, actitvatedFilter);
     }
     return orElse();
   }
@@ -1357,10 +1433,11 @@ class _$_ElementFilterState implements _ElementFilterState {
 
 abstract class _ElementFilterState implements FilterState {
   const factory _ElementFilterState(
-          {required List<ProjectEntity> filteredByElements}) =
-      _$_ElementFilterState;
+      {required List<ProjectEntity> filteredByElements,
+      required String actitvatedFilter}) = _$_ElementFilterState;
 
   List<ProjectEntity> get filteredByElements;
+  String get actitvatedFilter;
   @JsonKey(ignore: true)
   _$ElementFilterStateCopyWith<_ElementFilterState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1371,7 +1448,7 @@ abstract class _$TypeFilterStateCopyWith<$Res> {
   factory _$TypeFilterStateCopyWith(
           _TypeFilterState value, $Res Function(_TypeFilterState) then) =
       __$TypeFilterStateCopyWithImpl<$Res>;
-  $Res call({List<ProjectEntity> filterdByTypeList});
+  $Res call({List<ProjectEntity> filterdByTypeList, String actitvatedFilter});
 }
 
 /// @nodoc
@@ -1388,12 +1465,17 @@ class __$TypeFilterStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? filterdByTypeList = freezed,
+    Object? actitvatedFilter = freezed,
   }) {
     return _then(_TypeFilterState(
       filterdByTypeList: filterdByTypeList == freezed
           ? _value.filterdByTypeList
           : filterdByTypeList // ignore: cast_nullable_to_non_nullable
               as List<ProjectEntity>,
+      actitvatedFilter: actitvatedFilter == freezed
+          ? _value.actitvatedFilter
+          : actitvatedFilter // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1401,14 +1483,17 @@ class __$TypeFilterStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_TypeFilterState implements _TypeFilterState {
-  const _$_TypeFilterState({required this.filterdByTypeList});
+  const _$_TypeFilterState(
+      {required this.filterdByTypeList, required this.actitvatedFilter});
 
   @override
   final List<ProjectEntity> filterdByTypeList;
+  @override
+  final String actitvatedFilter;
 
   @override
   String toString() {
-    return 'FilterState.filteredByType(filterdByTypeList: $filterdByTypeList)';
+    return 'FilterState.filteredByType(filterdByTypeList: $filterdByTypeList, actitvatedFilter: $actitvatedFilter)';
   }
 
   @override
@@ -1417,12 +1502,16 @@ class _$_TypeFilterState implements _TypeFilterState {
         (other.runtimeType == runtimeType &&
             other is _TypeFilterState &&
             const DeepCollectionEquality()
-                .equals(other.filterdByTypeList, filterdByTypeList));
+                .equals(other.filterdByTypeList, filterdByTypeList) &&
+            const DeepCollectionEquality()
+                .equals(other.actitvatedFilter, actitvatedFilter));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(filterdByTypeList));
+      runtimeType,
+      const DeepCollectionEquality().hash(filterdByTypeList),
+      const DeepCollectionEquality().hash(actitvatedFilter));
 
   @JsonKey(ignore: true)
   @override
@@ -1433,42 +1522,53 @@ class _$_TypeFilterState implements _TypeFilterState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() empty,
-    required TResult Function(List<ProjectEntity> filteredByPatternList)
+    required TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)
         filteredByPattern,
-    required TResult Function(List<ProjectEntity> filteredByElements)
+    required TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)
         filteredByElements,
-    required TResult Function(List<ProjectEntity> filterdByTypeList)
+    required TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)
         filteredByType,
   }) {
-    return filteredByType(filterdByTypeList);
+    return filteredByType(filterdByTypeList, actitvatedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
   }) {
-    return filteredByType?.call(filterdByTypeList);
+    return filteredByType?.call(filterdByTypeList, actitvatedFilter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? empty,
-    TResult Function(List<ProjectEntity> filteredByPatternList)?
+    TResult Function(
+            List<ProjectEntity> filteredByPatternList, String actitvatedFilter)?
         filteredByPattern,
-    TResult Function(List<ProjectEntity> filteredByElements)?
+    TResult Function(
+            List<ProjectEntity> filteredByElements, String actitvatedFilter)?
         filteredByElements,
-    TResult Function(List<ProjectEntity> filterdByTypeList)? filteredByType,
+    TResult Function(
+            List<ProjectEntity> filterdByTypeList, String actitvatedFilter)?
+        filteredByType,
     required TResult orElse(),
   }) {
     if (filteredByType != null) {
-      return filteredByType(filterdByTypeList);
+      return filteredByType(filterdByTypeList, actitvatedFilter);
     }
     return orElse();
   }
@@ -1513,9 +1613,11 @@ class _$_TypeFilterState implements _TypeFilterState {
 
 abstract class _TypeFilterState implements FilterState {
   const factory _TypeFilterState(
-      {required List<ProjectEntity> filterdByTypeList}) = _$_TypeFilterState;
+      {required List<ProjectEntity> filterdByTypeList,
+      required String actitvatedFilter}) = _$_TypeFilterState;
 
   List<ProjectEntity> get filterdByTypeList;
+  String get actitvatedFilter;
   @JsonKey(ignore: true)
   _$TypeFilterStateCopyWith<_TypeFilterState> get copyWith =>
       throw _privateConstructorUsedError;

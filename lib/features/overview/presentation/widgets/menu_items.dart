@@ -8,6 +8,9 @@ import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_b
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 
 class MenuItems extends StatelessWidget {
+  int? clickedIndex  ;
+  int? clickedI;
+
   @override
   Widget build(BuildContext context) {
     ProjectFilterBloc projectFilterBloc =
@@ -87,6 +90,8 @@ class MenuItems extends StatelessWidget {
                                       itemBuilder: (context, index) {
                                         return GestureDetector(
                                           onTap: () {
+                                            
+
                                             state.maybeMap(
                                               orElse: () => "",
                                               typeFilterState: (_) => filterBloc
@@ -127,7 +132,10 @@ class MenuItems extends StatelessWidget {
                                                                   .projectEntityList))),
                                             );
                                           },
-                                          child: Text(
+                                          child: 
+                                                      
+                                                     
+                                                      Text(
                                             state.maybeMap(
                                               orElse: () => "",
                                               typeFilterState: (_) =>

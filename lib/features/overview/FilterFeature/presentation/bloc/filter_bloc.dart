@@ -27,6 +27,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
     on<_ElementFilterEvent>(
       (event, emit) => emit(
         _ElementFilterState(
+          actitvatedFilter: event.filter,
           filteredByElements: filterDataByElement.call(
             params: ElementFilterParams(
               elemtentFilter: event.filter,
@@ -37,21 +38,24 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
       ),
     );
 
-    on<_PatternFilterEvent>(
-      (event, emit) => emit(
-        _PatternFilterState(
-          filteredByPatternList: filterDataByPattern.call(
-            params: FilterPatterParams(
-                patternFilter: event.filter,
-                projectEntityList: event.projectEntityList),
-          ),
-        ),
-      ),
-    );
+    on<_PatternFilterEvent>((event, emit) {
+      
+      final result = filterDataByPattern.call(
+        params: FilterPatterParams(
+            patternFilter: event.filter,
+            projectEntityList: event.projectEntityList),
+      );
+
+      print(result);
+
+      emit(_PatternFilterState(
+          actitvatedFilter: event.filter, filteredByPatternList: result));
+    });
 
     on<_TypeFilterEvent>(
       (event, emit) => emit(
         _TypeFilterState(
+          actitvatedFilter: event.filter,
           filterdByTypeList: filterDataByType.call(
             params: TypeFilterParams(
                 typeFilter: event.filter,

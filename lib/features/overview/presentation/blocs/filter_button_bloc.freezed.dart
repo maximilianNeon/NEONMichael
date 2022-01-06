@@ -17,10 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$FilterButtonEventTearOff {
   const _$FilterButtonEventTearOff();
 
-  _Started started() {
-    return const _Started();
-  }
-
   _FilterButtonEventType filterButtonEventType() {
     return const _FilterButtonEventType();
   }
@@ -31,26 +27,6 @@ class _$FilterButtonEventTearOff {
 
   _FilterButtonEventElement filterButtonEventElement() {
     return const _FilterButtonEventElement();
-  }
-
-  _FilterButtonEventProject filterButtonEventProject(
-      {required String filterItem}) {
-    return _FilterButtonEventProject(
-      filterItem: filterItem,
-    );
-  }
-
-  _FilterButtonEventScreen filterProjectButtonScreen(
-      {required String filterItem}) {
-    return _FilterButtonEventScreen(
-      filterItem: filterItem,
-    );
-  }
-
-  _FilterProjectSearchBar filterProjectSearchBar({required String searchItem}) {
-    return _FilterProjectSearchBar(
-      searchItem: searchItem,
-    );
   }
 
   _TurnOffFilter turnOffFilter() {
@@ -65,80 +41,53 @@ const $FilterButtonEvent = _$FilterButtonEventTearOff();
 mixin _$FilterButtonEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() filterButtonEventType,
     required TResult Function() filterButtonEventPattern,
     required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
     required TResult Function() turnOffFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_FilterButtonEventType value)
         filterButtonEventType,
     required TResult Function(_FilterButtonEventPattern value)
         filterButtonEventPattern,
     required TResult Function(_FilterButtonEventElement value)
         filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
     required TResult Function(_TurnOffFilter value) turnOffFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
     required TResult orElse(),
   }) =>
@@ -160,150 +109,6 @@ class _$FilterButtonEventCopyWithImpl<$Res>
   final FilterButtonEvent _value;
   // ignore: unused_field
   final $Res Function(FilterButtonEvent) _then;
-}
-
-/// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$StartedCopyWithImpl<$Res> extends _$FilterButtonEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
-
-  @override
-  _Started get _value => super._value as _Started;
-}
-
-/// @nodoc
-
-class _$_Started implements _Started {
-  const _$_Started();
-
-  @override
-  String toString() {
-    return 'FilterButtonEvent.started()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() filterButtonEventType,
-    required TResult Function() filterButtonEventPattern,
-    required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
-    required TResult Function() turnOffFilter,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_FilterButtonEventType value)
-        filterButtonEventType,
-    required TResult Function(_FilterButtonEventPattern value)
-        filterButtonEventPattern,
-    required TResult Function(_FilterButtonEventElement value)
-        filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
-    required TResult Function(_TurnOffFilter value) turnOffFilter,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements FilterButtonEvent {
-  const factory _Started() = _$_Started;
 }
 
 /// @nodoc
@@ -347,13 +152,9 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() filterButtonEventType,
     required TResult Function() filterButtonEventPattern,
     required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
     required TResult Function() turnOffFilter,
   }) {
     return filterButtonEventType();
@@ -362,13 +163,9 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
   }) {
     return filterButtonEventType?.call();
@@ -377,13 +174,9 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -396,19 +189,12 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_FilterButtonEventType value)
         filterButtonEventType,
     required TResult Function(_FilterButtonEventPattern value)
         filterButtonEventPattern,
     required TResult Function(_FilterButtonEventElement value)
         filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
     required TResult Function(_TurnOffFilter value) turnOffFilter,
   }) {
     return filterButtonEventType(this);
@@ -417,13 +203,9 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
   }) {
     return filterButtonEventType?.call(this);
@@ -432,13 +214,9 @@ class _$_FilterButtonEventType implements _FilterButtonEventType {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -496,13 +274,9 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() filterButtonEventType,
     required TResult Function() filterButtonEventPattern,
     required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
     required TResult Function() turnOffFilter,
   }) {
     return filterButtonEventPattern();
@@ -511,13 +285,9 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
   }) {
     return filterButtonEventPattern?.call();
@@ -526,13 +296,9 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -545,19 +311,12 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_FilterButtonEventType value)
         filterButtonEventType,
     required TResult Function(_FilterButtonEventPattern value)
         filterButtonEventPattern,
     required TResult Function(_FilterButtonEventElement value)
         filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
     required TResult Function(_TurnOffFilter value) turnOffFilter,
   }) {
     return filterButtonEventPattern(this);
@@ -566,13 +325,9 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
   }) {
     return filterButtonEventPattern?.call(this);
@@ -581,13 +336,9 @@ class _$_FilterButtonEventPattern implements _FilterButtonEventPattern {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -645,13 +396,9 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() filterButtonEventType,
     required TResult Function() filterButtonEventPattern,
     required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
     required TResult Function() turnOffFilter,
   }) {
     return filterButtonEventElement();
@@ -660,13 +407,9 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
   }) {
     return filterButtonEventElement?.call();
@@ -675,13 +418,9 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -694,19 +433,12 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_FilterButtonEventType value)
         filterButtonEventType,
     required TResult Function(_FilterButtonEventPattern value)
         filterButtonEventPattern,
     required TResult Function(_FilterButtonEventElement value)
         filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
     required TResult Function(_TurnOffFilter value) turnOffFilter,
   }) {
     return filterButtonEventElement(this);
@@ -715,13 +447,9 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
   }) {
     return filterButtonEventElement?.call(this);
@@ -730,13 +458,9 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -749,545 +473,6 @@ class _$_FilterButtonEventElement implements _FilterButtonEventElement {
 
 abstract class _FilterButtonEventElement implements FilterButtonEvent {
   const factory _FilterButtonEventElement() = _$_FilterButtonEventElement;
-}
-
-/// @nodoc
-abstract class _$FilterButtonEventProjectCopyWith<$Res> {
-  factory _$FilterButtonEventProjectCopyWith(_FilterButtonEventProject value,
-          $Res Function(_FilterButtonEventProject) then) =
-      __$FilterButtonEventProjectCopyWithImpl<$Res>;
-  $Res call({String filterItem});
-}
-
-/// @nodoc
-class __$FilterButtonEventProjectCopyWithImpl<$Res>
-    extends _$FilterButtonEventCopyWithImpl<$Res>
-    implements _$FilterButtonEventProjectCopyWith<$Res> {
-  __$FilterButtonEventProjectCopyWithImpl(_FilterButtonEventProject _value,
-      $Res Function(_FilterButtonEventProject) _then)
-      : super(_value, (v) => _then(v as _FilterButtonEventProject));
-
-  @override
-  _FilterButtonEventProject get _value =>
-      super._value as _FilterButtonEventProject;
-
-  @override
-  $Res call({
-    Object? filterItem = freezed,
-  }) {
-    return _then(_FilterButtonEventProject(
-      filterItem: filterItem == freezed
-          ? _value.filterItem
-          : filterItem // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_FilterButtonEventProject implements _FilterButtonEventProject {
-  const _$_FilterButtonEventProject({required this.filterItem});
-
-  @override
-  final String filterItem;
-
-  @override
-  String toString() {
-    return 'FilterButtonEvent.filterButtonEventProject(filterItem: $filterItem)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FilterButtonEventProject &&
-            const DeepCollectionEquality()
-                .equals(other.filterItem, filterItem));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(filterItem));
-
-  @JsonKey(ignore: true)
-  @override
-  _$FilterButtonEventProjectCopyWith<_FilterButtonEventProject> get copyWith =>
-      __$FilterButtonEventProjectCopyWithImpl<_FilterButtonEventProject>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() filterButtonEventType,
-    required TResult Function() filterButtonEventPattern,
-    required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
-    required TResult Function() turnOffFilter,
-  }) {
-    return filterButtonEventProject(filterItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-  }) {
-    return filterButtonEventProject?.call(filterItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (filterButtonEventProject != null) {
-      return filterButtonEventProject(filterItem);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_FilterButtonEventType value)
-        filterButtonEventType,
-    required TResult Function(_FilterButtonEventPattern value)
-        filterButtonEventPattern,
-    required TResult Function(_FilterButtonEventElement value)
-        filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
-    required TResult Function(_TurnOffFilter value) turnOffFilter,
-  }) {
-    return filterButtonEventProject(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-  }) {
-    return filterButtonEventProject?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (filterButtonEventProject != null) {
-      return filterButtonEventProject(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FilterButtonEventProject implements FilterButtonEvent {
-  const factory _FilterButtonEventProject({required String filterItem}) =
-      _$_FilterButtonEventProject;
-
-  String get filterItem;
-  @JsonKey(ignore: true)
-  _$FilterButtonEventProjectCopyWith<_FilterButtonEventProject> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$FilterButtonEventScreenCopyWith<$Res> {
-  factory _$FilterButtonEventScreenCopyWith(_FilterButtonEventScreen value,
-          $Res Function(_FilterButtonEventScreen) then) =
-      __$FilterButtonEventScreenCopyWithImpl<$Res>;
-  $Res call({String filterItem});
-}
-
-/// @nodoc
-class __$FilterButtonEventScreenCopyWithImpl<$Res>
-    extends _$FilterButtonEventCopyWithImpl<$Res>
-    implements _$FilterButtonEventScreenCopyWith<$Res> {
-  __$FilterButtonEventScreenCopyWithImpl(_FilterButtonEventScreen _value,
-      $Res Function(_FilterButtonEventScreen) _then)
-      : super(_value, (v) => _then(v as _FilterButtonEventScreen));
-
-  @override
-  _FilterButtonEventScreen get _value =>
-      super._value as _FilterButtonEventScreen;
-
-  @override
-  $Res call({
-    Object? filterItem = freezed,
-  }) {
-    return _then(_FilterButtonEventScreen(
-      filterItem: filterItem == freezed
-          ? _value.filterItem
-          : filterItem // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_FilterButtonEventScreen implements _FilterButtonEventScreen {
-  const _$_FilterButtonEventScreen({required this.filterItem});
-
-  @override
-  final String filterItem;
-
-  @override
-  String toString() {
-    return 'FilterButtonEvent.filterProjectButtonScreen(filterItem: $filterItem)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FilterButtonEventScreen &&
-            const DeepCollectionEquality()
-                .equals(other.filterItem, filterItem));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(filterItem));
-
-  @JsonKey(ignore: true)
-  @override
-  _$FilterButtonEventScreenCopyWith<_FilterButtonEventScreen> get copyWith =>
-      __$FilterButtonEventScreenCopyWithImpl<_FilterButtonEventScreen>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() filterButtonEventType,
-    required TResult Function() filterButtonEventPattern,
-    required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
-    required TResult Function() turnOffFilter,
-  }) {
-    return filterProjectButtonScreen(filterItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-  }) {
-    return filterProjectButtonScreen?.call(filterItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (filterProjectButtonScreen != null) {
-      return filterProjectButtonScreen(filterItem);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_FilterButtonEventType value)
-        filterButtonEventType,
-    required TResult Function(_FilterButtonEventPattern value)
-        filterButtonEventPattern,
-    required TResult Function(_FilterButtonEventElement value)
-        filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
-    required TResult Function(_TurnOffFilter value) turnOffFilter,
-  }) {
-    return filterProjectButtonScreen(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-  }) {
-    return filterProjectButtonScreen?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (filterProjectButtonScreen != null) {
-      return filterProjectButtonScreen(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FilterButtonEventScreen implements FilterButtonEvent {
-  const factory _FilterButtonEventScreen({required String filterItem}) =
-      _$_FilterButtonEventScreen;
-
-  String get filterItem;
-  @JsonKey(ignore: true)
-  _$FilterButtonEventScreenCopyWith<_FilterButtonEventScreen> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$FilterProjectSearchBarCopyWith<$Res> {
-  factory _$FilterProjectSearchBarCopyWith(_FilterProjectSearchBar value,
-          $Res Function(_FilterProjectSearchBar) then) =
-      __$FilterProjectSearchBarCopyWithImpl<$Res>;
-  $Res call({String searchItem});
-}
-
-/// @nodoc
-class __$FilterProjectSearchBarCopyWithImpl<$Res>
-    extends _$FilterButtonEventCopyWithImpl<$Res>
-    implements _$FilterProjectSearchBarCopyWith<$Res> {
-  __$FilterProjectSearchBarCopyWithImpl(_FilterProjectSearchBar _value,
-      $Res Function(_FilterProjectSearchBar) _then)
-      : super(_value, (v) => _then(v as _FilterProjectSearchBar));
-
-  @override
-  _FilterProjectSearchBar get _value => super._value as _FilterProjectSearchBar;
-
-  @override
-  $Res call({
-    Object? searchItem = freezed,
-  }) {
-    return _then(_FilterProjectSearchBar(
-      searchItem: searchItem == freezed
-          ? _value.searchItem
-          : searchItem // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_FilterProjectSearchBar implements _FilterProjectSearchBar {
-  const _$_FilterProjectSearchBar({required this.searchItem});
-
-  @override
-  final String searchItem;
-
-  @override
-  String toString() {
-    return 'FilterButtonEvent.filterProjectSearchBar(searchItem: $searchItem)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _FilterProjectSearchBar &&
-            const DeepCollectionEquality()
-                .equals(other.searchItem, searchItem));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(searchItem));
-
-  @JsonKey(ignore: true)
-  @override
-  _$FilterProjectSearchBarCopyWith<_FilterProjectSearchBar> get copyWith =>
-      __$FilterProjectSearchBarCopyWithImpl<_FilterProjectSearchBar>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() filterButtonEventType,
-    required TResult Function() filterButtonEventPattern,
-    required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
-    required TResult Function() turnOffFilter,
-  }) {
-    return filterProjectSearchBar(searchItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-  }) {
-    return filterProjectSearchBar?.call(searchItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? filterButtonEventType,
-    TResult Function()? filterButtonEventPattern,
-    TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
-    TResult Function()? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (filterProjectSearchBar != null) {
-      return filterProjectSearchBar(searchItem);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_FilterButtonEventType value)
-        filterButtonEventType,
-    required TResult Function(_FilterButtonEventPattern value)
-        filterButtonEventPattern,
-    required TResult Function(_FilterButtonEventElement value)
-        filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
-    required TResult Function(_TurnOffFilter value) turnOffFilter,
-  }) {
-    return filterProjectSearchBar(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-  }) {
-    return filterProjectSearchBar?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_FilterButtonEventType value)? filterButtonEventType,
-    TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
-    TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
-    TResult Function(_TurnOffFilter value)? turnOffFilter,
-    required TResult orElse(),
-  }) {
-    if (filterProjectSearchBar != null) {
-      return filterProjectSearchBar(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FilterProjectSearchBar implements FilterButtonEvent {
-  const factory _FilterProjectSearchBar({required String searchItem}) =
-      _$_FilterProjectSearchBar;
-
-  String get searchItem;
-  @JsonKey(ignore: true)
-  _$FilterProjectSearchBarCopyWith<_FilterProjectSearchBar> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1331,13 +516,9 @@ class _$_TurnOffFilter implements _TurnOffFilter {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() filterButtonEventType,
     required TResult Function() filterButtonEventPattern,
     required TResult Function() filterButtonEventElement,
-    required TResult Function(String filterItem) filterButtonEventProject,
-    required TResult Function(String filterItem) filterProjectButtonScreen,
-    required TResult Function(String searchItem) filterProjectSearchBar,
     required TResult Function() turnOffFilter,
   }) {
     return turnOffFilter();
@@ -1346,13 +527,9 @@ class _$_TurnOffFilter implements _TurnOffFilter {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
   }) {
     return turnOffFilter?.call();
@@ -1361,13 +538,9 @@ class _$_TurnOffFilter implements _TurnOffFilter {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? filterButtonEventType,
     TResult Function()? filterButtonEventPattern,
     TResult Function()? filterButtonEventElement,
-    TResult Function(String filterItem)? filterButtonEventProject,
-    TResult Function(String filterItem)? filterProjectButtonScreen,
-    TResult Function(String searchItem)? filterProjectSearchBar,
     TResult Function()? turnOffFilter,
     required TResult orElse(),
   }) {
@@ -1380,19 +553,12 @@ class _$_TurnOffFilter implements _TurnOffFilter {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_FilterButtonEventType value)
         filterButtonEventType,
     required TResult Function(_FilterButtonEventPattern value)
         filterButtonEventPattern,
     required TResult Function(_FilterButtonEventElement value)
         filterButtonEventElement,
-    required TResult Function(_FilterButtonEventProject value)
-        filterButtonEventProject,
-    required TResult Function(_FilterButtonEventScreen value)
-        filterProjectButtonScreen,
-    required TResult Function(_FilterProjectSearchBar value)
-        filterProjectSearchBar,
     required TResult Function(_TurnOffFilter value) turnOffFilter,
   }) {
     return turnOffFilter(this);
@@ -1401,13 +567,9 @@ class _$_TurnOffFilter implements _TurnOffFilter {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
   }) {
     return turnOffFilter?.call(this);
@@ -1416,13 +578,9 @@ class _$_TurnOffFilter implements _TurnOffFilter {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_FilterButtonEventType value)? filterButtonEventType,
     TResult Function(_FilterButtonEventPattern value)? filterButtonEventPattern,
     TResult Function(_FilterButtonEventElement value)? filterButtonEventElement,
-    TResult Function(_FilterButtonEventProject value)? filterButtonEventProject,
-    TResult Function(_FilterButtonEventScreen value)? filterProjectButtonScreen,
-    TResult Function(_FilterProjectSearchBar value)? filterProjectSearchBar,
     TResult Function(_TurnOffFilter value)? turnOffFilter,
     required TResult orElse(),
   }) {

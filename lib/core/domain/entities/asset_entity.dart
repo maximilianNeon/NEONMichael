@@ -1,18 +1,16 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 
-class AssetEntity {
-  final String imageUrl;
-  final String title;
-  final int id;
-  final List<PatternEntity> patterns;
-  final List<ElementEntity> elements;
+part 'asset_entity.freezed.dart';
 
-  AssetEntity({
-    required this.imageUrl,
-    required this.title,
-    required this.id,
-    required this.elements,
-    required this.patterns,
-  });
+@freezed
+class AssetEntity with _$AssetEntity {
+  factory AssetEntity({
+    required String imageUrl,
+    required String title,
+    required int id,
+    required List<PatternEntity> patterns,
+    required List<ElementEntity> elements,}
+  ) = _AssetEntity;
 }

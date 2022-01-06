@@ -1,26 +1,44 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/domain/entities/asset_entity.dart';
+import 'package:neon_web/core/domain/entities/element_entity.dart';
+import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/usecase.dart';
 import 'package:neon_web/core/error/failure.dart';
 
-@lazySingleton 
-class FilterDataByElement extends UseCaseInternal<List<ProjectEntity>, ElementFilterParams> {
+@lazySingleton
+class FilterDataByElement
+    extends UseCaseInternal<List<ProjectEntity>, ElementFilterParams> {
   @override
+  List<ProjectEntity> call({required ElementFilterParams params}) {
+    List<ProjectEntity> projectList = [];
+    List<AssetEntity> assetList = [];
+    List<ElementEntity> elementList = [];
 
-  List<ProjectEntity> call({required ElementFilterParams params }) {
-    return params.projectEntityList.where((project) {
-      final assetIndex = project.assets.indexWhere((asset) {
-        final elementIndex = asset.elements.indexWhere((element) {
-          final itemIndex =
-              element.item.toString().contains(params.elemtentFilter);
-          return itemIndex;
-        });
-        return elementIndex >= 0;
+    params.projectEntityList.forEach((project) {
+      assetList = [];
+
+      project.assets.forEach((asset) {
+        elementList = [];
+        //Reduced PatternList
+        elementList = asset.elements
+            .where((element) =>
+                element.item.toString().contains(params.elemtentFilter))
+            .toList();
+
+        if (elementList.length > 0) {
+          assetList.add(asset.copyWith(elements: elementList));
+        }
       });
-      return assetIndex >= 0;
-    }).toList();
+
+      if (assetList.length > 0) {
+        projectList.add(project.copyWith(assets: assetList));
+      }
+    });
+
+    return projectList;
   }
 }
 
@@ -28,7 +46,8 @@ class ElementFilterParams extends Equatable {
   final List<ProjectEntity> projectEntityList;
   final String elemtentFilter;
 
-  ElementFilterParams({required this.elemtentFilter, required this.projectEntityList});
+  ElementFilterParams(
+      {required this.elemtentFilter, required this.projectEntityList});
 
   @override
   List<Object?> get props => [elemtentFilter, projectEntityList];
