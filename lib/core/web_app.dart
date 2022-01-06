@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart';
 import 'package:neon_web/features/overview/domain/usecases/load_projectdata.dart';
@@ -32,7 +33,7 @@ class WebApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home:   OverviewPage(),
+        home:   ProjectUploadPage(),
       ),
     );
   }

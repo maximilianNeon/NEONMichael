@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:neon_web/features/overview/presentation/widgets/screen_upload_input.dart';
+import 'package:neon_web/features/editing/presentation/widgets/screen_upload_input.dart';
 import 'package:neon_web/export_core_files.dart';
 
 class ScreenUploadContainer extends StatelessWidget {

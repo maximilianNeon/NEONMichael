@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
-import 'package:neon_web/features/overview/presentation/widgets/project_data_input.dart';
-import 'package:neon_web/features/overview/presentation/widgets/screen_upload_container.dart';
+import 'package:neon_web/features/editing/presentation/widgets/project_data_input.dart';
+import 'package:neon_web/features/editing/presentation/widgets/screen_upload_container.dart';
 
 class ProjectUploadPage extends StatelessWidget {
   const ProjectUploadPage({Key? key}) : super(key: key);

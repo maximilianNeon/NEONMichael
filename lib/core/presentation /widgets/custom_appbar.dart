@@ -7,7 +7,7 @@ import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filte
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/overview_page.dart';
-import 'package:neon_web/features/overview/presentation/pages/project_upload_page.dart';
+import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 
 class CustomAppBar extends StatelessWidget {
   final String header;
