@@ -1,4 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
+import 'package:flutter/foundation.dart';
 import 'package:neon_web/core/enum/enums.dart';
 
 
@@ -12,6 +13,10 @@ mixin BuildElementLists {
   static final viewList = EnumToString.toList(ViewElements.values);
 
   static final imageList = EnumToString.toList(ImageElements.values);
+
+  static final headLineList = EnumToString.toList(ElementHeader.values);
+
+  
 
   static final List<List<String>> globalItemList = [
     barList,

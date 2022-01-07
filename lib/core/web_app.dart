@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
@@ -34,7 +35,8 @@ class WebApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<ProjectFilterBloc>()),
         BlocProvider(create: (context) => getIt<ProjectEditingBloc>()),
         BlocProvider(create: (context) => getIt<UploadImageBloc>()),
-        BlocProvider(create: (context) => getIt<AssetBloc>())
+        BlocProvider(create: (context) => getIt<AssetBloc>()),
+        BlocProvider(create: (context) => getIt<PatternElementBloc>())
 
       ],
       child: MaterialApp(

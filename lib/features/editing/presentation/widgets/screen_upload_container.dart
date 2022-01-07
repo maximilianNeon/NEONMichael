@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
-import 'package:neon_web/features/editing/presentation/widgets/screen_upload_input.dart';
-import 'package:neon_web/export_core_files.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_item.dart';
 
 class ScreenUploadContainer extends StatelessWidget {
@@ -30,6 +28,7 @@ class ScreenUploadContainer extends StatelessWidget {
             ),
             loading: (_) => CircularProgressIndicator(),
             loaded: (state) => GridView.builder(
+              padding: EdgeInsets.all(5),
               itemCount: state.assetEntityList.length,
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 500),
