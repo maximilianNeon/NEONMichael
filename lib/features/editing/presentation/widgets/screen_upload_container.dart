@@ -1,53 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_input.dart';
 import 'package:neon_web/export_core_files.dart';
+import 'package:neon_web/features/editing/presentation/widgets/screen_upload_item.dart';
 
 class ScreenUploadContainer extends StatelessWidget {
-  const ScreenUploadContainer({Key? key}) : super(key: key);
+  ScreenUploadContainer({Key? key}) : super(key: key);
+
+  late DropzoneViewController dropzoneViewController;
 
   @override
   Widget build(BuildContext context) {
+    AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
     return Container(
-      margin: EdgeInsets.all(10),
-      constraints: BoxConstraints(
-          maxWidth: 400, maxHeight: 300, minHeight: 0, minWidth: 0),
-      alignment: Alignment.topCenter,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              constraints: BoxConstraints(
-                maxHeight: 300,
-                maxWidth: 160,
-                minWidth: 30,
-                minHeight: 30,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-              ),
+      alignment: Alignment.topLeft,
+      child:
+          Stack(alignment: Alignment.topLeft, fit: StackFit.loose, children: [
+        DropzoneView(
+          onDrop: (dynamic event) => assetBloc.add(AssetEvent.addScreen(
+              event: event, controller: dropzoneViewController)),
+          onCreated: (controller) => this.dropzoneViewController = controller,
+        ),
+        BlocBuilder<AssetBloc, AssetState>(
+          builder: (context, state) => state.map(
+            initial: (_) => Container(
+              child: Text("No Screens Added"),
+            ),
+            loading: (_) => CircularProgressIndicator(),
+            loaded: (state) => GridView.builder(
+              itemCount: state.assetEntityList.length,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  maxCrossAxisExtent: 500),
+              itemBuilder: (context, index) {
+                return ScreenUploadItem(
+                  imageUrl: state.assetEntityList[index].imageUrl,
+                );
+              },
             ),
           ),
-          SizedBox(
-            width: UIHelper().horizontalSpaceSmall(context),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ScreenUploadInput(inputHeader: "Pattern", matchingCategories: ["Social Feed"]),
-              SizedBox(
-                height: UIHelper().verticalSpaceMedium(context),
-              ),
-              ScreenUploadInput(inputHeader: "Elements", matchingCategories: ["Button" ,"TabBar", "SearchBar"],)
-            ],
-          )
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }

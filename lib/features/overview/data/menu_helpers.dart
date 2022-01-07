@@ -1,5 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:neon_web/core/util/enums.dart';
+import 'package:neon_web/core/enum/enums.dart';
 
 mixin MenuHelpers {
   static List<String> elementHeaders =
@@ -7,10 +7,4 @@ mixin MenuHelpers {
   static List<String> patternHeaders =
       EnumToString.toList(PatternHeaders.values);
   static List<String> typeHeaders = EnumToString.toList(ProjectType.values);
-
-  // static void getMenuHeaders() {
-  //   elementHeaders = EnumToString.toList(ElementHeader.values);
-  //   patternHeaders = EnumToString.toList(PatternHeaders.values);
-  //   typeHeaders = EnumToString.toList(ProjectType.values);
-  // }
 }

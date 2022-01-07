@@ -1,8 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:neon_web/core/util/enums.dart';
+
 import '../../../../core/domain/entities/project_entity.dart';
+import 'package:neon_web/core/enum/enums.dart';
 
 part 'project_editing_event.dart';
 part 'project_editing_state.dart';

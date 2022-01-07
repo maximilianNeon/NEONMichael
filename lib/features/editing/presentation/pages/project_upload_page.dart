@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
 import 'package:neon_web/core/style/constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
+import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/project_data_input.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_container.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
@@ -11,21 +14,10 @@ class ProjectUploadPage extends StatelessWidget {
 
   late DropzoneViewController dropzoneViewController;
 
-  Future acceptFile(dynamic event) async {
-    print(event);
-    String mime = await dropzoneViewController.getFileMIME(event);
-    String url = await dropzoneViewController.createFileUrl(event);
-    int fileSize = await dropzoneViewController.getFileSize(event);
-    String fileName = await dropzoneViewController.getFilename(event);
-
-    print(url);
-    print(fileSize);
-    print(fileName);
-    print(mime);
-  }
-
   @override
   Widget build(BuildContext context) {
+    UploadImageBloc uploadImageBloc = BlocProvider.of<UploadImageBloc>(context);
+    AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
     return PageLayout(
       backArrow: true,
       uploadIcon: false,
@@ -71,7 +63,18 @@ class ProjectUploadPage extends StatelessWidget {
                         Text("Projekt Icon"),
                         SizedBox(
                             height: UIHelper().verticalSpaceMedium(context)),
-                        Text("Bild Hochladen"),
+                        GestureDetector(
+                            onTap: () async {
+                              final event = await dropzoneViewController
+                                  .pickFiles(multiple: false);
+
+                              if (event.isEmpty) return;
+
+                              uploadImageBloc.add(UploadImageEvent.uploadImage(
+                                  event: event.first,
+                                  controller: dropzoneViewController));
+                            },
+                            child: Text("Bild Hochladen")),
                         SizedBox(
                             height: UIHelper().verticalSpaceSmall(context)),
                         Container(
@@ -80,20 +83,32 @@ class ProjectUploadPage extends StatelessWidget {
                           color: Colors.grey,
                           child: Stack(children: [
                             DropzoneView(
-                              onDrop: (dynamic event) => acceptFile(event),
+                              onError: (errorMessage) {},
+                              onLeave: () {},
+                              onLoaded: () {},
+                              onDrop: (dynamic event) => uploadImageBloc.add(
+                                  UploadImageEvent.uploadImage(
+                                      event: event,
+                                      controller: dropzoneViewController)),
                               onCreated: (controller) =>
                                   this.dropzoneViewController = controller,
                             ),
-                            Center(
-                              child: GestureDetector(
-                                  onTap: () async {
-                                    final event = await dropzoneViewController.pickFiles();
-
-                                    if(event.isEmpty) return;
-
-                                    acceptFile(event.first);
-                                  }, child: Text("Dropzone")),
-                            )
+                            BlocBuilder<UploadImageBloc, UploadImageState>(
+                              builder: (context, state) => state.maybeMap(
+                                loading: (_) => CircularProgressIndicator(),
+                                loaded: (state) => Image.network(
+                                  state.droppedImageEntity.url,
+                                  height: 200,
+                                  width: 200,
+                                  fit: BoxFit.fill,
+                                ),
+                                orElse: () => Container(
+                                  width: 200,
+                                  height: 200,
+                                  color: Colors.blue,
+                                ),
+                              ),
+                            ),
                           ]),
                         )
                       ])
@@ -107,7 +122,22 @@ class ProjectUploadPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Text("Screens Hochladen"),
+                  GestureDetector(
+                      onTap: () async {
+                        final event = await dropzoneViewController.pickFiles(
+                            multiple: true, mime: ['image/jpeg', 'image/png']);
+
+                        if (event.length > 1) {
+                          assetBloc.add(AssetEvent.addMultipleScreens(
+                              event: event,
+                              controller: dropzoneViewController));
+                        } else if (event.length == 1) {
+                          assetBloc.add(AssetEvent.addScreen(
+                              event: event.first,
+                              controller: dropzoneViewController));
+                        }
+                      },
+                      child: Text("Screens Hochladen")),
                   SizedBox(
                     height: UIHelper().verticalSpaceSmall(context),
                   ),

@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
-import 'package:neon_web/core/domain/usecases/build_pattern_lists.dart';
-import 'package:neon_web/core/util/enums.dart';
+import 'package:neon_web/core/enum/enums.dart';
 
 mixin ProjectHelpers {
   static List<ProjectEntity> mockProjects1 = [

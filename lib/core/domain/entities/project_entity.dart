@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
-import 'package:neon_web/core/util/enums.dart';
+import 'package:neon_web/core/enum/enums.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'project_entity.freezed.dart';

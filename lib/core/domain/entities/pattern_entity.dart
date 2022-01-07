@@ -1,4 +1,4 @@
-import 'package:neon_web/core/util/enums.dart';
+import 'package:neon_web/core/enum/enums.dart';
 
 class PatternEntity {
   String? header;
