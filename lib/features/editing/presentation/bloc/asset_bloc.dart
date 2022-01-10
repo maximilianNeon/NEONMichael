@@ -3,7 +3,8 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
-import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
+import 'package:neon_web/core/domain/entities/element_entity.dart';
+import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 
 part 'asset_event.dart';
 part 'asset_state.dart';
@@ -19,9 +20,12 @@ class AssetBloc extends Bloc<AssetEvent, AssetState> {
     on<_AddScreen>((event, emit) async {
       emit(_Loading());
 
+      
+
       assetEntityList.add(
         assetEntity.copyWith(
           imageUrl: await event.controller.createFileUrl(event.event),
+          id: DateTime.now().microsecondsSinceEpoch.toInt(),
         ),
       );
 
@@ -35,10 +39,24 @@ class AssetBloc extends Bloc<AssetEvent, AssetState> {
           (element) async => assetEntityList.add(
                 assetEntity.copyWith(
                   imageUrl: await event.controller.createFileUrl(element),
+                  id: int.parse(DateTime.fromMicrosecondsSinceEpoch(
+                          int.parse(DateTime.now().toString()))
+                      .toString()),
                 ),
               ));
 
       emit(_Loaded(assetEntityList: assetEntityList));
+    });
+
+    on<_AddPatternAndElements>((event, emit) async {
+      emit(_Loading());
+
+      assetEntityList[assetEntityList.indexWhere(
+              (assetEntity) => assetEntity.id == event.assetEntityId)]
+          .copyWith(
+        patterns: event.patternEntityList,
+        elements: event.elementEntityList,
+      );
     });
   }
 }

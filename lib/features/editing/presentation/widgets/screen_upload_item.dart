@@ -5,9 +5,11 @@ import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_input.dart';
 
 class ScreenUploadItem extends StatelessWidget {
-  String imageUrl;
+  final String imageUrl;
+  final int assetId;
 
   ScreenUploadItem({
+    required this.assetId,
     required this.imageUrl,
     Key? key,
   }) : super(key: key);
@@ -39,7 +41,8 @@ class ScreenUploadItem extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (){
-                patternElementBloc.add(PatternElementEvent.changeToPatternView(imageUrl: imageUrl));
+                patternElementBloc.add(PatternElementEvent.addAssetEntityIdToBloc(id: assetId));
+                patternElementBloc.add(PatternElementEvent.changeToPatternView(imageUrl: imageUrl, ));
 
               },
               child: Text("Pattern und Elements hinzufügen")),

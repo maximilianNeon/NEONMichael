@@ -34,6 +34,7 @@ class ScreenUploadContainer extends StatelessWidget {
                   maxCrossAxisExtent: 500),
               itemBuilder: (context, index) {
                 return ScreenUploadItem(
+                  assetId: state.assetEntityList[index].id,
                   imageUrl: state.assetEntityList[index].imageUrl,
                 );
               },

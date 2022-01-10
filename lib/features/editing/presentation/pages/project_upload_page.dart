@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
-import 'package:neon_web/core/style/constants.dart';
+import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
@@ -205,7 +205,7 @@ class ProjectUploadPage extends StatelessWidget {
                     child: AssetPopUpContainer(
                   imageUrl: state.imageUrl,
                 )),
-                initial: (_) => Container(),
+                loading: (_) => Container(),
               )
             ]);
           },
