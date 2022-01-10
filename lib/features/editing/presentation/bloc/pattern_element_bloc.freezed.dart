@@ -61,9 +61,10 @@ class _$PatternElementEventTearOff {
     );
   }
 
-  _AddAssetEntityId addAssetEntityIdToBloc({required int id}) {
-    return _AddAssetEntityId(
-      id: id,
+  _AddExistingDataToBloc addExistingDataToBloc(
+      {required AssetEntity assetEntity}) {
+    return _AddExistingDataToBloc(
+      assetEntity: assetEntity,
     );
   }
 
@@ -89,7 +90,7 @@ mixin _$PatternElementEvent {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) =>
       throw _privateConstructorUsedError;
@@ -103,7 +104,7 @@ mixin _$PatternElementEvent {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) =>
       throw _privateConstructorUsedError;
@@ -117,7 +118,7 @@ mixin _$PatternElementEvent {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) =>
@@ -130,7 +131,8 @@ mixin _$PatternElementEvent {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) =>
       throw _privateConstructorUsedError;
@@ -142,7 +144,7 @@ mixin _$PatternElementEvent {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) =>
       throw _privateConstructorUsedError;
@@ -154,7 +156,7 @@ mixin _$PatternElementEvent {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) =>
@@ -264,7 +266,7 @@ class _$_AddPattern implements _AddPattern {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return addPattern(patternEntity, imageUrl);
@@ -281,7 +283,7 @@ class _$_AddPattern implements _AddPattern {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return addPattern?.call(patternEntity, imageUrl);
@@ -298,7 +300,7 @@ class _$_AddPattern implements _AddPattern {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -317,7 +319,8 @@ class _$_AddPattern implements _AddPattern {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return addPattern(this);
@@ -332,7 +335,7 @@ class _$_AddPattern implements _AddPattern {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return addPattern?.call(this);
@@ -347,7 +350,7 @@ class _$_AddPattern implements _AddPattern {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
@@ -456,7 +459,7 @@ class _$_RemovePatter implements _RemovePatter {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return removePattern(patternEntity, imageUrl);
@@ -473,7 +476,7 @@ class _$_RemovePatter implements _RemovePatter {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return removePattern?.call(patternEntity, imageUrl);
@@ -490,7 +493,7 @@ class _$_RemovePatter implements _RemovePatter {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -509,7 +512,8 @@ class _$_RemovePatter implements _RemovePatter {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return removePattern(this);
@@ -524,7 +528,7 @@ class _$_RemovePatter implements _RemovePatter {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return removePattern?.call(this);
@@ -539,7 +543,7 @@ class _$_RemovePatter implements _RemovePatter {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
@@ -648,7 +652,7 @@ class _$_AddElement implements _AddElement {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return addElement(elementEntity, imageUrl);
@@ -665,7 +669,7 @@ class _$_AddElement implements _AddElement {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return addElement?.call(elementEntity, imageUrl);
@@ -682,7 +686,7 @@ class _$_AddElement implements _AddElement {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -701,7 +705,8 @@ class _$_AddElement implements _AddElement {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return addElement(this);
@@ -716,7 +721,7 @@ class _$_AddElement implements _AddElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return addElement?.call(this);
@@ -731,7 +736,7 @@ class _$_AddElement implements _AddElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
@@ -840,7 +845,7 @@ class _$_RemoveElement implements _RemoveElement {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return removeElement(elementEntity, imageUrl);
@@ -857,7 +862,7 @@ class _$_RemoveElement implements _RemoveElement {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return removeElement?.call(elementEntity, imageUrl);
@@ -874,7 +879,7 @@ class _$_RemoveElement implements _RemoveElement {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -893,7 +898,8 @@ class _$_RemoveElement implements _RemoveElement {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return removeElement(this);
@@ -908,7 +914,7 @@ class _$_RemoveElement implements _RemoveElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return removeElement?.call(this);
@@ -923,7 +929,7 @@ class _$_RemoveElement implements _RemoveElement {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
@@ -1022,7 +1028,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return changeToPatternView(imageUrl);
@@ -1039,7 +1045,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return changeToPatternView?.call(imageUrl);
@@ -1056,7 +1062,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -1075,7 +1081,8 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return changeToPatternView(this);
@@ -1090,7 +1097,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return changeToPatternView?.call(this);
@@ -1105,7 +1112,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
@@ -1202,7 +1209,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return changeToElementView(imageUrl);
@@ -1219,7 +1226,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return changeToElementView?.call(imageUrl);
@@ -1236,7 +1243,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -1255,7 +1262,8 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return changeToElementView(this);
@@ -1270,7 +1278,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return changeToElementView?.call(this);
@@ -1285,7 +1293,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
@@ -1307,66 +1315,77 @@ abstract class _ChangeToElementView implements PatternElementEvent {
 }
 
 /// @nodoc
-abstract class _$AddAssetEntityIdCopyWith<$Res> {
-  factory _$AddAssetEntityIdCopyWith(
-          _AddAssetEntityId value, $Res Function(_AddAssetEntityId) then) =
-      __$AddAssetEntityIdCopyWithImpl<$Res>;
-  $Res call({int id});
+abstract class _$AddExistingDataToBlocCopyWith<$Res> {
+  factory _$AddExistingDataToBlocCopyWith(_AddExistingDataToBloc value,
+          $Res Function(_AddExistingDataToBloc) then) =
+      __$AddExistingDataToBlocCopyWithImpl<$Res>;
+  $Res call({AssetEntity assetEntity});
+
+  $AssetEntityCopyWith<$Res> get assetEntity;
 }
 
 /// @nodoc
-class __$AddAssetEntityIdCopyWithImpl<$Res>
+class __$AddExistingDataToBlocCopyWithImpl<$Res>
     extends _$PatternElementEventCopyWithImpl<$Res>
-    implements _$AddAssetEntityIdCopyWith<$Res> {
-  __$AddAssetEntityIdCopyWithImpl(
-      _AddAssetEntityId _value, $Res Function(_AddAssetEntityId) _then)
-      : super(_value, (v) => _then(v as _AddAssetEntityId));
+    implements _$AddExistingDataToBlocCopyWith<$Res> {
+  __$AddExistingDataToBlocCopyWithImpl(_AddExistingDataToBloc _value,
+      $Res Function(_AddExistingDataToBloc) _then)
+      : super(_value, (v) => _then(v as _AddExistingDataToBloc));
 
   @override
-  _AddAssetEntityId get _value => super._value as _AddAssetEntityId;
+  _AddExistingDataToBloc get _value => super._value as _AddExistingDataToBloc;
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? assetEntity = freezed,
   }) {
-    return _then(_AddAssetEntityId(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_AddExistingDataToBloc(
+      assetEntity: assetEntity == freezed
+          ? _value.assetEntity
+          : assetEntity // ignore: cast_nullable_to_non_nullable
+              as AssetEntity,
     ));
+  }
+
+  @override
+  $AssetEntityCopyWith<$Res> get assetEntity {
+    return $AssetEntityCopyWith<$Res>(_value.assetEntity, (value) {
+      return _then(_value.copyWith(assetEntity: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$_AddAssetEntityId implements _AddAssetEntityId {
-  const _$_AddAssetEntityId({required this.id});
+class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
+  const _$_AddExistingDataToBloc({required this.assetEntity});
 
   @override
-  final int id;
+  final AssetEntity assetEntity;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addAssetEntityIdToBloc(id: $id)';
+    return 'PatternElementEvent.addExistingDataToBloc(assetEntity: $assetEntity)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddAssetEntityId &&
-            const DeepCollectionEquality().equals(other.id, id));
+            other is _AddExistingDataToBloc &&
+            const DeepCollectionEquality()
+                .equals(other.assetEntity, assetEntity));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(assetEntity));
 
   @JsonKey(ignore: true)
   @override
-  _$AddAssetEntityIdCopyWith<_AddAssetEntityId> get copyWith =>
-      __$AddAssetEntityIdCopyWithImpl<_AddAssetEntityId>(this, _$identity);
+  _$AddExistingDataToBlocCopyWith<_AddExistingDataToBloc> get copyWith =>
+      __$AddExistingDataToBlocCopyWithImpl<_AddExistingDataToBloc>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1381,10 +1400,10 @@ class _$_AddAssetEntityId implements _AddAssetEntityId {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return addAssetEntityIdToBloc(id);
+    return addExistingDataToBloc(assetEntity);
   }
 
   @override
@@ -1398,10 +1417,10 @@ class _$_AddAssetEntityId implements _AddAssetEntityId {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return addAssetEntityIdToBloc?.call(id);
+    return addExistingDataToBloc?.call(assetEntity);
   }
 
   @override
@@ -1415,12 +1434,12 @@ class _$_AddAssetEntityId implements _AddAssetEntityId {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
-    if (addAssetEntityIdToBloc != null) {
-      return addAssetEntityIdToBloc(id);
+    if (addExistingDataToBloc != null) {
+      return addExistingDataToBloc(assetEntity);
     }
     return orElse();
   }
@@ -1434,10 +1453,11 @@ class _$_AddAssetEntityId implements _AddAssetEntityId {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
-    return addAssetEntityIdToBloc(this);
+    return addExistingDataToBloc(this);
   }
 
   @override
@@ -1449,10 +1469,10 @@ class _$_AddAssetEntityId implements _AddAssetEntityId {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
-    return addAssetEntityIdToBloc?.call(this);
+    return addExistingDataToBloc?.call(this);
   }
 
   @override
@@ -1464,23 +1484,24 @@ class _$_AddAssetEntityId implements _AddAssetEntityId {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {
-    if (addAssetEntityIdToBloc != null) {
-      return addAssetEntityIdToBloc(this);
+    if (addExistingDataToBloc != null) {
+      return addExistingDataToBloc(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddAssetEntityId implements PatternElementEvent {
-  const factory _AddAssetEntityId({required int id}) = _$_AddAssetEntityId;
+abstract class _AddExistingDataToBloc implements PatternElementEvent {
+  const factory _AddExistingDataToBloc({required AssetEntity assetEntity}) =
+      _$_AddExistingDataToBloc;
 
-  int get id;
+  AssetEntity get assetEntity;
   @JsonKey(ignore: true)
-  _$AddAssetEntityIdCopyWith<_AddAssetEntityId> get copyWith =>
+  _$AddExistingDataToBlocCopyWith<_AddExistingDataToBloc> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1534,7 +1555,7 @@ class _$_ResetBloc implements _ResetBloc {
         removeElement,
     required TResult Function(String imageUrl) changeToPatternView,
     required TResult Function(String imageUrl) changeToElementView,
-    required TResult Function(int id) addAssetEntityIdToBloc,
+    required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
     return resetBloc();
@@ -1551,7 +1572,7 @@ class _$_ResetBloc implements _ResetBloc {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
     return resetBloc?.call();
@@ -1568,7 +1589,7 @@ class _$_ResetBloc implements _ResetBloc {
         removeElement,
     TResult Function(String imageUrl)? changeToPatternView,
     TResult Function(String imageUrl)? changeToElementView,
-    TResult Function(int id)? addAssetEntityIdToBloc,
+    TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
@@ -1587,7 +1608,8 @@ class _$_ResetBloc implements _ResetBloc {
     required TResult Function(_RemoveElement value) removeElement,
     required TResult Function(_ChangeToPatternView value) changeToPatternView,
     required TResult Function(_ChangeToElementView value) changeToElementView,
-    required TResult Function(_AddAssetEntityId value) addAssetEntityIdToBloc,
+    required TResult Function(_AddExistingDataToBloc value)
+        addExistingDataToBloc,
     required TResult Function(_ResetBloc value) resetBloc,
   }) {
     return resetBloc(this);
@@ -1602,7 +1624,7 @@ class _$_ResetBloc implements _ResetBloc {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
   }) {
     return resetBloc?.call(this);
@@ -1617,7 +1639,7 @@ class _$_ResetBloc implements _ResetBloc {
     TResult Function(_RemoveElement value)? removeElement,
     TResult Function(_ChangeToPatternView value)? changeToPatternView,
     TResult Function(_ChangeToElementView value)? changeToElementView,
-    TResult Function(_AddAssetEntityId value)? addAssetEntityIdToBloc,
+    TResult Function(_AddExistingDataToBloc value)? addExistingDataToBloc,
     TResult Function(_ResetBloc value)? resetBloc,
     required TResult orElse(),
   }) {

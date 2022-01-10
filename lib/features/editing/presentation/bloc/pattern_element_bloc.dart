@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 
@@ -75,16 +77,18 @@ class PatternElementBloc
           elementEntityList: elementList,
           patternEntityList: patternList));
     });
-    on<_AddAssetEntityId>((event, emit) {
-      emit(_Loading());
+    on<_AddExistingDataToBloc>((event, emit) {
+     print(" PAtternList: $patternList");
 
-      assetEntityId = event.id;
+      patternList = event.assetEntity.patterns;
+      assetEntityId = event.assetEntity.id;
+      elementList = event.assetEntity.elements;
+
     });
 
     on<_ResetBloc>((event, emit) {
       patternList = [];
       elementList = [];
-
       emit(_Loading());
 
     } );

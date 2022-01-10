@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 
 part 'asset_event.dart';
 part 'asset_state.dart';
@@ -12,15 +13,16 @@ part 'asset_bloc.freezed.dart';
 
 @lazySingleton
 class AssetBloc extends Bloc<AssetEvent, AssetState> {
+  PatternElementBloc patternElementBloc;
   List<AssetEntity> assetEntityList = [];
-  late AssetEntity assetEntity =
-      AssetEntity(elements: [], patterns: [], imageUrl: "", id: 0, title: "");
 
-  AssetBloc() : super(_Initial()) {
+  AssetBloc({required this.patternElementBloc}) : super(_Initial()) {
     on<_AddScreen>((event, emit) async {
       emit(_Loading());
+      patternElementBloc.add(PatternElementEvent.resetBloc());
 
-      
+      AssetEntity assetEntity = AssetEntity(
+          elements: [], patterns: [], imageUrl: "", id: 0, title: "");
 
       assetEntityList.add(
         assetEntity.copyWith(
@@ -33,30 +35,45 @@ class AssetBloc extends Bloc<AssetEvent, AssetState> {
     });
     on<_AddMultipleScreens>((event, emit) async {
       emit(_Loading());
+      patternElementBloc.add(PatternElementEvent.resetBloc());
+      int microSecondDivider = 0;
 
-      Future.forEach(
-          event.event,
-          (element) async => assetEntityList.add(
-                assetEntity.copyWith(
-                  imageUrl: await event.controller.createFileUrl(element),
-                  id: int.parse(DateTime.fromMicrosecondsSinceEpoch(
-                          int.parse(DateTime.now().toString()))
-                      .toString()),
-                ),
-              ));
+      AssetEntity assetEntity = AssetEntity(
+          elements: [], patterns: [], imageUrl: "", id: 0, title: "");
+
+      Future.forEach(event.event, (element) async {
+        
+        
+        microSecondDivider = microSecondDivider + 000000001;
+
+        assetEntityList.add(assetEntity.copyWith(
+          imageUrl: await event.controller.createFileUrl(element),
+          id: DateTime.now().microsecondsSinceEpoch.toInt() + microSecondDivider,
+        ));
+        print(assetEntityList);
+      });
 
       emit(_Loaded(assetEntityList: assetEntityList));
     });
 
     on<_AddPatternAndElements>((event, emit) async {
       emit(_Loading());
+      List<AssetEntity> editedAssetEntityList = [];
 
-      assetEntityList[assetEntityList.indexWhere(
-              (assetEntity) => assetEntity.id == event.assetEntityId)]
-          .copyWith(
-        patterns: event.patternEntityList,
-        elements: event.elementEntityList,
-      );
+      assetEntityList.forEach((assetEntity) {
+        assetEntity.id == patternElementBloc.assetEntityId
+            ? editedAssetEntityList.add(assetEntity.copyWith(
+                patterns: patternElementBloc.patternList,
+                elements: patternElementBloc.elementList,
+              ))
+            : editedAssetEntityList.add(assetEntity);
+      });
+
+      assetEntityList = editedAssetEntityList;
+
+      patternElementBloc.add(PatternElementEvent.resetBloc());
+
+      emit(_Loaded(assetEntityList: assetEntityList));
     });
   }
 }

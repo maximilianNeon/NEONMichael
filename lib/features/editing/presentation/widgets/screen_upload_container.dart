@@ -33,8 +33,11 @@ class ScreenUploadContainer extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 500),
               itemBuilder: (context, index) {
+                print(state.assetEntityList[index]);
+
                 return ScreenUploadItem(
-                  assetId: state.assetEntityList[index].id,
+
+                  assetEntity: state.assetEntityList[index],
                   imageUrl: state.assetEntityList[index].imageUrl,
                 );
               },

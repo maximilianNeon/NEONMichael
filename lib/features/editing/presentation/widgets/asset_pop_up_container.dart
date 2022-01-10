@@ -296,7 +296,7 @@ class AssetPopUpContainer extends StatelessWidget {
           SizedBox(
             height: UIHelper().verticalSpaceSmall(context),
           ),
-          DynamicButton(
+          GestureDetector(
             onTap: () {
               assetBloc.add(
                 AssetEvent.addElementsAndPattern(
@@ -304,12 +304,19 @@ class AssetPopUpContainer extends StatelessWidget {
                     elementEntityList: patternElementBloc.elementList,
                     assetEntityId: patternElementBloc.assetEntityId),
               );
-
-              patternElementBloc.add(PatternElementEvent.resetBloc());
-
-              
             },
-            buttonText: "Hinzufügen",
+            child: Container(
+              height: 40,
+              width: 150,
+              decoration: BoxDecoration(
+                  color: kColorLila, borderRadius: kBorderRadius_10),
+              child: Center(
+                child: Text(
+                  "Hinzufügen",
+                  style: TextStyle(color: kColorWhite),
+                ),
+              ),
+            ),
           )
         ],
       ),
