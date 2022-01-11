@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/web_app.dart';
-import 'package:neon_web/features/blocobserver.dart';
+import 'package:neon_web/features/app_blocobserver.dart';
 import 'injection_container.dart' as injection;
 
 void main() async {
@@ -11,6 +11,7 @@ void main() async {
 
   injection.configureDependencies();
 
-  BlocOverrides.runZoned(() {}, blocObserver: SimpleBlocObserver());
-  runApp(WebApp());
+  BlocOverrides.runZoned(() {
+    runApp(WebApp());
+  }, blocObserver: AppBlocObserver());
 }
