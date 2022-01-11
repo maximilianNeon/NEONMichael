@@ -1,40 +1,36 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart';
+import 'package:dartz/dartz.dart';
+import 'package:neon_web/core/error/failure.dart';
+import 'package:neon_web/core/success/success.dart';
 
-class RemoteAuthenticationDataSource {
-  final _auth = FirebaseAuth.instance;
+abstract class RemoteAuthentificationDataSource {
+  Future<Either<Failure,Success>> login({required String email, required String password});
+}
 
-  Future registerWithEmailAndPassword(
-      {required String email, required String password}) async {
-    try {
-      final result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      final user = result.user;
-      return user;
-    } on Exception catch (e) {
-      throw Exception();
+
+
+
+@injectable
+class RemoteAuthenticationDataSourceImpl
+    extends RemoteAuthentificationDataSource {
+  
+  FireBaseRemoteDataSource fireBaseRemoteDataSource;
+
+  RemoteAuthenticationDataSourceImpl(this.fireBaseRemoteDataSource);
+
+  @override
+  Future<Either<Failure,Success>> login({required String email, required String password}) async {
+    try{
+        final result = await fireBaseRemoteDataSource.firebaseLogin(email: email, password: password);
+        
+       return result.fold(
+          (l) => Left(RepositoryFailure()), (r) => Right(RepositorySuccess()) 
+        );
+       
+    }catch (e){
+      return Left(RepositoryFailure());
     }
-  }
-
-  Future<UserCredential> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
-    try {
-      final userCredential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      return userCredential;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print(e.code);
-        throw Exception();
-      } else if (e.code == 'wrong-password') {
-        print(e.code);
-        throw Exception();
-      } else {
-        throw Exception();
-      }
-    }
-  }
-
-  Future<void> signOut() async {
-    await _auth.signOut();
-  }
+   }
+    
 }

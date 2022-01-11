@@ -22,9 +22,10 @@ dependencies:
   freezed_annotation: ^1.1.0
   
   # Firebase    
-  firebase: ^9.0.2 
+  
   firebase_core: ^1.10.0
   firebase_auth: ^3.2.0 
+  
 
   
   flutter_dropzone: ^3.0.4

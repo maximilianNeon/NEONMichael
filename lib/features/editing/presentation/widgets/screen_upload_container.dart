@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_item.dart';
 
+@injectable
 class ScreenUploadContainer extends StatelessWidget {
-  ScreenUploadContainer({Key? key}) : super(key: key);
+  
+  ScreenUploadContainer() : super();
 
   late DropzoneViewController dropzoneViewController;
 
@@ -33,10 +36,8 @@ class ScreenUploadContainer extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   maxCrossAxisExtent: 500),
               itemBuilder: (context, index) {
-                print(state.assetEntityList[index]);
-
                 return ScreenUploadItem(
-
+                  
                   assetEntity: state.assetEntityList[index],
                   imageUrl: state.assetEntityList[index].imageUrl,
                 );

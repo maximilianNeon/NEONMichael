@@ -1,9 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 
 part 'asset_entity.freezed.dart';
 
+@injectable
 @freezed
 class AssetEntity with _$AssetEntity {
   factory AssetEntity({

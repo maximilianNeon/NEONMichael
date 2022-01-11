@@ -48,8 +48,6 @@ class _ProjectDataInputState extends State<ProjectDataInput> {
               textAlignVertical: TextAlignVertical.center,
               textAlign: TextAlign.left,
               onChanged: (text) {
-                print("OnChanged");
-                print(text);
 
                 switch (widget.textfieldTitle) {
                   case "Projekt Name":

@@ -22,7 +22,6 @@ class LoadRemoteDataBloc
     on<_LoadProjectData>((event, emit) async {
       emit(_Loading());
       _projectData = ProjectHelpers.mockProjects1;
-      print(_projectData.length);
       emit(_Loaded());
     });
   }

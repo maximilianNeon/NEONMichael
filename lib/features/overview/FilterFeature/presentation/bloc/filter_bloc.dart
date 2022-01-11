@@ -46,7 +46,7 @@ class FilterBloc extends Bloc<FilterEvent, FilterState> {
             projectEntityList: event.projectEntityList),
       );
 
-      print(result);
+     
 
       emit(_PatternFilterState(
           actitvatedFilter: event.filter, filteredByPatternList: result));

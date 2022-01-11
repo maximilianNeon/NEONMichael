@@ -12,7 +12,6 @@ import 'package:neon_web/features/overview/presentation/pages/project_focus_page
 class Projects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("Build Projects");
     ProjectFilterBloc projectFilterBloc =
         BlocProvider.of<ProjectFilterBloc>(context);
     LoadRemoteDataBloc loadRemoteDataBloc =

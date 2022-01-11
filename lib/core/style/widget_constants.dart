@@ -8,6 +8,6 @@ import '../util/ui_helper.dart';
  Widget horizontalSpaceMedium({required context}) => SizedBox(width: UIHelper().horizontalSpaceMedium(context));
 
  //VerticalSpacing
- Widget verticalSpaceSmall({required context}) => SizedBox(width: UIHelper().verticalSpaceSmall(context));
- Widget verticalSpaceMedium({required context}) => SizedBox(width: UIHelper().verticalSpaceMedium(context));
- Widget verticalSpaceLarge({required context}) => SizedBox(width: UIHelper().verticalSpaceLarge(context));
+ Widget verticalSpaceSmall({required context}) => SizedBox(height: UIHelper().verticalSpaceSmall(context));
+ Widget verticalSpaceMedium({required context}) => SizedBox(height: UIHelper().verticalSpaceMedium(context));
+ Widget verticalSpaceLarge({required context}) => SizedBox(height: UIHelper().verticalSpaceLarge(context));

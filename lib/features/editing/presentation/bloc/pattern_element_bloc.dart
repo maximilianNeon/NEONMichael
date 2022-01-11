@@ -58,6 +58,7 @@ class PatternElementBloc
     on<_AddPattern>((event, emit) {
       emit(_Loading());
 
+      print("AddPatternEvent : ${event.patternEntity}" );
       patternList.add(event.patternEntity);
 
       emit(_PatternView(
@@ -78,11 +79,15 @@ class PatternElementBloc
           patternEntityList: patternList));
     });
     on<_AddExistingDataToBloc>((event, emit) {
+     
      print(" PAtternList: $patternList");
 
       patternList = event.assetEntity.patterns;
       assetEntityId = event.assetEntity.id;
       elementList = event.assetEntity.elements;
+
+      print(" PAtternList: $patternList");
+      print("AssetEntityId $assetEntityId");
 
     });
 

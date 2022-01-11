@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_Lists.dart';
@@ -8,12 +9,12 @@ import 'package:neon_web/core/style/style.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
-import 'dynamic_button.dart';
 
+@lazySingleton
 class AssetPopUpContainer extends StatelessWidget {
   final String imageUrl;
 
-  AssetPopUpContainer({required this.imageUrl, Key? key}) : super(key: key);
+  AssetPopUpContainer({required this.imageUrl}) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -228,19 +229,36 @@ class AssetPopUpContainer extends StatelessWidget {
                                             itemBuilder:
                                                 (context, i) => GestureDetector(
                                                       onTap: () {
-                                                        patternState.patternEntityList.where((element) => element.header == BuildPatternLists.headlineList[index] && element.item == BuildPatternLists.globalItemList[index].where((item) => item.contains(BuildPatternLists.globalItemList[index][i])).toList().first).toList().length >
+                                                        patternState.patternEntityList
+                                                                    .where((element) =>
+                                                                        element.header ==
+                                                                            BuildPatternLists.headlineList[
+                                                                                index] &&
+                                                                        element.item ==
+                                                                            BuildPatternLists.globalItemList[index]
+                                                                                .where((item) => item.contains(BuildPatternLists.globalItemList[index][
+                                                                                    i]))
+                                                                                .toList()
+                                                                                .first)
+                                                                    .toList()
+                                                                    .length >
                                                                 0
-                                                            ? patternElementBloc.add(PatternElementEvent.removePattern(
-                                                                imageUrl:
-                                                                    imageUrl,
-                                                                patternEntity: PatternEntity(
-                                                                    header: BuildPatternLists
-                                                                        .headlineList[
-                                                                            index]
-                                                                        .toString(),
-                                                                    item: BuildPatternLists
-                                                                            .globalItemList[index]
-                                                                        [i])))
+                                                            ? patternElementBloc
+                                                                .add(
+                                                                PatternElementEvent
+                                                                    .removePattern(
+                                                                  imageUrl:
+                                                                      imageUrl,
+                                                                  patternEntity: PatternEntity(
+                                                                      header: BuildPatternLists
+                                                                          .headlineList[
+                                                                              index]
+                                                                          .toString(),
+                                                                      item: BuildPatternLists
+                                                                              .globalItemList[
+                                                                          index][i]),
+                                                                ),
+                                                              )
                                                             : patternElementBloc
                                                                 .add(
                                                                 PatternElementEvent
@@ -329,11 +347,6 @@ class AssetPopUpContainer extends StatelessWidget {
     required List<String> itemList,
     required String itemString,
   }) {
-    print(elementEntityList);
-    print(headline);
-    print(itemList);
-    print(itemString);
-
     return elementEntityList
                 .where((element) =>
                     element.header == headline &&
