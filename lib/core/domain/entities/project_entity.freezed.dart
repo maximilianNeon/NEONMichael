@@ -13,13 +13,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+ProjectEntity _$ProjectEntityFromJson(Map<String, dynamic> json) {
+  return _ProjectEntity.fromJson(json);
+}
+
 /// @nodoc
 class _$ProjectEntityTearOff {
   const _$ProjectEntityTearOff();
 
   _ProjectEntity call(
       {required String title,
-      required ProjectType projectType,
+      required String projectType,
       required String description,
       required List<AssetEntity> assets,
       required String imageUrl}) {
@@ -31,6 +35,10 @@ class _$ProjectEntityTearOff {
       imageUrl: imageUrl,
     );
   }
+
+  ProjectEntity fromJson(Map<String, Object?> json) {
+    return ProjectEntity.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -39,11 +47,12 @@ const $ProjectEntity = _$ProjectEntityTearOff();
 /// @nodoc
 mixin _$ProjectEntity {
   String get title => throw _privateConstructorUsedError;
-  ProjectType get projectType => throw _privateConstructorUsedError;
+  String get projectType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<AssetEntity> get assets => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProjectEntityCopyWith<ProjectEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -56,7 +65,7 @@ abstract class $ProjectEntityCopyWith<$Res> {
       _$ProjectEntityCopyWithImpl<$Res>;
   $Res call(
       {String title,
-      ProjectType projectType,
+      String projectType,
       String description,
       List<AssetEntity> assets,
       String imageUrl});
@@ -87,7 +96,7 @@ class _$ProjectEntityCopyWithImpl<$Res>
       projectType: projectType == freezed
           ? _value.projectType
           : projectType // ignore: cast_nullable_to_non_nullable
-              as ProjectType,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -113,7 +122,7 @@ abstract class _$ProjectEntityCopyWith<$Res>
   @override
   $Res call(
       {String title,
-      ProjectType projectType,
+      String projectType,
       String description,
       List<AssetEntity> assets,
       String imageUrl});
@@ -146,7 +155,7 @@ class __$ProjectEntityCopyWithImpl<$Res>
       projectType: projectType == freezed
           ? _value.projectType
           : projectType // ignore: cast_nullable_to_non_nullable
-              as ProjectType,
+              as String,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -164,7 +173,7 @@ class __$ProjectEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_ProjectEntity implements _ProjectEntity {
   _$_ProjectEntity(
       {required this.title,
@@ -173,10 +182,13 @@ class _$_ProjectEntity implements _ProjectEntity {
       required this.assets,
       required this.imageUrl});
 
+  factory _$_ProjectEntity.fromJson(Map<String, dynamic> json) =>
+      _$$_ProjectEntityFromJson(json);
+
   @override
   final String title;
   @override
-  final ProjectType projectType;
+  final String projectType;
   @override
   final String description;
   @override
@@ -216,20 +228,28 @@ class _$_ProjectEntity implements _ProjectEntity {
   @override
   _$ProjectEntityCopyWith<_ProjectEntity> get copyWith =>
       __$ProjectEntityCopyWithImpl<_ProjectEntity>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_ProjectEntityToJson(this);
+  }
 }
 
 abstract class _ProjectEntity implements ProjectEntity {
   factory _ProjectEntity(
       {required String title,
-      required ProjectType projectType,
+      required String projectType,
       required String description,
       required List<AssetEntity> assets,
       required String imageUrl}) = _$_ProjectEntity;
 
+  factory _ProjectEntity.fromJson(Map<String, dynamic> json) =
+      _$_ProjectEntity.fromJson;
+
   @override
   String get title;
   @override
-  ProjectType get projectType;
+  String get projectType;
   @override
   String get description;
   @override

@@ -13,6 +13,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+AssetEntity _$AssetEntityFromJson(Map<String, dynamic> json) {
+  return _AssetEntity.fromJson(json);
+}
+
 /// @nodoc
 class _$AssetEntityTearOff {
   const _$AssetEntityTearOff();
@@ -31,6 +35,10 @@ class _$AssetEntityTearOff {
       elements: elements,
     );
   }
+
+  AssetEntity fromJson(Map<String, Object?> json) {
+    return AssetEntity.fromJson(json);
+  }
 }
 
 /// @nodoc
@@ -44,6 +52,7 @@ mixin _$AssetEntity {
   List<PatternEntity> get patterns => throw _privateConstructorUsedError;
   List<ElementEntity> get elements => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AssetEntityCopyWith<AssetEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -162,7 +171,7 @@ class __$AssetEntityCopyWithImpl<$Res> extends _$AssetEntityCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_AssetEntity implements _AssetEntity {
   _$_AssetEntity(
       {required this.imageUrl,
@@ -170,6 +179,9 @@ class _$_AssetEntity implements _AssetEntity {
       required this.id,
       required this.patterns,
       required this.elements});
+
+  factory _$_AssetEntity.fromJson(Map<String, dynamic> json) =>
+      _$$_AssetEntityFromJson(json);
 
   @override
   final String imageUrl;
@@ -212,6 +224,11 @@ class _$_AssetEntity implements _AssetEntity {
   @override
   _$AssetEntityCopyWith<_AssetEntity> get copyWith =>
       __$AssetEntityCopyWithImpl<_AssetEntity>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AssetEntityToJson(this);
+  }
 }
 
 abstract class _AssetEntity implements AssetEntity {
@@ -221,6 +238,9 @@ abstract class _AssetEntity implements AssetEntity {
       required int id,
       required List<PatternEntity> patterns,
       required List<ElementEntity> elements}) = _$_AssetEntity;
+
+  factory _AssetEntity.fromJson(Map<String, dynamic> json) =
+      _$_AssetEntity.fromJson;
 
   @override
   String get imageUrl;

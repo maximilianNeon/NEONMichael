@@ -186,6 +186,8 @@ abstract class _$AddPatternCopyWith<$Res> {
           _AddPattern value, $Res Function(_AddPattern) then) =
       __$AddPatternCopyWithImpl<$Res>;
   $Res call({PatternEntity patternEntity, String imageUrl});
+
+  $PatternEntityCopyWith<$Res> get patternEntity;
 }
 
 /// @nodoc
@@ -214,6 +216,13 @@ class __$AddPatternCopyWithImpl<$Res>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  $PatternEntityCopyWith<$Res> get patternEntity {
+    return $PatternEntityCopyWith<$Res>(_value.patternEntity, (value) {
+      return _then(_value.copyWith(patternEntity: value));
+    });
   }
 }
 
@@ -379,6 +388,8 @@ abstract class _$RemovePatterCopyWith<$Res> {
           _RemovePatter value, $Res Function(_RemovePatter) then) =
       __$RemovePatterCopyWithImpl<$Res>;
   $Res call({PatternEntity patternEntity, String imageUrl});
+
+  $PatternEntityCopyWith<$Res> get patternEntity;
 }
 
 /// @nodoc
@@ -407,6 +418,13 @@ class __$RemovePatterCopyWithImpl<$Res>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  $PatternEntityCopyWith<$Res> get patternEntity {
+    return $PatternEntityCopyWith<$Res>(_value.patternEntity, (value) {
+      return _then(_value.copyWith(patternEntity: value));
+    });
   }
 }
 
@@ -572,6 +590,8 @@ abstract class _$AddElementCopyWith<$Res> {
           _AddElement value, $Res Function(_AddElement) then) =
       __$AddElementCopyWithImpl<$Res>;
   $Res call({ElementEntity elementEntity, String imageUrl});
+
+  $ElementEntityCopyWith<$Res> get elementEntity;
 }
 
 /// @nodoc
@@ -600,6 +620,13 @@ class __$AddElementCopyWithImpl<$Res>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  $ElementEntityCopyWith<$Res> get elementEntity {
+    return $ElementEntityCopyWith<$Res>(_value.elementEntity, (value) {
+      return _then(_value.copyWith(elementEntity: value));
+    });
   }
 }
 
@@ -765,6 +792,8 @@ abstract class _$RemoveElementCopyWith<$Res> {
           _RemoveElement value, $Res Function(_RemoveElement) then) =
       __$RemoveElementCopyWithImpl<$Res>;
   $Res call({ElementEntity elementEntity, String imageUrl});
+
+  $ElementEntityCopyWith<$Res> get elementEntity;
 }
 
 /// @nodoc
@@ -793,6 +822,13 @@ class __$RemoveElementCopyWithImpl<$Res>
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
+  }
+
+  @override
+  $ElementEntityCopyWith<$Res> get elementEntity {
+    return $ElementEntityCopyWith<$Res>(_value.elementEntity, (value) {
+      return _then(_value.copyWith(elementEntity: value));
+    });
   }
 }
 

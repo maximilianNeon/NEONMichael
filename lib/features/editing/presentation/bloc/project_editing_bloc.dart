@@ -18,10 +18,10 @@ class ProjectEditingBloc
       assets: [],
       description: "",
       imageUrl: "",
-      projectType: ProjectType.App,
+      projectType: ProjectType.App.toString(),
       title: "");
 
-  ProjectEditingBloc({required this.assetBloc}) : super(_Initial()) {
+  ProjectEditingBloc({required this.assetBloc,}) : super(_Initial()) {
     on<_AddName>((event, emit) {
       
       projectEntity = projectEntity.copyWith(title: event.name);
@@ -37,6 +37,8 @@ class ProjectEditingBloc
     });
     on<_UploadProject>((event, emit) {
       projectEntity.copyWith(assets: assetBloc.assetEntityList);
+
+
       
     });
   }

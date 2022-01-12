@@ -1,4 +1,6 @@
 
+import 'package:json_annotation/json_annotation.dart';
+
 
 enum OnboardingPatterns {
   LaunchScreen,
@@ -112,25 +114,27 @@ enum ContentPatterns {
   OtherContent
 }
 
+@JsonEnum()
 enum ActionsPatterns {
-  AddAndCreate,
-  Edit,
-  Delete,
-  UploadAndDownload,
-  Select,
-  Move,
-  Reorder,
-  DrawAndAnnotate,
-  Save,
-  Cancel,
-  SetSchedule,
-  LikeAndUpvote,
-  FollowAndSubscribe,
-  Share,
-  FlagAndReport,
-  BanAndBlock,
-  FilterAndSort,
-  Search,
-  TransferAndSendMoney,
-  OtherAction
+   
+   AddAndCreate,
+ // @JsonValue("Edit") Edit,
+ // @JsonValue("Delete") Delete,
+ // @JsonValue("UploadAndDownload") UploadAndDownload,
+ // @JsonValue("Select") Select,
+ // @JsonValue("Move") Move,
+ // @JsonValue("Recoder") Reorder,
+ // @JsonValue("DrawAndAnnotate") DrawAndAnnotate,
+ // @JsonValue("Save") Save,
+ // @JsonValue("Cancel") Cancel,
+ // @JsonValue("SetSchedule") SetSchedule,
+ // @JsonValue("LikeAndUpvote") LikeAndUpvote,
+ // @JsonValue("FollowAndSubscribe") FollowAndSubscribe,
+ // @JsonValue("Share") Share,
+ // @JsonValue("FlagAndReport") FlagAndReport,
+ // @JsonValue("BanAndBlock") BanAndBlock,
+ // @JsonValue("FilterAndSort") FilterAndSort,
+ // @JsonValue("Search") Search,
+ // @JsonValue("TransferAndSendMoney") TransferAndSendMoney,
+ // @JsonValue("OtherAction") OtherAction
 }

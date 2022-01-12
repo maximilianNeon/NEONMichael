@@ -15,14 +15,14 @@ abstract class RemoteAuthentificationDataSource {
 class RemoteAuthenticationDataSourceImpl
     extends RemoteAuthentificationDataSource {
   
-  FireBaseRemoteDataSource fireBaseRemoteDataSource;
+  FireBaseRemoteDataSourceImpl fireBaseRemoteDataSourceImpl;
 
-  RemoteAuthenticationDataSourceImpl(this.fireBaseRemoteDataSource);
+  RemoteAuthenticationDataSourceImpl(this.fireBaseRemoteDataSourceImpl);
 
   @override
   Future<Either<Failure,Success>> login({required String email, required String password}) async {
     try{
-        final result = await fireBaseRemoteDataSource.firebaseLogin(email: email, password: password);
+        final result = await fireBaseRemoteDataSourceImpl.firebaseSignIn(email: email, password: password);
         
        return result.fold(
           (l) => Left(RepositoryFailure()), (r) => Right(RepositorySuccess()) 
