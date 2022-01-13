@@ -10,7 +10,7 @@ part 'pattern_entity.freezed.dart';
 @injectable
 class PatternEntity with _$PatternEntity {
   factory PatternEntity({
-    required Object item,
+    required Patterns item,
     required String header,
   }) = _PatternEntity;
 

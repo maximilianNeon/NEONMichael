@@ -4,6 +4,8 @@ import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/core/success/success.dart';
 import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
 
 abstract class FireBaseRemoteDataSource {
   Future<Either<Failure, Success>> firebaseSignIn(
@@ -19,6 +21,7 @@ abstract class FireBaseRemoteDataSource {
 class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final firestoreInstance = FirebaseFirestore.instance;
+  final firestorageInstance = FirebaseStorage.instance;
 
   Future<Either<Failure, Success>> firebaseSignIn(
       {required String email, required String password}) async {
@@ -58,6 +61,8 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
     print("upload");
     print(collectionName);
     print(project);
+    
+
     
     try {
       final result =  await firestoreInstance.collection(collectionName).add(project

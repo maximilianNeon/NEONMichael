@@ -21,7 +21,7 @@ PatternEntity _$PatternEntityFromJson(Map<String, dynamic> json) {
 class _$PatternEntityTearOff {
   const _$PatternEntityTearOff();
 
-  _PatternEntity call({required Object item, required String header}) {
+  _PatternEntity call({required Patterns item, required String header}) {
     return _PatternEntity(
       item: item,
       header: header,
@@ -38,7 +38,7 @@ const $PatternEntity = _$PatternEntityTearOff();
 
 /// @nodoc
 mixin _$PatternEntity {
-  Object get item => throw _privateConstructorUsedError;
+  Patterns get item => throw _privateConstructorUsedError;
   String get header => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,7 +52,7 @@ abstract class $PatternEntityCopyWith<$Res> {
   factory $PatternEntityCopyWith(
           PatternEntity value, $Res Function(PatternEntity) then) =
       _$PatternEntityCopyWithImpl<$Res>;
-  $Res call({Object item, String header});
+  $Res call({Patterns item, String header});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$PatternEntityCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Object,
+              as Patterns,
       header: header == freezed
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
@@ -89,7 +89,7 @@ abstract class _$PatternEntityCopyWith<$Res>
           _PatternEntity value, $Res Function(_PatternEntity) then) =
       __$PatternEntityCopyWithImpl<$Res>;
   @override
-  $Res call({Object item, String header});
+  $Res call({Patterns item, String header});
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class __$PatternEntityCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Object,
+              as Patterns,
       header: header == freezed
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
@@ -130,7 +130,7 @@ class _$_PatternEntity implements _PatternEntity {
       _$$_PatternEntityFromJson(json);
 
   @override
-  final Object item;
+  final Patterns item;
   @override
   final String header;
 
@@ -166,14 +166,14 @@ class _$_PatternEntity implements _PatternEntity {
 }
 
 abstract class _PatternEntity implements PatternEntity {
-  factory _PatternEntity({required Object item, required String header}) =
+  factory _PatternEntity({required Patterns item, required String header}) =
       _$_PatternEntity;
 
   factory _PatternEntity.fromJson(Map<String, dynamic> json) =
       _$_PatternEntity.fromJson;
 
   @override
-  Object get item;
+  Patterns get item;
   @override
   String get header;
   @override

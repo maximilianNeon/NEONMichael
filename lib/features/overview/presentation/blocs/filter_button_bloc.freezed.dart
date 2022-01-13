@@ -604,8 +604,7 @@ class _$FilterButtonStateTearOff {
   }
 
   _FilterButtonElementState elementFilterState(
-      {required List<List<String>> globalItemList,
-      required List<dynamic> headers}) {
+      {required List<List> globalItemList, required List<dynamic> headers}) {
     return _FilterButtonElementState(
       globalItemList: globalItemList,
       headers: headers,
@@ -613,8 +612,7 @@ class _$FilterButtonStateTearOff {
   }
 
   _FilterButtonTypeState typeFilterState(
-      {required List<List<String>> globalItemList,
-      required List<dynamic> headers}) {
+      {required List<List> globalItemList, required List<dynamic> headers}) {
     return _FilterButtonTypeState(
       globalItemList: globalItemList,
       headers: headers,
@@ -622,8 +620,7 @@ class _$FilterButtonStateTearOff {
   }
 
   _FilterButtonPatternState patternFilterState(
-      {required List<List<String>> globalItemList,
-      required List<dynamic> headers}) {
+      {required List<List> globalItemList, required List<dynamic> headers}) {
     return _FilterButtonPatternState(
       globalItemList: globalItemList,
       headers: headers,
@@ -639,36 +636,33 @@ mixin _$FilterButtonState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) =>
@@ -763,14 +757,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
     return filterTurnedOff();
@@ -780,11 +771,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
     return filterTurnedOff?.call();
@@ -794,11 +785,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
@@ -857,7 +848,7 @@ abstract class _$FilterButtonElementStateCopyWith<$Res> {
   factory _$FilterButtonElementStateCopyWith(_FilterButtonElementState value,
           $Res Function(_FilterButtonElementState) then) =
       __$FilterButtonElementStateCopyWithImpl<$Res>;
-  $Res call({List<List<String>> globalItemList, List<dynamic> headers});
+  $Res call({List<List> globalItemList, List<dynamic> headers});
 }
 
 /// @nodoc
@@ -881,7 +872,7 @@ class __$FilterButtonElementStateCopyWithImpl<$Res>
       globalItemList: globalItemList == freezed
           ? _value.globalItemList
           : globalItemList // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+              as List<List>,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -897,7 +888,7 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
       {required this.globalItemList, required this.headers});
 
   @override
-  final List<List<String>> globalItemList;
+  final List<List> globalItemList;
   @override
   final List<dynamic> headers;
 
@@ -932,14 +923,11 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
     return elementFilterState(globalItemList, headers);
@@ -949,11 +937,11 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
     return elementFilterState?.call(globalItemList, headers);
@@ -963,11 +951,11 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
@@ -1019,10 +1007,10 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
 
 abstract class _FilterButtonElementState implements FilterButtonState {
   const factory _FilterButtonElementState(
-      {required List<List<String>> globalItemList,
+      {required List<List> globalItemList,
       required List<dynamic> headers}) = _$_FilterButtonElementState;
 
-  List<List<String>> get globalItemList;
+  List<List> get globalItemList;
   List<dynamic> get headers;
   @JsonKey(ignore: true)
   _$FilterButtonElementStateCopyWith<_FilterButtonElementState> get copyWith =>
@@ -1034,7 +1022,7 @@ abstract class _$FilterButtonTypeStateCopyWith<$Res> {
   factory _$FilterButtonTypeStateCopyWith(_FilterButtonTypeState value,
           $Res Function(_FilterButtonTypeState) then) =
       __$FilterButtonTypeStateCopyWithImpl<$Res>;
-  $Res call({List<List<String>> globalItemList, List<dynamic> headers});
+  $Res call({List<List> globalItemList, List<dynamic> headers});
 }
 
 /// @nodoc
@@ -1057,7 +1045,7 @@ class __$FilterButtonTypeStateCopyWithImpl<$Res>
       globalItemList: globalItemList == freezed
           ? _value.globalItemList
           : globalItemList // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+              as List<List>,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -1073,7 +1061,7 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
       {required this.globalItemList, required this.headers});
 
   @override
-  final List<List<String>> globalItemList;
+  final List<List> globalItemList;
   @override
   final List<dynamic> headers;
 
@@ -1108,14 +1096,11 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
     return typeFilterState(globalItemList, headers);
@@ -1125,11 +1110,11 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
     return typeFilterState?.call(globalItemList, headers);
@@ -1139,11 +1124,11 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
@@ -1195,10 +1180,10 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
 
 abstract class _FilterButtonTypeState implements FilterButtonState {
   const factory _FilterButtonTypeState(
-      {required List<List<String>> globalItemList,
+      {required List<List> globalItemList,
       required List<dynamic> headers}) = _$_FilterButtonTypeState;
 
-  List<List<String>> get globalItemList;
+  List<List> get globalItemList;
   List<dynamic> get headers;
   @JsonKey(ignore: true)
   _$FilterButtonTypeStateCopyWith<_FilterButtonTypeState> get copyWith =>
@@ -1210,7 +1195,7 @@ abstract class _$FilterButtonPatternStateCopyWith<$Res> {
   factory _$FilterButtonPatternStateCopyWith(_FilterButtonPatternState value,
           $Res Function(_FilterButtonPatternState) then) =
       __$FilterButtonPatternStateCopyWithImpl<$Res>;
-  $Res call({List<List<String>> globalItemList, List<dynamic> headers});
+  $Res call({List<List> globalItemList, List<dynamic> headers});
 }
 
 /// @nodoc
@@ -1234,7 +1219,7 @@ class __$FilterButtonPatternStateCopyWithImpl<$Res>
       globalItemList: globalItemList == freezed
           ? _value.globalItemList
           : globalItemList // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
+              as List<List>,
       headers: headers == freezed
           ? _value.headers
           : headers // ignore: cast_nullable_to_non_nullable
@@ -1250,7 +1235,7 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
       {required this.globalItemList, required this.headers});
 
   @override
-  final List<List<String>> globalItemList;
+  final List<List> globalItemList;
   @override
   final List<dynamic> headers;
 
@@ -1285,14 +1270,11 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         elementFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         typeFilterState,
-    required TResult Function(
-            List<List<String>> globalItemList, List<dynamic> headers)
+    required TResult Function(List<List> globalItemList, List<dynamic> headers)
         patternFilterState,
   }) {
     return patternFilterState(globalItemList, headers);
@@ -1302,11 +1284,11 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
   }) {
     return patternFilterState?.call(globalItemList, headers);
@@ -1316,11 +1298,11 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         elementFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         typeFilterState,
-    TResult Function(List<List<String>> globalItemList, List<dynamic> headers)?
+    TResult Function(List<List> globalItemList, List<dynamic> headers)?
         patternFilterState,
     required TResult orElse(),
   }) {
@@ -1372,10 +1354,10 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
 
 abstract class _FilterButtonPatternState implements FilterButtonState {
   const factory _FilterButtonPatternState(
-      {required List<List<String>> globalItemList,
+      {required List<List> globalItemList,
       required List<dynamic> headers}) = _$_FilterButtonPatternState;
 
-  List<List<String>> get globalItemList;
+  List<List> get globalItemList;
   List<dynamic> get headers;
   @JsonKey(ignore: true)
   _$FilterButtonPatternStateCopyWith<_FilterButtonPatternState> get copyWith =>

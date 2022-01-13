@@ -21,7 +21,7 @@ ElementEntity _$ElementEntityFromJson(Map<String, dynamic> json) {
 class _$ElementEntityTearOff {
   const _$ElementEntityTearOff();
 
-  _ElementEntity call({required String header, required Object item}) {
+  _ElementEntity call({required String header, required Elements item}) {
     return _ElementEntity(
       header: header,
       item: item,
@@ -39,7 +39,7 @@ const $ElementEntity = _$ElementEntityTearOff();
 /// @nodoc
 mixin _$ElementEntity {
   String get header => throw _privateConstructorUsedError;
-  Object get item => throw _privateConstructorUsedError;
+  Elements get item => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +52,7 @@ abstract class $ElementEntityCopyWith<$Res> {
   factory $ElementEntityCopyWith(
           ElementEntity value, $Res Function(ElementEntity) then) =
       _$ElementEntityCopyWithImpl<$Res>;
-  $Res call({String header, Object item});
+  $Res call({String header, Elements item});
 }
 
 /// @nodoc
@@ -77,7 +77,7 @@ class _$ElementEntityCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Object,
+              as Elements,
     ));
   }
 }
@@ -89,7 +89,7 @@ abstract class _$ElementEntityCopyWith<$Res>
           _ElementEntity value, $Res Function(_ElementEntity) then) =
       __$ElementEntityCopyWithImpl<$Res>;
   @override
-  $Res call({String header, Object item});
+  $Res call({String header, Elements item});
 }
 
 /// @nodoc
@@ -116,7 +116,7 @@ class __$ElementEntityCopyWithImpl<$Res>
       item: item == freezed
           ? _value.item
           : item // ignore: cast_nullable_to_non_nullable
-              as Object,
+              as Elements,
     ));
   }
 }
@@ -132,7 +132,7 @@ class _$_ElementEntity implements _ElementEntity {
   @override
   final String header;
   @override
-  final Object item;
+  final Elements item;
 
   @override
   String toString() {
@@ -166,7 +166,7 @@ class _$_ElementEntity implements _ElementEntity {
 }
 
 abstract class _ElementEntity implements ElementEntity {
-  factory _ElementEntity({required String header, required Object item}) =
+  factory _ElementEntity({required String header, required Elements item}) =
       _$_ElementEntity;
 
   factory _ElementEntity.fromJson(Map<String, dynamic> json) =
@@ -175,7 +175,7 @@ abstract class _ElementEntity implements ElementEntity {
   @override
   String get header;
   @override
-  Object get item;
+  Elements get item;
   @override
   @JsonKey(ignore: true)
   _$ElementEntityCopyWith<_ElementEntity> get copyWith =>

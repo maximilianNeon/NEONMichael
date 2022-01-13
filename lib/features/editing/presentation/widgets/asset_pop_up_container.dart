@@ -122,7 +122,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        BuildElementLists.headLineList[index],
+                                        BuildElementLists.headLineList[index].toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -134,19 +134,36 @@ class AssetPopUpContainer extends StatelessWidget {
                                             itemBuilder:
                                                 (context, i) => GestureDetector(
                                                       onTap: () {
-                                                        elementState.elementEntityList.where((element) => element.header == BuildElementLists.headLineList[index] && element.item == BuildElementLists.globalItemList[index].where((item) => item.contains(BuildElementLists.globalItemList[index][i])).toList().first).toList().length >
+                                                        elementState.elementEntityList
+                                                                    .where((element) =>
+                                                                        element.header ==
+                                                                            BuildElementLists.headLineList[
+                                                                                index] &&
+                                                                        element.item ==
+                                                                            BuildElementLists.globalItemList[index]
+                                                                                .where((item) => item.toString().contains(BuildElementLists.globalItemList[index][
+                                                                                    i].toString()))
+                                                                                .toList()
+                                                                                .first)
+                                                                    .toList()
+                                                                    .length >
                                                                 0
-                                                            ? patternElementBloc.add(PatternElementEvent.removeElement(
-                                                                imageUrl:
-                                                                    imageUrl,
-                                                                elementEntity: ElementEntity(
-                                                                    header: BuildElementLists
-                                                                        .headLineList[
-                                                                            index]
-                                                                        .toString(),
-                                                                    item: BuildElementLists
-                                                                            .globalItemList[index]
-                                                                        [i])))
+                                                            ? patternElementBloc
+                                                                .add(
+                                                                PatternElementEvent
+                                                                    .removeElement(
+                                                                  imageUrl:
+                                                                      imageUrl,
+                                                                  elementEntity: ElementEntity(
+                                                                      header: BuildElementLists
+                                                                          .headLineList[
+                                                                              index]
+                                                                          .toString(),
+                                                                      item: BuildElementLists
+                                                                              .globalItemList[
+                                                                          index][i]),
+                                                                ),
+                                                              )
                                                             : patternElementBloc
                                                                 .add(
                                                                 PatternElementEvent
@@ -167,7 +184,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                       child: Text(
                                                         BuildElementLists
                                                                 .globalItemList[
-                                                            index][i],
+                                                            index][i].toString(),
                                                         style: TextStyle(
                                                             color: changeColor(
                                                                 elementEntityList:
@@ -176,14 +193,14 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                 headline:
                                                                     BuildElementLists
                                                                             .headLineList[
-                                                                        index],
+                                                                        index].toString(),
                                                                 itemList:
                                                                     BuildElementLists
                                                                             .globalItemList[
                                                                         index],
                                                                 itemString: BuildElementLists
                                                                         .globalItemList[
-                                                                    index][i])),
+                                                                    index][i].toString())),
                                                       ),
                                                     )),
                                       ),
@@ -217,7 +234,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       Text(
-                                        BuildPatternLists.headlineList[index],
+                                        BuildPatternLists.headlineList[index].toString(),
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -229,57 +246,57 @@ class AssetPopUpContainer extends StatelessWidget {
                                             itemBuilder:
                                                 (context, i) => GestureDetector(
                                                       onTap: () {
-                                                        patternState.patternEntityList
-                                                                    .where((element) =>
-                                                                        element.header ==
-                                                                            BuildPatternLists.headlineList[
-                                                                                index] &&
-                                                                        element.item ==
-                                                                            BuildPatternLists.globalItemList[index]
-                                                                                .where((item) => item.contains(BuildPatternLists.globalItemList[index][
-                                                                                    i]))
-                                                                                .toList()
-                                                                                .first)
-                                                                    .toList()
-                                                                    .length >
-                                                                0
-                                                            ? patternElementBloc
-                                                                .add(
-                                                                PatternElementEvent
-                                                                    .removePattern(
-                                                                  imageUrl:
-                                                                      imageUrl,
-                                                                  patternEntity: PatternEntity(
-                                                                      header: BuildPatternLists
-                                                                          .headlineList[
-                                                                              index]
-                                                                          .toString(),
-                                                                      item: BuildPatternLists
-                                                                              .globalItemList[
-                                                                          index][i]),
-                                                                ),
-                                                              )
-                                                            : patternElementBloc
-                                                                .add(
-                                                                PatternElementEvent
-                                                                    .addPattern(
-                                                                  imageUrl:
-                                                                      imageUrl,
-                                                                  patternEntity: PatternEntity(
-                                                                      header: BuildPatternLists
-                                                                          .headlineList[
-                                                                              index]
-                                                                          .toString(),
-                                                                      item: BuildPatternLists
-                                                                              .globalItemList[
-                                                                          index][i]),
-                                                                ),
-                                                              );
+                                                            patternState.patternEntityList
+                                                                        .where((element) =>
+                                                                            element.header ==
+                                                                                BuildPatternLists.headlineList[
+                                                                                    index] &&
+                                                                            element.item ==
+                                                                                BuildPatternLists.globalItemList[index]
+                                                                                    .where((item) => item.toString().contains(BuildPatternLists.globalItemList[index][
+                                                                                        i].toString()))
+                                                                                    .toList()
+                                                                                    .first)
+                                                                        .toList()
+                                                                        .length >
+                                                                    0
+                                                                ? patternElementBloc
+                                                                    .add(
+                                                                    PatternElementEvent
+                                                                        .removePattern(
+                                                                      imageUrl:
+                                                                          imageUrl,
+                                                                      patternEntity: PatternEntity(
+                                                                          header: BuildPatternLists
+                                                                              .headlineList[
+                                                                                  index]
+                                                                              .toString(),
+                                                                          item: BuildPatternLists
+                                                                                  .globalItemList[
+                                                                              index][i]),
+                                                                    ),
+                                                                  )
+                                                                : patternElementBloc
+                                                                    .add(
+                                                                    PatternElementEvent
+                                                                        .addPattern(
+                                                                      imageUrl:
+                                                                          imageUrl,
+                                                                      patternEntity: PatternEntity(
+                                                                          header: BuildPatternLists
+                                                                              .headlineList[
+                                                                                  index]
+                                                                              .toString(),
+                                                                          item: BuildPatternLists
+                                                                                  .globalItemList[
+                                                                              index][i]),
+                                                                    ),
+                                                                  );
                                                       },
                                                       child: Text(
                                                         BuildPatternLists
                                                                 .globalItemList[
-                                                            index][i],
+                                                            index][i].toString(),
                                                         style: TextStyle(
                                                             color: changeColor(
                                                                 elementEntityList:
@@ -288,14 +305,14 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                 headline:
                                                                     BuildPatternLists
                                                                             .headlineList[
-                                                                        index],
+                                                                        index].toString(),
                                                                 itemList:
                                                                     BuildPatternLists
                                                                             .globalItemList[
                                                                         index],
                                                                 itemString: BuildPatternLists
                                                                         .globalItemList[
-                                                                    index][i])),
+                                                                    index][i].toString())),
                                                       ),
                                                     )),
                                       ),
@@ -344,7 +361,7 @@ class AssetPopUpContainer extends StatelessWidget {
   Color changeColor({
     required List elementEntityList,
     required String headline,
-    required List<String> itemList,
+    required List itemList,
     required String itemString,
   }) {
     return elementEntityList

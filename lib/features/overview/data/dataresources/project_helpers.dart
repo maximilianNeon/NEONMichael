@@ -23,7 +23,7 @@ mixin ProjectHelpers {
               ],
               patterns: [
                 PatternEntity(
-                    item: ActionsPatterns.AddAndCreate,
+                    item: Patterns.AddAndCreate,
                     header: PatternHeaders.ActionsPatterns.toString())
               ]),
         //  AssetEntity(

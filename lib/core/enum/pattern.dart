@@ -1,8 +1,9 @@
-
 import 'package:json_annotation/json_annotation.dart';
+import 'package:neon_web/core/enum/enums.dart';
 
-
-enum OnboardingPatterns {
+@JsonEnum()
+enum Patterns {
+// enum OnboardingPatterns {
   LaunchScreen,
   WelcomeAndGetStarted,
   Walkthrough,
@@ -10,20 +11,25 @@ enum OnboardingPatterns {
   Login,
   Verification,
   AccountSetup,
-  GuidedTourAndTutorial
-}
+  GuidedTourAndTutorial,
+// }
 
-enum DataPatterns { Charts, Progress, DashboardAndStats, SizeGiude }
+// enum DataPatterns {
+  Charts,
+  Progress,
+  DashboardAndStats,
+  SizeGiude,
+  // }
 
-enum UserCollectionsPatterns {
+// enum UserCollectionsPatterns {
   BookmarksAndCollections,
   DownloadsAndAvailable,
   Offline,
   Playlists,
-  Trash
-}
+  Trash,
+// }
 
-enum CommunicationPatterns {
+// enum CommunicationPatterns {
   About,
   ActionOption,
   AcknowledgementAndSuccess,
@@ -40,12 +46,16 @@ enum CommunicationPatterns {
   Feedback,
   PrivacyPolicy,
   TermsAndConditions,
-  SuggestionAndSimilarItems
-}
+  SuggestionAndSimilarItems,
+// }
 
-enum MisPatterns { Confetti, DarkMode, Misc }
+// enum MisPatterns {
+  Confetti,
+  DarkMode,
+  Misc,
+  // }
 
-enum CommerceAndFinancePatterns {
+// enum CommerceAndFinancePatterns {
   Shop,
   SubscriptionAndPremium,
   CartsAndBars,
@@ -55,10 +65,10 @@ enum CommerceAndFinancePatterns {
   Pricing,
   WalletAndBallance,
   PromotionsAndRewards,
-  Ads
-}
+  Ads,
+// }
 
-enum SocialPatterns {
+// enum SocialPatterns {
   AchievementsAndAwards,
   ActivityAndNotification,
   AddAndInviteFriends,
@@ -68,10 +78,10 @@ enum SocialPatterns {
   Leaderboard,
   ProfileAndAccount,
   ReviewsAndRating,
-  GroupsAndCommunity
-}
+  GroupsAndCommunity,
+// }
 
-enum UtilityPatterns {
+// enum UtilityPatterns {
   TimeLineAndHistory,
   Calendar,
   DateAndTime,
@@ -87,10 +97,10 @@ enum UtilityPatterns {
   MediaEditor,
   CameraAndScanner,
   FiltersAndStickers,
-  Call
-}
+  Call,
+// }
 
-enum ContentPatterns {
+// enum ContentPatterns {
   Home,
   DiscoverAndExplore,
   NewsFeed,
@@ -111,30 +121,278 @@ enum ContentPatterns {
   Quiz,
   Product,
   AugementedReality,
-  OtherContent
+  OtherContent,
+// }
+
+// @JsonEnum()
+// enum ActionsPatterns {
+
+  AddAndCreate,
+  Edit,
+  Delete,
+  UploadAndDownload,
+  Select,
+  Move,
+  Reorder,
+  DrawAndAnnotate,
+  Save,
+  Cancel,
+  SetSchedule,
+  LikeAndUpvote,
+  FollowAndSubscribe,
+  Share,
+  FlagAndReport,
+  BanAndBlock,
+  FilterAndSort,
+  Search,
+  TransferAndSendMoney,
+  OtherAction
 }
 
-@JsonEnum()
-enum ActionsPatterns {
-   
-   AddAndCreate,
- // @JsonValue("Edit") Edit,
- // @JsonValue("Delete") Delete,
- // @JsonValue("UploadAndDownload") UploadAndDownload,
- // @JsonValue("Select") Select,
- // @JsonValue("Move") Move,
- // @JsonValue("Recoder") Reorder,
- // @JsonValue("DrawAndAnnotate") DrawAndAnnotate,
- // @JsonValue("Save") Save,
- // @JsonValue("Cancel") Cancel,
- // @JsonValue("SetSchedule") SetSchedule,
- // @JsonValue("LikeAndUpvote") LikeAndUpvote,
- // @JsonValue("FollowAndSubscribe") FollowAndSubscribe,
- // @JsonValue("Share") Share,
- // @JsonValue("FlagAndReport") FlagAndReport,
- // @JsonValue("BanAndBlock") BanAndBlock,
- // @JsonValue("FilterAndSort") FilterAndSort,
- // @JsonValue("Search") Search,
- // @JsonValue("TransferAndSendMoney") TransferAndSendMoney,
- // @JsonValue("OtherAction") OtherAction
+extension PatternsInfo on Patterns {
+  PatternHeaders get header {
+    switch (this) {
+      case Patterns.LaunchScreen:
+
+      case Patterns.WelcomeAndGetStarted:
+
+      case Patterns.Walkthrough:
+
+      case Patterns.SignUp:
+
+      case Patterns.Login:
+
+      case Patterns.Verification:
+
+      case Patterns.AccountSetup:
+
+      case Patterns.GuidedTourAndTutorial:
+        return PatternHeaders.OnboardingPatterns;
+
+      case Patterns.Charts:
+
+      case Patterns.Progress:
+
+      case Patterns.DashboardAndStats:
+
+      case Patterns.SizeGiude:
+        return PatternHeaders.DataPatterns;
+
+      case Patterns.BookmarksAndCollections:
+
+      case Patterns.DownloadsAndAvailable:
+
+      case Patterns.Offline:
+
+      case Patterns.Playlists:
+
+      case Patterns.Trash:
+        return PatternHeaders.UserCollectionsPatterns;
+
+      case Patterns.About:
+
+      case Patterns.ActionOption:
+
+      case Patterns.AcknowledgementAndSuccess:
+
+      case Patterns.Error:
+
+      case Patterns.Confirmation:
+
+      case Patterns.Permission:
+
+      case Patterns.EmptyState:
+
+      case Patterns.Loading:
+
+      case Patterns.PullToRefresh:
+
+      case Patterns.CoachMarksAndInstruction:
+
+      case Patterns.FeatureInfo:
+
+      case Patterns.SettingsAndPreference:
+
+      case Patterns.HelpAndSupport:
+
+      case Patterns.Feedback:
+
+      case Patterns.PrivacyPolicy:
+
+      case Patterns.TermsAndConditions:
+
+      case Patterns.SuggestionAndSimilarItems:
+        return PatternHeaders.CommunicationPatterns;
+
+      case Patterns.Confetti:
+
+      case Patterns.DarkMode:
+
+      case Patterns.Misc:
+        return PatternHeaders.MisPatterns;
+
+      case Patterns.Shop:
+
+      case Patterns.SubscriptionAndPremium:
+
+      case Patterns.CartsAndBars:
+
+      case Patterns.CheckoutAndOrderReview:
+
+      case Patterns.PaymentMethod:
+
+      case Patterns.OrderHistory:
+
+      case Patterns.Pricing:
+
+      case Patterns.WalletAndBallance:
+
+      case Patterns.PromotionsAndRewards:
+
+      case Patterns.Ads:
+        return PatternHeaders.CommerceAndFinancePatterns;
+
+      case Patterns.AchievementsAndAwards:
+
+      case Patterns.ActivityAndNotification:
+
+      case Patterns.AddAndInviteFriends:
+
+      case Patterns.Comments:
+
+      case Patterns.SocialFeed:
+
+      case Patterns.FollowersAndFollowing:
+
+      case Patterns.Leaderboard:
+
+      case Patterns.ProfileAndAccount:
+
+      case Patterns.ReviewsAndRating:
+
+      case Patterns.GroupsAndCommunity:
+        return PatternHeaders.SocialPatterns;
+
+      case Patterns.TimeLineAndHistory:
+
+      case Patterns.Calendar:
+
+      case Patterns.DateAndTime:
+
+      case Patterns.TimeAndClocl:
+
+      case Patterns.Reminder:
+
+      case Patterns.LocationAndAddress:
+
+      case Patterns.Map:
+
+      case Patterns.Browser:
+
+      case Patterns.ChatBots:
+
+      case Patterns.AudioPlayer:
+
+      case Patterns.VideoPlayer:
+
+      case Patterns.AudioAndVideoRecorder:
+
+      case Patterns.MediaEditor:
+
+      case Patterns.CameraAndScanner:
+
+      case Patterns.FiltersAndStickers:
+
+      case Patterns.Call:
+        return PatternHeaders.UtilityPatterns;
+
+      case Patterns.Home:
+
+      case Patterns.DiscoverAndExplore:
+
+      case Patterns.NewsFeed:
+
+      case Patterns.ItemList:
+
+      case Patterns.EmailsAndMessages:
+
+      case Patterns.Article:
+
+      case Patterns.TVShowsAndMovie:
+
+      case Patterns.PodcastAndSong:
+
+      case Patterns.RecipeAndMenu:
+
+      case Patterns.Note:
+
+      case Patterns.GoalAndTask:
+
+      case Patterns.Post:
+
+      case Patterns.Stories:
+
+      case Patterns.Chat:
+
+      case Patterns.Game:
+
+      case Patterns.Class:
+
+      case Patterns.Event:
+
+      case Patterns.Quiz:
+
+      case Patterns.Product:
+
+      case Patterns.AugementedReality:
+
+      case Patterns.OtherContent:
+        return PatternHeaders.ContentPatterns;
+
+      case Patterns.AddAndCreate:
+
+      case Patterns.Edit:
+
+      case Patterns.Delete:
+
+      case Patterns.UploadAndDownload:
+
+      case Patterns.Select:
+
+      case Patterns.Move:
+
+      case Patterns.Reorder:
+
+      case Patterns.DrawAndAnnotate:
+
+      case Patterns.Save:
+
+      case Patterns.Cancel:
+
+      case Patterns.SetSchedule:
+
+      case Patterns.LikeAndUpvote:
+
+      case Patterns.FollowAndSubscribe:
+
+      case Patterns.Share:
+
+      case Patterns.FlagAndReport:
+
+      case Patterns.BanAndBlock:
+
+      case Patterns.FilterAndSort:
+
+      case Patterns.Search:
+
+      case Patterns.TransferAndSendMoney:
+
+      case Patterns.OtherAction:
+        return PatternHeaders.ActionsPatterns;
+    }
+
+
+  }
+      
 }
+

@@ -19,7 +19,7 @@ part 'filter_button_bloc.freezed.dart';
 @singleton
 class FilterButtonBloc extends Bloc<FilterButtonEvent, FilterButtonState> {
   LoadRemoteDataBloc loadRemoteDataBloc;
-  List<List<String>>? globalItemList;
+  List<List>? globalItemList;
   List? headers;
 
   FilterButtonBloc({required this.loadRemoteDataBloc})

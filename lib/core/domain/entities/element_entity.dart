@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/enum/enums.dart';
 
 part 'element_entity.g.dart';
 part 'element_entity.freezed.dart';
@@ -9,7 +10,7 @@ part 'element_entity.freezed.dart';
 class ElementEntity with _$ElementEntity {
   factory ElementEntity({
      required String header,
-    required Object item,
+    required Elements item,
   }) = _ElementEntity;
 
   

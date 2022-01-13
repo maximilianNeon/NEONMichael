@@ -110,7 +110,7 @@ class MenuItems extends StatelessWidget {
                                                   .add(FilterEvent.setElementFilter(
                                                       filter: BuildElementLists
                                                               .globalItemList[i]
-                                                          [index],
+                                                          [index].toString(),
                                                       projectEntityList: projectFilterBloc.state.map(
                                                           reset: (_) =>
                                                               loadRemoteDataBloc
@@ -122,7 +122,7 @@ class MenuItems extends StatelessWidget {
                                                   .add(FilterEvent.setPatternFilter(
                                                       filter: BuildPatternLists
                                                               .globalItemList[i]
-                                                          [index],
+                                                          [index].toString(),
                                                       projectEntityList: projectFilterBloc.state.map(
                                                           reset: (_) =>
                                                               loadRemoteDataBloc
@@ -143,10 +143,10 @@ class MenuItems extends StatelessWidget {
                                                       [index],
                                               elementFilterState: (_) =>
                                                   BuildElementLists
-                                                      .globalItemList[i][index],
+                                                      .globalItemList[i][index].toString(),
                                               patternFilterState: (_) =>
                                                   BuildPatternLists
-                                                      .globalItemList[i][index],
+                                                      .globalItemList[i][index].toString(),
                                             ),
                                             style: kMenuItem,
                                           ),

@@ -1,24 +1,29 @@
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:neon_web/core/enum/enums.dart';
 
-
 mixin BuildElementLists {
-  
-  static final barList = EnumToString.toList(BarElements.values);
+  static final barList = List<Elements>.from(Elements.values
+      .where((element) => element.header == ElementHeader.BarElements));
 
-  static final overlayList = EnumToString.toList(OverlayElements.values);
+  static final overlayList = List<Elements>.from(Elements
+      .values
+      .where((element) => element.header == ElementHeader.OverlayElements));
 
-  static final controlList = EnumToString.toList(ControlElements.values);
+  static final controlList = List<Elements>.from(Elements
+      .values
+      .where((element) => element.header == ElementHeader.ControlElements));
 
-  static final viewList = EnumToString.toList(ViewElements.values);
+  static final viewList = List<Elements>.from(Elements
+      .values
+      .where((element) => element.header == ElementHeader.ViewElements));
 
-  static final imageList = EnumToString.toList(ImageElements.values);
+  static final imageList = List<Elements>.from(Elements
+      .values
+      .where((element) => element.header == ElementHeader.ImageElements));
 
-  static final headLineList = EnumToString.toList(ElementHeader.values);
+  static final headLineList = (ElementHeader.values);
 
-  
-
-  static final List<List<String>> globalItemList = [
+  static final List<List<Elements>> globalItemList = [
     barList,
     overlayList,
     controlList,
