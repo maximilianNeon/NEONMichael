@@ -5,7 +5,6 @@ import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart'
 import 'package:neon_web/core/web_app.dart';
 import 'package:neon_web/features/app_blocobserver.dart';
 import 'package:neon_web/features/overview/data/dataresources/project_helpers.dart';
-
 import 'injection_container.dart' as injection;
 
 void main() async {
@@ -14,9 +13,13 @@ void main() async {
 
   injection.configureDependencies();
 
-  FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(
-      collectionName: "projects",
-      project: ProjectHelpers.mockProjects1.first.toJson());
+  //FireBaseRemoteDataSourceImpl().uploadImagesToCloudFireStorage(
+  //    projectEntity: ProjectHelpers.mockProjects1.first,
+  //    projectName: "project 1");
+//
+  // FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(
+  //     collectionName: "projects",
+  //     project: ProjectHelpers.mockProjects1.first.toJson());
   BlocOverrides.runZoned(() {
     runApp(WebApp());
   }, blocObserver: AppBlocObserver());

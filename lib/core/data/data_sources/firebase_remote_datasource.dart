@@ -1,27 +1,46 @@
+import 'dart:typed_data';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/core/success/success.dart';
 import 'package:dartz/dartz.dart';
+import '../../domain/entities/project_entity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 
 abstract class FireBaseRemoteDataSource {
-  Future<Either<Failure, Success>> firebaseSignIn(
-      {required String email, required String password});
+  Future<Either<Failure, Success>> firebaseSignIn({
+    required String email,
+    required String password,
+  });
   Future<Either<Failure, Success>> firebaseSignOut();
-
-  Future<Either<Failure, Success>> uploadSingleProjectToDB({required String collectionName ,required Map<String,dynamic> project});
+  Future<Either<Failure, Success>> uploadSingleProjectToDB({
+    required ProjectEntity projectEntity,
+    required Map<String, Uint8List> assetDataMap,
+    required Map<String, Uint8List> iconData,
+  });
   Future<Either<Failure, Success>> downloadAllProjects();
-  Future<Either<Failure, Success>> updateSingleProject();
+  Future<Either<Failure, Success>> updateSingleProject({
+    required ProjectEntity projectEntity,
+    required Map<String, Uint8List> assetDataMap,
+    required Map<String, Uint8List> iconData,
+  });
+  Future<Either<Failure, Success>> uploadAssetImagesToCloudFireStorage({
+    required String projectTitle,
+    required Map<String, Uint8List> assetDataMap,
+  });
+  Future<Either<Failure, Success>> uploadIconImageToCloudFireStorage({
+    required String projectTitle,
+    required Map<String, Uint8List> iconData,
+  });
 }
 
 @injectable
 class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
-  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final firestoreInstance = FirebaseFirestore.instance;
-  final firestorageInstance = FirebaseStorage.instance;
+  final firebase_storage.FirebaseStorage storage =
+      firebase_storage.FirebaseStorage.instance;
 
   Future<Either<Failure, Success>> firebaseSignIn(
       {required String email, required String password}) async {
@@ -51,33 +70,76 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, Success>> updateSingleProject() {
-    // TODO: implement updateSingleProject
-    throw UnimplementedError();
+  Future<Either<Failure, Success>> uploadSingleProjectToDB(
+      {required ProjectEntity projectEntity,
+      required Map<String, Uint8List> assetDataMap,
+      required Map<String, Uint8List> iconData}) async {
+    try {
+      // Upload IconImage and Rewrite ProjectEntity.imageUrl from Url to UploadFileName
+      await uploadIconImageToCloudFireStorage(
+          projectTitle: projectEntity.title, iconData: iconData);
+
+      // Upload AssetImages
+      await uploadAssetImagesToCloudFireStorage(
+          projectTitle: projectEntity.title, assetDataMap: assetDataMap);
+
+      // Add Json to CloudFireStore
+      await firestoreInstance
+          .collection("projects")
+          .add(projectEntity.toJson());
+
+      return Right(FireBaseSuccess());
+    } on FirebaseException {
+      return Left(FireBaseFailure());
+    } catch (error) {
+      return Left(FunctionFailure());
+    }
   }
 
   @override
-  Future<Either<Failure, Success>> uploadSingleProjectToDB({required String collectionName , required Map<String,dynamic> project}) async {
-    print("upload");
-    print(collectionName);
-    print(project);
-    
-
-    
+  Future<Either<Failure, Success>> uploadAssetImagesToCloudFireStorage(
+      {required String projectTitle,
+      required Map<String, Uint8List> assetDataMap}) async {
     try {
-      final result =  await firestoreInstance.collection(collectionName).add(project
-      
+      assetDataMap.forEach((key, value) async {
+        firebase_storage.Reference storageReference =
+            storage.ref("$projectTitle/assetData").child(key);
 
-    
-      
-    );
-      return Right(FireBaseSuccess());
+        await storageReference.putData(value);
+      });
 
-    } on FirebaseException catch (error){
-      print("FireBaseError $error");
-
+      return Right(FunctionSuccess());
+    } on FirebaseException {
       return Left(FireBaseFailure());
+    } catch (error) {
+      return Left(FunctionFailure());
     }
-   
+  }
+
+  @override
+  Future<Either<Failure, Success>> uploadIconImageToCloudFireStorage(
+      {required String projectTitle,
+      required Map<String, Uint8List> iconData}) async {
+    try {
+      firebase_storage.Reference storageReference =
+          storage.ref("$projectTitle/iconData").child(iconData.keys.first);
+
+      await storageReference.putData(iconData.values.first);
+
+      return Right(FunctionSuccess());
+    } on FirebaseException {
+      return Left(FireBaseFailure());
+    } catch (error) {
+      return Left(FunctionFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Success>> updateSingleProject(
+      {required ProjectEntity projectEntity,
+      required Map<String, Uint8List> assetDataMap,
+      required Map<String, Uint8List> iconData}) {
+    // TODO: implement updateSingleProject
+    throw UnimplementedError();
   }
 }

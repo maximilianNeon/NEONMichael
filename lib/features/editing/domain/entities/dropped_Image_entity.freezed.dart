@@ -17,16 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$DroppedImageEntityTearOff {
   const _$DroppedImageEntityTearOff();
 
-  _DroppedImageEntity call(
-      {required String url,
-      required String name,
-      required String mime,
-      required int bytes}) {
+  _DroppedImageEntity call({required Uint8List fileData}) {
     return _DroppedImageEntity(
-      url: url,
-      name: name,
-      mime: mime,
-      bytes: bytes,
+      fileData: fileData,
     );
   }
 }
@@ -36,10 +29,7 @@ const $DroppedImageEntity = _$DroppedImageEntityTearOff();
 
 /// @nodoc
 mixin _$DroppedImageEntity {
-  String get url => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get mime => throw _privateConstructorUsedError;
-  int get bytes => throw _privateConstructorUsedError;
+  Uint8List get fileData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DroppedImageEntityCopyWith<DroppedImageEntity> get copyWith =>
@@ -51,7 +41,7 @@ abstract class $DroppedImageEntityCopyWith<$Res> {
   factory $DroppedImageEntityCopyWith(
           DroppedImageEntity value, $Res Function(DroppedImageEntity) then) =
       _$DroppedImageEntityCopyWithImpl<$Res>;
-  $Res call({String url, String name, String mime, int bytes});
+  $Res call({Uint8List fileData});
 }
 
 /// @nodoc
@@ -65,28 +55,13 @@ class _$DroppedImageEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? url = freezed,
-    Object? name = freezed,
-    Object? mime = freezed,
-    Object? bytes = freezed,
+    Object? fileData = freezed,
   }) {
     return _then(_value.copyWith(
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      mime: mime == freezed
-          ? _value.mime
-          : mime // ignore: cast_nullable_to_non_nullable
-              as String,
-      bytes: bytes == freezed
-          ? _value.bytes
-          : bytes // ignore: cast_nullable_to_non_nullable
-              as int,
+      fileData: fileData == freezed
+          ? _value.fileData
+          : fileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -98,7 +73,7 @@ abstract class _$DroppedImageEntityCopyWith<$Res>
           _DroppedImageEntity value, $Res Function(_DroppedImageEntity) then) =
       __$DroppedImageEntityCopyWithImpl<$Res>;
   @override
-  $Res call({String url, String name, String mime, int bytes});
+  $Res call({Uint8List fileData});
 }
 
 /// @nodoc
@@ -114,28 +89,13 @@ class __$DroppedImageEntityCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? url = freezed,
-    Object? name = freezed,
-    Object? mime = freezed,
-    Object? bytes = freezed,
+    Object? fileData = freezed,
   }) {
     return _then(_DroppedImageEntity(
-      url: url == freezed
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      mime: mime == freezed
-          ? _value.mime
-          : mime // ignore: cast_nullable_to_non_nullable
-              as String,
-      bytes: bytes == freezed
-          ? _value.bytes
-          : bytes // ignore: cast_nullable_to_non_nullable
-              as int,
+      fileData: fileData == freezed
+          ? _value.fileData
+          : fileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -143,24 +103,14 @@ class __$DroppedImageEntityCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_DroppedImageEntity implements _DroppedImageEntity {
-  _$_DroppedImageEntity(
-      {required this.url,
-      required this.name,
-      required this.mime,
-      required this.bytes});
+  _$_DroppedImageEntity({required this.fileData});
 
   @override
-  final String url;
-  @override
-  final String name;
-  @override
-  final String mime;
-  @override
-  final int bytes;
+  final Uint8List fileData;
 
   @override
   String toString() {
-    return 'DroppedImageEntity(url: $url, name: $name, mime: $mime, bytes: $bytes)';
+    return 'DroppedImageEntity(fileData: $fileData)';
   }
 
   @override
@@ -168,19 +118,12 @@ class _$_DroppedImageEntity implements _DroppedImageEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _DroppedImageEntity &&
-            const DeepCollectionEquality().equals(other.url, url) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.mime, mime) &&
-            const DeepCollectionEquality().equals(other.bytes, bytes));
+            const DeepCollectionEquality().equals(other.fileData, fileData));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(url),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(mime),
-      const DeepCollectionEquality().hash(bytes));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(fileData));
 
   @JsonKey(ignore: true)
   @override
@@ -189,20 +132,11 @@ class _$_DroppedImageEntity implements _DroppedImageEntity {
 }
 
 abstract class _DroppedImageEntity implements DroppedImageEntity {
-  factory _DroppedImageEntity(
-      {required String url,
-      required String name,
-      required String mime,
-      required int bytes}) = _$_DroppedImageEntity;
+  factory _DroppedImageEntity({required Uint8List fileData}) =
+      _$_DroppedImageEntity;
 
   @override
-  String get url;
-  @override
-  String get name;
-  @override
-  String get mime;
-  @override
-  int get bytes;
+  Uint8List get fileData;
   @override
   @JsonKey(ignore: true)
   _$DroppedImageEntityCopyWith<_DroppedImageEntity> get copyWith =>

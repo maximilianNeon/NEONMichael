@@ -21,6 +21,7 @@ class ScreenUploadItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("imageUrl: $imageUrl");
     print("AssetEntity: ${assetEntity.id} ");
     PatternElementBloc patternElementBloc =
         BlocProvider.of<PatternElementBloc>(context);

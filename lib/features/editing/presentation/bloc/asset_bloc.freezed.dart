@@ -17,11 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$AssetEventTearOff {
   const _$AssetEventTearOff();
 
-  _AddScreen addScreen(
-      {required dynamic event, required DropzoneViewController controller}) {
+  _AddScreen addScreen({required DroppedImageEntity droppedImageEntity}) {
     return _AddScreen(
-      event: event,
-      controller: controller,
+      droppedImageEntity: droppedImageEntity,
     );
   }
 
@@ -53,8 +51,7 @@ const $AssetEvent = _$AssetEventTearOff();
 mixin _$AssetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic event, DropzoneViewController controller)
-        addScreen,
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
@@ -65,8 +62,7 @@ mixin _$AssetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
@@ -76,8 +72,7 @@ mixin _$AssetEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
@@ -132,7 +127,9 @@ abstract class _$AddScreenCopyWith<$Res> {
   factory _$AddScreenCopyWith(
           _AddScreen value, $Res Function(_AddScreen) then) =
       __$AddScreenCopyWithImpl<$Res>;
-  $Res call({dynamic event, DropzoneViewController controller});
+  $Res call({DroppedImageEntity droppedImageEntity});
+
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity;
 }
 
 /// @nodoc
@@ -146,35 +143,36 @@ class __$AddScreenCopyWithImpl<$Res> extends _$AssetEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? event = freezed,
-    Object? controller = freezed,
+    Object? droppedImageEntity = freezed,
   }) {
     return _then(_AddScreen(
-      event: event == freezed
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as DropzoneViewController,
+      droppedImageEntity: droppedImageEntity == freezed
+          ? _value.droppedImageEntity
+          : droppedImageEntity // ignore: cast_nullable_to_non_nullable
+              as DroppedImageEntity,
     ));
+  }
+
+  @override
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity {
+    return $DroppedImageEntityCopyWith<$Res>(_value.droppedImageEntity,
+        (value) {
+      return _then(_value.copyWith(droppedImageEntity: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_AddScreen implements _AddScreen {
-  const _$_AddScreen({required this.event, required this.controller});
+  const _$_AddScreen({required this.droppedImageEntity});
 
   @override
-  final dynamic event;
-  @override
-  final DropzoneViewController controller;
+  final DroppedImageEntity droppedImageEntity;
 
   @override
   String toString() {
-    return 'AssetEvent.addScreen(event: $event, controller: $controller)';
+    return 'AssetEvent.addScreen(droppedImageEntity: $droppedImageEntity)';
   }
 
   @override
@@ -182,16 +180,13 @@ class _$_AddScreen implements _AddScreen {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AddScreen &&
-            const DeepCollectionEquality().equals(other.event, event) &&
             const DeepCollectionEquality()
-                .equals(other.controller, controller));
+                .equals(other.droppedImageEntity, droppedImageEntity));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(controller));
+      runtimeType, const DeepCollectionEquality().hash(droppedImageEntity));
 
   @JsonKey(ignore: true)
   @override
@@ -201,8 +196,7 @@ class _$_AddScreen implements _AddScreen {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic event, DropzoneViewController controller)
-        addScreen,
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
@@ -210,28 +204,26 @@ class _$_AddScreen implements _AddScreen {
             List<ElementEntity> elementEntityList, int assetEntityId)
         addElementsAndPattern,
   }) {
-    return addScreen(event, controller);
+    return addScreen(droppedImageEntity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
   }) {
-    return addScreen?.call(event, controller);
+    return addScreen?.call(droppedImageEntity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
@@ -240,7 +232,7 @@ class _$_AddScreen implements _AddScreen {
     required TResult orElse(),
   }) {
     if (addScreen != null) {
-      return addScreen(event, controller);
+      return addScreen(droppedImageEntity);
     }
     return orElse();
   }
@@ -282,12 +274,10 @@ class _$_AddScreen implements _AddScreen {
 }
 
 abstract class _AddScreen implements AssetEvent {
-  const factory _AddScreen(
-      {required dynamic event,
-      required DropzoneViewController controller}) = _$_AddScreen;
+  const factory _AddScreen({required DroppedImageEntity droppedImageEntity}) =
+      _$_AddScreen;
 
-  dynamic get event;
-  DropzoneViewController get controller;
+  DroppedImageEntity get droppedImageEntity;
   @JsonKey(ignore: true)
   _$AddScreenCopyWith<_AddScreen> get copyWith =>
       throw _privateConstructorUsedError;
@@ -369,8 +359,7 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic event, DropzoneViewController controller)
-        addScreen,
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
@@ -384,8 +373,7 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
@@ -398,8 +386,7 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
@@ -555,8 +542,7 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic event, DropzoneViewController controller)
-        addScreen,
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
     required TResult Function(
             List<dynamic> event, DropzoneViewController controller)
         addMultipleScreens,
@@ -571,8 +557,7 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
@@ -586,8 +571,7 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        addScreen,
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
     TResult Function(List<dynamic> event, DropzoneViewController controller)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,

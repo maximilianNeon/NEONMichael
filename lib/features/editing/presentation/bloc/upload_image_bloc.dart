@@ -12,19 +12,12 @@ part 'upload_image_bloc.freezed.dart';
 class UploadImageBloc extends Bloc<UploadImageEvent, UploadImageState> {
   UploadImageBloc() : super(_Initial()) {
     on<_UploadImage>((event, emit) async {
-     
-      
       emit(_Loading());
-
-    
 
       emit(
         _Loaded(
           droppedImageEntity: DroppedImageEntity(
-            bytes: await event.controller.getFileSize(event.event),
-            mime: await event.controller.getFileMIME(event.event),
-            name: await event.controller.getFilename(event.event),
-            url: await event.controller.createFileUrl(event.event),
+            fileData: event.droppedImageEntity.fileData,
           ),
         ),
       );

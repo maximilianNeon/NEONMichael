@@ -17,11 +17,9 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UploadImageEventTearOff {
   const _$UploadImageEventTearOff();
 
-  _UploadImage uploadImage(
-      {required dynamic event, required DropzoneViewController controller}) {
+  _UploadImage uploadImage({required DroppedImageEntity droppedImageEntity}) {
     return _UploadImage(
-      event: event,
-      controller: controller,
+      droppedImageEntity: droppedImageEntity,
     );
   }
 }
@@ -31,25 +29,23 @@ const $UploadImageEvent = _$UploadImageEventTearOff();
 
 /// @nodoc
 mixin _$UploadImageEvent {
-  dynamic get event => throw _privateConstructorUsedError;
-  DropzoneViewController get controller => throw _privateConstructorUsedError;
+  DroppedImageEntity get droppedImageEntity =>
+      throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic event, DropzoneViewController controller)
+    required TResult Function(DroppedImageEntity droppedImageEntity)
         uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        uploadImage,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        uploadImage,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -80,7 +76,9 @@ abstract class $UploadImageEventCopyWith<$Res> {
   factory $UploadImageEventCopyWith(
           UploadImageEvent value, $Res Function(UploadImageEvent) then) =
       _$UploadImageEventCopyWithImpl<$Res>;
-  $Res call({dynamic event, DropzoneViewController controller});
+  $Res call({DroppedImageEntity droppedImageEntity});
+
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity;
 }
 
 /// @nodoc
@@ -94,19 +92,22 @@ class _$UploadImageEventCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? event = freezed,
-    Object? controller = freezed,
+    Object? droppedImageEntity = freezed,
   }) {
     return _then(_value.copyWith(
-      event: event == freezed
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as DropzoneViewController,
+      droppedImageEntity: droppedImageEntity == freezed
+          ? _value.droppedImageEntity
+          : droppedImageEntity // ignore: cast_nullable_to_non_nullable
+              as DroppedImageEntity,
     ));
+  }
+
+  @override
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity {
+    return $DroppedImageEntityCopyWith<$Res>(_value.droppedImageEntity,
+        (value) {
+      return _then(_value.copyWith(droppedImageEntity: value));
+    });
   }
 }
 
@@ -117,7 +118,10 @@ abstract class _$UploadImageCopyWith<$Res>
           _UploadImage value, $Res Function(_UploadImage) then) =
       __$UploadImageCopyWithImpl<$Res>;
   @override
-  $Res call({dynamic event, DropzoneViewController controller});
+  $Res call({DroppedImageEntity droppedImageEntity});
+
+  @override
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity;
 }
 
 /// @nodoc
@@ -133,18 +137,13 @@ class __$UploadImageCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? event = freezed,
-    Object? controller = freezed,
+    Object? droppedImageEntity = freezed,
   }) {
     return _then(_UploadImage(
-      event: event == freezed
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as DropzoneViewController,
+      droppedImageEntity: droppedImageEntity == freezed
+          ? _value.droppedImageEntity
+          : droppedImageEntity // ignore: cast_nullable_to_non_nullable
+              as DroppedImageEntity,
     ));
   }
 }
@@ -152,16 +151,14 @@ class __$UploadImageCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_UploadImage implements _UploadImage {
-  const _$_UploadImage({required this.event, required this.controller});
+  const _$_UploadImage({required this.droppedImageEntity});
 
   @override
-  final dynamic event;
-  @override
-  final DropzoneViewController controller;
+  final DroppedImageEntity droppedImageEntity;
 
   @override
   String toString() {
-    return 'UploadImageEvent.uploadImage(event: $event, controller: $controller)';
+    return 'UploadImageEvent.uploadImage(droppedImageEntity: $droppedImageEntity)';
   }
 
   @override
@@ -169,16 +166,13 @@ class _$_UploadImage implements _UploadImage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _UploadImage &&
-            const DeepCollectionEquality().equals(other.event, event) &&
             const DeepCollectionEquality()
-                .equals(other.controller, controller));
+                .equals(other.droppedImageEntity, droppedImageEntity));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(controller));
+      runtimeType, const DeepCollectionEquality().hash(droppedImageEntity));
 
   @JsonKey(ignore: true)
   @override
@@ -188,30 +182,28 @@ class _$_UploadImage implements _UploadImage {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(dynamic event, DropzoneViewController controller)
+    required TResult Function(DroppedImageEntity droppedImageEntity)
         uploadImage,
   }) {
-    return uploadImage(event, controller);
+    return uploadImage(droppedImageEntity);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        uploadImage,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) {
-    return uploadImage?.call(event, controller);
+    return uploadImage?.call(droppedImageEntity);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(dynamic event, DropzoneViewController controller)?
-        uploadImage,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) {
     if (uploadImage != null) {
-      return uploadImage(event, controller);
+      return uploadImage(droppedImageEntity);
     }
     return orElse();
   }
@@ -246,14 +238,11 @@ class _$_UploadImage implements _UploadImage {
 }
 
 abstract class _UploadImage implements UploadImageEvent {
-  const factory _UploadImage(
-      {required dynamic event,
-      required DropzoneViewController controller}) = _$_UploadImage;
+  const factory _UploadImage({required DroppedImageEntity droppedImageEntity}) =
+      _$_UploadImage;
 
   @override
-  dynamic get event;
-  @override
-  DropzoneViewController get controller;
+  DroppedImageEntity get droppedImageEntity;
   @override
   @JsonKey(ignore: true)
   _$UploadImageCopyWith<_UploadImage> get copyWith =>

@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_item.dart';
 
 @injectable
 class ScreenUploadContainer extends StatelessWidget {
-  
   ScreenUploadContainer() : super();
 
-  late DropzoneViewController dropzoneViewController;
+  late DropzoneViewController _dropzoneViewController;
+
+  Future<DroppedImageEntity> convertDroppedFile(
+      {required dynamic event}) async {
+    return DroppedImageEntity(
+        fileData: await _dropzoneViewController.getFileData(event));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +26,8 @@ class ScreenUploadContainer extends StatelessWidget {
       child:
           Stack(alignment: Alignment.topLeft, fit: StackFit.loose, children: [
         DropzoneView(
-          onDrop: (dynamic event) => assetBloc.add(AssetEvent.addScreen(
-              event: event, controller: dropzoneViewController)),
-          onCreated: (controller) => this.dropzoneViewController = controller,
+          onDrop: (dynamic event) async => assetBloc.add(AssetEvent.addScreen(droppedImageEntity: await convertDroppedFile(event: event))),
+          onCreated: (controller) => this._dropzoneViewController = controller,
         ),
         BlocBuilder<AssetBloc, AssetState>(
           builder: (context, state) => state.map(
@@ -37,7 +42,6 @@ class ScreenUploadContainer extends StatelessWidget {
                   maxCrossAxisExtent: 500),
               itemBuilder: (context, index) {
                 return ScreenUploadItem(
-                  
                   assetEntity: state.assetEntityList[index],
                   imageUrl: state.assetEntityList[index].imageUrl,
                 );

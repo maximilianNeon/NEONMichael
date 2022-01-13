@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
+import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
@@ -15,12 +16,18 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 class ProjectUploadPage extends StatelessWidget {
   ProjectUploadPage({Key? key}) : super(key: key);
 
-  late DropzoneViewController dropzoneViewController;
+  late DropzoneViewController _dropzoneViewController;
+
+  Future convertDroppedFile(dynamic event) async {
+    return DroppedImageEntity(
+        fileData: await _dropzoneViewController.getFileData(event));
+  }
 
   @override
   Widget build(BuildContext context) {
     UploadImageBloc uploadImageBloc = BlocProvider.of<UploadImageBloc>(context);
-    ProjectEditingBloc projectEditingBloc = BlocProvider.of<ProjectEditingBloc>(context);
+    ProjectEditingBloc projectEditingBloc =
+        BlocProvider.of<ProjectEditingBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
     return PageLayout(
       backArrow: true,
@@ -77,16 +84,17 @@ class ProjectUploadPage extends StatelessWidget {
                                       UIHelper().verticalSpaceMedium(context)),
                               GestureDetector(
                                   onTap: () async {
-                                    final event = await dropzoneViewController
+                                    final event = await _dropzoneViewController
                                         .pickFiles(multiple: false);
-
                                     if (event.isEmpty) return;
 
                                     uploadImageBloc.add(
-                                        UploadImageEvent.uploadImage(
-                                            event: event.first,
-                                            controller:
-                                                dropzoneViewController));
+                                      UploadImageEvent.uploadImage(
+                                        droppedImageEntity:
+                                            await convertDroppedFile(
+                                                event.first),
+                                      ),
+                                    );
                                   },
                                   child: Text("Bild Hochladen")),
                               SizedBox(
@@ -101,21 +109,22 @@ class ProjectUploadPage extends StatelessWidget {
                                     onError: (errorMessage) {},
                                     onLeave: () {},
                                     onLoaded: () {},
-                                    onDrop: (dynamic event) => uploadImageBloc
-                                        .add(UploadImageEvent.uploadImage(
-                                            event: event,
-                                            controller:
-                                                dropzoneViewController)),
+                                    onDrop: (dynamic event) async =>
+                                        uploadImageBloc
+                                            .add(UploadImageEvent.uploadImage(
+                                                droppedImageEntity:
+                                                    await convertDroppedFile(
+                                                        event))),
                                     onCreated: (controller) => this
-                                        .dropzoneViewController = controller,
+                                        ._dropzoneViewController = controller,
                                   ),
                                   BlocBuilder<UploadImageBloc,
                                       UploadImageState>(
                                     builder: (context, state) => state.maybeMap(
                                       loading: (_) =>
                                           CircularProgressIndicator(),
-                                      loaded: (state) => Image.network(
-                                        state.droppedImageEntity.url,
+                                      loaded: (state) => Image.memory(
+                                        state.droppedImageEntity.fileData,
                                         height: 200,
                                         width: 200,
                                         fit: BoxFit.fill,
@@ -142,7 +151,7 @@ class ProjectUploadPage extends StatelessWidget {
                       children: [
                         GestureDetector(
                             onTap: () async {
-                              final event = await dropzoneViewController
+                              final event = await _dropzoneViewController
                                   .pickFiles(
                                       multiple: true,
                                       mime: ['image/jpeg', 'image/png']);
@@ -150,11 +159,14 @@ class ProjectUploadPage extends StatelessWidget {
                               if (event.length > 1) {
                                 assetBloc.add(AssetEvent.addMultipleScreens(
                                     event: event,
-                                    controller: dropzoneViewController));
+                                    controller: _dropzoneViewController),);
                               } else if (event.length == 1) {
-                                assetBloc.add(AssetEvent.addScreen(
-                                    event: event.first,
-                                    controller: dropzoneViewController));
+                                assetBloc.add(
+                                  AssetEvent.addScreen(
+                                    droppedImageEntity:
+                                        await convertDroppedFile(event.first),
+                                  ),
+                                );
                               }
                             },
                             child: Text("Screens Hochladen")),
@@ -179,9 +191,9 @@ class ProjectUploadPage extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         GestureDetector(
-                          onTap: (){
-                            projectEditingBloc.add(ProjectEditingEvent.upload());
-
+                          onTap: () {
+                            projectEditingBloc
+                                .add(ProjectEditingEvent.upload());
                           },
                           child: Container(
                             height: 50,

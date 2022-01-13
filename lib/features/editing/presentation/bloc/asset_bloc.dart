@@ -1,10 +1,16 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart';
+import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
+import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 
 part 'asset_event.dart';
@@ -15,20 +21,24 @@ part 'asset_bloc.freezed.dart';
 class AssetBloc extends Bloc<AssetEvent, AssetState> {
   PatternElementBloc patternElementBloc;
   List<AssetEntity> assetEntityList = [];
+  Map<int, Uint8List> assetFileCache = {};
 
   AssetBloc({required this.patternElementBloc}) : super(_Initial()) {
     on<_AddScreen>((event, emit) async {
       emit(_Loading());
-      
-      patternElementBloc.add(PatternElementEvent.resetBloc());
+       patternElementBloc.add(PatternElementEvent.resetBloc());
+
+      int generatedAssetId = DateTime.now().microsecondsSinceEpoch.toInt();
+      assetFileCache
+          .addAll({generatedAssetId: event.droppedImageEntity.fileData});
 
       AssetEntity assetEntity = AssetEntity(
           elements: [], patterns: [], imageUrl: "", id: 0, title: "");
 
       assetEntityList.add(
         assetEntity.copyWith(
-          imageUrl: await event.controller.createFileUrl(event.event),
-          id: DateTime.now().microsecondsSinceEpoch.toInt(),
+          imageUrl: '',
+          id: generatedAssetId,
         ),
       );
 
@@ -36,21 +46,23 @@ class AssetBloc extends Bloc<AssetEvent, AssetState> {
     });
     on<_AddMultipleScreens>((event, emit) async {
       emit(_Loading());
-     
+
       int microSecondDivider = 0;
 
       AssetEntity assetEntity = AssetEntity(
           elements: [], patterns: [], imageUrl: "", id: 0, title: "");
 
       Future.forEach(event.event, (element) async {
-         patternElementBloc.add(PatternElementEvent.resetBloc());
-         
-        
+        patternElementBloc.add(PatternElementEvent.resetBloc());
+
+        String imageUrl = await event.controller.createFileUrl(event.event);
+
         microSecondDivider = microSecondDivider + 000000001;
-        
+
         assetEntityList.add(assetEntity.copyWith(
-          imageUrl: await event.controller.createFileUrl(element),
-          id: DateTime.now().microsecondsSinceEpoch.toInt() + microSecondDivider,
+          imageUrl: imageUrl,
+          id: DateTime.now().microsecondsSinceEpoch.toInt() +
+              microSecondDivider,
         ));
       });
 

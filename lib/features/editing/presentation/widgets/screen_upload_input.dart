@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/style/style.dart';
 
 class ScreenUploadInput extends StatelessWidget {
