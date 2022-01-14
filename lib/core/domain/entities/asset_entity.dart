@@ -22,12 +22,5 @@ class AssetEntity with _$AssetEntity {
   factory AssetEntity.fromJson(Map<String, dynamic> json) =>
       _$AssetEntityFromJson(json);
 
-  //static AssetEntity toJson(Map<String, dynamic> assetEntityMap) {
-  //  return AssetEntity(
-  //      elements: assetEntityMap["elements"],
-  //      id: assetEntityMap["id"],
-  //      imageUrl: assetEntityMap["imageUrl"],
-  //      patterns: assetEntityMap["pattern"],
-  //      title: assetEntityMap["title"]);
-  //}
+ 
 }

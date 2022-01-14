@@ -24,7 +24,7 @@ class WebApp extends StatelessWidget {
         BlocProvider(
           lazy: false,
           create: (context) => getIt<LoadRemoteDataBloc>()
-            ..add(LoadRemoteDataEvent.loadProjectData()),
+            ..add(LoadRemoteDataEvent.downloadProjectData()),
         ),
         BlocProvider(create: (context) => getIt<AuthentificationBloc>()),
         BlocProvider(
@@ -41,7 +41,7 @@ class WebApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: ProjectUploadPage(),
+        home: OverviewPage(),
         
     //    BlocBuilder<AuthentificationBloc, AuthentificationState>(
     //      builder: (context, state) => state.map(

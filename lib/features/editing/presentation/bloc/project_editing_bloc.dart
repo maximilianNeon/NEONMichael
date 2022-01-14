@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart';
+import 'package:neon_web/core/domain/entities/data_container.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 
@@ -25,9 +25,9 @@ class ProjectEditingBloc
       projectType: ProjectType.App.toString(),
       title: "");
 
-  ProjectEditingBloc({required this.assetBloc,required this.uploadImageBloc }) : super(_Initial()) {
+  ProjectEditingBloc({required this.assetBloc, required this.uploadImageBloc})
+      : super(_Initial()) {
     on<_AddName>((event, emit) {
-      
       projectEntity = projectEntity.copyWith(title: event.name);
       emit(_Editing(projectEntity: projectEntity));
     });
@@ -40,20 +40,20 @@ class ProjectEditingBloc
       emit(_Editing(projectEntity: projectEntity));
     });
     on<_UploadProject>((event, emit) {
-
       //ProjectEntity
-      
 
       //AssetFileCache and IconImageCache
-      
+     
 
-      
       //Vorläufiger Request Test
-      FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(projectEntity: projectEntity.copyWith(assets: assetBloc.assetEntityList, id: uploadImageBloc.iconImageFileCache.keys.first), assetDataMap: assetBloc.assetFileCache, iconData: uploadImageBloc.iconImageFileCache);
-
-
-
-      
+      FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(
+          dataContainer: DataContainer(
+              assetFileData: assetBloc.assetFileCache,
+              iconFileData: uploadImageBloc.iconImageFileCache,
+              projectEntityList: [
+            projectEntity.copyWith(
+                id: uploadImageBloc.iconImageFileCache.keys.first, assets: assetBloc.assetEntityList)
+          ]));
     });
   }
 }

@@ -1,7 +1,9 @@
 import 'dart:typed_data';
+import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
+import 'package:neon_web/core/domain/entities/data_container.dart';
 import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/core/success/success.dart';
 import 'package:dartz/dartz.dart';
@@ -16,15 +18,11 @@ abstract class FireBaseRemoteDataSource {
   });
   Future<Either<Failure, Success>> firebaseSignOut();
   Future<Either<Failure, Success>> uploadSingleProjectToDB({
-    required ProjectEntity projectEntity,
-    required Map<int, Uint8List> assetDataMap,
-    required Map<int, Uint8List> iconData,
+    required DataContainer dataContainer,
   });
-  Future<Either<Failure, Map<String,dynamic>>> downloadAllProjects();
+  Future<Either<Failure, DataContainer>> downloadAllProjects();
   Future<Either<Failure, Success>> updateSingleProject({
-    required ProjectEntity projectEntity,
-    required Map<String, Uint8List> assetDataMap,
-    required Map<String, Uint8List> iconData,
+    required DataContainer dataContainer,
   });
   Future<Either<Failure, Success>> uploadAssetImagesToCloudFireStorage({
     required String projectTitle,
@@ -68,7 +66,8 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> downloadAllProjects() async {
+  Future<Either<Failure, DataContainer>> downloadAllProjects() async {
+    print("downloadAllProjects");
     List<ProjectEntity> projectEntiyList = [];
     Map<int, Uint8List> iconImageFile = {};
     Map<int, Uint8List> assetImageFiles = {};
@@ -87,39 +86,57 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
         ),
       );
 
-      Future.forEach<ProjectEntity>(projectEntiyList, (project) async {
-        //Download IconImage and Add To iconImageFile
-        await firebase_storage.FirebaseStorage.instance
-            .ref(project.title + storageIconSubfolder)
-            .child(project.id.toString())
-            .getData()
-            .then(
-              (iconFileData) => iconImageFile.addAll(
-                {project.id: iconFileData ?? Uint8List(0)},
-              ),
-            );
+      final downloadUrl = await firebase_storage.FirebaseStorage.instance
+          .ref(projectEntiyList.first.title + storageIconSubfolder)
+          .child(projectEntiyList.first.id.toString())
+          .getDownloadURL();
 
-        await Future.forEach<AssetEntity>(
-          project.assets,
-          (assetEntity) async => await firebase_storage.FirebaseStorage.instance
-              .ref(project.title + storageAssetSubfolder)
-              .child(assetEntity.id.toString())
-              .getData()
-              .then(
-                (assetImageFile) => assetImageFiles
-                    .addAll({assetEntity.id: assetImageFile ?? Uint8List(0)}),
-              ),
-        );
-      });
+      print(downloadUrl);
+          
 
-      return Right({
-        "projectEntityList": projectEntiyList,
-        "iconImageFile": iconImageFile,
-        "assetImageFiles": assetImageFiles
-      });
-    } on FirebaseException {
-     return Left(FireBaseFailure());
+        final response = await http.get(Uri.parse(downloadUrl), headers: {"Accept": "application/json","Access-Control-Allow-Origin": "*"});
+
+        // print(response.body);
+
+      //     await Future.forEach<ProjectEntity>(projectEntiyList, (project) async {
+      //       print(project.title + storageIconSubfolder);
+//
+      //       final result = await firebase_storage.FirebaseStorage.instance
+      //           .ref(project.title + storageIconSubfolder)
+      //           .child(project.id.toString())
+      //           .getData().whenComplete(() => print("complete"));
+//
+      //       iconImageFile.addAll({project.id: result ?? Uint8List(0)});
+//
+      //       print(iconImageFile);
+//
+      //       await Future.forEach<AssetEntity>(
+      //         project.assets,
+      //         (assetEntity) async => await firebase_storage.FirebaseStorage.instance
+      //             .ref(project.title + storageAssetSubfolder)
+      //             .child(assetEntity.id.toString())
+      //             .getData()
+      //             .then(
+      //               (assetImageFile) => assetImageFiles
+      //                   .addAll({assetEntity.id: assetImageFile ?? Uint8List(0)}),
+      //             ).whenComplete(() => print("complete")),
+      //       );
+      //     });
+
+      print("Asset: $assetImageFiles");
+      print(iconImageFile);
+      return Right(
+        DataContainer(
+          assetFileData: assetImageFiles,
+          iconFileData: iconImageFile,
+          projectEntityList: projectEntiyList,
+        ),
+      );
+    } on FirebaseException catch (error) {
+      print(error);
+      return Left(FireBaseFailure());
     } catch (error) {
+      print(error);
       return Left(FunctionFailure());
     }
 
@@ -128,31 +145,29 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
 
   @override
   Future<Either<Failure, Success>> updateSingleProject(
-      {required ProjectEntity projectEntity,
-      required Map<String, Uint8List> assetDataMap,
-      required Map<String, Uint8List> iconData}) {
+      {required DataContainer dataContainer}) {
     // TODO: implement updateSingleProject
     throw UnimplementedError();
   }
 
   @override
   Future<Either<Failure, Success>> uploadSingleProjectToDB(
-      {required ProjectEntity projectEntity,
-      required Map<int, Uint8List> assetDataMap,
-      required Map<int, Uint8List> iconData}) async {
+      {required DataContainer dataContainer}) async {
     try {
       // Upload IconImage and Rewrite ProjectEntity.imageUrl from Url to UploadFileName
       await uploadIconImageToCloudFireStorage(
-          projectTitle: projectEntity.title, iconData: iconData);
+          projectTitle: dataContainer.projectEntityList.first.title,
+          iconData: dataContainer.iconFileData);
 
       // Upload AssetImages
       await uploadAssetImagesToCloudFireStorage(
-          projectTitle: projectEntity.title, assetDataMap: assetDataMap);
+          projectTitle: dataContainer.projectEntityList.first.title,
+          assetDataMap: dataContainer.assetFileData);
 
       // Add Json to CloudFireStore
       await firestoreInstance
           .collection(projectsEndPoint)
-          .add(projectEntity.toJson());
+          .add(dataContainer.projectEntityList.first.toJson());
 
       return Right(FireBaseSuccess());
     } on FirebaseException {

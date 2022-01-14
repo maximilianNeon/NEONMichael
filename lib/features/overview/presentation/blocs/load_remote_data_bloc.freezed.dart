@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$LoadRemoteDataEventTearOff {
   const _$LoadRemoteDataEventTearOff();
 
-  _LoadProjectData loadProjectData() {
+  _LoadProjectData downloadProjectData() {
     return const _LoadProjectData();
   }
 }
@@ -29,33 +29,33 @@ const $LoadRemoteDataEvent = _$LoadRemoteDataEventTearOff();
 mixin _$LoadRemoteDataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadProjectData,
+    required TResult Function() downloadProjectData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loadProjectData,
+    TResult Function()? downloadProjectData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadProjectData,
+    TResult Function()? downloadProjectData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadProjectData value) loadProjectData,
+    required TResult Function(_LoadProjectData value) downloadProjectData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LoadProjectData value)? loadProjectData,
+    TResult Function(_LoadProjectData value)? downloadProjectData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadProjectData value)? loadProjectData,
+    TResult Function(_LoadProjectData value)? downloadProjectData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -104,7 +104,7 @@ class _$_LoadProjectData implements _LoadProjectData {
 
   @override
   String toString() {
-    return 'LoadRemoteDataEvent.loadProjectData()';
+    return 'LoadRemoteDataEvent.downloadProjectData()';
   }
 
   @override
@@ -119,27 +119,27 @@ class _$_LoadProjectData implements _LoadProjectData {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() loadProjectData,
+    required TResult Function() downloadProjectData,
   }) {
-    return loadProjectData();
+    return downloadProjectData();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? loadProjectData,
+    TResult Function()? downloadProjectData,
   }) {
-    return loadProjectData?.call();
+    return downloadProjectData?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loadProjectData,
+    TResult Function()? downloadProjectData,
     required TResult orElse(),
   }) {
-    if (loadProjectData != null) {
-      return loadProjectData();
+    if (downloadProjectData != null) {
+      return downloadProjectData();
     }
     return orElse();
   }
@@ -147,27 +147,27 @@ class _$_LoadProjectData implements _LoadProjectData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_LoadProjectData value) loadProjectData,
+    required TResult Function(_LoadProjectData value) downloadProjectData,
   }) {
-    return loadProjectData(this);
+    return downloadProjectData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_LoadProjectData value)? loadProjectData,
+    TResult Function(_LoadProjectData value)? downloadProjectData,
   }) {
-    return loadProjectData?.call(this);
+    return downloadProjectData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_LoadProjectData value)? loadProjectData,
+    TResult Function(_LoadProjectData value)? downloadProjectData,
     required TResult orElse(),
   }) {
-    if (loadProjectData != null) {
-      return loadProjectData(this);
+    if (downloadProjectData != null) {
+      return downloadProjectData(this);
     }
     return orElse();
   }
@@ -193,8 +193,10 @@ class _$LoadRemoteDataStateTearOff {
     return const _Loading();
   }
 
-  _Loaded loaded() {
-    return const _Loaded();
+  _Loaded loaded({required DataContainer dataContainer}) {
+    return _Loaded(
+      dataContainer: dataContainer,
+    );
   }
 
   _Error error() {
@@ -212,7 +214,7 @@ mixin _$LoadRemoteDataState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(DataContainer dataContainer) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -221,7 +223,7 @@ mixin _$LoadRemoteDataState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -230,7 +232,7 @@ mixin _$LoadRemoteDataState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -324,7 +326,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(DataContainer dataContainer) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -336,7 +338,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
   }) {
     return initial?.call();
@@ -348,7 +350,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -444,7 +446,7 @@ class _$_Empty implements _Empty {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(DataContainer dataContainer) loaded,
     required TResult Function() error,
   }) {
     return empty();
@@ -456,7 +458,7 @@ class _$_Empty implements _Empty {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
   }) {
     return empty?.call();
@@ -468,7 +470,7 @@ class _$_Empty implements _Empty {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -565,7 +567,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(DataContainer dataContainer) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -577,7 +579,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
   }) {
     return loading?.call();
@@ -589,7 +591,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -648,6 +650,9 @@ abstract class _Loading implements LoadRemoteDataState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
+  $Res call({DataContainer dataContainer});
+
+  $DataContainerCopyWith<$Res> get dataContainer;
 }
 
 /// @nodoc
@@ -659,26 +664,57 @@ class __$LoadedCopyWithImpl<$Res>
 
   @override
   _Loaded get _value => super._value as _Loaded;
+
+  @override
+  $Res call({
+    Object? dataContainer = freezed,
+  }) {
+    return _then(_Loaded(
+      dataContainer: dataContainer == freezed
+          ? _value.dataContainer
+          : dataContainer // ignore: cast_nullable_to_non_nullable
+              as DataContainer,
+    ));
+  }
+
+  @override
+  $DataContainerCopyWith<$Res> get dataContainer {
+    return $DataContainerCopyWith<$Res>(_value.dataContainer, (value) {
+      return _then(_value.copyWith(dataContainer: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded();
+  const _$_Loaded({required this.dataContainer});
+
+  @override
+  final DataContainer dataContainer;
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.loaded()';
+    return 'LoadRemoteDataState.loaded(dataContainer: $dataContainer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Loaded);
+        (other.runtimeType == runtimeType &&
+            other is _Loaded &&
+            const DeepCollectionEquality()
+                .equals(other.dataContainer, dataContainer));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(dataContainer));
+
+  @JsonKey(ignore: true)
+  @override
+  _$LoadedCopyWith<_Loaded> get copyWith =>
+      __$LoadedCopyWithImpl<_Loaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -686,10 +722,10 @@ class _$_Loaded implements _Loaded {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(DataContainer dataContainer) loaded,
     required TResult Function() error,
   }) {
-    return loaded();
+    return loaded(dataContainer);
   }
 
   @override
@@ -698,10 +734,10 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
   }) {
-    return loaded?.call();
+    return loaded?.call(dataContainer);
   }
 
   @override
@@ -710,12 +746,12 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded();
+      return loaded(dataContainer);
     }
     return orElse();
   }
@@ -762,7 +798,11 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements LoadRemoteDataState {
-  const factory _Loaded() = _$_Loaded;
+  const factory _Loaded({required DataContainer dataContainer}) = _$_Loaded;
+
+  DataContainer get dataContainer;
+  @JsonKey(ignore: true)
+  _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -806,7 +846,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function() loaded,
+    required TResult Function(DataContainer dataContainer) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -818,7 +858,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
   }) {
     return error?.call();
@@ -830,7 +870,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function()? loaded,
+    TResult Function(DataContainer dataContainer)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
