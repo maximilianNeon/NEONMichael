@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/features/details/presentation/detail_screen.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
-import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/project_focus_page.dart';

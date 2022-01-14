@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,18 +19,16 @@ class PatternElementBloc
   List<ElementEntity> elementList = [];
   int assetEntityId = 0;
 
-  PatternElementBloc()
-      : super(_Loading()
-            ) {
+  PatternElementBloc() : super(_Loading()) {
     on<_ChangeToPatternView>((event, emit) {
       emit(_PatternView(
-          imageUrl: event.imageUrl,
+          imageFileData: event.imageFileData,
           patternEntityList: patternList,
           elementEntityList: elementList));
     });
     on<_ChangeToElementView>((event, emit) {
       emit(_ElementView(
-          imageUrl: event.imageUrl,
+          imageFileData: event.imageFileData,
           elementEntityList: elementList,
           patternEntityList: patternList));
     });
@@ -38,7 +38,7 @@ class PatternElementBloc
       elementList.add(event.elementEntity);
 
       emit(_ElementView(
-          imageUrl: event.imageUrl,
+          imageFileData: event.imageFileData,
           elementEntityList: elementList,
           patternEntityList: patternList));
     });
@@ -51,18 +51,18 @@ class PatternElementBloc
           element.item == event.elementEntity.item);
 
       emit(_ElementView(
-          imageUrl: event.imageUrl,
+          imageFileData: event.imageFileData,
           elementEntityList: elementList,
           patternEntityList: patternList));
     });
     on<_AddPattern>((event, emit) {
       emit(_Loading());
 
-      print("AddPatternEvent : ${event.patternEntity}" );
+      print("AddPatternEvent : ${event.patternEntity}");
       patternList.add(event.patternEntity);
 
       emit(_PatternView(
-          imageUrl: event.imageUrl,
+          imageFileData: event.imageFileData,
           elementEntityList: elementList,
           patternEntityList: patternList));
     });
@@ -74,13 +74,12 @@ class PatternElementBloc
           element.item == event.patternEntity.item);
 
       emit(_PatternView(
-          imageUrl: event.imageUrl,
+          imageFileData: event.imageFileData,
           elementEntityList: elementList,
           patternEntityList: patternList));
     });
     on<_AddExistingDataToBloc>((event, emit) {
-     
-     print(" PAtternList: $patternList");
+      print(" PAtternList: $patternList");
 
       patternList = event.assetEntity.patterns;
       assetEntityId = event.assetEntity.id;
@@ -88,14 +87,12 @@ class PatternElementBloc
 
       print(" PAtternList: $patternList");
       print("AssetEntityId $assetEntityId");
-
     });
 
     on<_ResetBloc>((event, emit) {
       patternList = [];
       elementList = [];
       emit(_Loading());
-
-    } );
+    });
   }
 }

@@ -26,28 +26,28 @@ class ScreenUploadContainer extends StatelessWidget {
       child:
           Stack(alignment: Alignment.topLeft, fit: StackFit.loose, children: [
         DropzoneView(
-          onDrop: (dynamic event) async => assetBloc.add(AssetEvent.addScreen(droppedImageEntity: await convertDroppedFile(event: event))),
+          onDrop: (dynamic event) async => assetBloc.add(AssetEvent.addScreen(
+              droppedImageEntity: await convertDroppedFile(event: event))),
           onCreated: (controller) => this._dropzoneViewController = controller,
         ),
         BlocBuilder<AssetBloc, AssetState>(
           builder: (context, state) => state.map(
-            initial: (_) => Container(
-              child: Text("No Screens Added"),
-            ),
-            loading: (_) => CircularProgressIndicator(),
-            loaded: (state) => GridView.builder(
-              padding: EdgeInsets.all(5),
-              itemCount: state.assetEntityList.length,
-              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 500),
-              itemBuilder: (context, index) {
-                return ScreenUploadItem(
-                  assetEntity: state.assetEntityList[index],
-                  imageUrl: state.assetEntityList[index].imageUrl,
-                );
-              },
-            ),
-          ),
+              initial: (_) => Container(
+                    child: Text("No Screens Added"),
+                  ),
+              loading: (_) => CircularProgressIndicator(),
+              loaded: (state) => GridView.builder(
+                    padding: EdgeInsets.all(5),
+                    itemCount: state.assetEntityList.length,
+                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 500),
+                    itemBuilder: (context, index) {
+                      return ScreenUploadItem(
+                        assetEntity: state.assetEntityList[index],
+                        assetFileCache: state.assetFileCache,
+                      );
+                    },
+                  )),
         ),
       ]),
     );

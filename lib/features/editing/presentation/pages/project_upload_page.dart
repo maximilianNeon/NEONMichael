@@ -18,9 +18,20 @@ class ProjectUploadPage extends StatelessWidget {
 
   late DropzoneViewController _dropzoneViewController;
 
-  Future convertDroppedFile(dynamic event) async {
+  Future<DroppedImageEntity> convertDroppedFile(dynamic event) async {
     return DroppedImageEntity(
         fileData: await _dropzoneViewController.getFileData(event));
+  }
+
+  Future<List<DroppedImageEntity>> convertListofDroppedFiles(List event) async {
+    List<DroppedImageEntity> droppedImageEntityList = [];
+
+    await Future.forEach(event, (event) async {
+      droppedImageEntityList.add(DroppedImageEntity(
+          fileData: await _dropzoneViewController.getFileData(event)));
+    });
+
+    return droppedImageEntityList;
   }
 
   @override
@@ -157,9 +168,12 @@ class ProjectUploadPage extends StatelessWidget {
                                       mime: ['image/jpeg', 'image/png']);
 
                               if (event.length > 1) {
+                                final list =
+                                    await convertListofDroppedFiles(event);
+
                                 assetBloc.add(AssetEvent.addMultipleScreens(
-                                    event: event,
-                                    controller: _dropzoneViewController),);
+                                    droppedImageEntityList: list));
+                                    
                               } else if (event.length == 1) {
                                 assetBloc.add(
                                   AssetEvent.addScreen(
@@ -218,12 +232,12 @@ class ProjectUploadPage extends StatelessWidget {
               state.map(
                 element: (state) => Center(
                   child: AssetPopUpContainer(
-                    imageUrl: state.imageUrl,
+                    imageFileData: state.imageFileData,
                   ),
                 ),
                 pattern: (state) => Center(
                   child: AssetPopUpContainer(
-                    imageUrl: state.imageUrl,
+                    imageFileData: state.imageFileData,
                   ),
                 ),
                 loading: (_) => Container(),

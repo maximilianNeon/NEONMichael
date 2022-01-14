@@ -14,7 +14,7 @@ _$_ProjectEntity _$$_ProjectEntityFromJson(Map<String, dynamic> json) =>
       assets: (json['assets'] as List<dynamic>)
           .map((e) => AssetEntity.fromJson(e as Map<String, dynamic>))
           .toList(),
-      imageUrl: json['imageUrl'] as String,
+      id: json['id'] as int,
     );
 
 Map<String, dynamic> _$$_ProjectEntityToJson(_$_ProjectEntity instance) =>
@@ -23,5 +23,5 @@ Map<String, dynamic> _$$_ProjectEntityToJson(_$_ProjectEntity instance) =>
       'projectType': instance.projectType,
       'description': instance.description,
       'assets': instance.assets.map((e) => e.toJson()).toList(),
-      'imageUrl': instance.imageUrl,
+      'id': instance.id,
     };

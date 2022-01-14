@@ -18,46 +18,50 @@ class _$PatternElementEventTearOff {
   const _$PatternElementEventTearOff();
 
   _AddPattern addPattern(
-      {required PatternEntity patternEntity, required String imageUrl}) {
+      {required PatternEntity patternEntity,
+      required Uint8List imageFileData}) {
     return _AddPattern(
       patternEntity: patternEntity,
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
     );
   }
 
   _RemovePatter removePattern(
-      {required PatternEntity patternEntity, required String imageUrl}) {
+      {required PatternEntity patternEntity,
+      required Uint8List imageFileData}) {
     return _RemovePatter(
       patternEntity: patternEntity,
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
     );
   }
 
   _AddElement addElement(
-      {required ElementEntity elementEntity, required String imageUrl}) {
+      {required ElementEntity elementEntity,
+      required Uint8List imageFileData}) {
     return _AddElement(
       elementEntity: elementEntity,
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
     );
   }
 
   _RemoveElement removeElement(
-      {required ElementEntity elementEntity, required String imageUrl}) {
+      {required ElementEntity elementEntity,
+      required Uint8List imageFileData}) {
     return _RemoveElement(
       elementEntity: elementEntity,
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
     );
   }
 
-  _ChangeToPatternView changeToPatternView({required String imageUrl}) {
+  _ChangeToPatternView changeToPatternView({required Uint8List imageFileData}) {
     return _ChangeToPatternView(
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
     );
   }
 
-  _ChangeToElementView changeToElementView({required String imageUrl}) {
+  _ChangeToElementView changeToElementView({required Uint8List imageFileData}) {
     return _ChangeToElementView(
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
     );
   }
 
@@ -80,44 +84,52 @@ const $PatternElementEvent = _$PatternElementEventTearOff();
 mixin _$PatternElementEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
@@ -185,7 +197,7 @@ abstract class _$AddPatternCopyWith<$Res> {
   factory _$AddPatternCopyWith(
           _AddPattern value, $Res Function(_AddPattern) then) =
       __$AddPatternCopyWithImpl<$Res>;
-  $Res call({PatternEntity patternEntity, String imageUrl});
+  $Res call({PatternEntity patternEntity, Uint8List imageFileData});
 
   $PatternEntityCopyWith<$Res> get patternEntity;
 }
@@ -204,17 +216,17 @@ class __$AddPatternCopyWithImpl<$Res>
   @override
   $Res call({
     Object? patternEntity = freezed,
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
   }) {
     return _then(_AddPattern(
       patternEntity: patternEntity == freezed
           ? _value.patternEntity
           : patternEntity // ignore: cast_nullable_to_non_nullable
               as PatternEntity,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 
@@ -229,16 +241,17 @@ class __$AddPatternCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddPattern implements _AddPattern {
-  const _$_AddPattern({required this.patternEntity, required this.imageUrl});
+  const _$_AddPattern(
+      {required this.patternEntity, required this.imageFileData});
 
   @override
   final PatternEntity patternEntity;
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addPattern(patternEntity: $patternEntity, imageUrl: $imageUrl)';
+    return 'PatternElementEvent.addPattern(patternEntity: $patternEntity, imageFileData: $imageFileData)';
   }
 
   @override
@@ -248,14 +261,15 @@ class _$_AddPattern implements _AddPattern {
             other is _AddPattern &&
             const DeepCollectionEquality()
                 .equals(other.patternEntity, patternEntity) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(patternEntity),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(imageFileData));
 
   @JsonKey(ignore: true)
   @override
@@ -265,56 +279,64 @@ class _$_AddPattern implements _AddPattern {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return addPattern(patternEntity, imageUrl);
+    return addPattern(patternEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return addPattern?.call(patternEntity, imageUrl);
+    return addPattern?.call(patternEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (addPattern != null) {
-      return addPattern(patternEntity, imageUrl);
+      return addPattern(patternEntity, imageFileData);
     }
     return orElse();
   }
@@ -373,10 +395,10 @@ class _$_AddPattern implements _AddPattern {
 abstract class _AddPattern implements PatternElementEvent {
   const factory _AddPattern(
       {required PatternEntity patternEntity,
-      required String imageUrl}) = _$_AddPattern;
+      required Uint8List imageFileData}) = _$_AddPattern;
 
   PatternEntity get patternEntity;
-  String get imageUrl;
+  Uint8List get imageFileData;
   @JsonKey(ignore: true)
   _$AddPatternCopyWith<_AddPattern> get copyWith =>
       throw _privateConstructorUsedError;
@@ -387,7 +409,7 @@ abstract class _$RemovePatterCopyWith<$Res> {
   factory _$RemovePatterCopyWith(
           _RemovePatter value, $Res Function(_RemovePatter) then) =
       __$RemovePatterCopyWithImpl<$Res>;
-  $Res call({PatternEntity patternEntity, String imageUrl});
+  $Res call({PatternEntity patternEntity, Uint8List imageFileData});
 
   $PatternEntityCopyWith<$Res> get patternEntity;
 }
@@ -406,17 +428,17 @@ class __$RemovePatterCopyWithImpl<$Res>
   @override
   $Res call({
     Object? patternEntity = freezed,
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
   }) {
     return _then(_RemovePatter(
       patternEntity: patternEntity == freezed
           ? _value.patternEntity
           : patternEntity // ignore: cast_nullable_to_non_nullable
               as PatternEntity,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 
@@ -431,16 +453,17 @@ class __$RemovePatterCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RemovePatter implements _RemovePatter {
-  const _$_RemovePatter({required this.patternEntity, required this.imageUrl});
+  const _$_RemovePatter(
+      {required this.patternEntity, required this.imageFileData});
 
   @override
   final PatternEntity patternEntity;
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
 
   @override
   String toString() {
-    return 'PatternElementEvent.removePattern(patternEntity: $patternEntity, imageUrl: $imageUrl)';
+    return 'PatternElementEvent.removePattern(patternEntity: $patternEntity, imageFileData: $imageFileData)';
   }
 
   @override
@@ -450,14 +473,15 @@ class _$_RemovePatter implements _RemovePatter {
             other is _RemovePatter &&
             const DeepCollectionEquality()
                 .equals(other.patternEntity, patternEntity) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(patternEntity),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(imageFileData));
 
   @JsonKey(ignore: true)
   @override
@@ -467,56 +491,64 @@ class _$_RemovePatter implements _RemovePatter {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return removePattern(patternEntity, imageUrl);
+    return removePattern(patternEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return removePattern?.call(patternEntity, imageUrl);
+    return removePattern?.call(patternEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (removePattern != null) {
-      return removePattern(patternEntity, imageUrl);
+      return removePattern(patternEntity, imageFileData);
     }
     return orElse();
   }
@@ -575,10 +607,10 @@ class _$_RemovePatter implements _RemovePatter {
 abstract class _RemovePatter implements PatternElementEvent {
   const factory _RemovePatter(
       {required PatternEntity patternEntity,
-      required String imageUrl}) = _$_RemovePatter;
+      required Uint8List imageFileData}) = _$_RemovePatter;
 
   PatternEntity get patternEntity;
-  String get imageUrl;
+  Uint8List get imageFileData;
   @JsonKey(ignore: true)
   _$RemovePatterCopyWith<_RemovePatter> get copyWith =>
       throw _privateConstructorUsedError;
@@ -589,7 +621,7 @@ abstract class _$AddElementCopyWith<$Res> {
   factory _$AddElementCopyWith(
           _AddElement value, $Res Function(_AddElement) then) =
       __$AddElementCopyWithImpl<$Res>;
-  $Res call({ElementEntity elementEntity, String imageUrl});
+  $Res call({ElementEntity elementEntity, Uint8List imageFileData});
 
   $ElementEntityCopyWith<$Res> get elementEntity;
 }
@@ -608,17 +640,17 @@ class __$AddElementCopyWithImpl<$Res>
   @override
   $Res call({
     Object? elementEntity = freezed,
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
   }) {
     return _then(_AddElement(
       elementEntity: elementEntity == freezed
           ? _value.elementEntity
           : elementEntity // ignore: cast_nullable_to_non_nullable
               as ElementEntity,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 
@@ -633,16 +665,17 @@ class __$AddElementCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddElement implements _AddElement {
-  const _$_AddElement({required this.elementEntity, required this.imageUrl});
+  const _$_AddElement(
+      {required this.elementEntity, required this.imageFileData});
 
   @override
   final ElementEntity elementEntity;
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addElement(elementEntity: $elementEntity, imageUrl: $imageUrl)';
+    return 'PatternElementEvent.addElement(elementEntity: $elementEntity, imageFileData: $imageFileData)';
   }
 
   @override
@@ -652,14 +685,15 @@ class _$_AddElement implements _AddElement {
             other is _AddElement &&
             const DeepCollectionEquality()
                 .equals(other.elementEntity, elementEntity) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(elementEntity),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(imageFileData));
 
   @JsonKey(ignore: true)
   @override
@@ -669,56 +703,64 @@ class _$_AddElement implements _AddElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return addElement(elementEntity, imageUrl);
+    return addElement(elementEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return addElement?.call(elementEntity, imageUrl);
+    return addElement?.call(elementEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (addElement != null) {
-      return addElement(elementEntity, imageUrl);
+      return addElement(elementEntity, imageFileData);
     }
     return orElse();
   }
@@ -777,10 +819,10 @@ class _$_AddElement implements _AddElement {
 abstract class _AddElement implements PatternElementEvent {
   const factory _AddElement(
       {required ElementEntity elementEntity,
-      required String imageUrl}) = _$_AddElement;
+      required Uint8List imageFileData}) = _$_AddElement;
 
   ElementEntity get elementEntity;
-  String get imageUrl;
+  Uint8List get imageFileData;
   @JsonKey(ignore: true)
   _$AddElementCopyWith<_AddElement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -791,7 +833,7 @@ abstract class _$RemoveElementCopyWith<$Res> {
   factory _$RemoveElementCopyWith(
           _RemoveElement value, $Res Function(_RemoveElement) then) =
       __$RemoveElementCopyWithImpl<$Res>;
-  $Res call({ElementEntity elementEntity, String imageUrl});
+  $Res call({ElementEntity elementEntity, Uint8List imageFileData});
 
   $ElementEntityCopyWith<$Res> get elementEntity;
 }
@@ -810,17 +852,17 @@ class __$RemoveElementCopyWithImpl<$Res>
   @override
   $Res call({
     Object? elementEntity = freezed,
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
   }) {
     return _then(_RemoveElement(
       elementEntity: elementEntity == freezed
           ? _value.elementEntity
           : elementEntity // ignore: cast_nullable_to_non_nullable
               as ElementEntity,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 
@@ -835,16 +877,17 @@ class __$RemoveElementCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_RemoveElement implements _RemoveElement {
-  const _$_RemoveElement({required this.elementEntity, required this.imageUrl});
+  const _$_RemoveElement(
+      {required this.elementEntity, required this.imageFileData});
 
   @override
   final ElementEntity elementEntity;
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
 
   @override
   String toString() {
-    return 'PatternElementEvent.removeElement(elementEntity: $elementEntity, imageUrl: $imageUrl)';
+    return 'PatternElementEvent.removeElement(elementEntity: $elementEntity, imageFileData: $imageFileData)';
   }
 
   @override
@@ -854,14 +897,15 @@ class _$_RemoveElement implements _RemoveElement {
             other is _RemoveElement &&
             const DeepCollectionEquality()
                 .equals(other.elementEntity, elementEntity) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(elementEntity),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(imageFileData));
 
   @JsonKey(ignore: true)
   @override
@@ -871,56 +915,64 @@ class _$_RemoveElement implements _RemoveElement {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return removeElement(elementEntity, imageUrl);
+    return removeElement(elementEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return removeElement?.call(elementEntity, imageUrl);
+    return removeElement?.call(elementEntity, imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (removeElement != null) {
-      return removeElement(elementEntity, imageUrl);
+      return removeElement(elementEntity, imageFileData);
     }
     return orElse();
   }
@@ -979,10 +1031,10 @@ class _$_RemoveElement implements _RemoveElement {
 abstract class _RemoveElement implements PatternElementEvent {
   const factory _RemoveElement(
       {required ElementEntity elementEntity,
-      required String imageUrl}) = _$_RemoveElement;
+      required Uint8List imageFileData}) = _$_RemoveElement;
 
   ElementEntity get elementEntity;
-  String get imageUrl;
+  Uint8List get imageFileData;
   @JsonKey(ignore: true)
   _$RemoveElementCopyWith<_RemoveElement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -993,7 +1045,7 @@ abstract class _$ChangeToPatternViewCopyWith<$Res> {
   factory _$ChangeToPatternViewCopyWith(_ChangeToPatternView value,
           $Res Function(_ChangeToPatternView) then) =
       __$ChangeToPatternViewCopyWithImpl<$Res>;
-  $Res call({String imageUrl});
+  $Res call({Uint8List imageFileData});
 }
 
 /// @nodoc
@@ -1009,13 +1061,13 @@ class __$ChangeToPatternViewCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
   }) {
     return _then(_ChangeToPatternView(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -1023,14 +1075,14 @@ class __$ChangeToPatternViewCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChangeToPatternView implements _ChangeToPatternView {
-  const _$_ChangeToPatternView({required this.imageUrl});
+  const _$_ChangeToPatternView({required this.imageFileData});
 
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
 
   @override
   String toString() {
-    return 'PatternElementEvent.changeToPatternView(imageUrl: $imageUrl)';
+    return 'PatternElementEvent.changeToPatternView(imageFileData: $imageFileData)';
   }
 
   @override
@@ -1038,12 +1090,13 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ChangeToPatternView &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageUrl));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(imageFileData));
 
   @JsonKey(ignore: true)
   @override
@@ -1054,56 +1107,64 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return changeToPatternView(imageUrl);
+    return changeToPatternView(imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return changeToPatternView?.call(imageUrl);
+    return changeToPatternView?.call(imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (changeToPatternView != null) {
-      return changeToPatternView(imageUrl);
+      return changeToPatternView(imageFileData);
     }
     return orElse();
   }
@@ -1160,10 +1221,10 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
 }
 
 abstract class _ChangeToPatternView implements PatternElementEvent {
-  const factory _ChangeToPatternView({required String imageUrl}) =
+  const factory _ChangeToPatternView({required Uint8List imageFileData}) =
       _$_ChangeToPatternView;
 
-  String get imageUrl;
+  Uint8List get imageFileData;
   @JsonKey(ignore: true)
   _$ChangeToPatternViewCopyWith<_ChangeToPatternView> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1174,7 +1235,7 @@ abstract class _$ChangeToElementViewCopyWith<$Res> {
   factory _$ChangeToElementViewCopyWith(_ChangeToElementView value,
           $Res Function(_ChangeToElementView) then) =
       __$ChangeToElementViewCopyWithImpl<$Res>;
-  $Res call({String imageUrl});
+  $Res call({Uint8List imageFileData});
 }
 
 /// @nodoc
@@ -1190,13 +1251,13 @@ class __$ChangeToElementViewCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
   }) {
     return _then(_ChangeToElementView(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -1204,14 +1265,14 @@ class __$ChangeToElementViewCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ChangeToElementView implements _ChangeToElementView {
-  const _$_ChangeToElementView({required this.imageUrl});
+  const _$_ChangeToElementView({required this.imageFileData});
 
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
 
   @override
   String toString() {
-    return 'PatternElementEvent.changeToElementView(imageUrl: $imageUrl)';
+    return 'PatternElementEvent.changeToElementView(imageFileData: $imageFileData)';
   }
 
   @override
@@ -1219,12 +1280,13 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ChangeToElementView &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(imageUrl));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(imageFileData));
 
   @JsonKey(ignore: true)
   @override
@@ -1235,56 +1297,64 @@ class _$_ChangeToElementView implements _ChangeToElementView {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
-    return changeToElementView(imageUrl);
+    return changeToElementView(imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return changeToElementView?.call(imageUrl);
+    return changeToElementView?.call(imageFileData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
   }) {
     if (changeToElementView != null) {
-      return changeToElementView(imageUrl);
+      return changeToElementView(imageFileData);
     }
     return orElse();
   }
@@ -1341,10 +1411,10 @@ class _$_ChangeToElementView implements _ChangeToElementView {
 }
 
 abstract class _ChangeToElementView implements PatternElementEvent {
-  const factory _ChangeToElementView({required String imageUrl}) =
+  const factory _ChangeToElementView({required Uint8List imageFileData}) =
       _$_ChangeToElementView;
 
-  String get imageUrl;
+  Uint8List get imageFileData;
   @JsonKey(ignore: true)
   _$ChangeToElementViewCopyWith<_ChangeToElementView> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1426,16 +1496,20 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
@@ -1445,14 +1519,16 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
@@ -1462,14 +1538,16 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
@@ -1581,16 +1659,20 @@ class _$_ResetBloc implements _ResetBloc {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         addPattern,
-    required TResult Function(PatternEntity patternEntity, String imageUrl)
+    required TResult Function(
+            PatternEntity patternEntity, Uint8List imageFileData)
         removePattern,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         addElement,
-    required TResult Function(ElementEntity elementEntity, String imageUrl)
+    required TResult Function(
+            ElementEntity elementEntity, Uint8List imageFileData)
         removeElement,
-    required TResult Function(String imageUrl) changeToPatternView,
-    required TResult Function(String imageUrl) changeToElementView,
+    required TResult Function(Uint8List imageFileData) changeToPatternView,
+    required TResult Function(Uint8List imageFileData) changeToElementView,
     required TResult Function(AssetEntity assetEntity) addExistingDataToBloc,
     required TResult Function() resetBloc,
   }) {
@@ -1600,14 +1682,16 @@ class _$_ResetBloc implements _ResetBloc {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
@@ -1617,14 +1701,16 @@ class _$_ResetBloc implements _ResetBloc {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(PatternEntity patternEntity, String imageUrl)? addPattern,
-    TResult Function(PatternEntity patternEntity, String imageUrl)?
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
+        addPattern,
+    TResult Function(PatternEntity patternEntity, Uint8List imageFileData)?
         removePattern,
-    TResult Function(ElementEntity elementEntity, String imageUrl)? addElement,
-    TResult Function(ElementEntity elementEntity, String imageUrl)?
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
+        addElement,
+    TResult Function(ElementEntity elementEntity, Uint8List imageFileData)?
         removeElement,
-    TResult Function(String imageUrl)? changeToPatternView,
-    TResult Function(String imageUrl)? changeToElementView,
+    TResult Function(Uint8List imageFileData)? changeToPatternView,
+    TResult Function(Uint8List imageFileData)? changeToElementView,
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
     required TResult orElse(),
@@ -1695,11 +1781,11 @@ class _$PatternElementStateTearOff {
   const _$PatternElementStateTearOff();
 
   _PatternView pattern(
-      {required String imageUrl,
+      {required Uint8List imageFileData,
       required List<PatternEntity> patternEntityList,
       required List<ElementEntity> elementEntityList}) {
     return _PatternView(
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
       patternEntityList: patternEntityList,
       elementEntityList: elementEntityList,
     );
@@ -1710,11 +1796,11 @@ class _$PatternElementStateTearOff {
   }
 
   _ElementView element(
-      {required String imageUrl,
+      {required Uint8List imageFileData,
       required List<ElementEntity> elementEntityList,
       required List<PatternEntity> patternEntityList}) {
     return _ElementView(
-      imageUrl: imageUrl,
+      imageFileData: imageFileData,
       elementEntityList: elementEntityList,
       patternEntityList: patternEntityList,
     );
@@ -1729,13 +1815,13 @@ mixin _$PatternElementState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)
         pattern,
     required TResult Function() loading,
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)
         element,
@@ -1743,22 +1829,30 @@ mixin _$PatternElementState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
     required TResult orElse(),
@@ -1811,7 +1905,7 @@ abstract class _$PatternViewCopyWith<$Res> {
           _PatternView value, $Res Function(_PatternView) then) =
       __$PatternViewCopyWithImpl<$Res>;
   $Res call(
-      {String imageUrl,
+      {Uint8List imageFileData,
       List<PatternEntity> patternEntityList,
       List<ElementEntity> elementEntityList});
 }
@@ -1829,15 +1923,15 @@ class __$PatternViewCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
     Object? patternEntityList = freezed,
     Object? elementEntityList = freezed,
   }) {
     return _then(_PatternView(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
       patternEntityList: patternEntityList == freezed
           ? _value.patternEntityList
           : patternEntityList // ignore: cast_nullable_to_non_nullable
@@ -1854,12 +1948,12 @@ class __$PatternViewCopyWithImpl<$Res>
 
 class _$_PatternView implements _PatternView {
   const _$_PatternView(
-      {required this.imageUrl,
+      {required this.imageFileData,
       required this.patternEntityList,
       required this.elementEntityList});
 
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
   @override
   final List<PatternEntity> patternEntityList;
   @override
@@ -1867,7 +1961,7 @@ class _$_PatternView implements _PatternView {
 
   @override
   String toString() {
-    return 'PatternElementState.pattern(imageUrl: $imageUrl, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList)';
+    return 'PatternElementState.pattern(imageFileData: $imageFileData, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList)';
   }
 
   @override
@@ -1875,7 +1969,8 @@ class _$_PatternView implements _PatternView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _PatternView &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData) &&
             const DeepCollectionEquality()
                 .equals(other.patternEntityList, patternEntityList) &&
             const DeepCollectionEquality()
@@ -1885,7 +1980,7 @@ class _$_PatternView implements _PatternView {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(imageFileData),
       const DeepCollectionEquality().hash(patternEntityList),
       const DeepCollectionEquality().hash(elementEntityList));
 
@@ -1898,48 +1993,56 @@ class _$_PatternView implements _PatternView {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)
         pattern,
     required TResult Function() loading,
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)
         element,
   }) {
-    return pattern(imageUrl, patternEntityList, elementEntityList);
+    return pattern(imageFileData, patternEntityList, elementEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
   }) {
-    return pattern?.call(imageUrl, patternEntityList, elementEntityList);
+    return pattern?.call(imageFileData, patternEntityList, elementEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
     required TResult orElse(),
   }) {
     if (pattern != null) {
-      return pattern(imageUrl, patternEntityList, elementEntityList);
+      return pattern(imageFileData, patternEntityList, elementEntityList);
     }
     return orElse();
   }
@@ -1981,11 +2084,11 @@ class _$_PatternView implements _PatternView {
 
 abstract class _PatternView implements PatternElementState {
   const factory _PatternView(
-      {required String imageUrl,
+      {required Uint8List imageFileData,
       required List<PatternEntity> patternEntityList,
       required List<ElementEntity> elementEntityList}) = _$_PatternView;
 
-  String get imageUrl;
+  Uint8List get imageFileData;
   List<PatternEntity> get patternEntityList;
   List<ElementEntity> get elementEntityList;
   @JsonKey(ignore: true)
@@ -2033,13 +2136,13 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)
         pattern,
     required TResult Function() loading,
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)
         element,
@@ -2050,11 +2153,15 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
   }) {
@@ -2064,11 +2171,15 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
     required TResult orElse(),
@@ -2124,7 +2235,7 @@ abstract class _$ElementViewCopyWith<$Res> {
           _ElementView value, $Res Function(_ElementView) then) =
       __$ElementViewCopyWithImpl<$Res>;
   $Res call(
-      {String imageUrl,
+      {Uint8List imageFileData,
       List<ElementEntity> elementEntityList,
       List<PatternEntity> patternEntityList});
 }
@@ -2142,15 +2253,15 @@ class __$ElementViewCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? imageUrl = freezed,
+    Object? imageFileData = freezed,
     Object? elementEntityList = freezed,
     Object? patternEntityList = freezed,
   }) {
     return _then(_ElementView(
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      imageFileData: imageFileData == freezed
+          ? _value.imageFileData
+          : imageFileData // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
       elementEntityList: elementEntityList == freezed
           ? _value.elementEntityList
           : elementEntityList // ignore: cast_nullable_to_non_nullable
@@ -2167,12 +2278,12 @@ class __$ElementViewCopyWithImpl<$Res>
 
 class _$_ElementView implements _ElementView {
   const _$_ElementView(
-      {required this.imageUrl,
+      {required this.imageFileData,
       required this.elementEntityList,
       required this.patternEntityList});
 
   @override
-  final String imageUrl;
+  final Uint8List imageFileData;
   @override
   final List<ElementEntity> elementEntityList;
   @override
@@ -2180,7 +2291,7 @@ class _$_ElementView implements _ElementView {
 
   @override
   String toString() {
-    return 'PatternElementState.element(imageUrl: $imageUrl, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList)';
+    return 'PatternElementState.element(imageFileData: $imageFileData, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList)';
   }
 
   @override
@@ -2188,7 +2299,8 @@ class _$_ElementView implements _ElementView {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _ElementView &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.imageFileData, imageFileData) &&
             const DeepCollectionEquality()
                 .equals(other.elementEntityList, elementEntityList) &&
             const DeepCollectionEquality()
@@ -2198,7 +2310,7 @@ class _$_ElementView implements _ElementView {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(imageUrl),
+      const DeepCollectionEquality().hash(imageFileData),
       const DeepCollectionEquality().hash(elementEntityList),
       const DeepCollectionEquality().hash(patternEntityList));
 
@@ -2211,48 +2323,56 @@ class _$_ElementView implements _ElementView {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)
         pattern,
     required TResult Function() loading,
     required TResult Function(
-            String imageUrl,
+            Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)
         element,
   }) {
-    return element(imageUrl, elementEntityList, patternEntityList);
+    return element(imageFileData, elementEntityList, patternEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
   }) {
-    return element?.call(imageUrl, elementEntityList, patternEntityList);
+    return element?.call(imageFileData, elementEntityList, patternEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String imageUrl, List<PatternEntity> patternEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList)?
         pattern,
     TResult Function()? loading,
-    TResult Function(String imageUrl, List<ElementEntity> elementEntityList,
+    TResult Function(
+            Uint8List imageFileData,
+            List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList)?
         element,
     required TResult orElse(),
   }) {
     if (element != null) {
-      return element(imageUrl, elementEntityList, patternEntityList);
+      return element(imageFileData, elementEntityList, patternEntityList);
     }
     return orElse();
   }
@@ -2294,11 +2414,11 @@ class _$_ElementView implements _ElementView {
 
 abstract class _ElementView implements PatternElementState {
   const factory _ElementView(
-      {required String imageUrl,
+      {required Uint8List imageFileData,
       required List<ElementEntity> elementEntityList,
       required List<PatternEntity> patternEntityList}) = _$_ElementView;
 
-  String get imageUrl;
+  Uint8List get imageFileData;
   List<ElementEntity> get elementEntityList;
   List<PatternEntity> get patternEntityList;
   @JsonKey(ignore: true)

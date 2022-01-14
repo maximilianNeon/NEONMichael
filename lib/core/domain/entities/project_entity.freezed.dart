@@ -26,13 +26,13 @@ class _$ProjectEntityTearOff {
       required String projectType,
       required String description,
       required List<AssetEntity> assets,
-      required String imageUrl}) {
+      required int id}) {
     return _ProjectEntity(
       title: title,
       projectType: projectType,
       description: description,
       assets: assets,
-      imageUrl: imageUrl,
+      id: id,
     );
   }
 
@@ -50,7 +50,7 @@ mixin _$ProjectEntity {
   String get projectType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<AssetEntity> get assets => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +68,7 @@ abstract class $ProjectEntityCopyWith<$Res> {
       String projectType,
       String description,
       List<AssetEntity> assets,
-      String imageUrl});
+      int id});
 }
 
 /// @nodoc
@@ -86,7 +86,7 @@ class _$ProjectEntityCopyWithImpl<$Res>
     Object? projectType = freezed,
     Object? description = freezed,
     Object? assets = freezed,
-    Object? imageUrl = freezed,
+    Object? id = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -105,10 +105,10 @@ class _$ProjectEntityCopyWithImpl<$Res>
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -125,7 +125,7 @@ abstract class _$ProjectEntityCopyWith<$Res>
       String projectType,
       String description,
       List<AssetEntity> assets,
-      String imageUrl});
+      int id});
 }
 
 /// @nodoc
@@ -145,7 +145,7 @@ class __$ProjectEntityCopyWithImpl<$Res>
     Object? projectType = freezed,
     Object? description = freezed,
     Object? assets = freezed,
-    Object? imageUrl = freezed,
+    Object? id = freezed,
   }) {
     return _then(_ProjectEntity(
       title: title == freezed
@@ -164,10 +164,10 @@ class __$ProjectEntityCopyWithImpl<$Res>
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
-      imageUrl: imageUrl == freezed
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -180,7 +180,7 @@ class _$_ProjectEntity implements _ProjectEntity {
       required this.projectType,
       required this.description,
       required this.assets,
-      required this.imageUrl});
+      required this.id});
 
   factory _$_ProjectEntity.fromJson(Map<String, dynamic> json) =>
       _$$_ProjectEntityFromJson(json);
@@ -194,11 +194,11 @@ class _$_ProjectEntity implements _ProjectEntity {
   @override
   final List<AssetEntity> assets;
   @override
-  final String imageUrl;
+  final int id;
 
   @override
   String toString() {
-    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, imageUrl: $imageUrl)';
+    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, id: $id)';
   }
 
   @override
@@ -212,7 +212,7 @@ class _$_ProjectEntity implements _ProjectEntity {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.assets, assets) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
@@ -222,7 +222,7 @@ class _$_ProjectEntity implements _ProjectEntity {
       const DeepCollectionEquality().hash(projectType),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(assets),
-      const DeepCollectionEquality().hash(imageUrl));
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +241,7 @@ abstract class _ProjectEntity implements ProjectEntity {
       required String projectType,
       required String description,
       required List<AssetEntity> assets,
-      required String imageUrl}) = _$_ProjectEntity;
+      required int id}) = _$_ProjectEntity;
 
   factory _ProjectEntity.fromJson(Map<String, dynamic> json) =
       _$_ProjectEntity.fromJson;
@@ -255,7 +255,7 @@ abstract class _ProjectEntity implements ProjectEntity {
   @override
   List<AssetEntity> get assets;
   @override
-  String get imageUrl;
+  int get id;
   @override
   @JsonKey(ignore: true)
   _$ProjectEntityCopyWith<_ProjectEntity> get copyWith =>

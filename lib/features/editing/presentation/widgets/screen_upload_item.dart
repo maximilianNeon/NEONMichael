@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -10,19 +12,20 @@ import 'package:neon_web/features/editing/presentation/widgets/screen_upload_inp
 
 @injectable
 class ScreenUploadItem extends StatelessWidget {
-  final String imageUrl;
+  final Map<int, Uint8List> assetFileCache;
   final AssetEntity assetEntity;
 
   ScreenUploadItem({
     required this.assetEntity,
-    required this.imageUrl,
+    required this.assetFileCache
     
   }) : super();
 
   @override
   Widget build(BuildContext context) {
-    print("imageUrl: $imageUrl");
-    print("AssetEntity: ${assetEntity.id} ");
+    print("ScreenuploadItem");
+    print(assetFileCache.length);
+    print(assetEntity);
     PatternElementBloc patternElementBloc =
         BlocProvider.of<PatternElementBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
@@ -33,8 +36,8 @@ class ScreenUploadItem extends StatelessWidget {
       children: [
         Align(
             alignment: Alignment.topCenter,
-            child: Image.network(
-              imageUrl,
+            child: Image.memory(
+              assetFileCache[assetEntity.id] ?? Uint8List(0),
               fit: BoxFit.fill,
               height: 250,
               width: 150,
@@ -58,7 +61,7 @@ class ScreenUploadItem extends StatelessWidget {
 
                 patternElementBloc.add(
                   PatternElementEvent.changeToPatternView(
-                    imageUrl: imageUrl,
+                    imageFileData: assetFileCache[assetEntity.id] ?? Uint8List(0) ,
                   ),
                 );
               },

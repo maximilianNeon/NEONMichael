@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 
 import '../../../../core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/enum/enums.dart';
@@ -14,14 +17,15 @@ part 'project_editing_bloc.freezed.dart';
 class ProjectEditingBloc
     extends Bloc<ProjectEditingEvent, ProjectEditingState> {
   AssetBloc assetBloc;
+  UploadImageBloc uploadImageBloc;
   ProjectEntity projectEntity = ProjectEntity(
       assets: [],
       description: "",
-      imageUrl: "",
+      id: 0,
       projectType: ProjectType.App.toString(),
       title: "");
 
-  ProjectEditingBloc({required this.assetBloc,}) : super(_Initial()) {
+  ProjectEditingBloc({required this.assetBloc,required this.uploadImageBloc }) : super(_Initial()) {
     on<_AddName>((event, emit) {
       
       projectEntity = projectEntity.copyWith(title: event.name);
@@ -36,7 +40,17 @@ class ProjectEditingBloc
       emit(_Editing(projectEntity: projectEntity));
     });
     on<_UploadProject>((event, emit) {
-      projectEntity.copyWith(assets: assetBloc.assetEntityList);
+
+      //ProjectEntity
+      
+
+      //AssetFileCache and IconImageCache
+      
+
+      
+      //Vorläufiger Request Test
+      FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(projectEntity: projectEntity.copyWith(assets: assetBloc.assetEntityList, id: uploadImageBloc.iconImageFileCache.keys.first), assetDataMap: assetBloc.assetFileCache, iconData: uploadImageBloc.iconImageFileCache);
+
 
 
       

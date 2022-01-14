@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -12,9 +14,9 @@ import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc
 
 @lazySingleton
 class AssetPopUpContainer extends StatelessWidget {
-  final String imageUrl;
+  final Uint8List imageFileData;
 
-  AssetPopUpContainer({required this.imageUrl}) : super();
+  AssetPopUpContainer({required this.imageFileData}) : super();
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +40,8 @@ class AssetPopUpContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.network(
-                imageUrl,
+              Image.memory(
+                imageFileData,
                 height: 500,
                 width: 250,
                 fit: BoxFit.fill,
@@ -62,7 +64,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                   GestureDetector(
                                     onTap: () => patternElementBloc.add(
                                         PatternElementEvent.changeToPatternView(
-                                            imageUrl: imageUrl)),
+                                            imageFileData: imageFileData)),
                                     child: Text(
                                       "Pattern",
                                     ),
@@ -85,7 +87,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                     onTap: () {
                                       patternElementBloc.add(PatternElementEvent
                                           .changeToElementView(
-                                              imageUrl: imageUrl));
+                                              imageFileData: imageFileData));
                                     },
                                     child: Text(
                                       "Elements",
@@ -152,8 +154,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                 .add(
                                                                 PatternElementEvent
                                                                     .removeElement(
-                                                                  imageUrl:
-                                                                      imageUrl,
+                                                                  imageFileData: imageFileData,
                                                                   elementEntity: ElementEntity(
                                                                       header: BuildElementLists
                                                                           .headLineList[
@@ -168,8 +169,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                 .add(
                                                                 PatternElementEvent
                                                                     .addElement(
-                                                                  imageUrl:
-                                                                      imageUrl,
+                                                                  imageFileData: imageFileData,
                                                                   elementEntity: ElementEntity(
                                                                       header: BuildElementLists
                                                                           .headLineList[
@@ -264,8 +264,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                     .add(
                                                                     PatternElementEvent
                                                                         .removePattern(
-                                                                      imageUrl:
-                                                                          imageUrl,
+                                                                      imageFileData: imageFileData,
                                                                       patternEntity: PatternEntity(
                                                                           header: BuildPatternLists
                                                                               .headlineList[
@@ -280,8 +279,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                     .add(
                                                                     PatternElementEvent
                                                                         .addPattern(
-                                                                      imageUrl:
-                                                                          imageUrl,
+                                                                      imageFileData: imageFileData,
                                                                       patternEntity: PatternEntity(
                                                                           header: BuildPatternLists
                                                                               .headlineList[

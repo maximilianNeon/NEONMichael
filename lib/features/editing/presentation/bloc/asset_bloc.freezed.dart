@@ -24,11 +24,9 @@ class _$AssetEventTearOff {
   }
 
   _AddMultipleScreens addMultipleScreens(
-      {required List<dynamic> event,
-      required DropzoneViewController controller}) {
+      {required List<DroppedImageEntity> droppedImageEntityList}) {
     return _AddMultipleScreens(
-      event: event,
-      controller: controller,
+      droppedImageEntityList: droppedImageEntityList,
     );
   }
 
@@ -52,8 +50,7 @@ mixin _$AssetEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
-    required TResult Function(
-            List<dynamic> event, DropzoneViewController controller)
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
         addMultipleScreens,
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
@@ -63,7 +60,7 @@ mixin _$AssetEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -73,7 +70,7 @@ mixin _$AssetEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -197,8 +194,7 @@ class _$_AddScreen implements _AddScreen {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
-    required TResult Function(
-            List<dynamic> event, DropzoneViewController controller)
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
         addMultipleScreens,
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
@@ -211,7 +207,7 @@ class _$_AddScreen implements _AddScreen {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -224,7 +220,7 @@ class _$_AddScreen implements _AddScreen {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -288,7 +284,7 @@ abstract class _$AddMultipleScreensCopyWith<$Res> {
   factory _$AddMultipleScreensCopyWith(
           _AddMultipleScreens value, $Res Function(_AddMultipleScreens) then) =
       __$AddMultipleScreensCopyWithImpl<$Res>;
-  $Res call({List<dynamic> event, DropzoneViewController controller});
+  $Res call({List<DroppedImageEntity> droppedImageEntityList});
 }
 
 /// @nodoc
@@ -304,18 +300,13 @@ class __$AddMultipleScreensCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? event = freezed,
-    Object? controller = freezed,
+    Object? droppedImageEntityList = freezed,
   }) {
     return _then(_AddMultipleScreens(
-      event: event == freezed
-          ? _value.event
-          : event // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as DropzoneViewController,
+      droppedImageEntityList: droppedImageEntityList == freezed
+          ? _value.droppedImageEntityList
+          : droppedImageEntityList // ignore: cast_nullable_to_non_nullable
+              as List<DroppedImageEntity>,
     ));
   }
 }
@@ -323,16 +314,14 @@ class __$AddMultipleScreensCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddMultipleScreens implements _AddMultipleScreens {
-  const _$_AddMultipleScreens({required this.event, required this.controller});
+  const _$_AddMultipleScreens({required this.droppedImageEntityList});
 
   @override
-  final List<dynamic> event;
-  @override
-  final DropzoneViewController controller;
+  final List<DroppedImageEntity> droppedImageEntityList;
 
   @override
   String toString() {
-    return 'AssetEvent.addMultipleScreens(event: $event, controller: $controller)';
+    return 'AssetEvent.addMultipleScreens(droppedImageEntityList: $droppedImageEntityList)';
   }
 
   @override
@@ -340,16 +329,13 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AddMultipleScreens &&
-            const DeepCollectionEquality().equals(other.event, event) &&
             const DeepCollectionEquality()
-                .equals(other.controller, controller));
+                .equals(other.droppedImageEntityList, droppedImageEntityList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(event),
-      const DeepCollectionEquality().hash(controller));
+      runtimeType, const DeepCollectionEquality().hash(droppedImageEntityList));
 
   @JsonKey(ignore: true)
   @override
@@ -360,34 +346,33 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
-    required TResult Function(
-            List<dynamic> event, DropzoneViewController controller)
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
         addMultipleScreens,
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
         addElementsAndPattern,
   }) {
-    return addMultipleScreens(event, controller);
+    return addMultipleScreens(droppedImageEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
   }) {
-    return addMultipleScreens?.call(event, controller);
+    return addMultipleScreens?.call(droppedImageEntityList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -395,7 +380,7 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     required TResult orElse(),
   }) {
     if (addMultipleScreens != null) {
-      return addMultipleScreens(event, controller);
+      return addMultipleScreens(droppedImageEntityList);
     }
     return orElse();
   }
@@ -438,11 +423,10 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
 
 abstract class _AddMultipleScreens implements AssetEvent {
   const factory _AddMultipleScreens(
-      {required List<dynamic> event,
-      required DropzoneViewController controller}) = _$_AddMultipleScreens;
+          {required List<DroppedImageEntity> droppedImageEntityList}) =
+      _$_AddMultipleScreens;
 
-  List<dynamic> get event;
-  DropzoneViewController get controller;
+  List<DroppedImageEntity> get droppedImageEntityList;
   @JsonKey(ignore: true)
   _$AddMultipleScreensCopyWith<_AddMultipleScreens> get copyWith =>
       throw _privateConstructorUsedError;
@@ -543,8 +527,7 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
-    required TResult Function(
-            List<dynamic> event, DropzoneViewController controller)
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
         addMultipleScreens,
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
@@ -558,7 +541,7 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -572,7 +555,7 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
-    TResult Function(List<dynamic> event, DropzoneViewController controller)?
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
         addMultipleScreens,
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
@@ -648,9 +631,12 @@ class _$AssetStateTearOff {
     return const _Loading();
   }
 
-  _Loaded loaded({required List<AssetEntity> assetEntityList}) {
+  _Loaded loaded(
+      {required List<AssetEntity> assetEntityList,
+      required Map<int, Uint8List> assetFileCache}) {
     return _Loaded(
       assetEntityList: assetEntityList,
+      assetFileCache: assetFileCache,
     );
   }
 }
@@ -664,21 +650,27 @@ mixin _$AssetState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<AssetEntity> assetEntityList) loaded,
+    required TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -762,7 +754,9 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<AssetEntity> assetEntityList) loaded,
+    required TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)
+        loaded,
   }) {
     return initial();
   }
@@ -772,7 +766,9 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
   }) {
     return initial?.call();
   }
@@ -782,7 +778,9 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -870,7 +868,9 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<AssetEntity> assetEntityList) loaded,
+    required TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)
+        loaded,
   }) {
     return loading();
   }
@@ -880,7 +880,9 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
   }) {
     return loading?.call();
   }
@@ -890,7 +892,9 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -942,7 +946,8 @@ abstract class _Loading implements AssetState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({List<AssetEntity> assetEntityList});
+  $Res call(
+      {List<AssetEntity> assetEntityList, Map<int, Uint8List> assetFileCache});
 }
 
 /// @nodoc
@@ -957,12 +962,17 @@ class __$LoadedCopyWithImpl<$Res> extends _$AssetStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? assetEntityList = freezed,
+    Object? assetFileCache = freezed,
   }) {
     return _then(_Loaded(
       assetEntityList: assetEntityList == freezed
           ? _value.assetEntityList
           : assetEntityList // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
+      assetFileCache: assetFileCache == freezed
+          ? _value.assetFileCache
+          : assetFileCache // ignore: cast_nullable_to_non_nullable
+              as Map<int, Uint8List>,
     ));
   }
 }
@@ -970,14 +980,17 @@ class __$LoadedCopyWithImpl<$Res> extends _$AssetStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded({required this.assetEntityList});
+  const _$_Loaded(
+      {required this.assetEntityList, required this.assetFileCache});
 
   @override
   final List<AssetEntity> assetEntityList;
+  @override
+  final Map<int, Uint8List> assetFileCache;
 
   @override
   String toString() {
-    return 'AssetState.loaded(assetEntityList: $assetEntityList)';
+    return 'AssetState.loaded(assetEntityList: $assetEntityList, assetFileCache: $assetFileCache)';
   }
 
   @override
@@ -986,12 +999,16 @@ class _$_Loaded implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
             const DeepCollectionEquality()
-                .equals(other.assetEntityList, assetEntityList));
+                .equals(other.assetEntityList, assetEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.assetFileCache, assetFileCache));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(assetEntityList));
+      runtimeType,
+      const DeepCollectionEquality().hash(assetEntityList),
+      const DeepCollectionEquality().hash(assetFileCache));
 
   @JsonKey(ignore: true)
   @override
@@ -1003,9 +1020,11 @@ class _$_Loaded implements _Loaded {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<AssetEntity> assetEntityList) loaded,
+    required TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)
+        loaded,
   }) {
-    return loaded(assetEntityList);
+    return loaded(assetEntityList, assetFileCache);
   }
 
   @override
@@ -1013,9 +1032,11 @@ class _$_Loaded implements _Loaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
   }) {
-    return loaded?.call(assetEntityList);
+    return loaded?.call(assetEntityList, assetFileCache);
   }
 
   @override
@@ -1023,11 +1044,13 @@ class _$_Loaded implements _Loaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<AssetEntity> assetEntityList)? loaded,
+    TResult Function(List<AssetEntity> assetEntityList,
+            Map<int, Uint8List> assetFileCache)?
+        loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(assetEntityList);
+      return loaded(assetEntityList, assetFileCache);
     }
     return orElse();
   }
@@ -1068,10 +1091,12 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements AssetState {
-  const factory _Loaded({required List<AssetEntity> assetEntityList}) =
-      _$_Loaded;
+  const factory _Loaded(
+      {required List<AssetEntity> assetEntityList,
+      required Map<int, Uint8List> assetFileCache}) = _$_Loaded;
 
   List<AssetEntity> get assetEntityList;
+  Map<int, Uint8List> get assetFileCache;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }

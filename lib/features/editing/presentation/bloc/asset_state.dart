@@ -4,5 +4,5 @@ part of 'asset_bloc.dart';
 class AssetState with _$AssetState {
   const factory AssetState.initial() = _Initial;
   const factory AssetState.loading() = _Loading;
-  const factory AssetState.loaded({required List<AssetEntity> assetEntityList}) = _Loaded;
+  const factory AssetState.loaded({required List<AssetEntity> assetEntityList, required Map<int,Uint8List> assetFileCache}) = _Loaded;
 }
