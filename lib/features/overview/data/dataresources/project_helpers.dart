@@ -7,6 +7,7 @@ import 'package:neon_web/core/enum/enums.dart';
 mixin ProjectHelpers {
   static List<ProjectEntity> mockProjects1 = [
     ProjectEntity(
+        imageUrl: "",
         title: 'Doguniversity',
         assets: [
           AssetEntity(

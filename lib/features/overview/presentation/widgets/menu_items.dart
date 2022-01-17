@@ -90,8 +90,6 @@ class MenuItems extends StatelessWidget {
                                       itemBuilder: (context, index) {
                                         return GestureDetector(
                                           onTap: () {
-                                            
-
                                             state.maybeMap(
                                               orElse: () => "",
                                               typeFilterState: (_) => filterBloc
@@ -143,10 +141,10 @@ class MenuItems extends StatelessWidget {
                                                       [index],
                                               elementFilterState: (_) =>
                                                   BuildElementLists
-                                                      .globalItemList[i][index].toString(),
+                                                      .globalItemList[i][index].toString().split(".").last,
                                               patternFilterState: (_) =>
                                                   BuildPatternLists
-                                                      .globalItemList[i][index].toString(),
+                                                      .globalItemList[i][index].toString().split(".").last,
                                             ),
                                             style: kMenuItem,
                                           ),

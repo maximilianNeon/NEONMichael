@@ -21,6 +21,7 @@ class ProjectEditingBloc
   ProjectEntity projectEntity = ProjectEntity(
       assets: [],
       description: "",
+      imageUrl: "",
       id: 0,
       projectType: ProjectType.App.toString(),
       title: "");

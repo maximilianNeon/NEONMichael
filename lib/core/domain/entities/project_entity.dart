@@ -14,7 +14,8 @@ class ProjectEntity with _$ProjectEntity{
   required String projectType,
   required String description,
   required List<AssetEntity> assets,
-  required int id,}) = _ProjectEntity;
+  required int id,
+  required String imageUrl}) = _ProjectEntity;
   
   factory ProjectEntity.fromJson(Map<String, dynamic> json) => _$ProjectEntityFromJson(json);
  

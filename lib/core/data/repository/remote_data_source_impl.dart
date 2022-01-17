@@ -5,6 +5,7 @@ import 'package:neon_web/core/domain/entities/data_container.dart';
 import 'package:neon_web/core/domain/repository/remote_data_source.dart';
 import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/core/success/success.dart';
+import '../../domain/entities/project_entity.dart';
 
 
 @Injectable(as: RemoteDataSource)
@@ -14,7 +15,7 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   RemoteDataSourceImpl({required this.fireBaseRemoteDataSource});
 
   @override
-  Future<Either<Failure, DataContainer>> donwloadAllProjects() async {
+  Future<Either<Failure, List<ProjectEntity>>> downloadAllProjects() async {
     try {
       final result = await fireBaseRemoteDataSource.downloadAllProjects();
 
@@ -37,4 +38,6 @@ class RemoteDataSourceImpl extends RemoteDataSource {
       return Left(FunctionFailure());
     }
   }
+
+ 
 }

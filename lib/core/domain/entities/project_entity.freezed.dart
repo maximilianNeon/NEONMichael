@@ -26,13 +26,15 @@ class _$ProjectEntityTearOff {
       required String projectType,
       required String description,
       required List<AssetEntity> assets,
-      required int id}) {
+      required int id,
+      required String imageUrl}) {
     return _ProjectEntity(
       title: title,
       projectType: projectType,
       description: description,
       assets: assets,
       id: id,
+      imageUrl: imageUrl,
     );
   }
 
@@ -51,6 +53,7 @@ mixin _$ProjectEntity {
   String get description => throw _privateConstructorUsedError;
   List<AssetEntity> get assets => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +71,8 @@ abstract class $ProjectEntityCopyWith<$Res> {
       String projectType,
       String description,
       List<AssetEntity> assets,
-      int id});
+      int id,
+      String imageUrl});
 }
 
 /// @nodoc
@@ -87,6 +91,7 @@ class _$ProjectEntityCopyWithImpl<$Res>
     Object? description = freezed,
     Object? assets = freezed,
     Object? id = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -109,6 +114,10 @@ class _$ProjectEntityCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -125,7 +134,8 @@ abstract class _$ProjectEntityCopyWith<$Res>
       String projectType,
       String description,
       List<AssetEntity> assets,
-      int id});
+      int id,
+      String imageUrl});
 }
 
 /// @nodoc
@@ -146,6 +156,7 @@ class __$ProjectEntityCopyWithImpl<$Res>
     Object? description = freezed,
     Object? assets = freezed,
     Object? id = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_ProjectEntity(
       title: title == freezed
@@ -168,6 +179,10 @@ class __$ProjectEntityCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
+      imageUrl: imageUrl == freezed
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -180,7 +195,8 @@ class _$_ProjectEntity implements _ProjectEntity {
       required this.projectType,
       required this.description,
       required this.assets,
-      required this.id});
+      required this.id,
+      required this.imageUrl});
 
   factory _$_ProjectEntity.fromJson(Map<String, dynamic> json) =>
       _$$_ProjectEntityFromJson(json);
@@ -195,10 +211,12 @@ class _$_ProjectEntity implements _ProjectEntity {
   final List<AssetEntity> assets;
   @override
   final int id;
+  @override
+  final String imageUrl;
 
   @override
   String toString() {
-    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, id: $id)';
+    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, id: $id, imageUrl: $imageUrl)';
   }
 
   @override
@@ -212,7 +230,8 @@ class _$_ProjectEntity implements _ProjectEntity {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.assets, assets) &&
-            const DeepCollectionEquality().equals(other.id, id));
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
   @override
@@ -222,7 +241,8 @@ class _$_ProjectEntity implements _ProjectEntity {
       const DeepCollectionEquality().hash(projectType),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(assets),
-      const DeepCollectionEquality().hash(id));
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -241,7 +261,8 @@ abstract class _ProjectEntity implements ProjectEntity {
       required String projectType,
       required String description,
       required List<AssetEntity> assets,
-      required int id}) = _$_ProjectEntity;
+      required int id,
+      required String imageUrl}) = _$_ProjectEntity;
 
   factory _ProjectEntity.fromJson(Map<String, dynamic> json) =
       _$_ProjectEntity.fromJson;
@@ -256,6 +277,8 @@ abstract class _ProjectEntity implements ProjectEntity {
   List<AssetEntity> get assets;
   @override
   int get id;
+  @override
+  String get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$ProjectEntityCopyWith<_ProjectEntity> get copyWith =>

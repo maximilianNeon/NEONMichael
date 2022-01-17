@@ -184,7 +184,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                       child: Text(
                                                         BuildElementLists
                                                                 .globalItemList[
-                                                            index][i].toString(),
+                                                            index][i].toString().split(".").last,
                                                         style: TextStyle(
                                                             color: changeColor(
                                                                 elementEntityList:
@@ -294,7 +294,7 @@ class AssetPopUpContainer extends StatelessWidget {
                                                       child: Text(
                                                         BuildPatternLists
                                                                 .globalItemList[
-                                                            index][i].toString(),
+                                                            index][i].toString().split(".").last,
                                                         style: TextStyle(
                                                             color: changeColor(
                                                                 elementEntityList:
@@ -367,7 +367,7 @@ class AssetPopUpContainer extends StatelessWidget {
                     element.header == headline &&
                     element.item ==
                         itemList
-                            .where((item) => item.contains(itemString))
+                            .where((item) => item == itemString)
                             .toList()
                             .first)
                 .toList()

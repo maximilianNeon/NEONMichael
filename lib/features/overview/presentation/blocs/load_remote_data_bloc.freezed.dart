@@ -193,9 +193,9 @@ class _$LoadRemoteDataStateTearOff {
     return const _Loading();
   }
 
-  _Loaded loaded({required DataContainer dataContainer}) {
+  _Loaded loaded({required List<ProjectEntity> projectEntityList}) {
     return _Loaded(
-      dataContainer: dataContainer,
+      projectEntityList: projectEntityList,
     );
   }
 
@@ -214,7 +214,7 @@ mixin _$LoadRemoteDataState {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(DataContainer dataContainer) loaded,
+    required TResult Function(List<ProjectEntity> projectEntityList) loaded,
     required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
@@ -223,7 +223,7 @@ mixin _$LoadRemoteDataState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -232,7 +232,7 @@ mixin _$LoadRemoteDataState {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) =>
@@ -326,7 +326,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(DataContainer dataContainer) loaded,
+    required TResult Function(List<ProjectEntity> projectEntityList) loaded,
     required TResult Function() error,
   }) {
     return initial();
@@ -338,7 +338,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
   }) {
     return initial?.call();
@@ -350,7 +350,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -446,7 +446,7 @@ class _$_Empty implements _Empty {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(DataContainer dataContainer) loaded,
+    required TResult Function(List<ProjectEntity> projectEntityList) loaded,
     required TResult Function() error,
   }) {
     return empty();
@@ -458,7 +458,7 @@ class _$_Empty implements _Empty {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
   }) {
     return empty?.call();
@@ -470,7 +470,7 @@ class _$_Empty implements _Empty {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -567,7 +567,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(DataContainer dataContainer) loaded,
+    required TResult Function(List<ProjectEntity> projectEntityList) loaded,
     required TResult Function() error,
   }) {
     return loading();
@@ -579,7 +579,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
   }) {
     return loading?.call();
@@ -591,7 +591,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
@@ -650,9 +650,7 @@ abstract class _Loading implements LoadRemoteDataState {
 abstract class _$LoadedCopyWith<$Res> {
   factory _$LoadedCopyWith(_Loaded value, $Res Function(_Loaded) then) =
       __$LoadedCopyWithImpl<$Res>;
-  $Res call({DataContainer dataContainer});
-
-  $DataContainerCopyWith<$Res> get dataContainer;
+  $Res call({List<ProjectEntity> projectEntityList});
 }
 
 /// @nodoc
@@ -667,35 +665,28 @@ class __$LoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? dataContainer = freezed,
+    Object? projectEntityList = freezed,
   }) {
     return _then(_Loaded(
-      dataContainer: dataContainer == freezed
-          ? _value.dataContainer
-          : dataContainer // ignore: cast_nullable_to_non_nullable
-              as DataContainer,
+      projectEntityList: projectEntityList == freezed
+          ? _value.projectEntityList
+          : projectEntityList // ignore: cast_nullable_to_non_nullable
+              as List<ProjectEntity>,
     ));
-  }
-
-  @override
-  $DataContainerCopyWith<$Res> get dataContainer {
-    return $DataContainerCopyWith<$Res>(_value.dataContainer, (value) {
-      return _then(_value.copyWith(dataContainer: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$_Loaded implements _Loaded {
-  const _$_Loaded({required this.dataContainer});
+  const _$_Loaded({required this.projectEntityList});
 
   @override
-  final DataContainer dataContainer;
+  final List<ProjectEntity> projectEntityList;
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.loaded(dataContainer: $dataContainer)';
+    return 'LoadRemoteDataState.loaded(projectEntityList: $projectEntityList)';
   }
 
   @override
@@ -704,12 +695,12 @@ class _$_Loaded implements _Loaded {
         (other.runtimeType == runtimeType &&
             other is _Loaded &&
             const DeepCollectionEquality()
-                .equals(other.dataContainer, dataContainer));
+                .equals(other.projectEntityList, projectEntityList));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(dataContainer));
+      runtimeType, const DeepCollectionEquality().hash(projectEntityList));
 
   @JsonKey(ignore: true)
   @override
@@ -722,10 +713,10 @@ class _$_Loaded implements _Loaded {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(DataContainer dataContainer) loaded,
+    required TResult Function(List<ProjectEntity> projectEntityList) loaded,
     required TResult Function() error,
   }) {
-    return loaded(dataContainer);
+    return loaded(projectEntityList);
   }
 
   @override
@@ -734,10 +725,10 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
   }) {
-    return loaded?.call(dataContainer);
+    return loaded?.call(projectEntityList);
   }
 
   @override
@@ -746,12 +737,12 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(dataContainer);
+      return loaded(projectEntityList);
     }
     return orElse();
   }
@@ -798,9 +789,10 @@ class _$_Loaded implements _Loaded {
 }
 
 abstract class _Loaded implements LoadRemoteDataState {
-  const factory _Loaded({required DataContainer dataContainer}) = _$_Loaded;
+  const factory _Loaded({required List<ProjectEntity> projectEntityList}) =
+      _$_Loaded;
 
-  DataContainer get dataContainer;
+  List<ProjectEntity> get projectEntityList;
   @JsonKey(ignore: true)
   _$LoadedCopyWith<_Loaded> get copyWith => throw _privateConstructorUsedError;
 }
@@ -846,7 +838,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() empty,
     required TResult Function() loading,
-    required TResult Function(DataContainer dataContainer) loaded,
+    required TResult Function(List<ProjectEntity> projectEntityList) loaded,
     required TResult Function() error,
   }) {
     return error();
@@ -858,7 +850,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
   }) {
     return error?.call();
@@ -870,7 +862,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? empty,
     TResult Function()? loading,
-    TResult Function(DataContainer dataContainer)? loaded,
+    TResult Function(List<ProjectEntity> projectEntityList)? loaded,
     TResult Function()? error,
     required TResult orElse(),
   }) {

@@ -20,15 +20,17 @@ abstract class FireBaseRemoteDataSource {
   Future<Either<Failure, Success>> uploadSingleProjectToDB({
     required DataContainer dataContainer,
   });
-  Future<Either<Failure, DataContainer>> downloadAllProjects();
+  Future<Either<Failure, List<ProjectEntity>>> downloadAllProjects();
   Future<Either<Failure, Success>> updateSingleProject({
     required DataContainer dataContainer,
   });
-  Future<Either<Failure, Success>> uploadAssetImagesToCloudFireStorage({
+  Future<Either<Failure, List<AssetEntity>>>
+      uploadAssetImagesToCloudFireStorage({
     required String projectTitle,
+    required List<AssetEntity> projectAssets,
     required Map<int, Uint8List> assetDataMap,
   });
-  Future<Either<Failure, Success>> uploadIconImageToCloudFireStorage({
+  Future<Either<Failure, String>> uploadIconImageToCloudFireStorage({
     required String projectTitle,
     required Map<int, Uint8List> iconData,
   });
@@ -66,13 +68,11 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, DataContainer>> downloadAllProjects() async {
-    print("downloadAllProjects");
+  Future<Either<Failure, List<ProjectEntity>>> downloadAllProjects() async {
     List<ProjectEntity> projectEntiyList = [];
-    Map<int, Uint8List> iconImageFile = {};
-    Map<int, Uint8List> assetImageFiles = {};
 
     try {
+      //Get ProjectMap
       CollectionReference<Map<String, dynamic>> projectsReference =
           firestoreInstance.collection(projectsEndPoint);
 
@@ -86,52 +86,7 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
         ),
       );
 
-      final downloadUrl = await firebase_storage.FirebaseStorage.instance
-          .ref(projectEntiyList.first.title + storageIconSubfolder)
-          .child(projectEntiyList.first.id.toString())
-          .getDownloadURL();
-
-      print(downloadUrl);
-          
-
-        final response = await http.get(Uri.parse(downloadUrl), headers: {"Accept": "application/json","Access-Control-Allow-Origin": "*"});
-
-        // print(response.body);
-
-      //     await Future.forEach<ProjectEntity>(projectEntiyList, (project) async {
-      //       print(project.title + storageIconSubfolder);
-//
-      //       final result = await firebase_storage.FirebaseStorage.instance
-      //           .ref(project.title + storageIconSubfolder)
-      //           .child(project.id.toString())
-      //           .getData().whenComplete(() => print("complete"));
-//
-      //       iconImageFile.addAll({project.id: result ?? Uint8List(0)});
-//
-      //       print(iconImageFile);
-//
-      //       await Future.forEach<AssetEntity>(
-      //         project.assets,
-      //         (assetEntity) async => await firebase_storage.FirebaseStorage.instance
-      //             .ref(project.title + storageAssetSubfolder)
-      //             .child(assetEntity.id.toString())
-      //             .getData()
-      //             .then(
-      //               (assetImageFile) => assetImageFiles
-      //                   .addAll({assetEntity.id: assetImageFile ?? Uint8List(0)}),
-      //             ).whenComplete(() => print("complete")),
-      //       );
-      //     });
-
-      print("Asset: $assetImageFiles");
-      print(iconImageFile);
-      return Right(
-        DataContainer(
-          assetFileData: assetImageFiles,
-          iconFileData: iconImageFile,
-          projectEntityList: projectEntiyList,
-        ),
-      );
+      return Right(projectEntiyList);
     } on FirebaseException catch (error) {
       print(error);
       return Left(FireBaseFailure());
@@ -153,21 +108,35 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   @override
   Future<Either<Failure, Success>> uploadSingleProjectToDB(
       {required DataContainer dataContainer}) async {
+    ProjectEntity _projectEntity = dataContainer.projectEntityList.first;
+    String _imageUrl = "";
+    List<AssetEntity> _assetEntityList = [];
+
     try {
       // Upload IconImage and Rewrite ProjectEntity.imageUrl from Url to UploadFileName
       await uploadIconImageToCloudFireStorage(
-          projectTitle: dataContainer.projectEntityList.first.title,
-          iconData: dataContainer.iconFileData);
+              projectTitle: dataContainer.projectEntityList.first.title,
+              iconData: dataContainer.iconFileData)
+          .then((value) => value.fold((l) => null, (url) {
+                _imageUrl = url;
+              }));
 
       // Upload AssetImages
       await uploadAssetImagesToCloudFireStorage(
-          projectTitle: dataContainer.projectEntityList.first.title,
-          assetDataMap: dataContainer.assetFileData);
+              projectTitle: dataContainer.projectEntityList.first.title,
+              projectAssets: dataContainer.projectEntityList.first.assets,
+              assetDataMap: dataContainer.assetFileData)
+          .then((value) => value.fold(
+              (l) => null,
+              (assetList) => {
+                    _assetEntityList = assetList,
+                  }));
 
       // Add Json to CloudFireStore
-      await firestoreInstance
-          .collection(projectsEndPoint)
-          .add(dataContainer.projectEntityList.first.toJson());
+
+      await firestoreInstance.collection(projectsEndPoint).add(_projectEntity
+          .copyWith(assets: _assetEntityList, imageUrl: _imageUrl)
+          .toJson());
 
       return Right(FireBaseSuccess());
     } on FirebaseException {
@@ -178,19 +147,38 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, Success>> uploadAssetImagesToCloudFireStorage(
-      {required String projectTitle,
-      required Map<int, Uint8List> assetDataMap}) async {
+  Future<Either<Failure, List<AssetEntity>>>
+      uploadAssetImagesToCloudFireStorage(
+          {required String projectTitle,
+          required List<AssetEntity> projectAssets,
+          required Map<int, Uint8List> assetDataMap}) async {
+    List<AssetEntity> newAssetList = [];
+
     try {
-      assetDataMap.forEach((key, value) async {
+      await Future.forEach<MapEntry<int, Uint8List>>(assetDataMap.entries,
+          (element) async {
         firebase_storage.Reference storageReference = storage
             .ref(projectTitle + storageAssetSubfolder)
-            .child(key.toString());
+            .child(element.key.toString());
 
-        await storageReference.putData(value);
+        await storageReference.putData(element.value);
+
+        String assetUrl = await firebase_storage.FirebaseStorage.instance
+            .ref(
+                "gs://neon-mobbin.appspot.com/$projectTitle$storageAssetSubfolder")
+            .child(element.key.toString())
+            .getDownloadURL();
+
+        final assetEntityFiltered =
+            projectAssets.where((asset) => asset.id == element.key);
+
+        newAssetList
+            .add(assetEntityFiltered.first.copyWith(imageUrl: assetUrl));
       });
 
-      return Right(FunctionSuccess());
+      print(newAssetList);
+
+      return Right(newAssetList);
     } on FirebaseException {
       return Left(FireBaseFailure());
     } catch (error) {
@@ -199,7 +187,7 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, Success>> uploadIconImageToCloudFireStorage(
+  Future<Either<Failure, String>> uploadIconImageToCloudFireStorage(
       {required String projectTitle,
       required Map<int, Uint8List> iconData}) async {
     try {
@@ -209,7 +197,15 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
 
       await storageReference.putData(iconData.values.first);
 
-      return Right(FunctionSuccess());
+      //get downloadUrl for Uploaded Image
+      final String iconImageUrl = await firebase_storage
+          .FirebaseStorage.instance
+          .ref(
+              "gs://neon-mobbin.appspot.com/$projectTitle$storageIconSubfolder")
+          .child(iconData.keys.first.toString())
+          .getDownloadURL();
+
+      return Right(iconImageUrl);
     } on FirebaseException {
       return Left(FireBaseFailure());
     } catch (error) {

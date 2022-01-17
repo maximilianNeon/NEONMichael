@@ -96,7 +96,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       projectType: get<String>(),
       description: get<String>(),
       assets: get<List<_i3.AssetEntity>>(),
-      id: get<int>()));
+      id: get<int>(),
+      imageUrl: get<String>()));
   gh.singleton<_i18.ProjectFilterBloc>(_i18.ProjectFilterBloc(
       filterProjectByTitle: get<_i14.FilterProjectByTitle>()));
   gh.lazySingleton<_i19.ProjectRemoteDataSource>(

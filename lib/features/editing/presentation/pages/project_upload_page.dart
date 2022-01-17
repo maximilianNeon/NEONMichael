@@ -208,6 +208,10 @@ class ProjectUploadPage extends StatelessWidget {
                           onTap: () {
                             projectEditingBloc
                                 .add(ProjectEditingEvent.upload());
+
+                            Navigator.pop(context);
+
+                            
                           },
                           child: Container(
                             height: 50,

@@ -18,7 +18,7 @@ class Projects extends StatelessWidget {
     return BlocBuilder<LoadRemoteDataBloc, LoadRemoteDataState>(
       builder: (context, state) => state.maybeMap(
         orElse: () => CircularProgressIndicator(),
-        loaded: (_) =>
+        loaded: (projectData) =>
             BlocBuilder<FilterBloc, FilterState>(builder: (context, state) {
           return ListView.builder(
             scrollDirection: Axis.vertical,
@@ -29,7 +29,7 @@ class Projects extends StatelessWidget {
                 filteredByPattern: (state) =>
                     state.filteredByPatternList.length,
                 filteredByType: (state) => state.filterdByTypeList.length,
-                empty: (_) => loadRemoteDataBloc.loadedProjectData.length),
+                empty: (_) => projectData.projectEntityList.length),
             itemBuilder: (context, index) {
               return Column(
                 mainAxisSize: MainAxisSize.max,
@@ -42,7 +42,7 @@ class Projects extends StatelessWidget {
                       
                       //setProjectFilter
                       projectFilterBloc.add(ProjectFilterEvent.setProjectFilter(
-                        projectEntityList: loadRemoteDataBloc.loadedProjectData,
+                        projectEntityList: projectData.projectEntityList,
                         projectTitle: state.map(
                             filteredByElements: (state) =>
                                 state.filteredByElements[index].title,
@@ -50,8 +50,7 @@ class Projects extends StatelessWidget {
                                 state.filteredByPatternList[index].title,
                             filteredByType: (state) =>
                                 state.filterdByTypeList[index].title,
-                            empty: (_) => loadRemoteDataBloc
-                                .loadedProjectData[index].title),
+                            empty: (_) => projectData.projectEntityList[index].title),
                       ));
 
                       //Navigate to ProjectFocusPage 
@@ -65,15 +64,14 @@ class Projects extends StatelessWidget {
                                     state.filteredByPatternList[index].title,
                                 filteredByType: (state) =>
                                     state.filterdByTypeList[index].title,
-                                empty: (_) => loadRemoteDataBloc
-                                    .loadedProjectData[index].title),
+                                empty: (_) => projectData.projectEntityList[index].title),
                           ),
                         ),
                       );
 
                       //Reset Filter
                       filterBloc.add(FilterEvent.resetFilter(
-                          loadRemoteDataBloc.loadedProjectData));
+                          projectData.projectEntityList));
                     },
                     child: Text(
                       state.map(
@@ -83,8 +81,7 @@ class Projects extends StatelessWidget {
                               state.filteredByPatternList[index].title,
                           filteredByType: (state) =>
                               state.filterdByTypeList[index].title,
-                          empty: (_) => loadRemoteDataBloc
-                              .loadedProjectData[index].title),
+                          empty: (_) => projectData.projectEntityList[index].title),
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -112,8 +109,7 @@ class Projects extends StatelessWidget {
                                     .filteredByPatternList[index].assets.length,
                                 filteredByType: (state) => state
                                     .filterdByTypeList[index].assets.length,
-                                empty: (state) => loadRemoteDataBloc
-                                    .loadedProjectData[index].assets.length),
+                                empty: (state) => projectData.projectEntityList[index].assets.length),
                             itemBuilder: (context, i) {
                               
                               return GestureDetector(
@@ -140,8 +136,7 @@ class Projects extends StatelessWidget {
                                                     .filterdByTypeList[index]
                                                     .assets[i]
                                                     .imageUrl,
-                                                empty: (_) => loadRemoteDataBloc
-                                                    .loadedProjectData[index]
+                                                empty: (_) => projectData.projectEntityList[index]
                                                     .assets[i]
                                                     .imageUrl),
                                             project: state.map(
@@ -193,8 +188,7 @@ class Projects extends StatelessWidget {
                                     height: 250,
                                     child: Hero(
                                       tag: state.map(
-                                        empty: (_) => loadRemoteDataBloc
-                                            .loadedProjectData[index]
+                                        empty: (_) => projectData.projectEntityList[index]
                                             .assets[i]
                                             .id
                                             .toString(),
@@ -216,8 +210,8 @@ class Projects extends StatelessWidget {
                                       ),
                                       child: Image.network(
                                         state.map(
-                                          empty: (state) => loadRemoteDataBloc
-                                              .loadedProjectData[index]
+                                          empty: (state) => projectData.projectEntityList
+                                              [index]
                                               .assets[i]
                                               .imageUrl,
                                           filteredByPattern: (state) => state
