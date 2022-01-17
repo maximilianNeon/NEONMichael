@@ -15,11 +15,15 @@ class ScreenUploadItem extends StatelessWidget {
   final Map<int, Uint8List> assetFileCache;
   final AssetEntity assetEntity;
 
-  ScreenUploadItem({required this.assetEntity, required this.assetFileCache})
+  ScreenUploadItem(
+      {required this.assetEntity,
+      required this.assetFileCache,
+      required Key key})
       : super();
 
   @override
   Widget build(BuildContext context) {
+    print(assetEntity);
     PatternElementBloc patternElementBloc =
         BlocProvider.of<PatternElementBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
@@ -46,7 +50,7 @@ class ScreenUploadItem extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                print("AssetEntity Add $assetEntity");
+                print("Added AssetEntity: $assetEntity");
 
                 patternElementBloc.add(
                   PatternElementEvent.addExistingDataToBloc(
@@ -73,22 +77,36 @@ class ScreenUploadItem extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: UIHelper().verticalSpaceMedium(context),
-            ),
+            verticalSpaceMedium(context: context),
             ScreenUploadInput(
-                inputHeader: "Pattern",
-                matchingCategoriesList: assetBloc.assetEntityList
-                    .firstWhere((asset) => asset.id == assetEntity.id)
-                    .patterns),
-            SizedBox(
-              height: UIHelper().verticalSpaceMedium(context),
+              key: UniqueKey(),
+              inputHeader: "Pattern",
+              elementEntityList: [],
+              patternEntityList: assetBloc.state.maybeMap(
+                  orElse: () => [],
+                  loaded: (loadingState) {
+                    print("LoadingState");
+                    print(loadingState.assetEntityList);
+
+                    return loadingState.assetEntityList
+                        .firstWhere((asset) =>
+                            asset.id.toString() == assetEntity.id.toString())
+                        .patterns;
+                  }),
+              isPattern: true,
             ),
+            verticalSpaceMedium(context: context),
             ScreenUploadInput(
+              key: UniqueKey(),
               inputHeader: "Elements",
-              matchingCategoriesList: assetBloc.assetEntityList
-                  .firstWhere((asset) => asset.id == assetEntity.id)
-                  .elements,
+              isPattern: false,
+              elementEntityList: assetBloc.state.maybeMap(
+                  orElse: () => [],
+                  loaded: (loadingState) => loadingState.assetEntityList
+                      .firstWhere((asset) =>
+                          asset.id.toString() == assetEntity.id.toString())
+                      .elements),
+              patternEntityList: [],
             ),
           ],
         )

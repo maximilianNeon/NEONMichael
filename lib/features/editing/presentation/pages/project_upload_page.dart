@@ -10,6 +10,7 @@ import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc
 import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/asset_pop_up_container.dart';
 import 'package:neon_web/features/editing/presentation/widgets/project_data_input.dart';
+import 'package:neon_web/features/editing/presentation/widgets/project_type_chooser.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_container.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 
@@ -74,7 +75,7 @@ class ProjectUploadPage extends StatelessWidget {
                               SizedBox(
                                   height:
                                       UIHelper().verticalSpaceMedium(context)),
-                              ProjectDataInput(textfieldTitle: "Projekt Art"),
+                              ProjectTypeChooser(),
                               SizedBox(
                                   height:
                                       UIHelper().verticalSpaceMedium(context)),
@@ -173,7 +174,6 @@ class ProjectUploadPage extends StatelessWidget {
 
                                 assetBloc.add(AssetEvent.addMultipleScreens(
                                     droppedImageEntityList: list));
-                                    
                               } else if (event.length == 1) {
                                 assetBloc.add(
                                   AssetEvent.addScreen(
@@ -206,12 +206,18 @@ class ProjectUploadPage extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            projectEditingBloc
-                                .add(ProjectEditingEvent.upload());
+                            assetBloc.state.maybeMap(
+                                orElse: () {},
+                                loaded: (state) {
+                                  projectEditingBloc.add(
+                                      ProjectEditingEvent.upload(
+                                          assetEntityList:
+                                              state.assetEntityList,
+                                          assetFileCache:
+                                              state.assetFileCache));
+                                });
 
                             Navigator.pop(context);
-
-                            
                           },
                           child: Container(
                             height: 50,
@@ -237,6 +243,7 @@ class ProjectUploadPage extends StatelessWidget {
                 element: (state) => Center(
                   child: AssetPopUpContainer(
                     imageFileData: state.imageFileData,
+                    
                   ),
                 ),
                 pattern: (state) => Center(

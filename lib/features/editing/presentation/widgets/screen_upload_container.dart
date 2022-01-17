@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_item.dart';
@@ -36,15 +39,20 @@ class ScreenUploadContainer extends StatelessWidget {
                     child: Text("No Screens Added"),
                   ),
               loading: (_) => CircularProgressIndicator(),
-              loaded: (state) => GridView.builder(
+              loaded: (loadedState) => GridView.builder(
                     padding: EdgeInsets.all(5),
-                    itemCount: state.assetEntityList.length,
+                    itemCount: loadedState.assetEntityList.length,
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 500),
                     itemBuilder: (context, index) {
+                      final assetEntityList =
+                          List<AssetEntity>.of(loadedState.assetEntityList);
+                      final assetCache =
+                          Map<int, Uint8List>.of(loadedState.assetFileCache);
                       return ScreenUploadItem(
-                        assetEntity: state.assetEntityList[index],
-                        assetFileCache: state.assetFileCache,
+                        key: Key(assetEntityList[index].id.toString()),
+                        assetEntity: assetEntityList[index],
+                        assetFileCache: assetCache,
                       );
                     },
                   )),

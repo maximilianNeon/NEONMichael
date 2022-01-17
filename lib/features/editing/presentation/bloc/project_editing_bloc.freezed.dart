@@ -27,7 +27,7 @@ class _$ProjectEditingEventTearOff {
     );
   }
 
-  _AddType addType({required String type}) {
+  _AddType addType({required ProjectType type}) {
     return _AddType(
       type: type,
     );
@@ -39,8 +39,13 @@ class _$ProjectEditingEventTearOff {
     );
   }
 
-  _UploadProject upload() {
-    return const _UploadProject();
+  _UploadProject upload(
+      {required Map<int, Uint8List> assetFileCache,
+      required List<AssetEntity> assetEntityList}) {
+    return _UploadProject(
+      assetFileCache: assetFileCache,
+      assetEntityList: assetEntityList,
+    );
   }
 }
 
@@ -53,27 +58,33 @@ mixin _$ProjectEditingEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String name) addName,
-    required TResult Function(String type) addType,
+    required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
-    required TResult Function() upload,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,9 +176,11 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String name) addName,
-    required TResult Function(String type) addType,
+    required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
-    required TResult Function() upload,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
   }) {
     return started();
   }
@@ -177,9 +190,11 @@ class _$_Started implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
   }) {
     return started?.call();
   }
@@ -189,9 +204,11 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -310,9 +327,11 @@ class _$_AddName implements _AddName {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String name) addName,
-    required TResult Function(String type) addType,
+    required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
-    required TResult Function() upload,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
   }) {
     return addName(name);
   }
@@ -322,9 +341,11 @@ class _$_AddName implements _AddName {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
   }) {
     return addName?.call(name);
   }
@@ -334,9 +355,11 @@ class _$_AddName implements _AddName {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -399,7 +422,7 @@ abstract class _AddName implements ProjectEditingEvent {
 abstract class _$AddTypeCopyWith<$Res> {
   factory _$AddTypeCopyWith(_AddType value, $Res Function(_AddType) then) =
       __$AddTypeCopyWithImpl<$Res>;
-  $Res call({String type});
+  $Res call({ProjectType type});
 }
 
 /// @nodoc
@@ -420,7 +443,7 @@ class __$AddTypeCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ProjectType,
     ));
   }
 }
@@ -431,7 +454,7 @@ class _$_AddType implements _AddType {
   const _$_AddType({required this.type});
 
   @override
-  final String type;
+  final ProjectType type;
 
   @override
   String toString() {
@@ -460,9 +483,11 @@ class _$_AddType implements _AddType {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String name) addName,
-    required TResult Function(String type) addType,
+    required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
-    required TResult Function() upload,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
   }) {
     return addType(type);
   }
@@ -472,9 +497,11 @@ class _$_AddType implements _AddType {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
   }) {
     return addType?.call(type);
   }
@@ -484,9 +511,11 @@ class _$_AddType implements _AddType {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -537,9 +566,9 @@ class _$_AddType implements _AddType {
 }
 
 abstract class _AddType implements ProjectEditingEvent {
-  const factory _AddType({required String type}) = _$_AddType;
+  const factory _AddType({required ProjectType type}) = _$_AddType;
 
-  String get type;
+  ProjectType get type;
   @JsonKey(ignore: true)
   _$AddTypeCopyWith<_AddType> get copyWith =>
       throw _privateConstructorUsedError;
@@ -613,9 +642,11 @@ class _$_AddDescription implements _AddDescription {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String name) addName,
-    required TResult Function(String type) addType,
+    required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
-    required TResult Function() upload,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
   }) {
     return addDescription(description);
   }
@@ -625,9 +656,11 @@ class _$_AddDescription implements _AddDescription {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
   }) {
     return addDescription?.call(description);
   }
@@ -637,9 +670,11 @@ class _$_AddDescription implements _AddDescription {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
     required TResult orElse(),
   }) {
     if (addDescription != null) {
@@ -704,6 +739,8 @@ abstract class _$UploadProjectCopyWith<$Res> {
   factory _$UploadProjectCopyWith(
           _UploadProject value, $Res Function(_UploadProject) then) =
       __$UploadProjectCopyWithImpl<$Res>;
+  $Res call(
+      {Map<int, Uint8List> assetFileCache, List<AssetEntity> assetEntityList});
 }
 
 /// @nodoc
@@ -716,37 +753,75 @@ class __$UploadProjectCopyWithImpl<$Res>
 
   @override
   _UploadProject get _value => super._value as _UploadProject;
+
+  @override
+  $Res call({
+    Object? assetFileCache = freezed,
+    Object? assetEntityList = freezed,
+  }) {
+    return _then(_UploadProject(
+      assetFileCache: assetFileCache == freezed
+          ? _value.assetFileCache
+          : assetFileCache // ignore: cast_nullable_to_non_nullable
+              as Map<int, Uint8List>,
+      assetEntityList: assetEntityList == freezed
+          ? _value.assetEntityList
+          : assetEntityList // ignore: cast_nullable_to_non_nullable
+              as List<AssetEntity>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_UploadProject implements _UploadProject {
-  const _$_UploadProject();
+  const _$_UploadProject(
+      {required this.assetFileCache, required this.assetEntityList});
+
+  @override
+  final Map<int, Uint8List> assetFileCache;
+  @override
+  final List<AssetEntity> assetEntityList;
 
   @override
   String toString() {
-    return 'ProjectEditingEvent.upload()';
+    return 'ProjectEditingEvent.upload(assetFileCache: $assetFileCache, assetEntityList: $assetEntityList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _UploadProject);
+        (other.runtimeType == runtimeType &&
+            other is _UploadProject &&
+            const DeepCollectionEquality()
+                .equals(other.assetFileCache, assetFileCache) &&
+            const DeepCollectionEquality()
+                .equals(other.assetEntityList, assetEntityList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(assetFileCache),
+      const DeepCollectionEquality().hash(assetEntityList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UploadProjectCopyWith<_UploadProject> get copyWith =>
+      __$UploadProjectCopyWithImpl<_UploadProject>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String name) addName,
-    required TResult Function(String type) addType,
+    required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
-    required TResult Function() upload,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
   }) {
-    return upload();
+    return upload(assetFileCache, assetEntityList);
   }
 
   @override
@@ -754,11 +829,13 @@ class _$_UploadProject implements _UploadProject {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
   }) {
-    return upload?.call();
+    return upload?.call(assetFileCache, assetEntityList);
   }
 
   @override
@@ -766,13 +843,15 @@ class _$_UploadProject implements _UploadProject {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String name)? addName,
-    TResult Function(String type)? addType,
+    TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
-    TResult Function()? upload,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
     required TResult orElse(),
   }) {
     if (upload != null) {
-      return upload();
+      return upload(assetFileCache, assetEntityList);
     }
     return orElse();
   }
@@ -819,7 +898,15 @@ class _$_UploadProject implements _UploadProject {
 }
 
 abstract class _UploadProject implements ProjectEditingEvent {
-  const factory _UploadProject() = _$_UploadProject;
+  const factory _UploadProject(
+      {required Map<int, Uint8List> assetFileCache,
+      required List<AssetEntity> assetEntityList}) = _$_UploadProject;
+
+  Map<int, Uint8List> get assetFileCache;
+  List<AssetEntity> get assetEntityList;
+  @JsonKey(ignore: true)
+  _$UploadProjectCopyWith<_UploadProject> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

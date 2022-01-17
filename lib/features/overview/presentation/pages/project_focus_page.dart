@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
+import 'package:neon_web/core/style/border_constants.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
@@ -12,7 +13,9 @@ import 'package:neon_web/features/overview/presentation/widgets/project_focus_gr
 
 class ProjectFocusPage extends StatelessWidget {
   final String projectTitle;
-  const ProjectFocusPage({required this.projectTitle, Key? key})
+  final String imageUrl;
+  const ProjectFocusPage(
+      {required this.projectTitle, required this.imageUrl, Key? key})
       : super(key: key);
 
   @override
@@ -51,11 +54,9 @@ class ProjectFocusPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.grey),
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(imageUrl),
+                        radius: 40,
                       ),
                       SizedBox(width: UIHelper().horizontalSpaceSmall(context)),
                       Text(this.projectTitle),
@@ -72,12 +73,18 @@ class ProjectFocusPage extends StatelessWidget {
                             empty: (emptyState) => ProjectFocusGridView(
                                 projectEntityList:
                                     projectState.projectEntityList),
-                            filteredByElements: (elementFilterState) => ProjectFocusGridView(
-                                projectEntityList: elementFilterState.filteredByElements),
-                            filteredByPattern: (patternFilterState) => ProjectFocusGridView(
-                                projectEntityList: patternFilterState.filteredByPatternList),
-                            filteredByType: (typeFilterState) => ProjectFocusGridView(
-                                projectEntityList: typeFilterState.filterdByTypeList),
+                            filteredByElements: (elementFilterState) =>
+                                ProjectFocusGridView(
+                                    projectEntityList:
+                                        elementFilterState.filteredByElements),
+                            filteredByPattern: (patternFilterState) =>
+                                ProjectFocusGridView(
+                                    projectEntityList: patternFilterState
+                                        .filteredByPatternList),
+                            filteredByType: (typeFilterState) =>
+                                ProjectFocusGridView(
+                                    projectEntityList:
+                                        typeFilterState.filterdByTypeList),
                           );
                         },
                       ),

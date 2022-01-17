@@ -1783,11 +1783,13 @@ class _$PatternElementStateTearOff {
   _PatternView pattern(
       {required Uint8List imageFileData,
       required List<PatternEntity> patternEntityList,
-      required List<ElementEntity> elementEntityList}) {
+      required List<ElementEntity> elementEntityList,
+      required int id}) {
     return _PatternView(
       imageFileData: imageFileData,
       patternEntityList: patternEntityList,
       elementEntityList: elementEntityList,
+      id: id,
     );
   }
 
@@ -1798,11 +1800,13 @@ class _$PatternElementStateTearOff {
   _ElementView element(
       {required Uint8List imageFileData,
       required List<ElementEntity> elementEntityList,
-      required List<PatternEntity> patternEntityList}) {
+      required List<PatternEntity> patternEntityList,
+      required int id}) {
     return _ElementView(
       imageFileData: imageFileData,
       elementEntityList: elementEntityList,
       patternEntityList: patternEntityList,
+      id: id,
     );
   }
 }
@@ -1817,13 +1821,15 @@ mixin _$PatternElementState {
     required TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)
+            List<ElementEntity> elementEntityList,
+            int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)
+            List<PatternEntity> patternEntityList,
+            int id)
         element,
   }) =>
       throw _privateConstructorUsedError;
@@ -1832,13 +1838,15 @@ mixin _$PatternElementState {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
   }) =>
       throw _privateConstructorUsedError;
@@ -1847,13 +1855,15 @@ mixin _$PatternElementState {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
     required TResult orElse(),
   }) =>
@@ -1907,7 +1917,8 @@ abstract class _$PatternViewCopyWith<$Res> {
   $Res call(
       {Uint8List imageFileData,
       List<PatternEntity> patternEntityList,
-      List<ElementEntity> elementEntityList});
+      List<ElementEntity> elementEntityList,
+      int id});
 }
 
 /// @nodoc
@@ -1926,6 +1937,7 @@ class __$PatternViewCopyWithImpl<$Res>
     Object? imageFileData = freezed,
     Object? patternEntityList = freezed,
     Object? elementEntityList = freezed,
+    Object? id = freezed,
   }) {
     return _then(_PatternView(
       imageFileData: imageFileData == freezed
@@ -1940,6 +1952,10 @@ class __$PatternViewCopyWithImpl<$Res>
           ? _value.elementEntityList
           : elementEntityList // ignore: cast_nullable_to_non_nullable
               as List<ElementEntity>,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1950,7 +1966,8 @@ class _$_PatternView implements _PatternView {
   const _$_PatternView(
       {required this.imageFileData,
       required this.patternEntityList,
-      required this.elementEntityList});
+      required this.elementEntityList,
+      required this.id});
 
   @override
   final Uint8List imageFileData;
@@ -1958,10 +1975,12 @@ class _$_PatternView implements _PatternView {
   final List<PatternEntity> patternEntityList;
   @override
   final List<ElementEntity> elementEntityList;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'PatternElementState.pattern(imageFileData: $imageFileData, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList)';
+    return 'PatternElementState.pattern(imageFileData: $imageFileData, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList, id: $id)';
   }
 
   @override
@@ -1974,7 +1993,8 @@ class _$_PatternView implements _PatternView {
             const DeepCollectionEquality()
                 .equals(other.patternEntityList, patternEntityList) &&
             const DeepCollectionEquality()
-                .equals(other.elementEntityList, elementEntityList));
+                .equals(other.elementEntityList, elementEntityList) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
@@ -1982,7 +2002,8 @@ class _$_PatternView implements _PatternView {
       runtimeType,
       const DeepCollectionEquality().hash(imageFileData),
       const DeepCollectionEquality().hash(patternEntityList),
-      const DeepCollectionEquality().hash(elementEntityList));
+      const DeepCollectionEquality().hash(elementEntityList),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -1995,16 +2016,18 @@ class _$_PatternView implements _PatternView {
     required TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)
+            List<ElementEntity> elementEntityList,
+            int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)
+            List<PatternEntity> patternEntityList,
+            int id)
         element,
   }) {
-    return pattern(imageFileData, patternEntityList, elementEntityList);
+    return pattern(imageFileData, patternEntityList, elementEntityList, id);
   }
 
   @override
@@ -2013,16 +2036,19 @@ class _$_PatternView implements _PatternView {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
   }) {
-    return pattern?.call(imageFileData, patternEntityList, elementEntityList);
+    return pattern?.call(
+        imageFileData, patternEntityList, elementEntityList, id);
   }
 
   @override
@@ -2031,18 +2057,20 @@ class _$_PatternView implements _PatternView {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
     required TResult orElse(),
   }) {
     if (pattern != null) {
-      return pattern(imageFileData, patternEntityList, elementEntityList);
+      return pattern(imageFileData, patternEntityList, elementEntityList, id);
     }
     return orElse();
   }
@@ -2086,11 +2114,13 @@ abstract class _PatternView implements PatternElementState {
   const factory _PatternView(
       {required Uint8List imageFileData,
       required List<PatternEntity> patternEntityList,
-      required List<ElementEntity> elementEntityList}) = _$_PatternView;
+      required List<ElementEntity> elementEntityList,
+      required int id}) = _$_PatternView;
 
   Uint8List get imageFileData;
   List<PatternEntity> get patternEntityList;
   List<ElementEntity> get elementEntityList;
+  int get id;
   @JsonKey(ignore: true)
   _$PatternViewCopyWith<_PatternView> get copyWith =>
       throw _privateConstructorUsedError;
@@ -2138,13 +2168,15 @@ class _$_Loading implements _Loading {
     required TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)
+            List<ElementEntity> elementEntityList,
+            int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)
+            List<PatternEntity> patternEntityList,
+            int id)
         element,
   }) {
     return loading();
@@ -2156,13 +2188,15 @@ class _$_Loading implements _Loading {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
   }) {
     return loading?.call();
@@ -2174,13 +2208,15 @@ class _$_Loading implements _Loading {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
     required TResult orElse(),
   }) {
@@ -2237,7 +2273,8 @@ abstract class _$ElementViewCopyWith<$Res> {
   $Res call(
       {Uint8List imageFileData,
       List<ElementEntity> elementEntityList,
-      List<PatternEntity> patternEntityList});
+      List<PatternEntity> patternEntityList,
+      int id});
 }
 
 /// @nodoc
@@ -2256,6 +2293,7 @@ class __$ElementViewCopyWithImpl<$Res>
     Object? imageFileData = freezed,
     Object? elementEntityList = freezed,
     Object? patternEntityList = freezed,
+    Object? id = freezed,
   }) {
     return _then(_ElementView(
       imageFileData: imageFileData == freezed
@@ -2270,6 +2308,10 @@ class __$ElementViewCopyWithImpl<$Res>
           ? _value.patternEntityList
           : patternEntityList // ignore: cast_nullable_to_non_nullable
               as List<PatternEntity>,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -2280,7 +2322,8 @@ class _$_ElementView implements _ElementView {
   const _$_ElementView(
       {required this.imageFileData,
       required this.elementEntityList,
-      required this.patternEntityList});
+      required this.patternEntityList,
+      required this.id});
 
   @override
   final Uint8List imageFileData;
@@ -2288,10 +2331,12 @@ class _$_ElementView implements _ElementView {
   final List<ElementEntity> elementEntityList;
   @override
   final List<PatternEntity> patternEntityList;
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'PatternElementState.element(imageFileData: $imageFileData, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList)';
+    return 'PatternElementState.element(imageFileData: $imageFileData, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList, id: $id)';
   }
 
   @override
@@ -2304,7 +2349,8 @@ class _$_ElementView implements _ElementView {
             const DeepCollectionEquality()
                 .equals(other.elementEntityList, elementEntityList) &&
             const DeepCollectionEquality()
-                .equals(other.patternEntityList, patternEntityList));
+                .equals(other.patternEntityList, patternEntityList) &&
+            const DeepCollectionEquality().equals(other.id, id));
   }
 
   @override
@@ -2312,7 +2358,8 @@ class _$_ElementView implements _ElementView {
       runtimeType,
       const DeepCollectionEquality().hash(imageFileData),
       const DeepCollectionEquality().hash(elementEntityList),
-      const DeepCollectionEquality().hash(patternEntityList));
+      const DeepCollectionEquality().hash(patternEntityList),
+      const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
   @override
@@ -2325,16 +2372,18 @@ class _$_ElementView implements _ElementView {
     required TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)
+            List<ElementEntity> elementEntityList,
+            int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)
+            List<PatternEntity> patternEntityList,
+            int id)
         element,
   }) {
-    return element(imageFileData, elementEntityList, patternEntityList);
+    return element(imageFileData, elementEntityList, patternEntityList, id);
   }
 
   @override
@@ -2343,16 +2392,19 @@ class _$_ElementView implements _ElementView {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
   }) {
-    return element?.call(imageFileData, elementEntityList, patternEntityList);
+    return element?.call(
+        imageFileData, elementEntityList, patternEntityList, id);
   }
 
   @override
@@ -2361,18 +2413,20 @@ class _$_ElementView implements _ElementView {
     TResult Function(
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
-            List<ElementEntity> elementEntityList)?
+            List<ElementEntity> elementEntityList,
+            int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
-            List<PatternEntity> patternEntityList)?
+            List<PatternEntity> patternEntityList,
+            int id)?
         element,
     required TResult orElse(),
   }) {
     if (element != null) {
-      return element(imageFileData, elementEntityList, patternEntityList);
+      return element(imageFileData, elementEntityList, patternEntityList, id);
     }
     return orElse();
   }
@@ -2416,11 +2470,13 @@ abstract class _ElementView implements PatternElementState {
   const factory _ElementView(
       {required Uint8List imageFileData,
       required List<ElementEntity> elementEntityList,
-      required List<PatternEntity> patternEntityList}) = _$_ElementView;
+      required List<PatternEntity> patternEntityList,
+      required int id}) = _$_ElementView;
 
   Uint8List get imageFileData;
   List<ElementEntity> get elementEntityList;
   List<PatternEntity> get patternEntityList;
+  int get id;
   @JsonKey(ignore: true)
   _$ElementViewCopyWith<_ElementView> get copyWith =>
       throw _privateConstructorUsedError;

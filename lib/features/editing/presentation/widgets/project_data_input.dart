@@ -53,9 +53,6 @@ class _ProjectDataInputState extends State<ProjectDataInput> {
                   case "Projekt Name":
                     return projectEditingBloc
                         .add(ProjectEditingEvent.addName(name: text));
-                  case "Projekt Art":
-                    return projectEditingBloc
-                        .add(ProjectEditingEvent.addType(type: text));
                   case "Projekt Bescheibung":
                     return projectEditingBloc.add(
                         ProjectEditingEvent.addDescription(description: text));
