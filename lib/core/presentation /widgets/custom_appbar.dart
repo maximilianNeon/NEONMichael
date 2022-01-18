@@ -72,7 +72,7 @@ class CustomAppBar extends StatelessWidget {
                     children: [
                       GestureDetector(
                           onTap: () {
-                            filterBloc.add(FilterEvent.resetFilter(loadRemoteDataBloc.loadedProjectData));
+                            filterBloc.add(FilterEvent.resetFilter(loadRemoteDataBloc.state.maybeMap(orElse: () => [], loaded: (loaded) => loaded.projectEntityList)));
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
                                   builder: (context) => OverviewPage()),

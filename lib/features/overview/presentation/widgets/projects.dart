@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/features/details/presentation/detail_screen.dart';
-import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/project_focus_page.dart';
+import '../../../../core/domain/entities/project_entity.dart';
 
 class Projects extends StatelessWidget {
   @override
@@ -158,16 +158,26 @@ class Projects extends StatelessWidget {
                                                     .assets[i]
                                                     .imageUrl),
                                             project: state.map(
-                                                filteredByElements: (state) =>
-                                                    state.filteredByElements[
-                                                        index],
+                                                filteredByElements: (state) => state
+                                                    .filteredByElements[index],
                                                 filteredByPattern: (state) =>
                                                     state.filteredByPatternList[
                                                         index],
                                                 filteredByType: (state) => state
                                                     .filterdByTypeList[index],
                                                 empty: (_) => loadRemoteDataBloc
-                                                    .loadedProjectData[index]),
+                                                    .state
+                                                    .maybeMap(
+                                                        orElse: () =>
+                                                            ProjectEntity(
+                                                                assets: [],
+                                                                description: "",
+                                                                id: 0,
+                                                                imageUrl: "",
+                                                                projectType: "",
+                                                                title: ""),
+                                                        loaded: (state) =>
+                                                            state.projectEntityList[index])),
                                             projectIndex: state.map(
                                                 filteredByElements: (state) =>
                                                     state
@@ -186,11 +196,14 @@ class Projects extends StatelessWidget {
                                                     .assets[i]
                                                     .id,
                                                 empty: (state) =>
-                                                    loadRemoteDataBloc
-                                                        .loadedProjectData[
-                                                            index]
-                                                        .assets[i]
-                                                        .id),
+                                                   loadRemoteDataBloc
+                                                    .state
+                                                    .maybeMap(
+                                                        orElse: () => 0,
+                                              
+                                                        loaded: (state) =>
+                                                            state.projectEntityList[index].assets[i].id))
+                                                   ,
                                           );
                                         },
                                       ),

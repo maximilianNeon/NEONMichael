@@ -52,13 +52,11 @@ class ScreenUploadItem extends StatelessWidget {
               onTap: () {
                 print("Added AssetEntity: $assetEntity");
 
-                patternElementBloc.add(
-                  PatternElementEvent.addExistingDataToBloc(
-                      assetEntity: assetEntity),
-                );
-
-                patternElementBloc.add(
+                  patternElementBloc.add(
                   PatternElementEvent.changeToPatternView(
+                    id: assetEntity.id,
+                    elementEntityList: assetEntity.elements ,
+                    patternEntityList: assetEntity.patterns,
                     imageFileData:
                         assetFileCache[assetEntity.id] ?? Uint8List(0),
                   ),

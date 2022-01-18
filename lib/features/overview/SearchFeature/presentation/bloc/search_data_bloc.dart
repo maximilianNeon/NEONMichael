@@ -20,7 +20,7 @@ class SearchDataBloc extends Bloc<SearchDataEvent, SearchDataState> {
       emit(_Loaded(
           projectEntityList: searchData.call(
               params: Params(
-                  projectEntityList: loadRemoteDataBloc.loadedProjectData,
+                  projectEntityList: [],
                   searchText: event.searchText))));
     });
   }

@@ -1,12 +1,9 @@
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/usecase.dart';
-import 'package:neon_web/core/error/failure.dart';
-import 'package:neon_web/features/overview/FilterFeature/domain/usecase/filter_data_by_type.dart';
 
 @lazySingleton
 class FilterDataByPattern
@@ -25,8 +22,11 @@ class FilterDataByPattern
         patternsList = [];
         //Reduced PatternList
         patternsList = asset.patterns
-            .where((pattern) =>
-                pattern.item.toString().contains(params.patternFilter))
+            .where((pattern) => pattern.item
+                .toString()
+                .split(".")
+                .last
+                .contains(params.patternFilter))
             .toList();
 
         if (patternsList.length > 0) {

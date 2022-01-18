@@ -14,86 +14,88 @@ part 'pattern_element_bloc.freezed.dart';
 @singleton
 class PatternElementBloc
     extends Bloc<PatternElementEvent, PatternElementState> {
-  List<PatternEntity> _patternList = [];
-  List<ElementEntity> _elementList = [];
-  int _assetEntityId = 0;
-
   PatternElementBloc() : super(_Loading()) {
     on<_ChangeToPatternView>((event, emit) {
       emit(_PatternView(
           imageFileData: event.imageFileData,
-          patternEntityList: _patternList,
-          elementEntityList: _elementList, id: _assetEntityId));
+          patternEntityList: event.patternEntityList,
+          elementEntityList: event.elementEntityList,
+          id: event.id));
     });
     on<_ChangeToElementView>((event, emit) {
       emit(_ElementView(
           imageFileData: event.imageFileData,
-          elementEntityList: _elementList,
-          patternEntityList: _patternList, id: _assetEntityId));
+          elementEntityList: event.elementEntityList,
+          patternEntityList: event.patternEntityList,
+          id: event.id));
     });
     on<_AddElement>((event, emit) {
       emit(_Loading());
 
-      _elementList.add(event.elementEntity);
+      List<ElementEntity> elementEntityList =
+          List.from(event.currentElementEntityList);
+      ElementEntity singleElementEntity = event.elementEntity;
+
+      elementEntityList.add(singleElementEntity);
 
       emit(_ElementView(
           imageFileData: event.imageFileData,
-          elementEntityList: _elementList,
-          patternEntityList: _patternList , id: _assetEntityId));
+          elementEntityList: elementEntityList,
+          patternEntityList: event.currentPatternEntityList,
+          id: event.id));
     });
 
     on<_RemoveElement>((event, emit) {
       emit(_Loading());
 
-      _elementList.removeWhere((element) =>
-          element.header == event.elementEntity.header &&
-          element.item == event.elementEntity.item);
+      List<ElementEntity> elementEntityList =
+          List.from(event.currentElementEntityList);
+      ElementEntity singleElementEntity = event.elementEntity;
+
+      elementEntityList.removeWhere((element) =>
+          element.header == singleElementEntity.header &&
+          element.item == singleElementEntity.item);
 
       emit(_ElementView(
           imageFileData: event.imageFileData,
-          elementEntityList: _elementList,
-          patternEntityList: _patternList,id: _assetEntityId));
+          elementEntityList: elementEntityList,
+          patternEntityList: event.currentPatternEntityList,
+          id: event.id));
     });
     on<_AddPattern>((event, emit) {
       emit(_Loading());
 
-      _patternList.add(event.patternEntity);
+      List<PatternEntity> patternEntityList =
+          List.from(event.currentPatternEntityList);
+      PatternEntity singlePatternEntity = event.patternEntity;
 
-      print("After Editing $_patternList");
-
+      patternEntityList.add(singlePatternEntity);
 
       emit(_PatternView(
           imageFileData: event.imageFileData,
-          elementEntityList: _elementList,
-          patternEntityList: _patternList, id: _assetEntityId));
+          elementEntityList: event.currentElementEntityList,
+          patternEntityList: patternEntityList,
+          id: event.id));
     });
     on<_RemovePatter>((event, emit) {
       emit(_Loading());
 
-      _patternList.removeWhere((element) =>
-          element.header == event.patternEntity.header &&
-          element.item == event.patternEntity.item);
+      List<PatternEntity> patternEntityList =
+          List.from(event.currentPatternEntityList);
+      PatternEntity singlePatternEntity = event.patternEntity;
+
+      patternEntityList.removeWhere((element) =>
+          element.header == singlePatternEntity.header &&
+          element.item == singlePatternEntity.item);
 
       emit(_PatternView(
           imageFileData: event.imageFileData,
-          elementEntityList: _elementList,
-          patternEntityList: _patternList, id: _assetEntityId));
-    });
-    on<_AddExistingDataToBloc>((event, emit) {
-      _patternList = event.assetEntity.patterns;
-      _assetEntityId = event.assetEntity.id;
-      _elementList = event.assetEntity.elements;
-
-      print("PatternList $_patternList");
-      print(_assetEntityId);
-      print("ElementList $_elementList");
+          elementEntityList: event.currentElementEntityList,
+          patternEntityList: patternEntityList,
+          id: event.id));
     });
 
     on<_ResetBloc>((event, emit) {
-      _patternList = [];
-      _elementList = [];
-      _assetEntityId = 0;
-
       emit(_Loading());
     });
   }

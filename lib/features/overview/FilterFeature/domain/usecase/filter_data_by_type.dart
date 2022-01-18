@@ -1,9 +1,7 @@
-import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/domain/usecases/usecase.dart';
-import 'package:neon_web/core/error/failure.dart';
 
 @lazySingleton
 class FilterDataByType
@@ -24,6 +22,5 @@ class TypeFilterParams extends Equatable {
   TypeFilterParams({required this.typeFilter, required this.projectEntityList});
 
   @override
-  // TODO: implement props
   List<Object?> get props => [typeFilter, projectEntityList];
 }

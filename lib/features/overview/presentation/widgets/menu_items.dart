@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
-import 'package:neon_web/features/overview/data/menu_helpers.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/export_core_files.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 
 class MenuItems extends StatelessWidget {
-  int? clickedIndex  ;
-  int? clickedI;
-
   @override
   Widget build(BuildContext context) {
     ProjectFilterBloc projectFilterBloc =
@@ -41,11 +37,11 @@ class MenuItems extends StatelessWidget {
                         itemCount: state.maybeMap(
                           orElse: () => 0,
                           typeFilterState: (_) =>
-                              MenuHelpers.typeHeaders.length,
+                              BuildTypeLists.appTypeList.length,
                           elementFilterState: (_) =>
-                              MenuHelpers.elementHeaders.length,
+                              BuildElementLists.headLineList.length,
                           patternFilterState: (_) =>
-                              MenuHelpers.patternHeaders.length,
+                              BuildPatternLists.headlineList.length,
                         ),
                         itemBuilder: (context, i) {
                           return Column(
@@ -61,15 +57,21 @@ class MenuItems extends StatelessWidget {
                                     Text(
                                       state.maybeMap(
                                         orElse: () => "",
-                                        typeFilterState: (_) => MenuHelpers
-                                            .typeHeaders[i]
-                                            .toString(),
-                                        elementFilterState: (_) => MenuHelpers
-                                            .elementHeaders[i]
-                                            .toString(),
-                                        patternFilterState: (_) => MenuHelpers
-                                            .patternHeaders[i]
-                                            .toString(),
+                                        typeFilterState: (_) => BuildTypeLists
+                                            .appTypeList[i]
+                                            .toString()
+                                            .split(".")
+                                            .last,
+                                        elementFilterState: (_) => BuildElementLists
+                                            .headLineList[i]
+                                            .toString()
+                                            .split(".")
+                                            .last,
+                                        patternFilterState: (_) => BuildPatternLists
+                                            .headlineList[i]
+                                            .toString()
+                                            .split(".")
+                                            .last,
                                       ),
                                       style: kMenuItem.copyWith(
                                           fontWeight: FontWeight.w700),
@@ -78,8 +80,7 @@ class MenuItems extends StatelessWidget {
                                       shrinkWrap: true,
                                       itemCount: state.maybeMap(
                                         orElse: () => 0,
-                                        typeFilterState: (_) => BuildTypeLists
-                                            .appTypeList[i].length,
+                                        typeFilterState: (_) => 1,
                                         elementFilterState: (_) =>
                                             BuildElementLists
                                                 .globalItemList[i].length,
@@ -95,56 +96,59 @@ class MenuItems extends StatelessWidget {
                                               typeFilterState: (_) => filterBloc
                                                   .add(FilterEvent.setTypeFilter(
                                                       filter: BuildTypeLists
-                                                              .appTypeList[i]
-                                                          [index],
+                                                              .appTypeList[i].toString().split(".").last 
+                                                          ,
                                                       projectEntityList: projectFilterBloc.state.map(
                                                           reset: (_) =>
-                                                              loadRemoteDataBloc
-                                                                  .loadedProjectData,
+                                                             loadRemoteDataBloc.state.maybeMap(orElse: () => [] , loaded: (state) => state.projectEntityList),
                                                           filtered: (filterState) =>
                                                               filterState
                                                                   .projectEntityList))),
                                               elementFilterState: (_) => filterBloc
                                                   .add(FilterEvent.setElementFilter(
                                                       filter: BuildElementLists
-                                                              .globalItemList[i]
-                                                          [index].toString(),
+                                                          .globalItemList[i]
+                                                              [index]
+                                                          .toString().split(".").last,
                                                       projectEntityList: projectFilterBloc.state.map(
                                                           reset: (_) =>
-                                                              loadRemoteDataBloc
-                                                                  .loadedProjectData,
+                                                              loadRemoteDataBloc.state.maybeMap(orElse: () => [] , loaded: (state) => state.projectEntityList)
+                                                                ,
                                                           filtered: (filterState) =>
                                                               filterState
                                                                   .projectEntityList))),
                                               patternFilterState: (_) => filterBloc
                                                   .add(FilterEvent.setPatternFilter(
                                                       filter: BuildPatternLists
-                                                              .globalItemList[i]
-                                                          [index].toString(),
+                                                          .globalItemList[i]
+                                                              [index]
+                                                          .toString().split(".").last,
                                                       projectEntityList: projectFilterBloc.state.map(
                                                           reset: (_) =>
-                                                              loadRemoteDataBloc
-                                                                  .loadedProjectData,
+                                                             loadRemoteDataBloc.state.maybeMap(orElse: () => [] , loaded: (state) => state.projectEntityList),
                                                           filtered: (filterState) =>
                                                               filterState
                                                                   .projectEntityList))),
                                             );
                                           },
-                                          child: 
-                                                      
-                                                     
-                                                      Text(
+                                          child: Text(
                                             state.maybeMap(
                                               orElse: () => "",
                                               typeFilterState: (_) =>
-                                                  BuildTypeLists.appTypeList[i]
-                                                      [index],
+                                                  BuildTypeLists.appTypeList[i].toString().split(".").last
+                                                      ,
                                               elementFilterState: (_) =>
                                                   BuildElementLists
-                                                      .globalItemList[i][index].toString().split(".").last,
+                                                      .globalItemList[i][index]
+                                                      .toString()
+                                                      .split(".")
+                                                      .last,
                                               patternFilterState: (_) =>
                                                   BuildPatternLists
-                                                      .globalItemList[i][index].toString().split(".").last,
+                                                      .globalItemList[i][index]
+                                                      .toString()
+                                                      .split(".")
+                                                      .last,
                                             ),
                                             style: kMenuItem,
                                           ),

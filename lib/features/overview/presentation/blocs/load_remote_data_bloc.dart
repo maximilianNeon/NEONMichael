@@ -19,7 +19,7 @@ class LoadRemoteDataBloc
   UploadProjectData uploadProjectData;
   List<ProjectEntity> _projectData = [];
 
-  List<ProjectEntity> get loadedProjectData => _projectData;
+  
 
   LoadRemoteDataBloc(
       {required this.uploadProjectData, required this.downloadProjectData})

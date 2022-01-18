@@ -10,6 +10,7 @@ const kColorLila = Color(0xffAF3FCA);
 const kColorDarkBlue = Color(0xff4D72DE);
 const kColorOrange = Color(0xffE28919);
 const kColorGreen = Color(0xff29B174);
+const kColorGrey = Colors.grey;
 
 const kColorBackground = Color(0xffF2F2F2);
 const kColorBlack = Color(0xff222B45);

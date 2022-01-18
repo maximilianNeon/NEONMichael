@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
+import 'package:neon_web/core/style/border_constants.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
@@ -115,7 +116,6 @@ class ProjectUploadPage extends StatelessWidget {
                               Container(
                                 height: 200,
                                 width: 200,
-                                color: Colors.grey,
                                 child: Stack(children: [
                                   DropzoneView(
                                     onError: (errorMessage) {},
@@ -144,7 +144,15 @@ class ProjectUploadPage extends StatelessWidget {
                                       orElse: () => Container(
                                         width: 200,
                                         height: 200,
-                                        color: Colors.blue,
+                                        decoration: BoxDecoration(
+                                          borderRadius: kBorderRadius_10,
+                                          border: Border.all(
+                                            color: kColorGrey,
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text("Drag & Drop"),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -242,12 +250,13 @@ class ProjectUploadPage extends StatelessWidget {
               state.map(
                 element: (state) => Center(
                   child: AssetPopUpContainer(
+                    assetId: state.id,
                     imageFileData: state.imageFileData,
-                    
                   ),
                 ),
                 pattern: (state) => Center(
                   child: AssetPopUpContainer(
+                    assetId: state.id,
                     imageFileData: state.imageFileData,
                   ),
                 ),

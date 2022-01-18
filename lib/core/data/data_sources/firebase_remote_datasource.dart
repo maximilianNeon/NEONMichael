@@ -86,6 +86,8 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
         ),
       );
 
+
+      print("DownloadedList: $projectEntiyList");
       return Right(projectEntiyList);
     } on FirebaseException catch (error) {
       print(error);
@@ -94,8 +96,6 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
       print(error);
       return Left(FunctionFailure());
     }
-
-    //Download AssetImages
   }
 
   @override
