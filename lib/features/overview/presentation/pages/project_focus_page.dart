@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
-import 'package:neon_web/core/style/border_constants.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/widgets/search_bar.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button_row.dart';
-import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
+import 'package:neon_web/features/overview/presentation/widgets/menu_container.dart';
 import 'package:neon_web/features/overview/presentation/widgets/project_focus_gridview.dart';
 
 class ProjectFocusPage extends StatelessWidget {
@@ -21,8 +20,8 @@ class ProjectFocusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageLayout(
-      backArrow: true,
-      uploadIcon: false,
+      showBackArrow: true,
+      showLogOutAndUpload: false,
       appBarHeader: "ProjectFocusPage",
       widget: Padding(
         padding: kPad16,
@@ -31,7 +30,7 @@ class ProjectFocusPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            MenuItems(),
+            MenuContainer(),
             const SizedBox(
               width: 20,
             ),

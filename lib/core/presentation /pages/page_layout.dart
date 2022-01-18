@@ -4,14 +4,14 @@ import 'package:neon_web/core/presentation%20/widgets/custom_appbar.dart';
 class PageLayout extends StatelessWidget {
   final Widget widget;
   final String appBarHeader;
-  final bool backArrow;
-  final bool uploadIcon;
+  final bool showBackArrow;
+  final bool showLogOutAndUpload;
 
   const PageLayout(
       {required this.widget,
       required this.appBarHeader,
-      required this.backArrow,
-      required this.uploadIcon,
+      required this.showBackArrow,
+      required this.showLogOutAndUpload,
       Key? key})
       : super(key: key);
 
@@ -26,8 +26,8 @@ class PageLayout extends StatelessWidget {
             children: [
               CustomAppBar(
                 header: appBarHeader,
-                uploadIcon: uploadIcon,
-                backArrow: backArrow,
+                showBackArrow: showBackArrow,
+                showLogOutAndUpload: showLogOutAndUpload ,
               ),
               widget
             ]),

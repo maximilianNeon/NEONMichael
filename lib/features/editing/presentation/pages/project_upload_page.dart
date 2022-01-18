@@ -43,8 +43,8 @@ class ProjectUploadPage extends StatelessWidget {
         BlocProvider.of<ProjectEditingBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
     return PageLayout(
-      backArrow: true,
-      uploadIcon: false,
+      showBackArrow: true,
+      showLogOutAndUpload: false ,
       appBarHeader: "ProjectUploadPage",
       widget: Padding(
         padding: EdgeInsets.only(top: 50, left: 100, right: 100, bottom: 10),

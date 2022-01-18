@@ -19,5 +19,8 @@ class AuthentificationBloc
       
       emit(result.fold((l) => _Initial(), (r) => _Auth()));
     });
+    on<_Logout>((event, emit) async {
+     emit(_Initial());
+    });
   }
 }

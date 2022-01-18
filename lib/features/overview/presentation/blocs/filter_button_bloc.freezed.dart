@@ -603,16 +603,28 @@ class _$FilterButtonStateTearOff {
     return const _FilterButtonTurnOffState();
   }
 
-  _FilterButtonElementState elementFilterState() {
-    return const _FilterButtonElementState();
+  _FilterButtonElementState elementFilterState(
+      {required List<dynamic> elementList,
+      required List<dynamic> headLineList}) {
+    return _FilterButtonElementState(
+      elementList: elementList,
+      headLineList: headLineList,
+    );
   }
 
-  _FilterButtonTypeState typeFilterState() {
-    return const _FilterButtonTypeState();
+  _FilterButtonTypeState typeFilterState({required List<dynamic> typeList}) {
+    return _FilterButtonTypeState(
+      typeList: typeList,
+    );
   }
 
-  _FilterButtonPatternState patternFilterState() {
-    return const _FilterButtonPatternState();
+  _FilterButtonPatternState patternFilterState(
+      {required List<dynamic> patternList,
+      required List<dynamic> headLineList}) {
+    return _FilterButtonPatternState(
+      patternList: patternList,
+      headLineList: headLineList,
+    );
   }
 }
 
@@ -624,25 +636,33 @@ mixin _$FilterButtonState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function() elementFilterState,
-    required TResult Function() typeFilterState,
-    required TResult Function() patternFilterState,
+    required TResult Function(
+            List<dynamic> elementList, List<dynamic> headLineList)
+        elementFilterState,
+    required TResult Function(List<dynamic> typeList) typeFilterState,
+    required TResult Function(
+            List<dynamic> patternList, List<dynamic> headLineList)
+        patternFilterState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -736,9 +756,13 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function() elementFilterState,
-    required TResult Function() typeFilterState,
-    required TResult Function() patternFilterState,
+    required TResult Function(
+            List<dynamic> elementList, List<dynamic> headLineList)
+        elementFilterState,
+    required TResult Function(List<dynamic> typeList) typeFilterState,
+    required TResult Function(
+            List<dynamic> patternList, List<dynamic> headLineList)
+        patternFilterState,
   }) {
     return filterTurnedOff();
   }
@@ -747,9 +771,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
   }) {
     return filterTurnedOff?.call();
   }
@@ -758,9 +784,11 @@ class _$_FilterButtonTurnOffState implements _FilterButtonTurnOffState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
     required TResult orElse(),
   }) {
     if (filterTurnedOff != null) {
@@ -818,6 +846,7 @@ abstract class _$FilterButtonElementStateCopyWith<$Res> {
   factory _$FilterButtonElementStateCopyWith(_FilterButtonElementState value,
           $Res Function(_FilterButtonElementState) then) =
       __$FilterButtonElementStateCopyWithImpl<$Res>;
+  $Res call({List<dynamic> elementList, List<dynamic> headLineList});
 }
 
 /// @nodoc
@@ -831,61 +860,105 @@ class __$FilterButtonElementStateCopyWithImpl<$Res>
   @override
   _FilterButtonElementState get _value =>
       super._value as _FilterButtonElementState;
+
+  @override
+  $Res call({
+    Object? elementList = freezed,
+    Object? headLineList = freezed,
+  }) {
+    return _then(_FilterButtonElementState(
+      elementList: elementList == freezed
+          ? _value.elementList
+          : elementList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      headLineList: headLineList == freezed
+          ? _value.headLineList
+          : headLineList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_FilterButtonElementState implements _FilterButtonElementState {
-  const _$_FilterButtonElementState();
+  const _$_FilterButtonElementState(
+      {required this.elementList, required this.headLineList});
+
+  @override
+  final List<dynamic> elementList;
+  @override
+  final List<dynamic> headLineList;
 
   @override
   String toString() {
-    return 'FilterButtonState.elementFilterState()';
+    return 'FilterButtonState.elementFilterState(elementList: $elementList, headLineList: $headLineList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FilterButtonElementState);
+            other is _FilterButtonElementState &&
+            const DeepCollectionEquality()
+                .equals(other.elementList, elementList) &&
+            const DeepCollectionEquality()
+                .equals(other.headLineList, headLineList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(elementList),
+      const DeepCollectionEquality().hash(headLineList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FilterButtonElementStateCopyWith<_FilterButtonElementState> get copyWith =>
+      __$FilterButtonElementStateCopyWithImpl<_FilterButtonElementState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function() elementFilterState,
-    required TResult Function() typeFilterState,
-    required TResult Function() patternFilterState,
+    required TResult Function(
+            List<dynamic> elementList, List<dynamic> headLineList)
+        elementFilterState,
+    required TResult Function(List<dynamic> typeList) typeFilterState,
+    required TResult Function(
+            List<dynamic> patternList, List<dynamic> headLineList)
+        patternFilterState,
   }) {
-    return elementFilterState();
+    return elementFilterState(elementList, headLineList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
   }) {
-    return elementFilterState?.call();
+    return elementFilterState?.call(elementList, headLineList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
     required TResult orElse(),
   }) {
     if (elementFilterState != null) {
-      return elementFilterState();
+      return elementFilterState(elementList, headLineList);
     }
     return orElse();
   }
@@ -931,7 +1004,15 @@ class _$_FilterButtonElementState implements _FilterButtonElementState {
 }
 
 abstract class _FilterButtonElementState implements FilterButtonState {
-  const factory _FilterButtonElementState() = _$_FilterButtonElementState;
+  const factory _FilterButtonElementState(
+      {required List<dynamic> elementList,
+      required List<dynamic> headLineList}) = _$_FilterButtonElementState;
+
+  List<dynamic> get elementList;
+  List<dynamic> get headLineList;
+  @JsonKey(ignore: true)
+  _$FilterButtonElementStateCopyWith<_FilterButtonElementState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -939,6 +1020,7 @@ abstract class _$FilterButtonTypeStateCopyWith<$Res> {
   factory _$FilterButtonTypeStateCopyWith(_FilterButtonTypeState value,
           $Res Function(_FilterButtonTypeState) then) =
       __$FilterButtonTypeStateCopyWithImpl<$Res>;
+  $Res call({List<dynamic> typeList});
 }
 
 /// @nodoc
@@ -951,60 +1033,92 @@ class __$FilterButtonTypeStateCopyWithImpl<$Res>
 
   @override
   _FilterButtonTypeState get _value => super._value as _FilterButtonTypeState;
+
+  @override
+  $Res call({
+    Object? typeList = freezed,
+  }) {
+    return _then(_FilterButtonTypeState(
+      typeList: typeList == freezed
+          ? _value.typeList
+          : typeList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_FilterButtonTypeState implements _FilterButtonTypeState {
-  const _$_FilterButtonTypeState();
+  const _$_FilterButtonTypeState({required this.typeList});
+
+  @override
+  final List<dynamic> typeList;
 
   @override
   String toString() {
-    return 'FilterButtonState.typeFilterState()';
+    return 'FilterButtonState.typeFilterState(typeList: $typeList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _FilterButtonTypeState);
+        (other.runtimeType == runtimeType &&
+            other is _FilterButtonTypeState &&
+            const DeepCollectionEquality().equals(other.typeList, typeList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(typeList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FilterButtonTypeStateCopyWith<_FilterButtonTypeState> get copyWith =>
+      __$FilterButtonTypeStateCopyWithImpl<_FilterButtonTypeState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function() elementFilterState,
-    required TResult Function() typeFilterState,
-    required TResult Function() patternFilterState,
+    required TResult Function(
+            List<dynamic> elementList, List<dynamic> headLineList)
+        elementFilterState,
+    required TResult Function(List<dynamic> typeList) typeFilterState,
+    required TResult Function(
+            List<dynamic> patternList, List<dynamic> headLineList)
+        patternFilterState,
   }) {
-    return typeFilterState();
+    return typeFilterState(typeList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
   }) {
-    return typeFilterState?.call();
+    return typeFilterState?.call(typeList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
     required TResult orElse(),
   }) {
     if (typeFilterState != null) {
-      return typeFilterState();
+      return typeFilterState(typeList);
     }
     return orElse();
   }
@@ -1050,7 +1164,13 @@ class _$_FilterButtonTypeState implements _FilterButtonTypeState {
 }
 
 abstract class _FilterButtonTypeState implements FilterButtonState {
-  const factory _FilterButtonTypeState() = _$_FilterButtonTypeState;
+  const factory _FilterButtonTypeState({required List<dynamic> typeList}) =
+      _$_FilterButtonTypeState;
+
+  List<dynamic> get typeList;
+  @JsonKey(ignore: true)
+  _$FilterButtonTypeStateCopyWith<_FilterButtonTypeState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1058,6 +1178,7 @@ abstract class _$FilterButtonPatternStateCopyWith<$Res> {
   factory _$FilterButtonPatternStateCopyWith(_FilterButtonPatternState value,
           $Res Function(_FilterButtonPatternState) then) =
       __$FilterButtonPatternStateCopyWithImpl<$Res>;
+  $Res call({List<dynamic> patternList, List<dynamic> headLineList});
 }
 
 /// @nodoc
@@ -1071,61 +1192,105 @@ class __$FilterButtonPatternStateCopyWithImpl<$Res>
   @override
   _FilterButtonPatternState get _value =>
       super._value as _FilterButtonPatternState;
+
+  @override
+  $Res call({
+    Object? patternList = freezed,
+    Object? headLineList = freezed,
+  }) {
+    return _then(_FilterButtonPatternState(
+      patternList: patternList == freezed
+          ? _value.patternList
+          : patternList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+      headLineList: headLineList == freezed
+          ? _value.headLineList
+          : headLineList // ignore: cast_nullable_to_non_nullable
+              as List<dynamic>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_FilterButtonPatternState implements _FilterButtonPatternState {
-  const _$_FilterButtonPatternState();
+  const _$_FilterButtonPatternState(
+      {required this.patternList, required this.headLineList});
+
+  @override
+  final List<dynamic> patternList;
+  @override
+  final List<dynamic> headLineList;
 
   @override
   String toString() {
-    return 'FilterButtonState.patternFilterState()';
+    return 'FilterButtonState.patternFilterState(patternList: $patternList, headLineList: $headLineList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FilterButtonPatternState);
+            other is _FilterButtonPatternState &&
+            const DeepCollectionEquality()
+                .equals(other.patternList, patternList) &&
+            const DeepCollectionEquality()
+                .equals(other.headLineList, headLineList));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(patternList),
+      const DeepCollectionEquality().hash(headLineList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FilterButtonPatternStateCopyWith<_FilterButtonPatternState> get copyWith =>
+      __$FilterButtonPatternStateCopyWithImpl<_FilterButtonPatternState>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() filterTurnedOff,
-    required TResult Function() elementFilterState,
-    required TResult Function() typeFilterState,
-    required TResult Function() patternFilterState,
+    required TResult Function(
+            List<dynamic> elementList, List<dynamic> headLineList)
+        elementFilterState,
+    required TResult Function(List<dynamic> typeList) typeFilterState,
+    required TResult Function(
+            List<dynamic> patternList, List<dynamic> headLineList)
+        patternFilterState,
   }) {
-    return patternFilterState();
+    return patternFilterState(patternList, headLineList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
   }) {
-    return patternFilterState?.call();
+    return patternFilterState?.call(patternList, headLineList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? filterTurnedOff,
-    TResult Function()? elementFilterState,
-    TResult Function()? typeFilterState,
-    TResult Function()? patternFilterState,
+    TResult Function(List<dynamic> elementList, List<dynamic> headLineList)?
+        elementFilterState,
+    TResult Function(List<dynamic> typeList)? typeFilterState,
+    TResult Function(List<dynamic> patternList, List<dynamic> headLineList)?
+        patternFilterState,
     required TResult orElse(),
   }) {
     if (patternFilterState != null) {
-      return patternFilterState();
+      return patternFilterState(patternList, headLineList);
     }
     return orElse();
   }
@@ -1171,5 +1336,13 @@ class _$_FilterButtonPatternState implements _FilterButtonPatternState {
 }
 
 abstract class _FilterButtonPatternState implements FilterButtonState {
-  const factory _FilterButtonPatternState() = _$_FilterButtonPatternState;
+  const factory _FilterButtonPatternState(
+      {required List<dynamic> patternList,
+      required List<dynamic> headLineList}) = _$_FilterButtonPatternState;
+
+  List<dynamic> get patternList;
+  List<dynamic> get headLineList;
+  @JsonKey(ignore: true)
+  _$FilterButtonPatternStateCopyWith<_FilterButtonPatternState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

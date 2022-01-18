@@ -6,7 +6,7 @@ import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button_row.dart';
-import 'package:neon_web/features/overview/presentation/widgets/menu_items.dart';
+import 'package:neon_web/features/overview/presentation/widgets/menu_container.dart';
 import 'package:neon_web/features/overview/presentation/widgets/projects.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/widgets/search_bar.dart';
 import 'package:neon_web/features/overview/presentation/widgets/sort_button.dart';
@@ -30,8 +30,8 @@ class _OverviewPageState extends State<OverviewPage> {
           children: [
             CustomAppBar(
               header: "NEON MOBBIN",
-              backArrow: false,
-              uploadIcon: true,
+              showBackArrow: false,
+              showLogOutAndUpload: true,
             ),
             Padding(
               padding: kPad16,
@@ -40,7 +40,7 @@ class _OverviewPageState extends State<OverviewPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  MenuItems(),
+                  MenuContainer(),
                   const SizedBox(
                     width: 20,
                   ),

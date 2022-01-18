@@ -29,6 +29,9 @@ class UIHelper {
   }
 
 //Horizontal Spacings
+ double horizontalSpaceSuperSmall(BuildContext context) {
+    return displayHeight(context) * 0.025;
+  }
   double horizontalSpaceSmall(BuildContext context) {
     return displayHeight(context) * 0.05;
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/features/authentication/presentation/bloc/authentification_bloc.dart';
+import 'package:neon_web/features/authentication/presentation/pages/login_page.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
@@ -38,17 +39,14 @@ class WebApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<PatternElementBloc>())
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: OverviewPage(),
-
-          //    BlocBuilder<AuthentificationBloc, AuthentificationState>(
-          //      builder: (context, state) => state.map(
-          //          initial: (_) =>  LoginPage()
-          //
-          //
-          //          , auth: (_) => OverviewPage()),
-          //    ),
-          ),
+        debugShowCheckedModeBanner: false,
+        home: OverviewPage()
+        
+        //BlocBuilder<AuthentificationBloc, AuthentificationState>(
+        //  builder: (context, state) => state.map(
+        //      initial: (_) => LoginPage(), auth: (_) => OverviewPage()),
+        //),
+      ),
     );
   }
 }

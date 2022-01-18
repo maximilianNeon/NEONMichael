@@ -5,6 +5,7 @@ import '../util/ui_helper.dart';
 //HorizontalSpacing
 
  Widget horizontalSpaceSmall({required context}) => SizedBox(width: UIHelper().horizontalSpaceSmall(context));
+ Widget horizontalSpaceSuperSmall({required context}) => SizedBox(width: UIHelper().horizontalSpaceSuperSmall(context));
  Widget horizontalSpaceMedium({required context}) => SizedBox(width: UIHelper().horizontalSpaceMedium(context));
 
  //VerticalSpacing
