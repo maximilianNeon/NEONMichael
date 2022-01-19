@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/style/style.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
-import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 
 class MenuItems extends StatelessWidget {
@@ -18,8 +18,7 @@ class MenuItems extends StatelessWidget {
     FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
     ProjectFilterBloc projectFilterBloc =
         BlocProvider.of<ProjectFilterBloc>(context);
-    LoadRemoteDataBloc loadRemoteDataBloc =
-        BlocProvider.of<LoadRemoteDataBloc>(context);
+   DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
 
     return BlocBuilder<FilterButtonBloc, FilterButtonState>(
       builder: (context, state) {
@@ -34,7 +33,7 @@ class MenuItems extends StatelessWidget {
                       FilterEvent.setTypeFilter(
                         filter: state.typeList[i].toString().split(".").last,
                         projectEntityList: projectFilterBloc.state.map(
-                            reset: (_) => loadRemoteDataBloc.state.maybeMap(
+                            reset: (_) => dataBloc.state.maybeMap(
                                 orElse: () => [],
                                 loaded: (state) => state.projectEntityList),
                             filtered: (filterState) =>
@@ -46,7 +45,7 @@ class MenuItems extends StatelessWidget {
                             state.typeList[i].toString().split(".").last
                         ? filterBloc.add(
                             FilterEvent.resetFilter(
-                              loadRemoteDataBloc.state.maybeMap(
+                              dataBloc.state.maybeMap(
                                   orElse: () => [],
                                   loaded: (loadedData) =>
                                       loadedData.projectEntityList),
@@ -57,7 +56,7 @@ class MenuItems extends StatelessWidget {
                               filter:
                                   state.typeList[i].toString().split(".").last,
                               projectEntityList: projectFilterBloc.state.map(
-                                  reset: (_) => loadRemoteDataBloc.state
+                                  reset: (_) => dataBloc.state
                                       .maybeMap(
                                           orElse: () => [],
                                           loaded: (state) =>
@@ -75,7 +74,7 @@ class MenuItems extends StatelessWidget {
                                   .split(".")
                                   .last,
                               projectEntityList: projectFilterBloc.state.map(
-                                  reset: (_) => loadRemoteDataBloc.state
+                                  reset: (_) => dataBloc.state
                                       .maybeMap(
                                           orElse: () => [],
                                           loaded: (state) =>
@@ -91,7 +90,7 @@ class MenuItems extends StatelessWidget {
                                       .split(".")
                                       .last
                               ? filterBloc.add(FilterEvent.resetFilter(
-                                  loadRemoteDataBloc.state.maybeMap(
+                                  dataBloc.state.maybeMap(
                                       orElse: () => [],
                                       loaded: (loadedData) =>
                                           loadedData.projectEntityList)))
@@ -103,7 +102,7 @@ class MenuItems extends StatelessWidget {
                                         .last,
                                     projectEntityList: projectFilterBloc.state
                                         .map(
-                                            reset: (_) => loadRemoteDataBloc
+                                            reset: (_) => dataBloc
                                                 .state
                                                 .maybeMap(
                                                     orElse: () => [],
@@ -120,7 +119,7 @@ class MenuItems extends StatelessWidget {
                             .split(".")
                             .last,
                         projectEntityList: projectFilterBloc.state.map(
-                            reset: (_) => loadRemoteDataBloc.state.maybeMap(
+                            reset: (_) => dataBloc.state.maybeMap(
                                 orElse: () => [],
                                 loaded: (state) => state.projectEntityList),
                             filtered: (filterState) =>
@@ -132,7 +131,7 @@ class MenuItems extends StatelessWidget {
                                     .split(".")
                                     .last
                             ? filterBloc.add(FilterEvent.resetFilter(
-                                loadRemoteDataBloc.state.maybeMap(
+                                dataBloc.state.maybeMap(
                                     orElse: () => [],
                                     loaded: (loadedData) =>
                                         loadedData.projectEntityList)))
@@ -144,7 +143,7 @@ class MenuItems extends StatelessWidget {
                                       .last,
                                   projectEntityList: projectFilterBloc.state
                                       .map(
-                                          reset: (_) => loadRemoteDataBloc.state
+                                          reset: (_) => dataBloc.state
                                               .maybeMap(
                                                   orElse: () => [],
                                                   loaded:

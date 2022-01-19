@@ -7,7 +7,7 @@ import 'package:neon_web/features/authentication/presentation/bloc/authentificat
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
-import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/overview_page.dart';
 import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 
@@ -26,8 +26,8 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
-    LoadRemoteDataBloc loadRemoteDataBloc =
-        BlocProvider.of<LoadRemoteDataBloc>(context);
+    DataBloc dataBloc =
+        BlocProvider.of<DataBloc>(context);
     AuthentificationBloc authentificationBloc = BlocProvider.of<AuthentificationBloc>(context);
     return Container(
       decoration:
@@ -89,7 +89,7 @@ class CustomAppBar extends StatelessWidget {
                       GestureDetector(
                           onTap: () {
                             filterBloc.add(FilterEvent.resetFilter(
-                                loadRemoteDataBloc.state.maybeMap(
+                                dataBloc.state.maybeMap(
                                     orElse: () => [],
                                     loaded: (loaded) =>
                                         loaded.projectEntityList)));

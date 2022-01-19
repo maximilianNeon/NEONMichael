@@ -7,7 +7,7 @@ import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
-import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/overview_page.dart';
 // ignore: always_use_package_imports
@@ -20,8 +20,8 @@ class WebApp extends StatelessWidget {
       providers: [
         BlocProvider(
           lazy: false,
-          create: (context) => getIt<LoadRemoteDataBloc>()
-            ..add(LoadRemoteDataEvent.downloadProjectData()),
+          create: (context) => getIt<DataBloc>()
+            ..add(DataEvent.downloadProjectData()),
         ),
         BlocProvider(create: (context) => getIt<AuthentificationBloc>()),
         BlocProvider(

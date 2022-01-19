@@ -27,9 +27,9 @@ import 'features/authentication/data/repositories/auth_repository_impl.dart'
     as _i33;
 import 'features/authentication/domain/repositories/auth_repository.dart'
     as _i32;
-import 'features/authentication/domain/usecase/login.dart' as _i38;
+import 'features/authentication/domain/usecase/login.dart' as _i37;
 import 'features/authentication/presentation/bloc/authentification_bloc.dart'
-    as _i40;
+    as _i38;
 import 'features/authentication/presentation/pages/login_page.dart' as _i18;
 import 'features/editing/presentation/bloc/asset_bloc.dart' as _i3;
 import 'features/editing/presentation/bloc/pattern_element_bloc.dart' as _i19;
@@ -54,12 +54,11 @@ import 'features/overview/FilterFeature/domain/usecase/filter_data_by_type.dart'
     as _i15;
 import 'features/overview/FilterFeature/presentation/bloc/filter_bloc.dart'
     as _i35;
+import 'features/overview/presentation/blocs/data_bloc.dart' as _i39;
 import 'features/overview/presentation/blocs/filter_button_bloc.dart' as _i12;
-import 'features/overview/presentation/blocs/load_remote_data_bloc.dart'
-    as _i37;
 import 'features/overview/presentation/blocs/project_filter_bloc.dart' as _i21;
 import 'features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart'
-    as _i39; // ignore_for_file: unnecessary_lambdas
+    as _i40; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -129,14 +128,14 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       filterDataByType: get<_i15.FilterDataByType>()));
   gh.lazySingleton<_i36.LoadProjectData>(() =>
       _i36.LoadProjectData(projectRepository: get<_i23.ProjectRepository>()));
-  gh.singleton<_i37.LoadRemoteDataBloc>(_i37.LoadRemoteDataBloc(
+  gh.factory<_i37.Login>(
+      () => _i37.Login(authRepository: get<_i32.AuthRepository>()));
+  gh.lazySingleton<_i38.AuthentificationBloc>(
+      () => _i38.AuthentificationBloc(login: get<_i37.Login>()));
+  gh.singleton<_i39.DataBloc>(_i39.DataBloc(
       uploadProjectData: get<_i31.UploadProjectData>(),
       downloadProjectData: get<_i34.DownloadProjectData>()));
-  gh.factory<_i38.Login>(
-      () => _i38.Login(authRepository: get<_i32.AuthRepository>()));
-  gh.factory<_i39.SearchDataBloc>(() =>
-      _i39.SearchDataBloc(loadRemoteDataBloc: get<_i37.LoadRemoteDataBloc>()));
-  gh.lazySingleton<_i40.AuthentificationBloc>(
-      () => _i40.AuthentificationBloc(login: get<_i38.Login>()));
+  gh.factory<_i40.SearchDataBloc>(
+      () => _i40.SearchDataBloc(dataBloc: get<_i39.DataBloc>()));
   return get;
 }

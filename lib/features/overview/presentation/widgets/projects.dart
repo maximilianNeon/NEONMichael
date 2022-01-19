@@ -4,7 +4,7 @@ import 'package:neon_web/core/enum/enums.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/features/details/presentation/detail_screen.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
-import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
+import 'package:neon_web/features/overview/presentation/blocs/data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/project_focus_page.dart';
 import '../../../../core/domain/entities/project_entity.dart';
@@ -14,10 +14,9 @@ class Projects extends StatelessWidget {
   Widget build(BuildContext context) {
     ProjectFilterBloc projectFilterBloc =
         BlocProvider.of<ProjectFilterBloc>(context);
-    LoadRemoteDataBloc loadRemoteDataBloc =
-        BlocProvider.of<LoadRemoteDataBloc>(context);
+   DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
     FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
-    return BlocBuilder<LoadRemoteDataBloc, LoadRemoteDataState>(
+    return BlocBuilder<DataBloc, DataState>(
       builder: (context, state) => state.maybeMap(
         orElse: () => CircularProgressIndicator(),
         loaded: (projectData) =>
@@ -155,7 +154,7 @@ class Projects extends StatelessWidget {
                                                         index],
                                                 filteredByType: (state) => state
                                                     .filterdByTypeList[index],
-                                                empty: (_) => loadRemoteDataBloc
+                                                empty: (_) => dataBloc
                                                     .state
                                                     .maybeMap(
                                                         orElse: () =>
@@ -186,7 +185,7 @@ class Projects extends StatelessWidget {
                                                     .filterdByTypeList[index]
                                                     .assets[i]
                                                     .id,
-                                                empty: (state) => loadRemoteDataBloc
+                                                empty: (state) => dataBloc
                                                     .state
                                                     .maybeMap(
                                                         orElse: () => 0,

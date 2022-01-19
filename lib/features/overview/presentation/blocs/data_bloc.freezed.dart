@@ -2,7 +2,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'load_remote_data_bloc.dart';
+part of 'data_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,8 +14,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$LoadRemoteDataEventTearOff {
-  const _$LoadRemoteDataEventTearOff();
+class _$DataEventTearOff {
+  const _$DataEventTearOff();
 
   _LoadProjectData downloadProjectData() {
     return const _LoadProjectData();
@@ -23,10 +23,10 @@ class _$LoadRemoteDataEventTearOff {
 }
 
 /// @nodoc
-const $LoadRemoteDataEvent = _$LoadRemoteDataEventTearOff();
+const $DataEvent = _$DataEventTearOff();
 
 /// @nodoc
-mixin _$LoadRemoteDataEvent {
+mixin _$DataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadProjectData,
@@ -62,20 +62,18 @@ mixin _$LoadRemoteDataEvent {
 }
 
 /// @nodoc
-abstract class $LoadRemoteDataEventCopyWith<$Res> {
-  factory $LoadRemoteDataEventCopyWith(
-          LoadRemoteDataEvent value, $Res Function(LoadRemoteDataEvent) then) =
-      _$LoadRemoteDataEventCopyWithImpl<$Res>;
+abstract class $DataEventCopyWith<$Res> {
+  factory $DataEventCopyWith(DataEvent value, $Res Function(DataEvent) then) =
+      _$DataEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadRemoteDataEventCopyWithImpl<$Res>
-    implements $LoadRemoteDataEventCopyWith<$Res> {
-  _$LoadRemoteDataEventCopyWithImpl(this._value, this._then);
+class _$DataEventCopyWithImpl<$Res> implements $DataEventCopyWith<$Res> {
+  _$DataEventCopyWithImpl(this._value, this._then);
 
-  final LoadRemoteDataEvent _value;
+  final DataEvent _value;
   // ignore: unused_field
-  final $Res Function(LoadRemoteDataEvent) _then;
+  final $Res Function(DataEvent) _then;
 }
 
 /// @nodoc
@@ -86,8 +84,7 @@ abstract class _$LoadProjectDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadProjectDataCopyWithImpl<$Res>
-    extends _$LoadRemoteDataEventCopyWithImpl<$Res>
+class __$LoadProjectDataCopyWithImpl<$Res> extends _$DataEventCopyWithImpl<$Res>
     implements _$LoadProjectDataCopyWith<$Res> {
   __$LoadProjectDataCopyWithImpl(
       _LoadProjectData _value, $Res Function(_LoadProjectData) _then)
@@ -104,7 +101,7 @@ class _$_LoadProjectData implements _LoadProjectData {
 
   @override
   String toString() {
-    return 'LoadRemoteDataEvent.downloadProjectData()';
+    return 'DataEvent.downloadProjectData()';
   }
 
   @override
@@ -173,13 +170,13 @@ class _$_LoadProjectData implements _LoadProjectData {
   }
 }
 
-abstract class _LoadProjectData implements LoadRemoteDataEvent {
+abstract class _LoadProjectData implements DataEvent {
   const factory _LoadProjectData() = _$_LoadProjectData;
 }
 
 /// @nodoc
-class _$LoadRemoteDataStateTearOff {
-  const _$LoadRemoteDataStateTearOff();
+class _$DataStateTearOff {
+  const _$DataStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -205,10 +202,10 @@ class _$LoadRemoteDataStateTearOff {
 }
 
 /// @nodoc
-const $LoadRemoteDataState = _$LoadRemoteDataStateTearOff();
+const $DataState = _$DataStateTearOff();
 
 /// @nodoc
-mixin _$LoadRemoteDataState {
+mixin _$DataState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -268,20 +265,18 @@ mixin _$LoadRemoteDataState {
 }
 
 /// @nodoc
-abstract class $LoadRemoteDataStateCopyWith<$Res> {
-  factory $LoadRemoteDataStateCopyWith(
-          LoadRemoteDataState value, $Res Function(LoadRemoteDataState) then) =
-      _$LoadRemoteDataStateCopyWithImpl<$Res>;
+abstract class $DataStateCopyWith<$Res> {
+  factory $DataStateCopyWith(DataState value, $Res Function(DataState) then) =
+      _$DataStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$LoadRemoteDataStateCopyWithImpl<$Res>
-    implements $LoadRemoteDataStateCopyWith<$Res> {
-  _$LoadRemoteDataStateCopyWithImpl(this._value, this._then);
+class _$DataStateCopyWithImpl<$Res> implements $DataStateCopyWith<$Res> {
+  _$DataStateCopyWithImpl(this._value, this._then);
 
-  final LoadRemoteDataState _value;
+  final DataState _value;
   // ignore: unused_field
-  final $Res Function(LoadRemoteDataState) _then;
+  final $Res Function(DataState) _then;
 }
 
 /// @nodoc
@@ -291,8 +286,7 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res>
-    extends _$LoadRemoteDataStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res> extends _$DataStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -308,7 +302,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.initial()';
+    return 'DataState.initial()';
   }
 
   @override
@@ -401,7 +395,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements LoadRemoteDataState {
+abstract class _Initial implements DataState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -412,7 +406,7 @@ abstract class _$EmptyCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$EmptyCopyWithImpl<$Res> extends _$LoadRemoteDataStateCopyWithImpl<$Res>
+class __$EmptyCopyWithImpl<$Res> extends _$DataStateCopyWithImpl<$Res>
     implements _$EmptyCopyWith<$Res> {
   __$EmptyCopyWithImpl(_Empty _value, $Res Function(_Empty) _then)
       : super(_value, (v) => _then(v as _Empty));
@@ -428,7 +422,7 @@ class _$_Empty implements _Empty {
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.empty()';
+    return 'DataState.empty()';
   }
 
   @override
@@ -521,7 +515,7 @@ class _$_Empty implements _Empty {
   }
 }
 
-abstract class _Empty implements LoadRemoteDataState {
+abstract class _Empty implements DataState {
   const factory _Empty() = _$_Empty;
 }
 
@@ -532,8 +526,7 @@ abstract class _$LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadingCopyWithImpl<$Res>
-    extends _$LoadRemoteDataStateCopyWithImpl<$Res>
+class __$LoadingCopyWithImpl<$Res> extends _$DataStateCopyWithImpl<$Res>
     implements _$LoadingCopyWith<$Res> {
   __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
       : super(_value, (v) => _then(v as _Loading));
@@ -549,7 +542,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.loading()';
+    return 'DataState.loading()';
   }
 
   @override
@@ -642,7 +635,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements LoadRemoteDataState {
+abstract class _Loading implements DataState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -654,8 +647,7 @@ abstract class _$LoadedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$LoadedCopyWithImpl<$Res>
-    extends _$LoadRemoteDataStateCopyWithImpl<$Res>
+class __$LoadedCopyWithImpl<$Res> extends _$DataStateCopyWithImpl<$Res>
     implements _$LoadedCopyWith<$Res> {
   __$LoadedCopyWithImpl(_Loaded _value, $Res Function(_Loaded) _then)
       : super(_value, (v) => _then(v as _Loaded));
@@ -686,7 +678,7 @@ class _$_Loaded implements _Loaded {
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.loaded(projectEntityList: $projectEntityList)';
+    return 'DataState.loaded(projectEntityList: $projectEntityList)';
   }
 
   @override
@@ -788,7 +780,7 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements LoadRemoteDataState {
+abstract class _Loaded implements DataState {
   const factory _Loaded({required List<ProjectEntity> projectEntityList}) =
       _$_Loaded;
 
@@ -804,7 +796,7 @@ abstract class _$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ErrorCopyWithImpl<$Res> extends _$LoadRemoteDataStateCopyWithImpl<$Res>
+class __$ErrorCopyWithImpl<$Res> extends _$DataStateCopyWithImpl<$Res>
     implements _$ErrorCopyWith<$Res> {
   __$ErrorCopyWithImpl(_Error _value, $Res Function(_Error) _then)
       : super(_value, (v) => _then(v as _Error));
@@ -820,7 +812,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'LoadRemoteDataState.error()';
+    return 'DataState.error()';
   }
 
   @override
@@ -913,6 +905,6 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements LoadRemoteDataState {
+abstract class _Error implements DataState {
   const factory _Error() = _$_Error;
 }
