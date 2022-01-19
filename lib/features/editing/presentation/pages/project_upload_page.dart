@@ -1,19 +1,22 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neon_web/core/enum/type.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
 import 'package:neon_web/core/style/border_constants.dart';
 import 'package:neon_web/core/style/color_constants.dart';
+import 'package:neon_web/core/style/style.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
-import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 import 'package:neon_web/features/editing/presentation/widgets/asset_pop_up_container.dart';
 import 'package:neon_web/features/editing/presentation/widgets/project_data_input.dart';
 import 'package:neon_web/features/editing/presentation/widgets/project_type_chooser.dart';
 import 'package:neon_web/features/editing/presentation/widgets/screen_upload_container.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'package:neon_web/features/overview/presentation/pages/overview_page.dart';
 
 class ProjectUploadPage extends StatelessWidget {
   ProjectUploadPage({Key? key}) : super(key: key);
@@ -38,13 +41,12 @@ class ProjectUploadPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    UploadImageBloc uploadImageBloc = BlocProvider.of<UploadImageBloc>(context);
     ProjectEditingBloc projectEditingBloc =
         BlocProvider.of<ProjectEditingBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
     return PageLayout(
       showBackArrow: true,
-      showLogOutAndUpload: false ,
+      showLogOutAndUpload: false,
       appBarHeader: "ProjectUploadPage",
       widget: Padding(
         padding: EdgeInsets.only(top: 50, left: 100, right: 100, bottom: 10),
@@ -58,108 +60,155 @@ class ProjectUploadPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text("Projekt hochladen"),
-                              SizedBox(
-                                  height:
-                                      UIHelper().verticalSpaceMedium(context)),
-                              ProjectDataInput(textfieldTitle: "Projekt Name"),
-                              SizedBox(
-                                  height:
-                                      UIHelper().verticalSpaceMedium(context)),
-                              ProjectTypeChooser(),
-                              SizedBox(
-                                  height:
-                                      UIHelper().verticalSpaceMedium(context)),
-                              ProjectDataInput(
-                                  textfieldTitle: "Projekt Beschreibung")
-                            ]),
-                        SizedBox(
-                          width: UIHelper().horizontalSpaceMedium(context),
-                        ),
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text("Projekt Icon"),
-                              SizedBox(
-                                  height:
-                                      UIHelper().verticalSpaceMedium(context)),
-                              GestureDetector(
-                                  onTap: () async {
-                                    final event = await _dropzoneViewController
-                                        .pickFiles(multiple: false);
-                                    if (event.isEmpty) return;
-
-                                    uploadImageBloc.add(
-                                      UploadImageEvent.uploadImage(
-                                        droppedImageEntity:
-                                            await convertDroppedFile(
-                                                event.first),
-                                      ),
-                                    );
-                                  },
-                                  child: Text("Bild Hochladen")),
-                              SizedBox(
-                                  height:
-                                      UIHelper().verticalSpaceSmall(context)),
-                              Container(
-                                height: 200,
-                                width: 200,
-                                child: Stack(children: [
-                                  DropzoneView(
-                                    onError: (errorMessage) {},
-                                    onLeave: () {},
-                                    onLoaded: () {},
-                                    onDrop: (dynamic event) async =>
-                                        uploadImageBloc
-                                            .add(UploadImageEvent.uploadImage(
-                                                droppedImageEntity:
-                                                    await convertDroppedFile(
-                                                        event))),
-                                    onCreated: (controller) => this
-                                        ._dropzoneViewController = controller,
+                    BlocBuilder<ProjectEditingBloc, ProjectEditingState>(
+                      builder: (context, projectEditingstate) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text("Projekt hochladen"),
+                                  SizedBox(
+                                      height: UIHelper()
+                                          .verticalSpaceMedium(context)),
+                                  ProjectDataInput(
+                                      textfieldTitle: "Projekt Name",
+                                      textFormFieldText:
+                                          projectEditingstate.maybeMap(
+                                              orElse: () => "",
+                                              editing: (editing) =>
+                                                  editing.projectEntity.title)),
+                                  SizedBox(
+                                      height: UIHelper()
+                                          .verticalSpaceMedium(context)),
+                                  BlocBuilder<ProjectEditingBloc,
+                                      ProjectEditingState>(
+                                    builder: (context, state) {
+                                      return ProjectTypeChooser(
+                                        projectType: state.maybeMap(
+                                            orElse: () => ProjectType.App,
+                                            editing: (editing) => editing
+                                                .projectEntity.projectType),
+                                      );
+                                    },
                                   ),
-                                  BlocBuilder<UploadImageBloc,
-                                      UploadImageState>(
-                                    builder: (context, state) => state.maybeMap(
-                                      loading: (_) =>
-                                          CircularProgressIndicator(),
-                                      loaded: (state) => Image.memory(
-                                        state.droppedImageEntity.fileData,
-                                        height: 200,
-                                        width: 200,
-                                        fit: BoxFit.fill,
-                                      ),
-                                      orElse: () => Container(
-                                        width: 200,
-                                        height: 200,
-                                        decoration: BoxDecoration(
-                                          borderRadius: kBorderRadius_10,
-                                          border: Border.all(
-                                            color: kColorGrey,
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text("Drag & Drop"),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  SizedBox(
+                                      height: UIHelper()
+                                          .verticalSpaceMedium(context)),
+                                  ProjectDataInput(
+                                      textfieldTitle: "Projekt Beschreibung",
+                                      textFormFieldText:
+                                          projectEditingstate.maybeMap(
+                                              orElse: () => "",
+                                              editing: (editing) => editing
+                                                  .projectEntity.description))
                                 ]),
-                              )
-                            ])
-                      ],
+                            SizedBox(
+                              width: UIHelper().horizontalSpaceMedium(context),
+                            ),
+                            Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text("Projekt Icon"),
+                                  SizedBox(
+                                      height: UIHelper()
+                                          .verticalSpaceMedium(context)),
+                                  GestureDetector(
+                                      onTap: () async {
+                                        final event =
+                                            await _dropzoneViewController
+                                                .pickFiles(multiple: false);
+                                        if (event.isEmpty) return;
+
+                                        projectEditingBloc.add(
+                                          ProjectEditingEvent.uploadImage(
+                                              droppedImageEntity:
+                                                  await convertDroppedFile(
+                                                      event.first)),
+                                        );
+                                      },
+                                      child: Text("Bild Hochladen")),
+                                  SizedBox(
+                                      height: UIHelper()
+                                          .verticalSpaceSmall(context)),
+                                  Container(
+                                    height: 200,
+                                    width: 200,
+                                    child: Stack(children: [
+                                      DropzoneView(
+                                        onError: (errorMessage) {},
+                                        onLeave: () {},
+                                        onLoaded: () {},
+                                        onDrop: (dynamic event) async =>
+                                            projectEditingBloc.add(
+                                          ProjectEditingEvent.uploadImage(
+                                              droppedImageEntity:
+                                                  await convertDroppedFile(
+                                                      event)),
+                                        ),
+                                        onCreated: (controller) =>
+                                            this._dropzoneViewController =
+                                                controller,
+                                      ),
+                                      projectEditingstate.maybeMap(
+                                          orElse: () => Container(
+                                                width: 200,
+                                                height: 200,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      kBorderRadius_10,
+                                                  border: Border.all(
+                                                    color: kColorGrey,
+                                                  ),
+                                                ),
+                                                child: Center(
+                                                  child: Text("Drag & Drop"),
+                                                ),
+                                              ),
+                                          editing: (editing) =>
+                                              projectEditingBloc
+                                                      .iconImageFileCache
+                                                      .isEmpty
+                                                  ? editing.projectEntity
+                                                              .imageUrl.length >
+                                                          2
+                                                      ? Image.network(editing
+                                                          .projectEntity
+                                                          .imageUrl)
+                                                      : Container(
+                                                          width: 200,
+                                                          height: 200,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            borderRadius:
+                                                                kBorderRadius_10,
+                                                            border: Border.all(
+                                                              color: kColorGrey,
+                                                            ),
+                                                          ),
+                                                          child: Center(
+                                                            child: Text(
+                                                                "Drag & Drop"),
+                                                          ),
+                                                        )
+                                                  : Image.memory(
+                                                      projectEditingBloc
+                                                          .iconImageFileCache
+                                                          .values
+                                                          .first))
+                                    ]),
+                                  )
+                                ])
+                          ],
+                        );
+                      },
                     ),
                     SizedBox(
                       height: UIHelper().verticalSpaceLarge(context),
@@ -204,43 +253,50 @@ class ProjectUploadPage extends StatelessWidget {
                             child: ScreenUploadContainer())
                       ],
                     ),
-                    SizedBox(
-                      height: UIHelper().verticalSpaceMedium(context),
-                    ),
+                    verticalSpaceMedium(context: context),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            assetBloc.state.maybeMap(
-                                orElse: () {},
-                                loaded: (state) {
+                        BlocBuilder<AssetBloc, AssetState>(
+                          builder: (context, state) {
+                            return state.maybeMap(
+                              orElse: () => CircularProgressIndicator(),
+                              loaded: (loaded) => GestureDetector(
+                                onTap: () {
                                   projectEditingBloc.add(
-                                      ProjectEditingEvent.upload(
-                                          assetEntityList:
-                                              state.assetEntityList,
-                                          assetFileCache:
-                                              state.assetFileCache));
-                                });
+                                    ProjectEditingEvent.upload(
+                                        assetEntityList: loaded.assetEntityList,
+                                        assetFileCache: loaded.assetFileCache),
+                                  );
 
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            height: 50,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                color: kColorLila,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10))),
-                            child: Center(
-                              child: Text(
-                                "Hochladen",
-                                style: kButtonTextStyle,
+                                  projectEditingBloc.state.maybeMap(
+                                    orElse: () {},
+                                    editing: (_) => Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => OverviewPage(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: 150,
+                                  decoration: BoxDecoration(
+                                      color: kColorLila,
+                                      borderRadius: kBorderRadius_10),
+                                  child: Center(
+                                    child: Text(
+                                      "Hochladen",
+                                      style: kButtonTextStyle,
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
+                            );
+                          },
                         )
                       ],
                     )

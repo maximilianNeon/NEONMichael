@@ -17,8 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ProjectEditingEventTearOff {
   const _$ProjectEditingEventTearOff();
 
-  _Started started() {
-    return const _Started();
+  _Reset reset() {
+    return const _Reset();
   }
 
   _AddName addName({required String name}) {
@@ -47,6 +47,19 @@ class _$ProjectEditingEventTearOff {
       assetEntityList: assetEntityList,
     );
   }
+
+  _AddExistingProject addExistingProject(
+      {required ProjectEntity projectEntity}) {
+    return _AddExistingProject(
+      projectEntity: projectEntity,
+    );
+  }
+
+  _UploadImage uploadImage({required DroppedImageEntity droppedImageEntity}) {
+    return _UploadImage(
+      droppedImageEntity: droppedImageEntity,
+    );
+  }
 }
 
 /// @nodoc
@@ -56,63 +69,76 @@ const $ProjectEditingEvent = _$ProjectEditingEventTearOff();
 mixin _$ProjectEditingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String name) addName,
     required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
     required TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)
         upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
     required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,36 +162,35 @@ class _$ProjectEditingEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$ResetCopyWith<$Res> {
+  factory _$ResetCopyWith(_Reset value, $Res Function(_Reset) then) =
+      __$ResetCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res>
-    extends _$ProjectEditingEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+class __$ResetCopyWithImpl<$Res> extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$ResetCopyWith<$Res> {
+  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
+      : super(_value, (v) => _then(v as _Reset));
 
   @override
-  _Started get _value => super._value as _Started;
+  _Reset get _value => super._value as _Reset;
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_Reset implements _Reset {
+  const _$_Reset();
 
   @override
   String toString() {
-    return 'ProjectEditingEvent.started()';
+    return 'ProjectEditingEvent.reset()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
+        (other.runtimeType == runtimeType && other is _Reset);
   }
 
   @override
@@ -174,45 +199,52 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String name) addName,
     required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
     required TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)
         upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
   }) {
-    return started();
+    return reset();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) {
-    return started?.call();
+    return reset?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (reset != null) {
+      return reset();
     }
     return orElse();
   }
@@ -220,46 +252,52 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
     required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
-    return started(this);
+    return reset(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
   }) {
-    return started?.call(this);
+    return reset?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (reset != null) {
+      return reset(this);
     }
     return orElse();
   }
 }
 
-abstract class _Started implements ProjectEditingEvent {
-  const factory _Started() = _$_Started;
+abstract class _Reset implements ProjectEditingEvent {
+  const factory _Reset() = _$_Reset;
 }
 
 /// @nodoc
@@ -325,13 +363,16 @@ class _$_AddName implements _AddName {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String name) addName,
     required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
     required TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)
         upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
   }) {
     return addName(name);
   }
@@ -339,13 +380,15 @@ class _$_AddName implements _AddName {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) {
     return addName?.call(name);
   }
@@ -353,13 +396,15 @@ class _$_AddName implements _AddName {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -371,11 +416,13 @@ class _$_AddName implements _AddName {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
     required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return addName(this);
   }
@@ -383,11 +430,13 @@ class _$_AddName implements _AddName {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
   }) {
     return addName?.call(this);
   }
@@ -395,11 +444,13 @@ class _$_AddName implements _AddName {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (addName != null) {
@@ -481,13 +532,16 @@ class _$_AddType implements _AddType {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String name) addName,
     required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
     required TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)
         upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
   }) {
     return addType(type);
   }
@@ -495,13 +549,15 @@ class _$_AddType implements _AddType {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) {
     return addType?.call(type);
   }
@@ -509,13 +565,15 @@ class _$_AddType implements _AddType {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -527,11 +585,13 @@ class _$_AddType implements _AddType {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
     required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return addType(this);
   }
@@ -539,11 +599,13 @@ class _$_AddType implements _AddType {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
   }) {
     return addType?.call(this);
   }
@@ -551,11 +613,13 @@ class _$_AddType implements _AddType {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (addType != null) {
@@ -640,13 +704,16 @@ class _$_AddDescription implements _AddDescription {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String name) addName,
     required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
     required TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)
         upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
   }) {
     return addDescription(description);
   }
@@ -654,13 +721,15 @@ class _$_AddDescription implements _AddDescription {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) {
     return addDescription?.call(description);
   }
@@ -668,13 +737,15 @@ class _$_AddDescription implements _AddDescription {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) {
     if (addDescription != null) {
@@ -686,11 +757,13 @@ class _$_AddDescription implements _AddDescription {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
     required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return addDescription(this);
   }
@@ -698,11 +771,13 @@ class _$_AddDescription implements _AddDescription {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
   }) {
     return addDescription?.call(this);
   }
@@ -710,11 +785,13 @@ class _$_AddDescription implements _AddDescription {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (addDescription != null) {
@@ -813,13 +890,16 @@ class _$_UploadProject implements _UploadProject {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() reset,
     required TResult Function(String name) addName,
     required TResult Function(ProjectType type) addType,
     required TResult Function(String description) addDescription,
     required TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)
         upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
   }) {
     return upload(assetFileCache, assetEntityList);
   }
@@ -827,13 +907,15 @@ class _$_UploadProject implements _UploadProject {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
   }) {
     return upload?.call(assetFileCache, assetEntityList);
   }
@@ -841,13 +923,15 @@ class _$_UploadProject implements _UploadProject {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? reset,
     TResult Function(String name)? addName,
     TResult Function(ProjectType type)? addType,
     TResult Function(String description)? addDescription,
     TResult Function(Map<int, Uint8List> assetFileCache,
             List<AssetEntity> assetEntityList)?
         upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
     required TResult orElse(),
   }) {
     if (upload != null) {
@@ -859,11 +943,13 @@ class _$_UploadProject implements _UploadProject {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Reset value) reset,
     required TResult Function(_AddName value) addName,
     required TResult Function(_AddType value) addType,
     required TResult Function(_AddDescription value) addDescription,
     required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
   }) {
     return upload(this);
   }
@@ -871,11 +957,13 @@ class _$_UploadProject implements _UploadProject {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
   }) {
     return upload?.call(this);
   }
@@ -883,11 +971,13 @@ class _$_UploadProject implements _UploadProject {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Reset value)? reset,
     TResult Function(_AddName value)? addName,
     TResult Function(_AddType value)? addType,
     TResult Function(_AddDescription value)? addDescription,
     TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
     required TResult orElse(),
   }) {
     if (upload != null) {
@@ -910,6 +1000,371 @@ abstract class _UploadProject implements ProjectEditingEvent {
 }
 
 /// @nodoc
+abstract class _$AddExistingProjectCopyWith<$Res> {
+  factory _$AddExistingProjectCopyWith(
+          _AddExistingProject value, $Res Function(_AddExistingProject) then) =
+      __$AddExistingProjectCopyWithImpl<$Res>;
+  $Res call({ProjectEntity projectEntity});
+
+  $ProjectEntityCopyWith<$Res> get projectEntity;
+}
+
+/// @nodoc
+class __$AddExistingProjectCopyWithImpl<$Res>
+    extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$AddExistingProjectCopyWith<$Res> {
+  __$AddExistingProjectCopyWithImpl(
+      _AddExistingProject _value, $Res Function(_AddExistingProject) _then)
+      : super(_value, (v) => _then(v as _AddExistingProject));
+
+  @override
+  _AddExistingProject get _value => super._value as _AddExistingProject;
+
+  @override
+  $Res call({
+    Object? projectEntity = freezed,
+  }) {
+    return _then(_AddExistingProject(
+      projectEntity: projectEntity == freezed
+          ? _value.projectEntity
+          : projectEntity // ignore: cast_nullable_to_non_nullable
+              as ProjectEntity,
+    ));
+  }
+
+  @override
+  $ProjectEntityCopyWith<$Res> get projectEntity {
+    return $ProjectEntityCopyWith<$Res>(_value.projectEntity, (value) {
+      return _then(_value.copyWith(projectEntity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_AddExistingProject implements _AddExistingProject {
+  const _$_AddExistingProject({required this.projectEntity});
+
+  @override
+  final ProjectEntity projectEntity;
+
+  @override
+  String toString() {
+    return 'ProjectEditingEvent.addExistingProject(projectEntity: $projectEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddExistingProject &&
+            const DeepCollectionEquality()
+                .equals(other.projectEntity, projectEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(projectEntity));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddExistingProjectCopyWith<_AddExistingProject> get copyWith =>
+      __$AddExistingProjectCopyWithImpl<_AddExistingProject>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String name) addName,
+    required TResult Function(ProjectType type) addType,
+    required TResult Function(String description) addDescription,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
+  }) {
+    return addExistingProject(projectEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String name)? addName,
+    TResult Function(ProjectType type)? addType,
+    TResult Function(String description)? addDescription,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
+  }) {
+    return addExistingProject?.call(projectEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String name)? addName,
+    TResult Function(ProjectType type)? addType,
+    TResult Function(String description)? addDescription,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (addExistingProject != null) {
+      return addExistingProject(projectEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
+  }) {
+    return addExistingProject(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
+  }) {
+    return addExistingProject?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (addExistingProject != null) {
+      return addExistingProject(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddExistingProject implements ProjectEditingEvent {
+  const factory _AddExistingProject({required ProjectEntity projectEntity}) =
+      _$_AddExistingProject;
+
+  ProjectEntity get projectEntity;
+  @JsonKey(ignore: true)
+  _$AddExistingProjectCopyWith<_AddExistingProject> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UploadImageCopyWith<$Res> {
+  factory _$UploadImageCopyWith(
+          _UploadImage value, $Res Function(_UploadImage) then) =
+      __$UploadImageCopyWithImpl<$Res>;
+  $Res call({DroppedImageEntity droppedImageEntity});
+
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity;
+}
+
+/// @nodoc
+class __$UploadImageCopyWithImpl<$Res>
+    extends _$ProjectEditingEventCopyWithImpl<$Res>
+    implements _$UploadImageCopyWith<$Res> {
+  __$UploadImageCopyWithImpl(
+      _UploadImage _value, $Res Function(_UploadImage) _then)
+      : super(_value, (v) => _then(v as _UploadImage));
+
+  @override
+  _UploadImage get _value => super._value as _UploadImage;
+
+  @override
+  $Res call({
+    Object? droppedImageEntity = freezed,
+  }) {
+    return _then(_UploadImage(
+      droppedImageEntity: droppedImageEntity == freezed
+          ? _value.droppedImageEntity
+          : droppedImageEntity // ignore: cast_nullable_to_non_nullable
+              as DroppedImageEntity,
+    ));
+  }
+
+  @override
+  $DroppedImageEntityCopyWith<$Res> get droppedImageEntity {
+    return $DroppedImageEntityCopyWith<$Res>(_value.droppedImageEntity,
+        (value) {
+      return _then(_value.copyWith(droppedImageEntity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_UploadImage implements _UploadImage {
+  const _$_UploadImage({required this.droppedImageEntity});
+
+  @override
+  final DroppedImageEntity droppedImageEntity;
+
+  @override
+  String toString() {
+    return 'ProjectEditingEvent.uploadImage(droppedImageEntity: $droppedImageEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _UploadImage &&
+            const DeepCollectionEquality()
+                .equals(other.droppedImageEntity, droppedImageEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(droppedImageEntity));
+
+  @JsonKey(ignore: true)
+  @override
+  _$UploadImageCopyWith<_UploadImage> get copyWith =>
+      __$UploadImageCopyWithImpl<_UploadImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reset,
+    required TResult Function(String name) addName,
+    required TResult Function(ProjectType type) addType,
+    required TResult Function(String description) addDescription,
+    required TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)
+        upload,
+    required TResult Function(ProjectEntity projectEntity) addExistingProject,
+    required TResult Function(DroppedImageEntity droppedImageEntity)
+        uploadImage,
+  }) {
+    return uploadImage(droppedImageEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String name)? addName,
+    TResult Function(ProjectType type)? addType,
+    TResult Function(String description)? addDescription,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
+  }) {
+    return uploadImage?.call(droppedImageEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reset,
+    TResult Function(String name)? addName,
+    TResult Function(ProjectType type)? addType,
+    TResult Function(String description)? addDescription,
+    TResult Function(Map<int, Uint8List> assetFileCache,
+            List<AssetEntity> assetEntityList)?
+        upload,
+    TResult Function(ProjectEntity projectEntity)? addExistingProject,
+    TResult Function(DroppedImageEntity droppedImageEntity)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (uploadImage != null) {
+      return uploadImage(droppedImageEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_AddName value) addName,
+    required TResult Function(_AddType value) addType,
+    required TResult Function(_AddDescription value) addDescription,
+    required TResult Function(_UploadProject value) upload,
+    required TResult Function(_AddExistingProject value) addExistingProject,
+    required TResult Function(_UploadImage value) uploadImage,
+  }) {
+    return uploadImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
+  }) {
+    return uploadImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Reset value)? reset,
+    TResult Function(_AddName value)? addName,
+    TResult Function(_AddType value)? addType,
+    TResult Function(_AddDescription value)? addDescription,
+    TResult Function(_UploadProject value)? upload,
+    TResult Function(_AddExistingProject value)? addExistingProject,
+    TResult Function(_UploadImage value)? uploadImage,
+    required TResult orElse(),
+  }) {
+    if (uploadImage != null) {
+      return uploadImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UploadImage implements ProjectEditingEvent {
+  const factory _UploadImage({required DroppedImageEntity droppedImageEntity}) =
+      _$_UploadImage;
+
+  DroppedImageEntity get droppedImageEntity;
+  @JsonKey(ignore: true)
+  _$UploadImageCopyWith<_UploadImage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$ProjectEditingStateTearOff {
   const _$ProjectEditingStateTearOff();
 
@@ -917,10 +1372,17 @@ class _$ProjectEditingStateTearOff {
     return const _Initial();
   }
 
-  _Editing editing({required ProjectEntity projectEntity}) {
+  _Editing editing(
+      {required ProjectEntity projectEntity,
+      required Map<int, Uint8List> iconFileCache}) {
     return _Editing(
       projectEntity: projectEntity,
+      iconFileCache: iconFileCache,
     );
+  }
+
+  _Loading loading() {
+    return const _Loading();
   }
 }
 
@@ -932,19 +1394,28 @@ mixin _$ProjectEditingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProjectEntity projectEntity) editing,
+    required TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)
+        editing,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProjectEntity projectEntity)? editing,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProjectEntity projectEntity)? editing,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -952,18 +1423,21 @@ mixin _$ProjectEditingState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Editing value) editing,
+    required TResult Function(_Loading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -1026,7 +1500,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProjectEntity projectEntity) editing,
+    required TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)
+        editing,
+    required TResult Function() loading,
   }) {
     return initial();
   }
@@ -1035,7 +1512,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProjectEntity projectEntity)? editing,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
   }) {
     return initial?.call();
   }
@@ -1044,7 +1524,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProjectEntity projectEntity)? editing,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1058,6 +1541,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Editing value) editing,
+    required TResult Function(_Loading value) loading,
   }) {
     return initial(this);
   }
@@ -1067,6 +1551,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -1076,6 +1561,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -1093,7 +1579,7 @@ abstract class _Initial implements ProjectEditingState {
 abstract class _$EditingCopyWith<$Res> {
   factory _$EditingCopyWith(_Editing value, $Res Function(_Editing) then) =
       __$EditingCopyWithImpl<$Res>;
-  $Res call({ProjectEntity projectEntity});
+  $Res call({ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache});
 
   $ProjectEntityCopyWith<$Res> get projectEntity;
 }
@@ -1111,12 +1597,17 @@ class __$EditingCopyWithImpl<$Res>
   @override
   $Res call({
     Object? projectEntity = freezed,
+    Object? iconFileCache = freezed,
   }) {
     return _then(_Editing(
       projectEntity: projectEntity == freezed
           ? _value.projectEntity
           : projectEntity // ignore: cast_nullable_to_non_nullable
               as ProjectEntity,
+      iconFileCache: iconFileCache == freezed
+          ? _value.iconFileCache
+          : iconFileCache // ignore: cast_nullable_to_non_nullable
+              as Map<int, Uint8List>,
     ));
   }
 
@@ -1131,14 +1622,16 @@ class __$EditingCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Editing implements _Editing {
-  const _$_Editing({required this.projectEntity});
+  const _$_Editing({required this.projectEntity, required this.iconFileCache});
 
   @override
   final ProjectEntity projectEntity;
+  @override
+  final Map<int, Uint8List> iconFileCache;
 
   @override
   String toString() {
-    return 'ProjectEditingState.editing(projectEntity: $projectEntity)';
+    return 'ProjectEditingState.editing(projectEntity: $projectEntity, iconFileCache: $iconFileCache)';
   }
 
   @override
@@ -1147,12 +1640,16 @@ class _$_Editing implements _Editing {
         (other.runtimeType == runtimeType &&
             other is _Editing &&
             const DeepCollectionEquality()
-                .equals(other.projectEntity, projectEntity));
+                .equals(other.projectEntity, projectEntity) &&
+            const DeepCollectionEquality()
+                .equals(other.iconFileCache, iconFileCache));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(projectEntity));
+      runtimeType,
+      const DeepCollectionEquality().hash(projectEntity),
+      const DeepCollectionEquality().hash(iconFileCache));
 
   @JsonKey(ignore: true)
   @override
@@ -1163,29 +1660,38 @@ class _$_Editing implements _Editing {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(ProjectEntity projectEntity) editing,
+    required TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)
+        editing,
+    required TResult Function() loading,
   }) {
-    return editing(projectEntity);
+    return editing(projectEntity, iconFileCache);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProjectEntity projectEntity)? editing,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
   }) {
-    return editing?.call(projectEntity);
+    return editing?.call(projectEntity, iconFileCache);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(ProjectEntity projectEntity)? editing,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (editing != null) {
-      return editing(projectEntity);
+      return editing(projectEntity, iconFileCache);
     }
     return orElse();
   }
@@ -1195,6 +1701,7 @@ class _$_Editing implements _Editing {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Editing value) editing,
+    required TResult Function(_Loading value) loading,
   }) {
     return editing(this);
   }
@@ -1204,6 +1711,7 @@ class _$_Editing implements _Editing {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
   }) {
     return editing?.call(this);
   }
@@ -1213,6 +1721,7 @@ class _$_Editing implements _Editing {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
     required TResult orElse(),
   }) {
     if (editing != null) {
@@ -1223,10 +1732,128 @@ class _$_Editing implements _Editing {
 }
 
 abstract class _Editing implements ProjectEditingState {
-  const factory _Editing({required ProjectEntity projectEntity}) = _$_Editing;
+  const factory _Editing(
+      {required ProjectEntity projectEntity,
+      required Map<int, Uint8List> iconFileCache}) = _$_Editing;
 
   ProjectEntity get projectEntity;
+  Map<int, Uint8List> get iconFileCache;
   @JsonKey(ignore: true)
   _$EditingCopyWith<_Editing> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$LoadingCopyWith<$Res> {
+  factory _$LoadingCopyWith(_Loading value, $Res Function(_Loading) then) =
+      __$LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$LoadingCopyWithImpl<$Res>
+    extends _$ProjectEditingStateCopyWithImpl<$Res>
+    implements _$LoadingCopyWith<$Res> {
+  __$LoadingCopyWithImpl(_Loading _value, $Res Function(_Loading) _then)
+      : super(_value, (v) => _then(v as _Loading));
+
+  @override
+  _Loading get _value => super._value as _Loading;
+}
+
+/// @nodoc
+
+class _$_Loading implements _Loading {
+  const _$_Loading();
+
+  @override
+  String toString() {
+    return 'ProjectEditingState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)
+        editing,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            ProjectEntity projectEntity, Map<int, Uint8List> iconFileCache)?
+        editing,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Editing value) editing,
+    required TResult Function(_Loading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Editing value)? editing,
+    TResult Function(_Loading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Loading implements ProjectEditingState {
+  const factory _Loading() = _$_Loading;
 }

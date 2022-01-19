@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/features/authentication/presentation/bloc/authentification_bloc.dart';
-import 'package:neon_web/features/authentication/presentation/pages/login_page.dart';
 import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
-import 'package:neon_web/features/editing/presentation/bloc/upload_image_bloc.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/bloc/search_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/filter_button_bloc.dart';
@@ -34,7 +32,7 @@ class WebApp extends StatelessWidget {
         BlocProvider(create: (context) => getIt<FilterBloc>()),
         BlocProvider(create: (context) => getIt<ProjectFilterBloc>()),
         BlocProvider(create: (context) => getIt<ProjectEditingBloc>()),
-        BlocProvider(create: (context) => getIt<UploadImageBloc>()),
+       
         BlocProvider(create: (context) => getIt<AssetBloc>()),
         BlocProvider(create: (context) => getIt<PatternElementBloc>())
       ],

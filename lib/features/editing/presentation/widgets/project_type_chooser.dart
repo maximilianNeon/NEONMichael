@@ -6,14 +6,15 @@ import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
 
 class ProjectTypeChooser extends StatefulWidget {
-  const ProjectTypeChooser({Key? key}) : super(key: key);
+  ProjectType projectType;
+  
+  ProjectTypeChooser({required this.projectType ,Key? key}) : super(key: key);
 
   @override
   State<ProjectTypeChooser> createState() => _ProjectTypeChooserState();
 }
 
 class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
-  ProjectType projectType =  ProjectType.App;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
               children: [
                 GestureDetector(
                   onTap: () => setState(() {
-                    projectType = ProjectType.App;
+                    widget.projectType = ProjectType.App;
                     projectEditingBloc.add(ProjectEditingEvent.addType(type: ProjectType.App));
 
                   }),
@@ -42,7 +43,7 @@ class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
                     ,
                     height: 30,
                     decoration: BoxDecoration(
-                      color: projectType == ProjectType.App ? kColorTopupRed : kColorWhite,
+                      color: widget.projectType == ProjectType.App ? kColorTopupRed : kColorWhite,
                         borderRadius: kBorderRadius_10,
                         border: Border.all(color: kColorBlack)),
                     child: Center(child: Text(ProjectType.App.toString().split(".").last)),
@@ -51,7 +52,7 @@ class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
                 horizontalSpaceSmall(context: context),
                 GestureDetector(
                   onTap: () => setState(() {
-                    projectType = ProjectType.WebDesktop;
+                    widget.projectType = ProjectType.WebDesktop;
                     projectEditingBloc.add(ProjectEditingEvent.addType(type: ProjectType.WebDesktop));
                   }),
                   child: Container(
@@ -61,7 +62,7 @@ class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
                     height: 30,
                     decoration: BoxDecoration(
                       color:
-                        projectType == ProjectType.WebDesktop ? kColorTopupRed : kColorWhite,
+                        widget.projectType == ProjectType.WebDesktop ? kColorTopupRed : kColorWhite,
                         borderRadius: kBorderRadius_10,
                         border: Border.all(color: kColorBlack)),
                     child: Center(child: Text(ProjectType.WebDesktop.toString().split(".").last)),
@@ -70,7 +71,7 @@ class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
                 horizontalSpaceSmall(context: context),
                 GestureDetector(
                   onTap: () => setState(() {
-                    projectType = ProjectType.WebMobile;
+                    widget.projectType = ProjectType.WebMobile;
                     projectEditingBloc.add(ProjectEditingEvent.addType(type: ProjectType.WebMobile));
                   }),
                   child: Container(
@@ -78,7 +79,7 @@ class _ProjectTypeChooserState extends State<ProjectTypeChooser> {
                     ,
                     height: 30,
                     decoration: BoxDecoration(
-                        color: projectType == ProjectType.WebMobile
+                        color: widget.projectType == ProjectType.WebMobile
                             ? kColorTopupRed
                             : kColorWhite,
                         borderRadius: kBorderRadius_10,

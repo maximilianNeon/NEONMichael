@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neon_web/core/presentation%20/pages/page_layout.dart';
-import 'package:neon_web/core/style/color_constants.dart';
+import 'package:neon_web/core/style/style.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
+import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
+import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/widgets/search_bar.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button_row.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_container.dart';
 import 'package:neon_web/features/overview/presentation/widgets/project_focus_gridview.dart';
+import '../../../../core/domain/entities/project_entity.dart';
 
 class ProjectFocusPage extends StatelessWidget {
-  final String projectTitle;
-  final String imageUrl;
-  const ProjectFocusPage(
-      {required this.projectTitle, required this.imageUrl, Key? key})
+  final ProjectEntity projectEntity;
+
+  const ProjectFocusPage({required this.projectEntity, Key? key})
       : super(key: key);
 
   @override
@@ -54,11 +57,28 @@ class ProjectFocusPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       CircleAvatar(
-                        backgroundImage: NetworkImage(imageUrl),
+                        backgroundImage: NetworkImage(projectEntity.imageUrl),
                         radius: 40,
                       ),
-                      SizedBox(width: UIHelper().horizontalSpaceSmall(context)),
-                      Text(this.projectTitle),
+                      horizontalSpaceSmall(context: context),
+                      Text(projectEntity.title),
+                      horizontalSpaceSmall(context: context),
+                      GestureDetector(
+                        onTap: () {
+                          BlocProvider.of<ProjectEditingBloc>(context).add(
+                              ProjectEditingEvent.addExistingProject(
+                                  projectEntity: projectEntity));
+
+                          BlocProvider.of<AssetBloc>(context).add(AssetEvent.addExistingDataToAssetBloc(assetEntityList: projectEntity.assets));
+
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProjectUploadPage(),
+                            ),
+                          );
+                        },
+                        child: Icon(Icons.edit),
+                      )
                     ],
                   ),
                   SizedBox(height: UIHelper().verticalSpaceMedium(context)),

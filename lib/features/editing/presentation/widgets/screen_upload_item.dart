@@ -23,6 +23,7 @@ class ScreenUploadItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("Widget Build");
     print(assetEntity);
     PatternElementBloc patternElementBloc =
         BlocProvider.of<PatternElementBloc>(context);
@@ -34,12 +35,19 @@ class ScreenUploadItem extends StatelessWidget {
       children: [
         Align(
             alignment: Alignment.topCenter,
-            child: Image.memory(
-              assetFileCache[assetEntity.id] ?? Uint8List(0),
-              fit: BoxFit.fill,
-              height: 250,
-              width: 150,
-            )),
+            child: assetEntity.imageUrl.length > 2
+                ? Image.network(
+                    assetEntity.imageUrl,
+                    fit: BoxFit.fill,
+                    height: 250,
+                    width: 150,
+                  )
+                : Image.memory(
+                    assetFileCache[assetEntity.id] ?? Uint8List(0),
+                    fit: BoxFit.fill,
+                    height: 250,
+                    width: 150,
+                  )),
         SizedBox(
           width: UIHelper().horizontalSpaceSmall(context),
         ),
@@ -48,33 +56,56 @@ class ScreenUploadItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            GestureDetector(
-              onTap: () {
-                print("Added AssetEntity: $assetEntity");
-
-                  patternElementBloc.add(
-                  PatternElementEvent.changeToPatternView(
-                    id: assetEntity.id,
-                    elementEntityList: assetEntity.elements ,
-                    patternEntityList: assetEntity.patterns,
-                    imageFileData:
-                        assetFileCache[assetEntity.id] ?? Uint8List(0),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      patternElementBloc.add(
+                        PatternElementEvent.changeToPatternView(
+                          id: assetEntity.id,
+                          elementEntityList: assetEntity.elements,
+                          patternEntityList: assetEntity.patterns,
+                          imageFileData:
+                              assetFileCache[assetEntity.id] ?? Uint8List(0),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 75,
+                      decoration: BoxDecoration(
+                          color: kColorLila, borderRadius: kBorderRadius_10),
+                      child: Center(
+                        child: Text(
+                          "Editieren",
+                          style: TextStyle(color: kColorWhite),
+                        ),
+                      ),
+                    ),
                   ),
-                );
-              },
-              child: Container(
-                height: 40,
-                width: 150,
-                decoration: BoxDecoration(
-                    color: kColorLila, borderRadius: kBorderRadius_10),
-                child: Center(
-                  child: Text(
-                    "Editieren",
-                    style: TextStyle(color: kColorWhite),
+                  horizontalSpaceSmall(context: context),
+                  GestureDetector(
+                    onTap: () {
+                      assetBloc.add(AssetEvent.deleteAsset(assetEntityId: assetEntity.id));
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 75,
+                      decoration: BoxDecoration(
+                          color: kColorTopupRed,
+                          borderRadius: kBorderRadius_10),
+                      child: Center(
+                        child: Text(
+                          "Löschen",
+                          style: TextStyle(color: kColorWhite),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
+                ]),
             verticalSpaceMedium(context: context),
             ScreenUploadInput(
               key: UniqueKey(),

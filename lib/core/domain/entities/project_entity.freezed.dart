@@ -23,17 +23,19 @@ class _$ProjectEntityTearOff {
 
   _ProjectEntity call(
       {required String title,
-      required String projectType,
+      required ProjectType projectType,
       required String description,
       required List<AssetEntity> assets,
-      required int id,
+      required int projectId,
+      required int imageReferenceId,
       required String imageUrl}) {
     return _ProjectEntity(
       title: title,
       projectType: projectType,
       description: description,
       assets: assets,
-      id: id,
+      projectId: projectId,
+      imageReferenceId: imageReferenceId,
       imageUrl: imageUrl,
     );
   }
@@ -49,10 +51,11 @@ const $ProjectEntity = _$ProjectEntityTearOff();
 /// @nodoc
 mixin _$ProjectEntity {
   String get title => throw _privateConstructorUsedError;
-  String get projectType => throw _privateConstructorUsedError;
+  ProjectType get projectType => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   List<AssetEntity> get assets => throw _privateConstructorUsedError;
-  int get id => throw _privateConstructorUsedError;
+  int get projectId => throw _privateConstructorUsedError;
+  int get imageReferenceId => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -68,10 +71,11 @@ abstract class $ProjectEntityCopyWith<$Res> {
       _$ProjectEntityCopyWithImpl<$Res>;
   $Res call(
       {String title,
-      String projectType,
+      ProjectType projectType,
       String description,
       List<AssetEntity> assets,
-      int id,
+      int projectId,
+      int imageReferenceId,
       String imageUrl});
 }
 
@@ -90,7 +94,8 @@ class _$ProjectEntityCopyWithImpl<$Res>
     Object? projectType = freezed,
     Object? description = freezed,
     Object? assets = freezed,
-    Object? id = freezed,
+    Object? projectId = freezed,
+    Object? imageReferenceId = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
@@ -101,7 +106,7 @@ class _$ProjectEntityCopyWithImpl<$Res>
       projectType: projectType == freezed
           ? _value.projectType
           : projectType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ProjectType,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -110,9 +115,13 @@ class _$ProjectEntityCopyWithImpl<$Res>
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      projectId: projectId == freezed
+          ? _value.projectId
+          : projectId // ignore: cast_nullable_to_non_nullable
+              as int,
+      imageReferenceId: imageReferenceId == freezed
+          ? _value.imageReferenceId
+          : imageReferenceId // ignore: cast_nullable_to_non_nullable
               as int,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
@@ -131,10 +140,11 @@ abstract class _$ProjectEntityCopyWith<$Res>
   @override
   $Res call(
       {String title,
-      String projectType,
+      ProjectType projectType,
       String description,
       List<AssetEntity> assets,
-      int id,
+      int projectId,
+      int imageReferenceId,
       String imageUrl});
 }
 
@@ -155,7 +165,8 @@ class __$ProjectEntityCopyWithImpl<$Res>
     Object? projectType = freezed,
     Object? description = freezed,
     Object? assets = freezed,
-    Object? id = freezed,
+    Object? projectId = freezed,
+    Object? imageReferenceId = freezed,
     Object? imageUrl = freezed,
   }) {
     return _then(_ProjectEntity(
@@ -166,7 +177,7 @@ class __$ProjectEntityCopyWithImpl<$Res>
       projectType: projectType == freezed
           ? _value.projectType
           : projectType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as ProjectType,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -175,9 +186,13 @@ class __$ProjectEntityCopyWithImpl<$Res>
           ? _value.assets
           : assets // ignore: cast_nullable_to_non_nullable
               as List<AssetEntity>,
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      projectId: projectId == freezed
+          ? _value.projectId
+          : projectId // ignore: cast_nullable_to_non_nullable
+              as int,
+      imageReferenceId: imageReferenceId == freezed
+          ? _value.imageReferenceId
+          : imageReferenceId // ignore: cast_nullable_to_non_nullable
               as int,
       imageUrl: imageUrl == freezed
           ? _value.imageUrl
@@ -195,7 +210,8 @@ class _$_ProjectEntity implements _ProjectEntity {
       required this.projectType,
       required this.description,
       required this.assets,
-      required this.id,
+      required this.projectId,
+      required this.imageReferenceId,
       required this.imageUrl});
 
   factory _$_ProjectEntity.fromJson(Map<String, dynamic> json) =>
@@ -204,19 +220,21 @@ class _$_ProjectEntity implements _ProjectEntity {
   @override
   final String title;
   @override
-  final String projectType;
+  final ProjectType projectType;
   @override
   final String description;
   @override
   final List<AssetEntity> assets;
   @override
-  final int id;
+  final int projectId;
+  @override
+  final int imageReferenceId;
   @override
   final String imageUrl;
 
   @override
   String toString() {
-    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, id: $id, imageUrl: $imageUrl)';
+    return 'ProjectEntity(title: $title, projectType: $projectType, description: $description, assets: $assets, projectId: $projectId, imageReferenceId: $imageReferenceId, imageUrl: $imageUrl)';
   }
 
   @override
@@ -230,7 +248,9 @@ class _$_ProjectEntity implements _ProjectEntity {
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
             const DeepCollectionEquality().equals(other.assets, assets) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.projectId, projectId) &&
+            const DeepCollectionEquality()
+                .equals(other.imageReferenceId, imageReferenceId) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl));
   }
 
@@ -241,7 +261,8 @@ class _$_ProjectEntity implements _ProjectEntity {
       const DeepCollectionEquality().hash(projectType),
       const DeepCollectionEquality().hash(description),
       const DeepCollectionEquality().hash(assets),
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(projectId),
+      const DeepCollectionEquality().hash(imageReferenceId),
       const DeepCollectionEquality().hash(imageUrl));
 
   @JsonKey(ignore: true)
@@ -258,10 +279,11 @@ class _$_ProjectEntity implements _ProjectEntity {
 abstract class _ProjectEntity implements ProjectEntity {
   factory _ProjectEntity(
       {required String title,
-      required String projectType,
+      required ProjectType projectType,
       required String description,
       required List<AssetEntity> assets,
-      required int id,
+      required int projectId,
+      required int imageReferenceId,
       required String imageUrl}) = _$_ProjectEntity;
 
   factory _ProjectEntity.fromJson(Map<String, dynamic> json) =
@@ -270,13 +292,15 @@ abstract class _ProjectEntity implements ProjectEntity {
   @override
   String get title;
   @override
-  String get projectType;
+  ProjectType get projectType;
   @override
   String get description;
   @override
   List<AssetEntity> get assets;
   @override
-  int get id;
+  int get projectId;
+  @override
+  int get imageReferenceId;
   @override
   String get imageUrl;
   @override

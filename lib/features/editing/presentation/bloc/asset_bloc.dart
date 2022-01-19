@@ -6,7 +6,6 @@ import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
-import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc.dart';
 part 'asset_event.dart';
 part 'asset_state.dart';
 part 'asset_bloc.freezed.dart';
@@ -15,7 +14,6 @@ part 'asset_bloc.freezed.dart';
 class AssetBloc extends Bloc<AssetEvent, AssetState> {
   List<AssetEntity> _assetEntityList = [];
   Map<int, Uint8List> _assetFileCache = {};
-
 
   AssetBloc() : super(_Initial()) {
     on<_AddScreen>((event, emit) async {
@@ -52,22 +50,20 @@ class AssetBloc extends Bloc<AssetEvent, AssetState> {
             DateTime.now().microsecondsSinceEpoch.toInt() + microSecondDivider;
 
         _assetFileCache.addAll({generatedAssetId: droppedImageEntity.fileData});
-        
+
         _assetEntityList.add(assetEntity.copyWith(id: generatedAssetId));
       }).whenComplete(() {
-        print("AssetEntityList after upload = $_assetEntityList");
         emit(_Loaded(
-            assetEntityList: _assetEntityList, assetFileCache: _assetFileCache));
+            assetEntityList: _assetEntityList,
+            assetFileCache: _assetFileCache));
       });
     });
 
     on<_AddPatternAndElements>((event, emit) async {
       emit(_Loading());
       List<AssetEntity> editedAssetEntityList = [];
-      
 
       _assetEntityList.forEach((assetEntity) {
-        print("Inside Loop  $assetEntity");
         assetEntity.id.toString() == event.assetEntityId.toString()
             ? editedAssetEntityList.add(assetEntity.copyWith(
                 patterns: event.patternEntityList,
@@ -76,14 +72,38 @@ class AssetBloc extends Bloc<AssetEvent, AssetState> {
             : editedAssetEntityList.add(assetEntity);
       });
 
-      print("edited List $editedAssetEntityList");
-
       _assetEntityList = editedAssetEntityList;
 
-      // patternElementBloc.add(PatternElementEvent.resetBloc());
+      emit(_Loaded(
+          assetEntityList: _assetEntityList, assetFileCache: _assetFileCache));
+    });
+    on<_AddDataForModifying>((event, emit) async {
+      emit(_Loading());
 
-      print("assetEntityList inside AssetBloc: $_assetEntityList");
+      _assetEntityList = event.assetEntityList;
+      _assetFileCache = {};
 
+      emit(_Loaded(
+          assetEntityList: event.assetEntityList, assetFileCache: {}));
+    });
+    on<_Reset>((event, emit) async {
+      emit(_Loading());
+
+      _assetEntityList = [];
+      _assetFileCache = {};
+
+      emit(_Loaded(
+          assetEntityList: _assetEntityList, assetFileCache: {}));
+    });
+    on<_Delete>((event, emit) async {
+      emit(_Loading());
+
+     int index = _assetEntityList.indexWhere((assetEntity) => assetEntity.id == event.assetEntityId);
+     
+     _assetEntityList.removeAt(index);
+
+     _assetFileCache.remove(event.assetEntityId);
+     
       emit(_Loaded(
           assetEntityList: _assetEntityList, assetFileCache: _assetFileCache));
     });

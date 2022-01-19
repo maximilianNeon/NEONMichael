@@ -40,6 +40,23 @@ class _$AssetEventTearOff {
       assetEntityId: assetEntityId,
     );
   }
+
+  _AddDataForModifying addExistingDataToAssetBloc(
+      {required List<AssetEntity> assetEntityList}) {
+    return _AddDataForModifying(
+      assetEntityList: assetEntityList,
+    );
+  }
+
+  _Reset reset() {
+    return const _Reset();
+  }
+
+  _Delete deleteAsset({required int assetEntityId}) {
+    return _Delete(
+      assetEntityId: assetEntityId,
+    );
+  }
 }
 
 /// @nodoc
@@ -55,6 +72,10 @@ mixin _$AssetEvent {
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
         addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +86,10 @@ mixin _$AssetEvent {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +100,10 @@ mixin _$AssetEvent {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,6 +113,10 @@ mixin _$AssetEvent {
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
     required TResult Function(_AddPatternAndElements value)
         addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,6 +124,9 @@ mixin _$AssetEvent {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,6 +134,9 @@ mixin _$AssetEvent {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -199,6 +238,10 @@ class _$_AddScreen implements _AddScreen {
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
         addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
   }) {
     return addScreen(droppedImageEntity);
   }
@@ -212,6 +255,10 @@ class _$_AddScreen implements _AddScreen {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
   }) {
     return addScreen?.call(droppedImageEntity);
   }
@@ -225,6 +272,10 @@ class _$_AddScreen implements _AddScreen {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
     required TResult orElse(),
   }) {
     if (addScreen != null) {
@@ -240,6 +291,10 @@ class _$_AddScreen implements _AddScreen {
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
     required TResult Function(_AddPatternAndElements value)
         addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
   }) {
     return addScreen(this);
   }
@@ -250,6 +305,9 @@ class _$_AddScreen implements _AddScreen {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
   }) {
     return addScreen?.call(this);
   }
@@ -260,6 +318,9 @@ class _$_AddScreen implements _AddScreen {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
     required TResult orElse(),
   }) {
     if (addScreen != null) {
@@ -351,6 +412,10 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
         addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
   }) {
     return addMultipleScreens(droppedImageEntityList);
   }
@@ -364,6 +429,10 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
   }) {
     return addMultipleScreens?.call(droppedImageEntityList);
   }
@@ -377,6 +446,10 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
     required TResult orElse(),
   }) {
     if (addMultipleScreens != null) {
@@ -392,6 +465,10 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
     required TResult Function(_AddPatternAndElements value)
         addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
   }) {
     return addMultipleScreens(this);
   }
@@ -402,6 +479,9 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
   }) {
     return addMultipleScreens?.call(this);
   }
@@ -412,6 +492,9 @@ class _$_AddMultipleScreens implements _AddMultipleScreens {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
     required TResult orElse(),
   }) {
     if (addMultipleScreens != null) {
@@ -532,6 +615,10 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
     required TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)
         addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
   }) {
     return addElementsAndPattern(
         patternEntityList, elementEntityList, assetEntityId);
@@ -546,6 +633,10 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
   }) {
     return addElementsAndPattern?.call(
         patternEntityList, elementEntityList, assetEntityId);
@@ -560,6 +651,10 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
     TResult Function(List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList, int assetEntityId)?
         addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
     required TResult orElse(),
   }) {
     if (addElementsAndPattern != null) {
@@ -576,6 +671,10 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
     required TResult Function(_AddMultipleScreens value) addMultipleScreens,
     required TResult Function(_AddPatternAndElements value)
         addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
   }) {
     return addElementsAndPattern(this);
   }
@@ -586,6 +685,9 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
   }) {
     return addElementsAndPattern?.call(this);
   }
@@ -596,6 +698,9 @@ class _$_AddPatternAndElements implements _AddPatternAndElements {
     TResult Function(_AddScreen value)? addScreen,
     TResult Function(_AddMultipleScreens value)? addMultipleScreens,
     TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
     required TResult orElse(),
   }) {
     if (addElementsAndPattern != null) {
@@ -617,6 +722,490 @@ abstract class _AddPatternAndElements implements AssetEvent {
   @JsonKey(ignore: true)
   _$AddPatternAndElementsCopyWith<_AddPatternAndElements> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$AddDataForModifyingCopyWith<$Res> {
+  factory _$AddDataForModifyingCopyWith(_AddDataForModifying value,
+          $Res Function(_AddDataForModifying) then) =
+      __$AddDataForModifyingCopyWithImpl<$Res>;
+  $Res call({List<AssetEntity> assetEntityList});
+}
+
+/// @nodoc
+class __$AddDataForModifyingCopyWithImpl<$Res>
+    extends _$AssetEventCopyWithImpl<$Res>
+    implements _$AddDataForModifyingCopyWith<$Res> {
+  __$AddDataForModifyingCopyWithImpl(
+      _AddDataForModifying _value, $Res Function(_AddDataForModifying) _then)
+      : super(_value, (v) => _then(v as _AddDataForModifying));
+
+  @override
+  _AddDataForModifying get _value => super._value as _AddDataForModifying;
+
+  @override
+  $Res call({
+    Object? assetEntityList = freezed,
+  }) {
+    return _then(_AddDataForModifying(
+      assetEntityList: assetEntityList == freezed
+          ? _value.assetEntityList
+          : assetEntityList // ignore: cast_nullable_to_non_nullable
+              as List<AssetEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AddDataForModifying implements _AddDataForModifying {
+  const _$_AddDataForModifying({required this.assetEntityList});
+
+  @override
+  final List<AssetEntity> assetEntityList;
+
+  @override
+  String toString() {
+    return 'AssetEvent.addExistingDataToAssetBloc(assetEntityList: $assetEntityList)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddDataForModifying &&
+            const DeepCollectionEquality()
+                .equals(other.assetEntityList, assetEntityList));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(assetEntityList));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddDataForModifyingCopyWith<_AddDataForModifying> get copyWith =>
+      __$AddDataForModifyingCopyWithImpl<_AddDataForModifying>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
+        addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
+  }) {
+    return addExistingDataToAssetBloc(assetEntityList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
+  }) {
+    return addExistingDataToAssetBloc?.call(assetEntityList);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
+    required TResult orElse(),
+  }) {
+    if (addExistingDataToAssetBloc != null) {
+      return addExistingDataToAssetBloc(assetEntityList);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddScreen value) addScreen,
+    required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
+  }) {
+    return addExistingDataToAssetBloc(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
+  }) {
+    return addExistingDataToAssetBloc?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
+    required TResult orElse(),
+  }) {
+    if (addExistingDataToAssetBloc != null) {
+      return addExistingDataToAssetBloc(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AddDataForModifying implements AssetEvent {
+  const factory _AddDataForModifying(
+      {required List<AssetEntity> assetEntityList}) = _$_AddDataForModifying;
+
+  List<AssetEntity> get assetEntityList;
+  @JsonKey(ignore: true)
+  _$AddDataForModifyingCopyWith<_AddDataForModifying> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$ResetCopyWith<$Res> {
+  factory _$ResetCopyWith(_Reset value, $Res Function(_Reset) then) =
+      __$ResetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetCopyWithImpl<$Res> extends _$AssetEventCopyWithImpl<$Res>
+    implements _$ResetCopyWith<$Res> {
+  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
+      : super(_value, (v) => _then(v as _Reset));
+
+  @override
+  _Reset get _value => super._value as _Reset;
+}
+
+/// @nodoc
+
+class _$_Reset implements _Reset {
+  const _$_Reset();
+
+  @override
+  String toString() {
+    return 'AssetEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _Reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
+        addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddScreen value) addScreen,
+    required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements AssetEvent {
+  const factory _Reset() = _$_Reset;
+}
+
+/// @nodoc
+abstract class _$DeleteCopyWith<$Res> {
+  factory _$DeleteCopyWith(_Delete value, $Res Function(_Delete) then) =
+      __$DeleteCopyWithImpl<$Res>;
+  $Res call({int assetEntityId});
+}
+
+/// @nodoc
+class __$DeleteCopyWithImpl<$Res> extends _$AssetEventCopyWithImpl<$Res>
+    implements _$DeleteCopyWith<$Res> {
+  __$DeleteCopyWithImpl(_Delete _value, $Res Function(_Delete) _then)
+      : super(_value, (v) => _then(v as _Delete));
+
+  @override
+  _Delete get _value => super._value as _Delete;
+
+  @override
+  $Res call({
+    Object? assetEntityId = freezed,
+  }) {
+    return _then(_Delete(
+      assetEntityId: assetEntityId == freezed
+          ? _value.assetEntityId
+          : assetEntityId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Delete implements _Delete {
+  const _$_Delete({required this.assetEntityId});
+
+  @override
+  final int assetEntityId;
+
+  @override
+  String toString() {
+    return 'AssetEvent.deleteAsset(assetEntityId: $assetEntityId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Delete &&
+            const DeepCollectionEquality()
+                .equals(other.assetEntityId, assetEntityId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(assetEntityId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$DeleteCopyWith<_Delete> get copyWith =>
+      __$DeleteCopyWithImpl<_Delete>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DroppedImageEntity droppedImageEntity) addScreen,
+    required TResult Function(List<DroppedImageEntity> droppedImageEntityList)
+        addMultipleScreens,
+    required TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)
+        addElementsAndPattern,
+    required TResult Function(List<AssetEntity> assetEntityList)
+        addExistingDataToAssetBloc,
+    required TResult Function() reset,
+    required TResult Function(int assetEntityId) deleteAsset,
+  }) {
+    return deleteAsset(assetEntityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
+  }) {
+    return deleteAsset?.call(assetEntityId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DroppedImageEntity droppedImageEntity)? addScreen,
+    TResult Function(List<DroppedImageEntity> droppedImageEntityList)?
+        addMultipleScreens,
+    TResult Function(List<PatternEntity> patternEntityList,
+            List<ElementEntity> elementEntityList, int assetEntityId)?
+        addElementsAndPattern,
+    TResult Function(List<AssetEntity> assetEntityList)?
+        addExistingDataToAssetBloc,
+    TResult Function()? reset,
+    TResult Function(int assetEntityId)? deleteAsset,
+    required TResult orElse(),
+  }) {
+    if (deleteAsset != null) {
+      return deleteAsset(assetEntityId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddScreen value) addScreen,
+    required TResult Function(_AddMultipleScreens value) addMultipleScreens,
+    required TResult Function(_AddPatternAndElements value)
+        addElementsAndPattern,
+    required TResult Function(_AddDataForModifying value)
+        addExistingDataToAssetBloc,
+    required TResult Function(_Reset value) reset,
+    required TResult Function(_Delete value) deleteAsset,
+  }) {
+    return deleteAsset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
+  }) {
+    return deleteAsset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddScreen value)? addScreen,
+    TResult Function(_AddMultipleScreens value)? addMultipleScreens,
+    TResult Function(_AddPatternAndElements value)? addElementsAndPattern,
+    TResult Function(_AddDataForModifying value)? addExistingDataToAssetBloc,
+    TResult Function(_Reset value)? reset,
+    TResult Function(_Delete value)? deleteAsset,
+    required TResult orElse(),
+  }) {
+    if (deleteAsset != null) {
+      return deleteAsset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Delete implements AssetEvent {
+  const factory _Delete({required int assetEntityId}) = _$_Delete;
+
+  int get assetEntityId;
+  @JsonKey(ignore: true)
+  _$DeleteCopyWith<_Delete> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

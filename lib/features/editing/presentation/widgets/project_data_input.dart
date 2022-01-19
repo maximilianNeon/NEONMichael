@@ -5,8 +5,9 @@ import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc
 
 class ProjectDataInput extends StatefulWidget {
   final String textfieldTitle;
+  final String textFormFieldText;
 
-  const ProjectDataInput({required this.textfieldTitle, Key? key})
+  const ProjectDataInput({required this.textFormFieldText,required this.textfieldTitle, Key? key})
       : super(key: key);
 
   @override
@@ -17,51 +18,52 @@ class _ProjectDataInputState extends State<ProjectDataInput> {
   TextEditingController textEditingController = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    print(textEditingController.text);
     ProjectEditingBloc projectEditingBloc =
         BlocProvider.of<ProjectEditingBloc>(context);
-    return Container(
-      alignment: Alignment.topLeft,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(widget.textfieldTitle),
-          SizedBox(height: UIHelper().verticalSpaceSmall(context)),
-          ConstrainedBox(
-            constraints: BoxConstraints(
-                maxWidth: 400, maxHeight: 30, minWidth: 200, minHeight: 0),
-            child: TextFormField(
-              controller: textEditingController,
-              maxLines: 1,
-              decoration: InputDecoration(
-                  border: new OutlineInputBorder(
-                      borderSide: BorderSide(color: kColorGreyBorder)),
-                  contentPadding: EdgeInsets.all(8),
-                  hintText: widget.textfieldTitle),
-              textAlignVertical: TextAlignVertical.center,
-              textAlign: TextAlign.left,
-              onChanged: (text) {
-
-                switch (widget.textfieldTitle) {
-                  case "Projekt Name":
-                    return projectEditingBloc
-                        .add(ProjectEditingEvent.addName(name: text));
-                  case "Projekt Bescheibung":
-                    return projectEditingBloc.add(
-                        ProjectEditingEvent.addDescription(description: text));
-                }
-              },
-            ),
-          )
-        ],
-      ),
+    return BlocBuilder<ProjectEditingBloc, ProjectEditingState>(
+      builder: (context, state) {
+        return Container(
+          alignment: Alignment.topLeft,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(widget.textfieldTitle),
+              SizedBox(height: UIHelper().verticalSpaceSmall(context)),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                    maxWidth: 400, maxHeight: 30, minWidth: 200, minHeight: 0),
+                child: TextFormField(
+                  initialValue: widget.textFormFieldText ,
+                 // controller: textEditingController,
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                      border: new OutlineInputBorder(
+                          borderSide: BorderSide(color: kColorGreyBorder)),
+                      contentPadding: EdgeInsets.all(8),
+                      hintText: widget.textfieldTitle),
+                  textAlignVertical: TextAlignVertical.center,
+                  textAlign: TextAlign.left,
+                  onChanged: (text) {
+                    switch (widget.textfieldTitle) {
+                      case "Projekt Name":
+                        return projectEditingBloc
+                            .add(ProjectEditingEvent.addName(name: text));
+                      case "Projekt Beschreibung":
+                        return projectEditingBloc.add(
+                          ProjectEditingEvent.addDescription(description: text),
+                        );
+                    }
+                  },
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }

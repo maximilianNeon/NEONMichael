@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neon_web/core/enum/enums.dart';
 import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/features/details/presentation/detail_screen.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
@@ -56,33 +57,22 @@ class Projects extends StatelessWidget {
                       //Navigate to ProjectFocusPage
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (context) => state.map(
-                                  empty: (state) => ProjectFocusPage(
-                                      projectTitle: projectData
-                                          .projectEntityList[index].title,
-                                      imageUrl: projectData
-                                          .projectEntityList[index].imageUrl),
-                                  filteredByPattern: (state) =>
-                                      ProjectFocusPage(
-                                          projectTitle: state
-                                              .filteredByPatternList[index]
-                                              .title,
-                                          imageUrl: state
-                                              .filteredByPatternList[index]
-                                              .imageUrl),
-                                  filteredByElements: (state) =>
-                                      ProjectFocusPage(
-                                          projectTitle: state
-                                              .filteredByElements[index].title,
-                                          imageUrl: state
-                                              .filteredByElements[index]
-                                              .imageUrl),
-                                  filteredByType: (state) => ProjectFocusPage(
-                                      projectTitle:
-                                          state.filterdByTypeList[index].title,
-                                      imageUrl: state
-                                          .filterdByTypeList[index].imageUrl),
-                                )),
+                          builder: (context) => state.map(
+                            empty: (state) => ProjectFocusPage(
+                              projectEntity:
+                                  projectData.projectEntityList[index],
+                            ),
+                            filteredByPattern: (state) => ProjectFocusPage(
+                              projectEntity: state.filteredByPatternList[index],
+                            ),
+                            filteredByElements: (state) => ProjectFocusPage(
+                              projectEntity: state.filteredByElements[index],
+                            ),
+                            filteredByType: (state) => ProjectFocusPage(
+                              projectEntity: state.filterdByTypeList[index],
+                            ),
+                          ),
+                        ),
                       );
 
                       //Reset Filter
@@ -170,11 +160,12 @@ class Projects extends StatelessWidget {
                                                     .maybeMap(
                                                         orElse: () =>
                                                             ProjectEntity(
+                                                                projectId: 0,
                                                                 assets: [],
                                                                 description: "",
-                                                                id: 0,
+                                                                imageReferenceId: 0,
                                                                 imageUrl: "",
-                                                                projectType: "",
+                                                                projectType: ProjectType.App,
                                                                 title: ""),
                                                         loaded: (state) =>
                                                             state.projectEntityList[index])),
@@ -195,15 +186,15 @@ class Projects extends StatelessWidget {
                                                     .filterdByTypeList[index]
                                                     .assets[i]
                                                     .id,
-                                                empty: (state) =>
-                                                   loadRemoteDataBloc
+                                                empty: (state) => loadRemoteDataBloc
                                                     .state
                                                     .maybeMap(
                                                         orElse: () => 0,
-                                              
-                                                        loaded: (state) =>
-                                                            state.projectEntityList[index].assets[i].id))
-                                                   ,
+                                                        loaded: (state) => state
+                                                            .projectEntityList[
+                                                                index]
+                                                            .assets[i]
+                                                            .id)),
                                           );
                                         },
                                       ),

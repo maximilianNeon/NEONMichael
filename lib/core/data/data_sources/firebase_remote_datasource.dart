@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
@@ -26,12 +25,12 @@ abstract class FireBaseRemoteDataSource {
   });
   Future<Either<Failure, List<AssetEntity>>>
       uploadAssetImagesToCloudFireStorage({
-    required String projectTitle,
+    required int projectId,
     required List<AssetEntity> projectAssets,
     required Map<int, Uint8List> assetDataMap,
   });
   Future<Either<Failure, String>> uploadIconImageToCloudFireStorage({
-    required String projectTitle,
+    required int projectId,
     required Map<int, Uint8List> iconData,
   });
 }
@@ -86,8 +85,6 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
         ),
       );
 
-
-      print("DownloadedList: $projectEntiyList");
       return Right(projectEntiyList);
     } on FirebaseException catch (error) {
       print(error);
@@ -101,7 +98,6 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
   @override
   Future<Either<Failure, Success>> updateSingleProject(
       {required DataContainer dataContainer}) {
-    // TODO: implement updateSingleProject
     throw UnimplementedError();
   }
 
@@ -110,33 +106,75 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
       {required DataContainer dataContainer}) async {
     ProjectEntity _projectEntity = dataContainer.projectEntityList.first;
     String _imageUrl = "";
-    List<AssetEntity> _assetEntityList = [];
+    List<AssetEntity> _assetEntityUploadList = [];
 
     try {
-      // Upload IconImage and Rewrite ProjectEntity.imageUrl from Url to UploadFileName
-      await uploadIconImageToCloudFireStorage(
-              projectTitle: dataContainer.projectEntityList.first.title,
-              iconData: dataContainer.iconFileData)
-          .then((value) => value.fold((l) => null, (url) {
-                _imageUrl = url;
-              }));
+      // Upload IconImage and Rewrite ProjectEntity.ImageReferenceId to Uploaded ImageName
+      if (dataContainer.iconFileData.isNotEmpty) {
+        await uploadIconImageToCloudFireStorage(
+                projectId: _projectEntity.projectId,
+                iconData: dataContainer.iconFileData)
+            .then(
+          (value) => value.fold(
+            (l) => null,
+            (url) {
+              _imageUrl = url;
+            },
+          ),
+        );
+
+        _projectEntity = _projectEntity.copyWith(
+            imageReferenceId: dataContainer.iconFileData.keys.first,
+            imageUrl: _imageUrl);
+      }
 
       // Upload AssetImages
-      await uploadAssetImagesToCloudFireStorage(
-              projectTitle: dataContainer.projectEntityList.first.title,
-              projectAssets: dataContainer.projectEntityList.first.assets,
-              assetDataMap: dataContainer.assetFileData)
-          .then((value) => value.fold(
-              (l) => null,
-              (assetList) => {
-                    _assetEntityList = assetList,
-                  }));
+      if (dataContainer.assetFileData.isNotEmpty) {
+        await uploadAssetImagesToCloudFireStorage(
+                projectId: _projectEntity.projectId,
+                projectAssets: dataContainer.projectEntityList.first.assets,
+                assetDataMap: dataContainer.assetFileData)
+            .then(
+          (value) => value.fold(
+            (l) => null,
+            (assetList) => {
+              _assetEntityUploadList = assetList,
+            },
+          ),
+        );
 
-      // Add Json to CloudFireStore
+        if (_projectEntity.assets.length == 0) {
+          _projectEntity =
+              _projectEntity.copyWith(assets: _assetEntityUploadList);
+        } else {
+          List<AssetEntity> existingAssets = _projectEntity.assets
+              .where((element) => element.imageUrl != "")
+              .toList();
 
-      await firestoreInstance.collection(projectsEndPoint).add(_projectEntity
-          .copyWith(assets: _assetEntityList, imageUrl: _imageUrl)
-          .toJson());
+          existingAssets.addAll(_assetEntityUploadList);
+          print("Existing Assetes $existingAssets");
+
+          _projectEntity = _projectEntity.copyWith(assets: existingAssets);
+          print("_projectEntity $_projectEntity");
+        }
+      }
+
+      //Check if Project Exists on DB
+      DocumentSnapshot projectEntity = await firestoreInstance
+          .collection(projectsEndPoint)
+          .doc("${_projectEntity.projectId}")
+          .get();
+
+      projectEntity.exists
+          ?
+          // Update Existing Project
+          await updateTask(updatedProjectEntity: _projectEntity)
+
+          // Project isnt existing
+          : await firestoreInstance
+              .collection(projectsEndPoint)
+              .doc("${_projectEntity.projectId}")
+              .set(_projectEntity.toJson());
 
       return Right(FireBaseSuccess());
     } on FirebaseException {
@@ -146,10 +184,62 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
     }
   }
 
+  Future<void> updateTask({required ProjectEntity updatedProjectEntity}) async {
+    //Delete Images which arn't referenced to To ProjectMap
+    firebase_storage.ListResult storageAssetList = await firebase_storage
+        .FirebaseStorage.instance
+        .ref(updatedProjectEntity.projectId.toString() + storageAssetSubfolder)
+        .listAll();
+    firebase_storage.ListResult storageImageList = await firebase_storage
+        .FirebaseStorage.instance
+        .ref(updatedProjectEntity.projectId.toString() + storageIconSubfolder)
+        .listAll();
+
+    List<String> newStorageAssetList =
+        storageAssetList.items.map((e) => e.name).toList();
+    List<String> newStorageIconList =
+        storageImageList.items.map((e) => e.name).toList();
+
+    await Future.forEach<int>(
+        updatedProjectEntity.assets.map((e) => e.id).toList(), (id) {
+      print("${id.toString()}");
+
+      newStorageAssetList.remove("${id.toString()}");
+    });
+
+    print(updatedProjectEntity.imageReferenceId);
+
+    newStorageIconList
+        .remove("${updatedProjectEntity.imageReferenceId.toString()}");
+
+    await Future.forEach<String>(
+        newStorageAssetList,
+        (name) async => await firebase_storage.FirebaseStorage.instance
+            .ref(
+                "${updatedProjectEntity.projectId.toString()}$storageAssetSubfolder/")
+            .child(name)
+            .delete());
+
+    if (newStorageIconList.length > 0)
+      await Future.forEach<String>(
+          newStorageIconList,
+          (name) async => await firebase_storage.FirebaseStorage.instance
+              .ref(
+                  "${updatedProjectEntity.projectId.toString()}$storageIconSubfolder/")
+              .child(name)
+              .delete());
+
+    //Update ProjectMap on DB
+    return firestoreInstance
+        .collection(projectsEndPoint)
+        .doc("${updatedProjectEntity.projectId}")
+        .set(updatedProjectEntity.toJson());
+  }
+
   @override
   Future<Either<Failure, List<AssetEntity>>>
       uploadAssetImagesToCloudFireStorage(
-          {required String projectTitle,
+          {required int projectId,
           required List<AssetEntity> projectAssets,
           required Map<int, Uint8List> assetDataMap}) async {
     List<AssetEntity> newAssetList = [];
@@ -158,14 +248,14 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
       await Future.forEach<MapEntry<int, Uint8List>>(assetDataMap.entries,
           (element) async {
         firebase_storage.Reference storageReference = storage
-            .ref(projectTitle + storageAssetSubfolder)
+            .ref(projectId.toString() + storageAssetSubfolder)
             .child(element.key.toString());
 
         await storageReference.putData(element.value);
 
         String assetUrl = await firebase_storage.FirebaseStorage.instance
             .ref(
-                "gs://neon-mobbin.appspot.com/$projectTitle$storageAssetSubfolder")
+                "gs://neon-mobbin.appspot.com/${projectId.toString()}$storageAssetSubfolder")
             .child(element.key.toString())
             .getDownloadURL();
 
@@ -176,7 +266,7 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
             .add(assetEntityFiltered.first.copyWith(imageUrl: assetUrl));
       });
 
-      print(newAssetList);
+      print("newAssetList : $newAssetList");
 
       return Right(newAssetList);
     } on FirebaseException {
@@ -188,11 +278,10 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
 
   @override
   Future<Either<Failure, String>> uploadIconImageToCloudFireStorage(
-      {required String projectTitle,
-      required Map<int, Uint8List> iconData}) async {
+      {required int projectId, required Map<int, Uint8List> iconData}) async {
     try {
       firebase_storage.Reference storageReference = storage
-          .ref(projectTitle + storageIconSubfolder)
+          .ref(projectId.toString() + storageIconSubfolder)
           .child(iconData.keys.first.toString());
 
       await storageReference.putData(iconData.values.first);
@@ -201,7 +290,7 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
       final String iconImageUrl = await firebase_storage
           .FirebaseStorage.instance
           .ref(
-              "gs://neon-mobbin.appspot.com/$projectTitle$storageIconSubfolder")
+              "gs://neon-mobbin.appspot.com/${projectId.toString()}$storageIconSubfolder")
           .child(iconData.keys.first.toString())
           .getDownloadURL();
 

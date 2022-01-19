@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-@injectable
+@JsonEnum()
 enum ProjectType { App, WebDesktop, WebMobile }

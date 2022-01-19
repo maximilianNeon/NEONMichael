@@ -4,6 +4,8 @@ import 'package:neon_web/core/style/color_constants.dart';
 import 'package:neon_web/core/style/style.dart';
 import 'package:neon_web/core/util/ui_helper.dart';
 import 'package:neon_web/features/authentication/presentation/bloc/authentification_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/asset_bloc.dart';
+import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/load_remote_data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/pages/overview_page.dart';
@@ -56,6 +58,11 @@ class CustomAppBar extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
+                          BlocProvider.of<ProjectEditingBloc>(context).add(ProjectEditingEvent.reset());
+                          BlocProvider.of<AssetBloc>(context).add(AssetEvent.reset());
+
+                          
+
                           Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                                 builder: (context) => ProjectUploadPage()),
