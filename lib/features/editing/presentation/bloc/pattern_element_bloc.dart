@@ -17,6 +17,7 @@ class PatternElementBloc
   PatternElementBloc() : super(_Loading()) {
     on<_ChangeToPatternView>((event, emit) {
       emit(_PatternView(
+          assetImageUrl: event.assetImageUrl,
           imageFileData: event.imageFileData,
           patternEntityList: event.patternEntityList,
           elementEntityList: event.elementEntityList,
@@ -24,6 +25,7 @@ class PatternElementBloc
     });
     on<_ChangeToElementView>((event, emit) {
       emit(_ElementView(
+          assetImageUrl: event.assetImageUrl,
           imageFileData: event.imageFileData,
           elementEntityList: event.elementEntityList,
           patternEntityList: event.patternEntityList,
@@ -39,6 +41,7 @@ class PatternElementBloc
       elementEntityList.add(singleElementEntity);
 
       emit(_ElementView(
+          assetImageUrl: event.assetImageUrl,
           imageFileData: event.imageFileData,
           elementEntityList: elementEntityList,
           patternEntityList: event.currentPatternEntityList,
@@ -57,6 +60,7 @@ class PatternElementBloc
           element.item == singleElementEntity.item);
 
       emit(_ElementView(
+          assetImageUrl: event.assetImageUrl,
           imageFileData: event.imageFileData,
           elementEntityList: elementEntityList,
           patternEntityList: event.currentPatternEntityList,
@@ -72,6 +76,7 @@ class PatternElementBloc
       patternEntityList.add(singlePatternEntity);
 
       emit(_PatternView(
+          assetImageUrl: event.assetImageUrl,
           imageFileData: event.imageFileData,
           elementEntityList: event.currentElementEntityList,
           patternEntityList: patternEntityList,
@@ -89,6 +94,7 @@ class PatternElementBloc
           element.item == singlePatternEntity.item);
 
       emit(_PatternView(
+          assetImageUrl: event.assetImageUrl,
           imageFileData: event.imageFileData,
           elementEntityList: event.currentElementEntityList,
           patternEntityList: patternEntityList,

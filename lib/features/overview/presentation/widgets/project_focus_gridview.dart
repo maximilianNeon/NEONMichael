@@ -11,27 +11,26 @@ class ProjectFocusGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       width: UIHelper().displayWidth(context),
       height: UIHelper().displayWidth(context),
-      child: projectEntityList.length > 0 ? GridView.builder(
-        itemCount: projectEntityList.first.assets.length,
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-            mainAxisSpacing: 10, crossAxisSpacing: 10, maxCrossAxisExtent: 150),
-        itemBuilder: (context, index) =>  
-             GestureDetector(
+      child: projectEntityList.length > 0
+          ? GridView.builder(
+              itemCount: projectEntityList.first.assets.length,
+              gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10,
+                  maxCrossAxisExtent: 150),
+              itemBuilder: (context, index) => GestureDetector(
                 onTap: () {
                   Navigator.push<dynamic>(
                     context,
                     MaterialPageRoute<dynamic>(
                       builder: (context) {
                         return DetailScreen(
-                            imageUrl:
-                                projectEntityList.first.assets[index].imageUrl,
-                            projectIndex:
-                                projectEntityList.first.assets[index].id,
-                            project: projectEntityList.first);
+                          projectEntity: projectEntityList.first,
+                          assetEntity: projectEntityList.first.assets[index],
+                        );
                       },
                     ),
                   );
@@ -54,9 +53,9 @@ class ProjectFocusGridView extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
-           ,
-      ) : Text("No Data"),
+              ),
+            )
+          : Text("No Data"),
     );
   }
 }

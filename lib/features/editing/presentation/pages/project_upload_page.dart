@@ -306,12 +306,14 @@ class ProjectUploadPage extends StatelessWidget {
               state.map(
                 element: (state) => Center(
                   child: AssetPopUpContainer(
+                    assetImageUrl: state.assetImageUrl,
                     assetId: state.id,
                     imageFileData: state.imageFileData,
                   ),
                 ),
                 pattern: (state) => Center(
                   child: AssetPopUpContainer(
+                    assetImageUrl: state.assetImageUrl,
                     assetId: state.id,
                     imageFileData: state.imageFileData,
                   ),

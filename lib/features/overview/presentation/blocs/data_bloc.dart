@@ -32,10 +32,12 @@ class DataBloc extends Bloc<DataEvent, DataState> {
           (l) => emit(_Error()), (r) => emit(_Loaded(projectEntityList: r)));
     });
     on<_SaveOnDevice>((event, emit) async {
-      print("inside Bloc");
       await saveProjectImagesToDevice.call(
           params: SaveProjectImagesToDeviceParams(
               projectentity: event.projectEntity));
+    });
+    on<_SetToLoading>((event, emit) async {
+      emit(_Loading());
     });
   }
 }

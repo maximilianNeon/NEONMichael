@@ -23,8 +23,8 @@ class ScreenUploadItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Widget Build");
-    print(assetEntity);
+   
+   
     PatternElementBloc patternElementBloc =
         BlocProvider.of<PatternElementBloc>(context);
     AssetBloc assetBloc = BlocProvider.of<AssetBloc>(context);
@@ -65,6 +65,7 @@ class ScreenUploadItem extends StatelessWidget {
                     onTap: () {
                       patternElementBloc.add(
                         PatternElementEvent.changeToPatternView(
+                          assetImageUrl: assetEntity.imageUrl,
                           id: assetEntity.id,
                           elementEntityList: assetEntity.elements,
                           patternEntityList: assetEntity.patterns,
@@ -114,8 +115,8 @@ class ScreenUploadItem extends StatelessWidget {
               patternEntityList: assetBloc.state.maybeMap(
                   orElse: () => [],
                   loaded: (loadingState) {
-                    print("LoadingState");
-                    print(loadingState.assetEntityList);
+                   
+                  
 
                     return loadingState.assetEntityList
                         .firstWhere((asset) =>

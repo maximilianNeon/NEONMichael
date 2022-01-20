@@ -19,7 +19,7 @@ class _ProjectDataInputState extends State<ProjectDataInput> {
 
   @override
   Widget build(BuildContext context) {
-    print(textEditingController.text);
+ 
     ProjectEditingBloc projectEditingBloc =
         BlocProvider.of<ProjectEditingBloc>(context);
     return BlocBuilder<ProjectEditingBloc, ProjectEditingState>(

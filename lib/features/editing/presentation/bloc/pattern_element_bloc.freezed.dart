@@ -22,12 +22,14 @@ class _$PatternElementEventTearOff {
       required List<ElementEntity> currentElementEntityList,
       required PatternEntity patternEntity,
       required Uint8List imageFileData,
+      required String assetImageUrl,
       required int id}) {
     return _AddPattern(
       currentPatternEntityList: currentPatternEntityList,
       currentElementEntityList: currentElementEntityList,
       patternEntity: patternEntity,
       imageFileData: imageFileData,
+      assetImageUrl: assetImageUrl,
       id: id,
     );
   }
@@ -37,12 +39,14 @@ class _$PatternElementEventTearOff {
       required List<ElementEntity> currentElementEntityList,
       required PatternEntity patternEntity,
       required Uint8List imageFileData,
+      required String assetImageUrl,
       required int id}) {
     return _RemovePatter(
       currentPatternEntityList: currentPatternEntityList,
       currentElementEntityList: currentElementEntityList,
       patternEntity: patternEntity,
       imageFileData: imageFileData,
+      assetImageUrl: assetImageUrl,
       id: id,
     );
   }
@@ -52,13 +56,15 @@ class _$PatternElementEventTearOff {
       required ElementEntity elementEntity,
       required List<PatternEntity> currentPatternEntityList,
       required List<ElementEntity> currentElementEntityList,
-      required Uint8List imageFileData}) {
+      required Uint8List imageFileData,
+      required String assetImageUrl}) {
     return _AddElement(
       id: id,
       elementEntity: elementEntity,
       currentPatternEntityList: currentPatternEntityList,
       currentElementEntityList: currentElementEntityList,
       imageFileData: imageFileData,
+      assetImageUrl: assetImageUrl,
     );
   }
 
@@ -67,23 +73,27 @@ class _$PatternElementEventTearOff {
       required int id,
       required List<PatternEntity> currentPatternEntityList,
       required List<ElementEntity> currentElementEntityList,
-      required Uint8List imageFileData}) {
+      required Uint8List imageFileData,
+      required String assetImageUrl}) {
     return _RemoveElement(
       elementEntity: elementEntity,
       id: id,
       currentPatternEntityList: currentPatternEntityList,
       currentElementEntityList: currentElementEntityList,
       imageFileData: imageFileData,
+      assetImageUrl: assetImageUrl,
     );
   }
 
   _ChangeToPatternView changeToPatternView(
       {required Uint8List imageFileData,
+      required String assetImageUrl,
       required List<ElementEntity> elementEntityList,
       required List<PatternEntity> patternEntityList,
       required int id}) {
     return _ChangeToPatternView(
       imageFileData: imageFileData,
+      assetImageUrl: assetImageUrl,
       elementEntityList: elementEntityList,
       patternEntityList: patternEntityList,
       id: id,
@@ -92,11 +102,13 @@ class _$PatternElementEventTearOff {
 
   _ChangeToElementView changeToElementView(
       {required Uint8List imageFileData,
+      required String assetImageUrl,
       required List<ElementEntity> elementEntityList,
       required List<PatternEntity> patternEntityList,
       required int id}) {
     return _ChangeToElementView(
       imageFileData: imageFileData,
+      assetImageUrl: assetImageUrl,
       elementEntityList: elementEntityList,
       patternEntityList: patternEntityList,
       id: id,
@@ -127,6 +139,7 @@ mixin _$PatternElementEvent {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -134,6 +147,7 @@ mixin _$PatternElementEvent {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -141,23 +155,27 @@ mixin _$PatternElementEvent {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -173,6 +191,7 @@ mixin _$PatternElementEvent {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -180,6 +199,7 @@ mixin _$PatternElementEvent {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -187,23 +207,27 @@ mixin _$PatternElementEvent {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -219,6 +243,7 @@ mixin _$PatternElementEvent {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -226,6 +251,7 @@ mixin _$PatternElementEvent {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -233,23 +259,27 @@ mixin _$PatternElementEvent {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -326,6 +356,7 @@ abstract class _$AddPatternCopyWith<$Res> {
       List<ElementEntity> currentElementEntityList,
       PatternEntity patternEntity,
       Uint8List imageFileData,
+      String assetImageUrl,
       int id});
 
   $PatternEntityCopyWith<$Res> get patternEntity;
@@ -348,6 +379,7 @@ class __$AddPatternCopyWithImpl<$Res>
     Object? currentElementEntityList = freezed,
     Object? patternEntity = freezed,
     Object? imageFileData = freezed,
+    Object? assetImageUrl = freezed,
     Object? id = freezed,
   }) {
     return _then(_AddPattern(
@@ -367,6 +399,10 @@ class __$AddPatternCopyWithImpl<$Res>
           ? _value.imageFileData
           : imageFileData // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -390,6 +426,7 @@ class _$_AddPattern implements _AddPattern {
       required this.currentElementEntityList,
       required this.patternEntity,
       required this.imageFileData,
+      required this.assetImageUrl,
       required this.id});
 
   @override
@@ -401,11 +438,13 @@ class _$_AddPattern implements _AddPattern {
   @override
   final Uint8List imageFileData;
   @override
+  final String assetImageUrl;
+  @override
   final int id;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addPattern(currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, patternEntity: $patternEntity, imageFileData: $imageFileData, id: $id)';
+    return 'PatternElementEvent.addPattern(currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, patternEntity: $patternEntity, imageFileData: $imageFileData, assetImageUrl: $assetImageUrl, id: $id)';
   }
 
   @override
@@ -421,6 +460,8 @@ class _$_AddPattern implements _AddPattern {
                 .equals(other.patternEntity, patternEntity) &&
             const DeepCollectionEquality()
                 .equals(other.imageFileData, imageFileData) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -431,6 +472,7 @@ class _$_AddPattern implements _AddPattern {
       const DeepCollectionEquality().hash(currentElementEntityList),
       const DeepCollectionEquality().hash(patternEntity),
       const DeepCollectionEquality().hash(imageFileData),
+      const DeepCollectionEquality().hash(assetImageUrl),
       const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
@@ -446,6 +488,7 @@ class _$_AddPattern implements _AddPattern {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -453,6 +496,7 @@ class _$_AddPattern implements _AddPattern {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -460,23 +504,27 @@ class _$_AddPattern implements _AddPattern {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -485,7 +533,7 @@ class _$_AddPattern implements _AddPattern {
     required TResult Function() resetBloc,
   }) {
     return addPattern(currentPatternEntityList, currentElementEntityList,
-        patternEntity, imageFileData, id);
+        patternEntity, imageFileData, assetImageUrl, id);
   }
 
   @override
@@ -496,6 +544,7 @@ class _$_AddPattern implements _AddPattern {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -503,6 +552,7 @@ class _$_AddPattern implements _AddPattern {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -510,23 +560,27 @@ class _$_AddPattern implements _AddPattern {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -535,7 +589,7 @@ class _$_AddPattern implements _AddPattern {
     TResult Function()? resetBloc,
   }) {
     return addPattern?.call(currentPatternEntityList, currentElementEntityList,
-        patternEntity, imageFileData, id);
+        patternEntity, imageFileData, assetImageUrl, id);
   }
 
   @override
@@ -546,6 +600,7 @@ class _$_AddPattern implements _AddPattern {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -553,6 +608,7 @@ class _$_AddPattern implements _AddPattern {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -560,23 +616,27 @@ class _$_AddPattern implements _AddPattern {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -587,7 +647,7 @@ class _$_AddPattern implements _AddPattern {
   }) {
     if (addPattern != null) {
       return addPattern(currentPatternEntityList, currentElementEntityList,
-          patternEntity, imageFileData, id);
+          patternEntity, imageFileData, assetImageUrl, id);
     }
     return orElse();
   }
@@ -649,12 +709,14 @@ abstract class _AddPattern implements PatternElementEvent {
       required List<ElementEntity> currentElementEntityList,
       required PatternEntity patternEntity,
       required Uint8List imageFileData,
+      required String assetImageUrl,
       required int id}) = _$_AddPattern;
 
   List<PatternEntity> get currentPatternEntityList;
   List<ElementEntity> get currentElementEntityList;
   PatternEntity get patternEntity;
   Uint8List get imageFileData;
+  String get assetImageUrl;
   int get id;
   @JsonKey(ignore: true)
   _$AddPatternCopyWith<_AddPattern> get copyWith =>
@@ -671,6 +733,7 @@ abstract class _$RemovePatterCopyWith<$Res> {
       List<ElementEntity> currentElementEntityList,
       PatternEntity patternEntity,
       Uint8List imageFileData,
+      String assetImageUrl,
       int id});
 
   $PatternEntityCopyWith<$Res> get patternEntity;
@@ -693,6 +756,7 @@ class __$RemovePatterCopyWithImpl<$Res>
     Object? currentElementEntityList = freezed,
     Object? patternEntity = freezed,
     Object? imageFileData = freezed,
+    Object? assetImageUrl = freezed,
     Object? id = freezed,
   }) {
     return _then(_RemovePatter(
@@ -712,6 +776,10 @@ class __$RemovePatterCopyWithImpl<$Res>
           ? _value.imageFileData
           : imageFileData // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -735,6 +803,7 @@ class _$_RemovePatter implements _RemovePatter {
       required this.currentElementEntityList,
       required this.patternEntity,
       required this.imageFileData,
+      required this.assetImageUrl,
       required this.id});
 
   @override
@@ -746,11 +815,13 @@ class _$_RemovePatter implements _RemovePatter {
   @override
   final Uint8List imageFileData;
   @override
+  final String assetImageUrl;
+  @override
   final int id;
 
   @override
   String toString() {
-    return 'PatternElementEvent.removePattern(currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, patternEntity: $patternEntity, imageFileData: $imageFileData, id: $id)';
+    return 'PatternElementEvent.removePattern(currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, patternEntity: $patternEntity, imageFileData: $imageFileData, assetImageUrl: $assetImageUrl, id: $id)';
   }
 
   @override
@@ -766,6 +837,8 @@ class _$_RemovePatter implements _RemovePatter {
                 .equals(other.patternEntity, patternEntity) &&
             const DeepCollectionEquality()
                 .equals(other.imageFileData, imageFileData) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -776,6 +849,7 @@ class _$_RemovePatter implements _RemovePatter {
       const DeepCollectionEquality().hash(currentElementEntityList),
       const DeepCollectionEquality().hash(patternEntity),
       const DeepCollectionEquality().hash(imageFileData),
+      const DeepCollectionEquality().hash(assetImageUrl),
       const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
@@ -791,6 +865,7 @@ class _$_RemovePatter implements _RemovePatter {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -798,6 +873,7 @@ class _$_RemovePatter implements _RemovePatter {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -805,23 +881,27 @@ class _$_RemovePatter implements _RemovePatter {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -830,7 +910,7 @@ class _$_RemovePatter implements _RemovePatter {
     required TResult Function() resetBloc,
   }) {
     return removePattern(currentPatternEntityList, currentElementEntityList,
-        patternEntity, imageFileData, id);
+        patternEntity, imageFileData, assetImageUrl, id);
   }
 
   @override
@@ -841,6 +921,7 @@ class _$_RemovePatter implements _RemovePatter {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -848,6 +929,7 @@ class _$_RemovePatter implements _RemovePatter {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -855,23 +937,27 @@ class _$_RemovePatter implements _RemovePatter {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -879,8 +965,13 @@ class _$_RemovePatter implements _RemovePatter {
     TResult Function(AssetEntity assetEntity)? addExistingDataToBloc,
     TResult Function()? resetBloc,
   }) {
-    return removePattern?.call(currentPatternEntityList,
-        currentElementEntityList, patternEntity, imageFileData, id);
+    return removePattern?.call(
+        currentPatternEntityList,
+        currentElementEntityList,
+        patternEntity,
+        imageFileData,
+        assetImageUrl,
+        id);
   }
 
   @override
@@ -891,6 +982,7 @@ class _$_RemovePatter implements _RemovePatter {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -898,6 +990,7 @@ class _$_RemovePatter implements _RemovePatter {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -905,23 +998,27 @@ class _$_RemovePatter implements _RemovePatter {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -932,7 +1029,7 @@ class _$_RemovePatter implements _RemovePatter {
   }) {
     if (removePattern != null) {
       return removePattern(currentPatternEntityList, currentElementEntityList,
-          patternEntity, imageFileData, id);
+          patternEntity, imageFileData, assetImageUrl, id);
     }
     return orElse();
   }
@@ -994,12 +1091,14 @@ abstract class _RemovePatter implements PatternElementEvent {
       required List<ElementEntity> currentElementEntityList,
       required PatternEntity patternEntity,
       required Uint8List imageFileData,
+      required String assetImageUrl,
       required int id}) = _$_RemovePatter;
 
   List<PatternEntity> get currentPatternEntityList;
   List<ElementEntity> get currentElementEntityList;
   PatternEntity get patternEntity;
   Uint8List get imageFileData;
+  String get assetImageUrl;
   int get id;
   @JsonKey(ignore: true)
   _$RemovePatterCopyWith<_RemovePatter> get copyWith =>
@@ -1016,7 +1115,8 @@ abstract class _$AddElementCopyWith<$Res> {
       ElementEntity elementEntity,
       List<PatternEntity> currentPatternEntityList,
       List<ElementEntity> currentElementEntityList,
-      Uint8List imageFileData});
+      Uint8List imageFileData,
+      String assetImageUrl});
 
   $ElementEntityCopyWith<$Res> get elementEntity;
 }
@@ -1039,6 +1139,7 @@ class __$AddElementCopyWithImpl<$Res>
     Object? currentPatternEntityList = freezed,
     Object? currentElementEntityList = freezed,
     Object? imageFileData = freezed,
+    Object? assetImageUrl = freezed,
   }) {
     return _then(_AddElement(
       id: id == freezed
@@ -1061,6 +1162,10 @@ class __$AddElementCopyWithImpl<$Res>
           ? _value.imageFileData
           : imageFileData // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -1080,7 +1185,8 @@ class _$_AddElement implements _AddElement {
       required this.elementEntity,
       required this.currentPatternEntityList,
       required this.currentElementEntityList,
-      required this.imageFileData});
+      required this.imageFileData,
+      required this.assetImageUrl});
 
   @override
   final int id;
@@ -1092,10 +1198,12 @@ class _$_AddElement implements _AddElement {
   final List<ElementEntity> currentElementEntityList;
   @override
   final Uint8List imageFileData;
+  @override
+  final String assetImageUrl;
 
   @override
   String toString() {
-    return 'PatternElementEvent.addElement(id: $id, elementEntity: $elementEntity, currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, imageFileData: $imageFileData)';
+    return 'PatternElementEvent.addElement(id: $id, elementEntity: $elementEntity, currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, imageFileData: $imageFileData, assetImageUrl: $assetImageUrl)';
   }
 
   @override
@@ -1111,7 +1219,9 @@ class _$_AddElement implements _AddElement {
             const DeepCollectionEquality().equals(
                 other.currentElementEntityList, currentElementEntityList) &&
             const DeepCollectionEquality()
-                .equals(other.imageFileData, imageFileData));
+                .equals(other.imageFileData, imageFileData) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl));
   }
 
   @override
@@ -1121,7 +1231,8 @@ class _$_AddElement implements _AddElement {
       const DeepCollectionEquality().hash(elementEntity),
       const DeepCollectionEquality().hash(currentPatternEntityList),
       const DeepCollectionEquality().hash(currentElementEntityList),
-      const DeepCollectionEquality().hash(imageFileData));
+      const DeepCollectionEquality().hash(imageFileData),
+      const DeepCollectionEquality().hash(assetImageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -1136,6 +1247,7 @@ class _$_AddElement implements _AddElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -1143,6 +1255,7 @@ class _$_AddElement implements _AddElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -1150,23 +1263,27 @@ class _$_AddElement implements _AddElement {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -1175,7 +1292,7 @@ class _$_AddElement implements _AddElement {
     required TResult Function() resetBloc,
   }) {
     return addElement(id, elementEntity, currentPatternEntityList,
-        currentElementEntityList, imageFileData);
+        currentElementEntityList, imageFileData, assetImageUrl);
   }
 
   @override
@@ -1186,6 +1303,7 @@ class _$_AddElement implements _AddElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -1193,6 +1311,7 @@ class _$_AddElement implements _AddElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -1200,23 +1319,27 @@ class _$_AddElement implements _AddElement {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -1225,7 +1348,7 @@ class _$_AddElement implements _AddElement {
     TResult Function()? resetBloc,
   }) {
     return addElement?.call(id, elementEntity, currentPatternEntityList,
-        currentElementEntityList, imageFileData);
+        currentElementEntityList, imageFileData, assetImageUrl);
   }
 
   @override
@@ -1236,6 +1359,7 @@ class _$_AddElement implements _AddElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -1243,6 +1367,7 @@ class _$_AddElement implements _AddElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -1250,23 +1375,27 @@ class _$_AddElement implements _AddElement {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -1277,7 +1406,7 @@ class _$_AddElement implements _AddElement {
   }) {
     if (addElement != null) {
       return addElement(id, elementEntity, currentPatternEntityList,
-          currentElementEntityList, imageFileData);
+          currentElementEntityList, imageFileData, assetImageUrl);
     }
     return orElse();
   }
@@ -1339,13 +1468,15 @@ abstract class _AddElement implements PatternElementEvent {
       required ElementEntity elementEntity,
       required List<PatternEntity> currentPatternEntityList,
       required List<ElementEntity> currentElementEntityList,
-      required Uint8List imageFileData}) = _$_AddElement;
+      required Uint8List imageFileData,
+      required String assetImageUrl}) = _$_AddElement;
 
   int get id;
   ElementEntity get elementEntity;
   List<PatternEntity> get currentPatternEntityList;
   List<ElementEntity> get currentElementEntityList;
   Uint8List get imageFileData;
+  String get assetImageUrl;
   @JsonKey(ignore: true)
   _$AddElementCopyWith<_AddElement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1361,7 +1492,8 @@ abstract class _$RemoveElementCopyWith<$Res> {
       int id,
       List<PatternEntity> currentPatternEntityList,
       List<ElementEntity> currentElementEntityList,
-      Uint8List imageFileData});
+      Uint8List imageFileData,
+      String assetImageUrl});
 
   $ElementEntityCopyWith<$Res> get elementEntity;
 }
@@ -1384,6 +1516,7 @@ class __$RemoveElementCopyWithImpl<$Res>
     Object? currentPatternEntityList = freezed,
     Object? currentElementEntityList = freezed,
     Object? imageFileData = freezed,
+    Object? assetImageUrl = freezed,
   }) {
     return _then(_RemoveElement(
       elementEntity: elementEntity == freezed
@@ -1406,6 +1539,10 @@ class __$RemoveElementCopyWithImpl<$Res>
           ? _value.imageFileData
           : imageFileData // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 
@@ -1425,7 +1562,8 @@ class _$_RemoveElement implements _RemoveElement {
       required this.id,
       required this.currentPatternEntityList,
       required this.currentElementEntityList,
-      required this.imageFileData});
+      required this.imageFileData,
+      required this.assetImageUrl});
 
   @override
   final ElementEntity elementEntity;
@@ -1437,10 +1575,12 @@ class _$_RemoveElement implements _RemoveElement {
   final List<ElementEntity> currentElementEntityList;
   @override
   final Uint8List imageFileData;
+  @override
+  final String assetImageUrl;
 
   @override
   String toString() {
-    return 'PatternElementEvent.removeElement(elementEntity: $elementEntity, id: $id, currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, imageFileData: $imageFileData)';
+    return 'PatternElementEvent.removeElement(elementEntity: $elementEntity, id: $id, currentPatternEntityList: $currentPatternEntityList, currentElementEntityList: $currentElementEntityList, imageFileData: $imageFileData, assetImageUrl: $assetImageUrl)';
   }
 
   @override
@@ -1456,7 +1596,9 @@ class _$_RemoveElement implements _RemoveElement {
             const DeepCollectionEquality().equals(
                 other.currentElementEntityList, currentElementEntityList) &&
             const DeepCollectionEquality()
-                .equals(other.imageFileData, imageFileData));
+                .equals(other.imageFileData, imageFileData) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl));
   }
 
   @override
@@ -1466,7 +1608,8 @@ class _$_RemoveElement implements _RemoveElement {
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(currentPatternEntityList),
       const DeepCollectionEquality().hash(currentElementEntityList),
-      const DeepCollectionEquality().hash(imageFileData));
+      const DeepCollectionEquality().hash(imageFileData),
+      const DeepCollectionEquality().hash(assetImageUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -1481,6 +1624,7 @@ class _$_RemoveElement implements _RemoveElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -1488,6 +1632,7 @@ class _$_RemoveElement implements _RemoveElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -1495,23 +1640,27 @@ class _$_RemoveElement implements _RemoveElement {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -1520,7 +1669,7 @@ class _$_RemoveElement implements _RemoveElement {
     required TResult Function() resetBloc,
   }) {
     return removeElement(elementEntity, id, currentPatternEntityList,
-        currentElementEntityList, imageFileData);
+        currentElementEntityList, imageFileData, assetImageUrl);
   }
 
   @override
@@ -1531,6 +1680,7 @@ class _$_RemoveElement implements _RemoveElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -1538,6 +1688,7 @@ class _$_RemoveElement implements _RemoveElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -1545,23 +1696,27 @@ class _$_RemoveElement implements _RemoveElement {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -1570,7 +1725,7 @@ class _$_RemoveElement implements _RemoveElement {
     TResult Function()? resetBloc,
   }) {
     return removeElement?.call(elementEntity, id, currentPatternEntityList,
-        currentElementEntityList, imageFileData);
+        currentElementEntityList, imageFileData, assetImageUrl);
   }
 
   @override
@@ -1581,6 +1736,7 @@ class _$_RemoveElement implements _RemoveElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -1588,6 +1744,7 @@ class _$_RemoveElement implements _RemoveElement {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -1595,23 +1752,27 @@ class _$_RemoveElement implements _RemoveElement {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -1622,7 +1783,7 @@ class _$_RemoveElement implements _RemoveElement {
   }) {
     if (removeElement != null) {
       return removeElement(elementEntity, id, currentPatternEntityList,
-          currentElementEntityList, imageFileData);
+          currentElementEntityList, imageFileData, assetImageUrl);
     }
     return orElse();
   }
@@ -1684,13 +1845,15 @@ abstract class _RemoveElement implements PatternElementEvent {
       required int id,
       required List<PatternEntity> currentPatternEntityList,
       required List<ElementEntity> currentElementEntityList,
-      required Uint8List imageFileData}) = _$_RemoveElement;
+      required Uint8List imageFileData,
+      required String assetImageUrl}) = _$_RemoveElement;
 
   ElementEntity get elementEntity;
   int get id;
   List<PatternEntity> get currentPatternEntityList;
   List<ElementEntity> get currentElementEntityList;
   Uint8List get imageFileData;
+  String get assetImageUrl;
   @JsonKey(ignore: true)
   _$RemoveElementCopyWith<_RemoveElement> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1703,6 +1866,7 @@ abstract class _$ChangeToPatternViewCopyWith<$Res> {
       __$ChangeToPatternViewCopyWithImpl<$Res>;
   $Res call(
       {Uint8List imageFileData,
+      String assetImageUrl,
       List<ElementEntity> elementEntityList,
       List<PatternEntity> patternEntityList,
       int id});
@@ -1722,6 +1886,7 @@ class __$ChangeToPatternViewCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imageFileData = freezed,
+    Object? assetImageUrl = freezed,
     Object? elementEntityList = freezed,
     Object? patternEntityList = freezed,
     Object? id = freezed,
@@ -1731,6 +1896,10 @@ class __$ChangeToPatternViewCopyWithImpl<$Res>
           ? _value.imageFileData
           : imageFileData // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       elementEntityList: elementEntityList == freezed
           ? _value.elementEntityList
           : elementEntityList // ignore: cast_nullable_to_non_nullable
@@ -1752,12 +1921,15 @@ class __$ChangeToPatternViewCopyWithImpl<$Res>
 class _$_ChangeToPatternView implements _ChangeToPatternView {
   const _$_ChangeToPatternView(
       {required this.imageFileData,
+      required this.assetImageUrl,
       required this.elementEntityList,
       required this.patternEntityList,
       required this.id});
 
   @override
   final Uint8List imageFileData;
+  @override
+  final String assetImageUrl;
   @override
   final List<ElementEntity> elementEntityList;
   @override
@@ -1767,7 +1939,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
 
   @override
   String toString() {
-    return 'PatternElementEvent.changeToPatternView(imageFileData: $imageFileData, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList, id: $id)';
+    return 'PatternElementEvent.changeToPatternView(imageFileData: $imageFileData, assetImageUrl: $assetImageUrl, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList, id: $id)';
   }
 
   @override
@@ -1777,6 +1949,8 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             other is _ChangeToPatternView &&
             const DeepCollectionEquality()
                 .equals(other.imageFileData, imageFileData) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl) &&
             const DeepCollectionEquality()
                 .equals(other.elementEntityList, elementEntityList) &&
             const DeepCollectionEquality()
@@ -1788,6 +1962,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(imageFileData),
+      const DeepCollectionEquality().hash(assetImageUrl),
       const DeepCollectionEquality().hash(elementEntityList),
       const DeepCollectionEquality().hash(patternEntityList),
       const DeepCollectionEquality().hash(id));
@@ -1806,6 +1981,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -1813,6 +1989,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -1820,23 +1997,27 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -1845,7 +2026,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     required TResult Function() resetBloc,
   }) {
     return changeToPatternView(
-        imageFileData, elementEntityList, patternEntityList, id);
+        imageFileData, assetImageUrl, elementEntityList, patternEntityList, id);
   }
 
   @override
@@ -1856,6 +2037,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -1863,6 +2045,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -1870,23 +2053,27 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -1895,7 +2082,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     TResult Function()? resetBloc,
   }) {
     return changeToPatternView?.call(
-        imageFileData, elementEntityList, patternEntityList, id);
+        imageFileData, assetImageUrl, elementEntityList, patternEntityList, id);
   }
 
   @override
@@ -1906,6 +2093,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -1913,6 +2101,7 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -1920,23 +2109,27 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -1946,8 +2139,8 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
     required TResult orElse(),
   }) {
     if (changeToPatternView != null) {
-      return changeToPatternView(
-          imageFileData, elementEntityList, patternEntityList, id);
+      return changeToPatternView(imageFileData, assetImageUrl,
+          elementEntityList, patternEntityList, id);
     }
     return orElse();
   }
@@ -2006,11 +2199,13 @@ class _$_ChangeToPatternView implements _ChangeToPatternView {
 abstract class _ChangeToPatternView implements PatternElementEvent {
   const factory _ChangeToPatternView(
       {required Uint8List imageFileData,
+      required String assetImageUrl,
       required List<ElementEntity> elementEntityList,
       required List<PatternEntity> patternEntityList,
       required int id}) = _$_ChangeToPatternView;
 
   Uint8List get imageFileData;
+  String get assetImageUrl;
   List<ElementEntity> get elementEntityList;
   List<PatternEntity> get patternEntityList;
   int get id;
@@ -2026,6 +2221,7 @@ abstract class _$ChangeToElementViewCopyWith<$Res> {
       __$ChangeToElementViewCopyWithImpl<$Res>;
   $Res call(
       {Uint8List imageFileData,
+      String assetImageUrl,
       List<ElementEntity> elementEntityList,
       List<PatternEntity> patternEntityList,
       int id});
@@ -2045,6 +2241,7 @@ class __$ChangeToElementViewCopyWithImpl<$Res>
   @override
   $Res call({
     Object? imageFileData = freezed,
+    Object? assetImageUrl = freezed,
     Object? elementEntityList = freezed,
     Object? patternEntityList = freezed,
     Object? id = freezed,
@@ -2054,6 +2251,10 @@ class __$ChangeToElementViewCopyWithImpl<$Res>
           ? _value.imageFileData
           : imageFileData // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       elementEntityList: elementEntityList == freezed
           ? _value.elementEntityList
           : elementEntityList // ignore: cast_nullable_to_non_nullable
@@ -2075,12 +2276,15 @@ class __$ChangeToElementViewCopyWithImpl<$Res>
 class _$_ChangeToElementView implements _ChangeToElementView {
   const _$_ChangeToElementView(
       {required this.imageFileData,
+      required this.assetImageUrl,
       required this.elementEntityList,
       required this.patternEntityList,
       required this.id});
 
   @override
   final Uint8List imageFileData;
+  @override
+  final String assetImageUrl;
   @override
   final List<ElementEntity> elementEntityList;
   @override
@@ -2090,7 +2294,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
 
   @override
   String toString() {
-    return 'PatternElementEvent.changeToElementView(imageFileData: $imageFileData, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList, id: $id)';
+    return 'PatternElementEvent.changeToElementView(imageFileData: $imageFileData, assetImageUrl: $assetImageUrl, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList, id: $id)';
   }
 
   @override
@@ -2100,6 +2304,8 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             other is _ChangeToElementView &&
             const DeepCollectionEquality()
                 .equals(other.imageFileData, imageFileData) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl) &&
             const DeepCollectionEquality()
                 .equals(other.elementEntityList, elementEntityList) &&
             const DeepCollectionEquality()
@@ -2111,6 +2317,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(imageFileData),
+      const DeepCollectionEquality().hash(assetImageUrl),
       const DeepCollectionEquality().hash(elementEntityList),
       const DeepCollectionEquality().hash(patternEntityList),
       const DeepCollectionEquality().hash(id));
@@ -2129,6 +2336,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -2136,6 +2344,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -2143,23 +2352,27 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -2168,7 +2381,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     required TResult Function() resetBloc,
   }) {
     return changeToElementView(
-        imageFileData, elementEntityList, patternEntityList, id);
+        imageFileData, assetImageUrl, elementEntityList, patternEntityList, id);
   }
 
   @override
@@ -2179,6 +2392,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -2186,6 +2400,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -2193,23 +2408,27 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -2218,7 +2437,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     TResult Function()? resetBloc,
   }) {
     return changeToElementView?.call(
-        imageFileData, elementEntityList, patternEntityList, id);
+        imageFileData, assetImageUrl, elementEntityList, patternEntityList, id);
   }
 
   @override
@@ -2229,6 +2448,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -2236,6 +2456,7 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -2243,23 +2464,27 @@ class _$_ChangeToElementView implements _ChangeToElementView {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -2269,8 +2494,8 @@ class _$_ChangeToElementView implements _ChangeToElementView {
     required TResult orElse(),
   }) {
     if (changeToElementView != null) {
-      return changeToElementView(
-          imageFileData, elementEntityList, patternEntityList, id);
+      return changeToElementView(imageFileData, assetImageUrl,
+          elementEntityList, patternEntityList, id);
     }
     return orElse();
   }
@@ -2329,11 +2554,13 @@ class _$_ChangeToElementView implements _ChangeToElementView {
 abstract class _ChangeToElementView implements PatternElementEvent {
   const factory _ChangeToElementView(
       {required Uint8List imageFileData,
+      required String assetImageUrl,
       required List<ElementEntity> elementEntityList,
       required List<PatternEntity> patternEntityList,
       required int id}) = _$_ChangeToElementView;
 
   Uint8List get imageFileData;
+  String get assetImageUrl;
   List<ElementEntity> get elementEntityList;
   List<PatternEntity> get patternEntityList;
   int get id;
@@ -2423,6 +2650,7 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -2430,6 +2658,7 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -2437,23 +2666,27 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -2472,6 +2705,7 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -2479,6 +2713,7 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -2486,23 +2721,27 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -2521,6 +2760,7 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -2528,6 +2768,7 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -2535,23 +2776,27 @@ class _$_AddExistingDataToBloc implements _AddExistingDataToBloc {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -2672,6 +2917,7 @@ class _$_ResetBloc implements _ResetBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         addPattern,
     required TResult Function(
@@ -2679,6 +2925,7 @@ class _$_ResetBloc implements _ResetBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)
         removePattern,
     required TResult Function(
@@ -2686,23 +2933,27 @@ class _$_ResetBloc implements _ResetBloc {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         addElement,
     required TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)
+            Uint8List imageFileData,
+            String assetImageUrl)
         removeElement,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
         changeToPatternView,
     required TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)
@@ -2721,6 +2972,7 @@ class _$_ResetBloc implements _ResetBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -2728,6 +2980,7 @@ class _$_ResetBloc implements _ResetBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -2735,23 +2988,27 @@ class _$_ResetBloc implements _ResetBloc {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -2770,6 +3027,7 @@ class _$_ResetBloc implements _ResetBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         addPattern,
     TResult Function(
@@ -2777,6 +3035,7 @@ class _$_ResetBloc implements _ResetBloc {
             List<ElementEntity> currentElementEntityList,
             PatternEntity patternEntity,
             Uint8List imageFileData,
+            String assetImageUrl,
             int id)?
         removePattern,
     TResult Function(
@@ -2784,23 +3043,27 @@ class _$_ResetBloc implements _ResetBloc {
             ElementEntity elementEntity,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         addElement,
     TResult Function(
             ElementEntity elementEntity,
             int id,
             List<PatternEntity> currentPatternEntityList,
             List<ElementEntity> currentElementEntityList,
-            Uint8List imageFileData)?
+            Uint8List imageFileData,
+            String assetImageUrl)?
         removeElement,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
         changeToPatternView,
     TResult Function(
             Uint8List imageFileData,
+            String assetImageUrl,
             List<ElementEntity> elementEntityList,
             List<PatternEntity> patternEntityList,
             int id)?
@@ -2878,11 +3141,13 @@ class _$PatternElementStateTearOff {
       {required Uint8List imageFileData,
       required List<PatternEntity> patternEntityList,
       required List<ElementEntity> elementEntityList,
+      required String assetImageUrl,
       required int id}) {
     return _PatternView(
       imageFileData: imageFileData,
       patternEntityList: patternEntityList,
       elementEntityList: elementEntityList,
+      assetImageUrl: assetImageUrl,
       id: id,
     );
   }
@@ -2894,11 +3159,13 @@ class _$PatternElementStateTearOff {
   _ElementView element(
       {required Uint8List imageFileData,
       required List<ElementEntity> elementEntityList,
+      required String assetImageUrl,
       required List<PatternEntity> patternEntityList,
       required int id}) {
     return _ElementView(
       imageFileData: imageFileData,
       elementEntityList: elementEntityList,
+      assetImageUrl: assetImageUrl,
       patternEntityList: patternEntityList,
       id: id,
     );
@@ -2916,12 +3183,14 @@ mixin _$PatternElementState {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)
         element,
@@ -2933,12 +3202,14 @@ mixin _$PatternElementState {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
@@ -2950,12 +3221,14 @@ mixin _$PatternElementState {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
@@ -3012,6 +3285,7 @@ abstract class _$PatternViewCopyWith<$Res> {
       {Uint8List imageFileData,
       List<PatternEntity> patternEntityList,
       List<ElementEntity> elementEntityList,
+      String assetImageUrl,
       int id});
 }
 
@@ -3031,6 +3305,7 @@ class __$PatternViewCopyWithImpl<$Res>
     Object? imageFileData = freezed,
     Object? patternEntityList = freezed,
     Object? elementEntityList = freezed,
+    Object? assetImageUrl = freezed,
     Object? id = freezed,
   }) {
     return _then(_PatternView(
@@ -3046,6 +3321,10 @@ class __$PatternViewCopyWithImpl<$Res>
           ? _value.elementEntityList
           : elementEntityList // ignore: cast_nullable_to_non_nullable
               as List<ElementEntity>,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -3061,6 +3340,7 @@ class _$_PatternView implements _PatternView {
       {required this.imageFileData,
       required this.patternEntityList,
       required this.elementEntityList,
+      required this.assetImageUrl,
       required this.id});
 
   @override
@@ -3070,11 +3350,13 @@ class _$_PatternView implements _PatternView {
   @override
   final List<ElementEntity> elementEntityList;
   @override
+  final String assetImageUrl;
+  @override
   final int id;
 
   @override
   String toString() {
-    return 'PatternElementState.pattern(imageFileData: $imageFileData, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList, id: $id)';
+    return 'PatternElementState.pattern(imageFileData: $imageFileData, patternEntityList: $patternEntityList, elementEntityList: $elementEntityList, assetImageUrl: $assetImageUrl, id: $id)';
   }
 
   @override
@@ -3088,6 +3370,8 @@ class _$_PatternView implements _PatternView {
                 .equals(other.patternEntityList, patternEntityList) &&
             const DeepCollectionEquality()
                 .equals(other.elementEntityList, elementEntityList) &&
+            const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
 
@@ -3097,6 +3381,7 @@ class _$_PatternView implements _PatternView {
       const DeepCollectionEquality().hash(imageFileData),
       const DeepCollectionEquality().hash(patternEntityList),
       const DeepCollectionEquality().hash(elementEntityList),
+      const DeepCollectionEquality().hash(assetImageUrl),
       const DeepCollectionEquality().hash(id));
 
   @JsonKey(ignore: true)
@@ -3111,17 +3396,20 @@ class _$_PatternView implements _PatternView {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)
         element,
   }) {
-    return pattern(imageFileData, patternEntityList, elementEntityList, id);
+    return pattern(
+        imageFileData, patternEntityList, elementEntityList, assetImageUrl, id);
   }
 
   @override
@@ -3131,18 +3419,20 @@ class _$_PatternView implements _PatternView {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
   }) {
     return pattern?.call(
-        imageFileData, patternEntityList, elementEntityList, id);
+        imageFileData, patternEntityList, elementEntityList, assetImageUrl, id);
   }
 
   @override
@@ -3152,19 +3442,22 @@ class _$_PatternView implements _PatternView {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
     required TResult orElse(),
   }) {
     if (pattern != null) {
-      return pattern(imageFileData, patternEntityList, elementEntityList, id);
+      return pattern(imageFileData, patternEntityList, elementEntityList,
+          assetImageUrl, id);
     }
     return orElse();
   }
@@ -3209,11 +3502,13 @@ abstract class _PatternView implements PatternElementState {
       {required Uint8List imageFileData,
       required List<PatternEntity> patternEntityList,
       required List<ElementEntity> elementEntityList,
+      required String assetImageUrl,
       required int id}) = _$_PatternView;
 
   Uint8List get imageFileData;
   List<PatternEntity> get patternEntityList;
   List<ElementEntity> get elementEntityList;
+  String get assetImageUrl;
   int get id;
   @JsonKey(ignore: true)
   _$PatternViewCopyWith<_PatternView> get copyWith =>
@@ -3263,12 +3558,14 @@ class _$_Loading implements _Loading {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)
         element,
@@ -3283,12 +3580,14 @@ class _$_Loading implements _Loading {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
@@ -3303,12 +3602,14 @@ class _$_Loading implements _Loading {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
@@ -3367,6 +3668,7 @@ abstract class _$ElementViewCopyWith<$Res> {
   $Res call(
       {Uint8List imageFileData,
       List<ElementEntity> elementEntityList,
+      String assetImageUrl,
       List<PatternEntity> patternEntityList,
       int id});
 }
@@ -3386,6 +3688,7 @@ class __$ElementViewCopyWithImpl<$Res>
   $Res call({
     Object? imageFileData = freezed,
     Object? elementEntityList = freezed,
+    Object? assetImageUrl = freezed,
     Object? patternEntityList = freezed,
     Object? id = freezed,
   }) {
@@ -3398,6 +3701,10 @@ class __$ElementViewCopyWithImpl<$Res>
           ? _value.elementEntityList
           : elementEntityList // ignore: cast_nullable_to_non_nullable
               as List<ElementEntity>,
+      assetImageUrl: assetImageUrl == freezed
+          ? _value.assetImageUrl
+          : assetImageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       patternEntityList: patternEntityList == freezed
           ? _value.patternEntityList
           : patternEntityList // ignore: cast_nullable_to_non_nullable
@@ -3416,6 +3723,7 @@ class _$_ElementView implements _ElementView {
   const _$_ElementView(
       {required this.imageFileData,
       required this.elementEntityList,
+      required this.assetImageUrl,
       required this.patternEntityList,
       required this.id});
 
@@ -3424,13 +3732,15 @@ class _$_ElementView implements _ElementView {
   @override
   final List<ElementEntity> elementEntityList;
   @override
+  final String assetImageUrl;
+  @override
   final List<PatternEntity> patternEntityList;
   @override
   final int id;
 
   @override
   String toString() {
-    return 'PatternElementState.element(imageFileData: $imageFileData, elementEntityList: $elementEntityList, patternEntityList: $patternEntityList, id: $id)';
+    return 'PatternElementState.element(imageFileData: $imageFileData, elementEntityList: $elementEntityList, assetImageUrl: $assetImageUrl, patternEntityList: $patternEntityList, id: $id)';
   }
 
   @override
@@ -3443,6 +3753,8 @@ class _$_ElementView implements _ElementView {
             const DeepCollectionEquality()
                 .equals(other.elementEntityList, elementEntityList) &&
             const DeepCollectionEquality()
+                .equals(other.assetImageUrl, assetImageUrl) &&
+            const DeepCollectionEquality()
                 .equals(other.patternEntityList, patternEntityList) &&
             const DeepCollectionEquality().equals(other.id, id));
   }
@@ -3452,6 +3764,7 @@ class _$_ElementView implements _ElementView {
       runtimeType,
       const DeepCollectionEquality().hash(imageFileData),
       const DeepCollectionEquality().hash(elementEntityList),
+      const DeepCollectionEquality().hash(assetImageUrl),
       const DeepCollectionEquality().hash(patternEntityList),
       const DeepCollectionEquality().hash(id));
 
@@ -3467,17 +3780,20 @@ class _$_ElementView implements _ElementView {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)
         pattern,
     required TResult Function() loading,
     required TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)
         element,
   }) {
-    return element(imageFileData, elementEntityList, patternEntityList, id);
+    return element(
+        imageFileData, elementEntityList, assetImageUrl, patternEntityList, id);
   }
 
   @override
@@ -3487,18 +3803,20 @@ class _$_ElementView implements _ElementView {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
   }) {
     return element?.call(
-        imageFileData, elementEntityList, patternEntityList, id);
+        imageFileData, elementEntityList, assetImageUrl, patternEntityList, id);
   }
 
   @override
@@ -3508,19 +3826,22 @@ class _$_ElementView implements _ElementView {
             Uint8List imageFileData,
             List<PatternEntity> patternEntityList,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             int id)?
         pattern,
     TResult Function()? loading,
     TResult Function(
             Uint8List imageFileData,
             List<ElementEntity> elementEntityList,
+            String assetImageUrl,
             List<PatternEntity> patternEntityList,
             int id)?
         element,
     required TResult orElse(),
   }) {
     if (element != null) {
-      return element(imageFileData, elementEntityList, patternEntityList, id);
+      return element(imageFileData, elementEntityList, assetImageUrl,
+          patternEntityList, id);
     }
     return orElse();
   }
@@ -3564,11 +3885,13 @@ abstract class _ElementView implements PatternElementState {
   const factory _ElementView(
       {required Uint8List imageFileData,
       required List<ElementEntity> elementEntityList,
+      required String assetImageUrl,
       required List<PatternEntity> patternEntityList,
       required int id}) = _$_ElementView;
 
   Uint8List get imageFileData;
   List<ElementEntity> get elementEntityList;
+  String get assetImageUrl;
   List<PatternEntity> get patternEntityList;
   int get id;
   @JsonKey(ignore: true)

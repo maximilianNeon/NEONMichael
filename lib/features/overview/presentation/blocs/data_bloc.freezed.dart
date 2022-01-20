@@ -21,6 +21,10 @@ class _$DataEventTearOff {
     return const _LoadProjectData();
   }
 
+  _SetToLoading setToLoading() {
+    return const _SetToLoading();
+  }
+
   _SaveOnDevice saveProjectAssetImagesOnDevice(
       {required ProjectEntity projectEntity}) {
     return _SaveOnDevice(
@@ -37,6 +41,7 @@ mixin _$DataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadProjectData,
+    required TResult Function() setToLoading,
     required TResult Function(ProjectEntity projectEntity)
         saveProjectAssetImagesOnDevice,
   }) =>
@@ -44,6 +49,7 @@ mixin _$DataEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
     TResult Function(ProjectEntity projectEntity)?
         saveProjectAssetImagesOnDevice,
   }) =>
@@ -51,6 +57,7 @@ mixin _$DataEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
     TResult Function(ProjectEntity projectEntity)?
         saveProjectAssetImagesOnDevice,
     required TResult orElse(),
@@ -59,6 +66,7 @@ mixin _$DataEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SetToLoading value) setToLoading,
     required TResult Function(_SaveOnDevice value)
         saveProjectAssetImagesOnDevice,
   }) =>
@@ -66,12 +74,14 @@ mixin _$DataEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
     TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
     TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) =>
@@ -134,6 +144,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadProjectData,
+    required TResult Function() setToLoading,
     required TResult Function(ProjectEntity projectEntity)
         saveProjectAssetImagesOnDevice,
   }) {
@@ -144,6 +155,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
     TResult Function(ProjectEntity projectEntity)?
         saveProjectAssetImagesOnDevice,
   }) {
@@ -154,6 +166,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
     TResult Function(ProjectEntity projectEntity)?
         saveProjectAssetImagesOnDevice,
     required TResult orElse(),
@@ -168,6 +181,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SetToLoading value) setToLoading,
     required TResult Function(_SaveOnDevice value)
         saveProjectAssetImagesOnDevice,
   }) {
@@ -178,6 +192,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
     TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
   }) {
     return downloadProjectData?.call(this);
@@ -187,6 +202,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
     TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) {
@@ -199,6 +215,120 @@ class _$_LoadProjectData implements _LoadProjectData {
 
 abstract class _LoadProjectData implements DataEvent {
   const factory _LoadProjectData() = _$_LoadProjectData;
+}
+
+/// @nodoc
+abstract class _$SetToLoadingCopyWith<$Res> {
+  factory _$SetToLoadingCopyWith(
+          _SetToLoading value, $Res Function(_SetToLoading) then) =
+      __$SetToLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$SetToLoadingCopyWithImpl<$Res> extends _$DataEventCopyWithImpl<$Res>
+    implements _$SetToLoadingCopyWith<$Res> {
+  __$SetToLoadingCopyWithImpl(
+      _SetToLoading _value, $Res Function(_SetToLoading) _then)
+      : super(_value, (v) => _then(v as _SetToLoading));
+
+  @override
+  _SetToLoading get _value => super._value as _SetToLoading;
+}
+
+/// @nodoc
+
+class _$_SetToLoading implements _SetToLoading {
+  const _$_SetToLoading();
+
+  @override
+  String toString() {
+    return 'DataEvent.setToLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _SetToLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() downloadProjectData,
+    required TResult Function() setToLoading,
+    required TResult Function(ProjectEntity projectEntity)
+        saveProjectAssetImagesOnDevice,
+  }) {
+    return setToLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
+  }) {
+    return setToLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
+    required TResult orElse(),
+  }) {
+    if (setToLoading != null) {
+      return setToLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SetToLoading value) setToLoading,
+    required TResult Function(_SaveOnDevice value)
+        saveProjectAssetImagesOnDevice,
+  }) {
+    return setToLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
+  }) {
+    return setToLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
+    required TResult orElse(),
+  }) {
+    if (setToLoading != null) {
+      return setToLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetToLoading implements DataEvent {
+  const factory _SetToLoading() = _$_SetToLoading;
 }
 
 /// @nodoc
@@ -276,6 +406,7 @@ class _$_SaveOnDevice implements _SaveOnDevice {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadProjectData,
+    required TResult Function() setToLoading,
     required TResult Function(ProjectEntity projectEntity)
         saveProjectAssetImagesOnDevice,
   }) {
@@ -286,6 +417,7 @@ class _$_SaveOnDevice implements _SaveOnDevice {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
     TResult Function(ProjectEntity projectEntity)?
         saveProjectAssetImagesOnDevice,
   }) {
@@ -296,6 +428,7 @@ class _$_SaveOnDevice implements _SaveOnDevice {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function()? setToLoading,
     TResult Function(ProjectEntity projectEntity)?
         saveProjectAssetImagesOnDevice,
     required TResult orElse(),
@@ -310,6 +443,7 @@ class _$_SaveOnDevice implements _SaveOnDevice {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SetToLoading value) setToLoading,
     required TResult Function(_SaveOnDevice value)
         saveProjectAssetImagesOnDevice,
   }) {
@@ -320,6 +454,7 @@ class _$_SaveOnDevice implements _SaveOnDevice {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
     TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
   }) {
     return saveProjectAssetImagesOnDevice?.call(this);
@@ -329,6 +464,7 @@ class _$_SaveOnDevice implements _SaveOnDevice {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SetToLoading value)? setToLoading,
     TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) {

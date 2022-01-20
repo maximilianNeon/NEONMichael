@@ -14,7 +14,7 @@ class Projects extends StatelessWidget {
   Widget build(BuildContext context) {
     ProjectFilterBloc projectFilterBloc =
         BlocProvider.of<ProjectFilterBloc>(context);
-   DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
+    DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
     FilterBloc filterBloc = BlocProvider.of<FilterBloc>(context);
     return BlocBuilder<DataBloc, DataState>(
       builder: (context, state) => state.maybeMap(
@@ -125,76 +125,36 @@ class Projects extends StatelessWidget {
                                       MaterialPageRoute<dynamic>(
                                         builder: (context) {
                                           return DetailScreen(
-                                            imageUrl: state.map(
+                                              projectEntity: state.map(
                                                 filteredByElements: (state) =>
-                                                    state
-                                                        .filteredByElements[
-                                                            index]
-                                                        .assets[i]
-                                                        .imageUrl,
-                                                filteredByPattern: (state) =>
-                                                    state
-                                                        .filteredByPatternList[
-                                                            index]
-                                                        .assets[i]
-                                                        .imageUrl,
-                                                filteredByType: (state) => state
-                                                    .filterdByTypeList[index]
-                                                    .assets[i]
-                                                    .imageUrl,
-                                                empty: (_) => projectData
-                                                    .projectEntityList[index]
-                                                    .assets[i]
-                                                    .imageUrl),
-                                            project: state.map(
-                                                filteredByElements: (state) => state
-                                                    .filteredByElements[index],
+                                                    state.filteredByElements[
+                                                        index],
                                                 filteredByPattern: (state) =>
                                                     state.filteredByPatternList[
                                                         index],
                                                 filteredByType: (state) => state
                                                     .filterdByTypeList[index],
-                                                empty: (_) => dataBloc
-                                                    .state
-                                                    .maybeMap(
-                                                        orElse: () =>
-                                                            ProjectEntity(
-                                                                projectId: 0,
-                                                                assets: [],
-                                                                description: "",
-                                                                imageReferenceId: 0,
-                                                                imageUrl: "",
-                                                                projectType: ProjectType.App,
-                                                                title: ""),
-                                                        loaded: (state) =>
-                                                            state.projectEntityList[index])),
-                                            projectIndex: state.map(
+                                                empty: (_) => projectData
+                                                    .projectEntityList[index],
+                                              ),
+                                              assetEntity: state.map(
                                                 filteredByElements: (state) =>
                                                     state
                                                         .filteredByElements[
                                                             index]
-                                                        .assets[i]
-                                                        .id,
+                                                        .assets[i],
                                                 filteredByPattern: (state) =>
                                                     state
                                                         .filteredByPatternList[
                                                             index]
-                                                        .assets[i]
-                                                        .id,
+                                                        .assets[i],
                                                 filteredByType: (state) => state
                                                     .filterdByTypeList[index]
-                                                    .assets[i]
-                                                    .id,
-                                                empty: (state) => dataBloc
-                                                    .state
-                                                    .maybeMap(
-                                                        orElse: () => 0,
-                                                        loaded: (state) => state
-                                                            .projectEntityList[
-                                                                index]
-                                                            .assets[i]
-                                                            .id)),
-                                          );
+                                                    .assets[i],
+                                                empty: (_) => projectData
+                                                    .projectEntityList[index]
+                                                    .assets[i],
+                                              ));
                                         },
                                       ),
                                     );

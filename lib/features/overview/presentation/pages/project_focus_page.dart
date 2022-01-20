@@ -88,7 +88,7 @@ class ProjectFocusPage extends StatelessWidget {
                       horizontalSpaceSmall(context: context),
                       GestureDetector(
                         onTap: () {
-                          print("onTap");
+                    
                           projectFilterBloc.state.map( 
                             reset: (_) {},
                             filtered: (filtered) => dataBloc.add(

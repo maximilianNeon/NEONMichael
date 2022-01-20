@@ -148,10 +148,10 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
               .toList();
 
           existingAssets.addAll(_assetEntityUploadList);
-          print("Existing Assetes $existingAssets");
+         
 
           _projectEntity = _projectEntity.copyWith(assets: existingAssets);
-          print("_projectEntity $_projectEntity");
+         
         }
       }
 
@@ -198,12 +198,12 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
 
     await Future.forEach<int>(
         updatedProjectEntity.assets.map((e) => e.id).toList(), (id) {
-      print("${id.toString()}");
+     
 
       newStorageAssetList.remove("${id.toString()}");
     });
 
-    print(updatedProjectEntity.imageReferenceId);
+   
 
     newStorageIconList
         .remove("${updatedProjectEntity.imageReferenceId.toString()}");
@@ -262,7 +262,7 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
             .add(assetEntityFiltered.first.copyWith(imageUrl: assetUrl));
       });
 
-      print("newAssetList : $newAssetList");
+  
 
       return Right(newAssetList);
     } on FirebaseException {

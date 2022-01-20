@@ -6,12 +6,14 @@ class PatternElementState with _$PatternElementState {
     required Uint8List imageFileData,
     required List<PatternEntity> patternEntityList,
     required List<ElementEntity> elementEntityList,
+    required String assetImageUrl,
     required int id,
   }) = _PatternView;
   const factory PatternElementState.loading() = _Loading;
   const factory PatternElementState.element({
     required Uint8List imageFileData,
     required List<ElementEntity> elementEntityList,
+    required String assetImageUrl,
     required List<PatternEntity> patternEntityList,
     required int id,
   }) = _ElementView;

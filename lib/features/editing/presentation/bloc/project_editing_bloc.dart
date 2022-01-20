@@ -7,6 +7,7 @@ import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart'
 import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/data_container.dart';
 import 'package:neon_web/features/editing/domain/entities/dropped_Image_entity.dart';
+import 'package:neon_web/features/overview/presentation/blocs/data_bloc.dart';
 import '../../../../core/domain/entities/project_entity.dart';
 import 'package:neon_web/core/enum/enums.dart';
 
@@ -18,6 +19,7 @@ part 'project_editing_bloc.freezed.dart';
 class ProjectEditingBloc
     extends Bloc<ProjectEditingEvent, ProjectEditingState> {
   Map<int, Uint8List> iconImageFileCache = {};
+  DataBloc dataBloc;
   ProjectEntity projectEntity = ProjectEntity(
       assets: [],
       imageReferenceId: 0,
@@ -27,7 +29,7 @@ class ProjectEditingBloc
       projectType: ProjectType.App,
       title: "");
 
-  ProjectEditingBloc() : super(_Initial()) {
+  ProjectEditingBloc({required this.dataBloc}) : super(_Initial()) {
     on<_AddName>((event, emit) {
       projectEntity = projectEntity.copyWith(title: event.name);
       emit(_Editing(
@@ -46,19 +48,21 @@ class ProjectEditingBloc
       (event, emit) async {
         emit(_Loading());
 
-        
-       await  FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(
+        dataBloc.add(DataEvent.setToLoading());
+        await FireBaseRemoteDataSourceImpl().uploadSingleProjectToDB(
           dataContainer: DataContainer(
             assetFileData: event.assetFileCache,
             iconFileData: iconImageFileCache,
             projectEntityList: [
-              projectEntity.copyWith(
-                  
-                  assets: event.assetEntityList)
+              projectEntity.copyWith(assets: event.assetEntityList)
             ],
           ),
         );
-        emit(_Editing(projectEntity: projectEntity, iconFileCache: iconImageFileCache));
+
+        dataBloc.add(DataEvent.downloadProjectData());
+
+        emit(_Editing(
+            projectEntity: projectEntity, iconFileCache: iconImageFileCache));
       },
     );
     on<_AddExistingProject>(
@@ -79,8 +83,9 @@ class ProjectEditingBloc
 
       iconImageFileCache
           .addAll({generatedAssetId: event.droppedImageEntity.fileData});
-      
-      projectEntity = projectEntity.copyWith(imageReferenceId: generatedAssetId);
+
+      projectEntity =
+          projectEntity.copyWith(imageReferenceId: generatedAssetId);
 
       emit(_Editing(
           projectEntity: projectEntity, iconFileCache: iconImageFileCache));

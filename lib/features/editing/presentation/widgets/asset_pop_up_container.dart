@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/domain/entities/asset_entity.dart';
 import 'package:neon_web/core/domain/entities/element_entity.dart';
 import 'package:neon_web/core/domain/entities/pattern_entity.dart';
 import 'package:neon_web/core/domain/usecases/build_element_Lists.dart';
@@ -16,8 +17,10 @@ import 'package:neon_web/features/editing/presentation/bloc/pattern_element_bloc
 class AssetPopUpContainer extends StatelessWidget {
   final int assetId;
   final Uint8List imageFileData;
+  final String assetImageUrl;
 
-  AssetPopUpContainer({required this.imageFileData, required this.assetId}) : super();
+  AssetPopUpContainer({required this.assetImageUrl ,required this.imageFileData, required this.assetId})
+      : super();
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +44,14 @@ class AssetPopUpContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
+              assetImageUrl == "" ?
               Image.memory(
                 imageFileData,
                 height: 500,
                 width: 250,
                 fit: BoxFit.fill,
-              ),
+              ) : Image.network(assetImageUrl, height: 500,
+                width: 250,),
               horizontalSpaceSmall(context: context),
               Container(
                 child: Column(
@@ -65,7 +70,9 @@ class AssetPopUpContainer extends StatelessWidget {
                                   GestureDetector(
                                     onTap: () => patternElementBloc.add(
                                         PatternElementEvent.changeToPatternView(
-                                            id: assetId ,
+                                            assetImageUrl:
+                                                elementView.assetImageUrl,
+                                            id: assetId,
                                             elementEntityList:
                                                 elementView.elementEntityList,
                                             patternEntityList:
@@ -93,7 +100,9 @@ class AssetPopUpContainer extends StatelessWidget {
                                     onTap: () {
                                       patternElementBloc.add(PatternElementEvent
                                           .changeToElementView(
-                                            id: assetId,
+                                              assetImageUrl:
+                                                  patternView.assetImageUrl,
+                                              id: assetId,
                                               elementEntityList:
                                                   patternView.elementEntityList,
                                               patternEntityList:
@@ -172,8 +181,15 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                 .add(
                                                                 PatternElementEvent
                                                                     .removeElement(
-                                                                  currentElementEntityList: elementState.elementEntityList,
-                                                                  currentPatternEntityList: elementState.patternEntityList,
+                                                                  assetImageUrl:
+                                                                      elementState
+                                                                          .assetImageUrl,
+                                                                  currentElementEntityList:
+                                                                      elementState
+                                                                          .elementEntityList,
+                                                                  currentPatternEntityList:
+                                                                      elementState
+                                                                          .patternEntityList,
                                                                   id: assetId,
                                                                   imageFileData:
                                                                       imageFileData,
@@ -191,9 +207,16 @@ class AssetPopUpContainer extends StatelessWidget {
                                                                 .add(
                                                                 PatternElementEvent
                                                                     .addElement(
-                                                                      currentElementEntityList: elementState.elementEntityList,
-                                                                      currentPatternEntityList: elementState.patternEntityList ,
-                                                                      id: assetId,
+                                                                  assetImageUrl:
+                                                                      elementState
+                                                                          .assetImageUrl,
+                                                                  currentElementEntityList:
+                                                                      elementState
+                                                                          .elementEntityList,
+                                                                  currentPatternEntityList:
+                                                                      elementState
+                                                                          .patternEntityList,
+                                                                  id: assetId,
                                                                   imageFileData:
                                                                       imageFileData,
                                                                   elementEntity: ElementEntity(
@@ -310,8 +333,15 @@ class AssetPopUpContainer extends StatelessWidget {
                                                   ? patternElementBloc.add(
                                                       PatternElementEvent
                                                           .removePattern(
-                                                        currentElementEntityList: patternState.elementEntityList,
-                                                        currentPatternEntityList: patternState.patternEntityList,
+                                                        assetImageUrl:
+                                                            patternState
+                                                                .assetImageUrl,
+                                                        currentElementEntityList:
+                                                            patternState
+                                                                .elementEntityList,
+                                                        currentPatternEntityList:
+                                                            patternState
+                                                                .patternEntityList,
                                                         id: patternState.id,
                                                         imageFileData:
                                                             imageFileData,
@@ -329,8 +359,15 @@ class AssetPopUpContainer extends StatelessWidget {
                                                   : patternElementBloc.add(
                                                       PatternElementEvent
                                                           .addPattern(
-                                                          currentElementEntityList: patternState.elementEntityList,
-                                                        currentPatternEntityList: patternState.patternEntityList,
+                                                        assetImageUrl:
+                                                            patternState
+                                                                .assetImageUrl,
+                                                        currentElementEntityList:
+                                                            patternState
+                                                                .elementEntityList,
+                                                        currentPatternEntityList:
+                                                            patternState
+                                                                .patternEntityList,
                                                         id: patternState.id,
                                                         imageFileData:
                                                             imageFileData,

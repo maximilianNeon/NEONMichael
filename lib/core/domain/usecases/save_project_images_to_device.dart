@@ -21,7 +21,7 @@ class SaveProjectImagesToDevice extends UseCaseInternal<
   @override
   Future<Either<Failure, Success>> call(
       {required SaveProjectImagesToDeviceParams params}) async {
-    print("inside UseCase");
+   
     try {
       final remoteResult = await remoteDataSourceRepository
           .downloadAssetImageData(projectEntity: params.projectentity);
