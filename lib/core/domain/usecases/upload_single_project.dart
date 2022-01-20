@@ -12,14 +12,14 @@ import '../../domain/entities/project_entity.dart';
 
 @injectable
 class UploadProjectData extends UseCaseInternal<Future, UploadParams> {
-  RemoteDataSource remoteDataSource;
+  RemoteDataSourceRepository remoteDataSourceRepository;
 
-  UploadProjectData({required this.remoteDataSource});
+  UploadProjectData({required this.remoteDataSourceRepository});
 
   @override
   Future<Either<Failure, Success>> call({required UploadParams params}) async {
     try {
-      final result = await remoteDataSource.uploadSingleProject(
+      final result = await remoteDataSourceRepository.uploadSingleProject(
           dataContainer: DataContainer(
               assetFileData: params.assetFileData,
               iconFileData: params.iconFileData,

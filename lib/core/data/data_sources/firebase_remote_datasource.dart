@@ -16,13 +16,15 @@ abstract class FireBaseRemoteDataSource {
     required String password,
   });
   Future<Either<Failure, Success>> firebaseSignOut();
+
   Future<Either<Failure, Success>> uploadSingleProjectToDB({
     required DataContainer dataContainer,
   });
-  Future<Either<Failure, List<ProjectEntity>>> downloadAllProjects();
-  Future<Either<Failure, Success>> updateSingleProject({
-    required DataContainer dataContainer,
+  Future<Either<Failure, Map<int, Uint8List>>> downloadAssetImageData({
+    required ProjectEntity projectEntity,
   });
+  Future<Either<Failure, List<ProjectEntity>>> downloadAllProjects();
+
   Future<Either<Failure, List<AssetEntity>>>
       uploadAssetImagesToCloudFireStorage({
     required int projectId,
@@ -93,12 +95,6 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
       print(error);
       return Left(FunctionFailure());
     }
-  }
-
-  @override
-  Future<Either<Failure, Success>> updateSingleProject(
-      {required DataContainer dataContainer}) {
-    throw UnimplementedError();
   }
 
   @override
@@ -297,6 +293,27 @@ class FireBaseRemoteDataSourceImpl extends FireBaseRemoteDataSource {
       return Right(iconImageUrl);
     } on FirebaseException {
       return Left(FireBaseFailure());
+    } catch (error) {
+      return Left(FunctionFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<int, Uint8List>>> downloadAssetImageData(
+      {required ProjectEntity projectEntity}) async {
+    Map<int, Uint8List> assetFileCache = {};
+
+    try {
+      await Future.forEach<AssetEntity>(projectEntity.assets, (asset) async {
+        final result = await firebase_storage.FirebaseStorage.instance
+            .ref(projectEntity.projectId.toString() + storageAssetSubfolder)
+            .child(asset.id.toString())
+            .getData();
+
+        assetFileCache.addAll({asset.id: result ?? Uint8List(0)});
+      });
+
+      return Right(assetFileCache);
     } catch (error) {
       return Left(FunctionFailure());
     }

@@ -1,21 +1,33 @@
-import 'dart:io';
 import 'dart:typed_data';
+import 'package:dartz/dartz.dart';
 import 'package:file_saver/file_saver.dart';
-import 'package:path_provider/path_provider.dart';
-import 'dart:html' as html;
-import 'package:file_selector/file_selector.dart';
+import 'package:injectable/injectable.dart';
+import 'package:neon_web/core/error/failure.dart';
+import 'package:neon_web/core/success/success.dart';
 
 abstract class LocalDataSource {
-  Future saveProjectFilesToLocalDevice({required String projectTitle});
+  Future<Either<Failure, Success>> saveSingleProjectImageFilesToLocalDevice({
+    required String imageName,
+    required MimeType mimeType,
+    required Uint8List imageData,
+  });
 }
 
+@injectable
 class LocalDataSourceImpl extends LocalDataSource {
   @override
-  Future saveProjectFilesToLocalDevice({required String projectTitle}) async {
-     
+  Future<Either<Failure, Success>> saveSingleProjectImageFilesToLocalDevice({
+    required String imageName,
+    required MimeType mimeType,
+    required Uint8List imageData,
+  }) async {
+    try {
+      await FileSaver.instance
+          .saveFile(imageName, imageData, ".jpeg", mimeType: mimeType);
 
-
-    FileSaver.instance.saveFile("3", Uint8List(0), "" , mimeType: MimeType.TEXT);
-     
+      return Right(FunctionSuccess());
+    } catch (error) {
+      return Left(FunctionFailure());
+    }
   }
 }

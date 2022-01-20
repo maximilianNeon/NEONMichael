@@ -8,6 +8,7 @@ import 'package:neon_web/features/editing/presentation/bloc/project_editing_bloc
 import 'package:neon_web/features/editing/presentation/pages/project_upload_page.dart';
 import 'package:neon_web/features/overview/FilterFeature/presentation/bloc/filter_bloc.dart';
 import 'package:neon_web/features/overview/SearchFeature/presentation/widgets/search_bar.dart';
+import 'package:neon_web/features/overview/presentation/blocs/data_bloc.dart';
 import 'package:neon_web/features/overview/presentation/blocs/project_filter_bloc.dart';
 import 'package:neon_web/features/overview/presentation/widgets/filter_button_row.dart';
 import 'package:neon_web/features/overview/presentation/widgets/menu_container.dart';
@@ -22,6 +23,9 @@ class ProjectFocusPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DataBloc dataBloc = BlocProvider.of<DataBloc>(context);
+    ProjectFilterBloc projectFilterBloc =
+        BlocProvider.of<ProjectFilterBloc>(context);
     return PageLayout(
       showBackArrow: true,
       showLogOutAndUpload: false,
@@ -69,7 +73,9 @@ class ProjectFocusPage extends StatelessWidget {
                               ProjectEditingEvent.addExistingProject(
                                   projectEntity: projectEntity));
 
-                          BlocProvider.of<AssetBloc>(context).add(AssetEvent.addExistingDataToAssetBloc(assetEntityList: projectEntity.assets));
+                          BlocProvider.of<AssetBloc>(context).add(
+                              AssetEvent.addExistingDataToAssetBloc(
+                                  assetEntityList: projectEntity.assets));
 
                           Navigator.of(context).push(
                             MaterialPageRoute(
@@ -78,7 +84,22 @@ class ProjectFocusPage extends StatelessWidget {
                           );
                         },
                         child: Icon(Icons.edit),
-                      )
+                      ),
+                      horizontalSpaceSmall(context: context),
+                      GestureDetector(
+                        onTap: () {
+                          print("onTap");
+                          projectFilterBloc.state.map( 
+                            reset: (_) {},
+                            filtered: (filtered) => dataBloc.add(
+                              DataEvent.saveProjectAssetImagesOnDevice(
+                                  projectEntity:
+                                      filtered.projectEntityList.first),
+                            ),
+                          );
+                        },
+                        child: Icon(Icons.download),
+                      ),
                     ],
                   ),
                   SizedBox(height: UIHelper().verticalSpaceMedium(context)),

@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:neon_web/core/data/data_sources/firebase_remote_datasource.dart';
@@ -7,9 +9,8 @@ import 'package:neon_web/core/error/failure.dart';
 import 'package:neon_web/core/success/success.dart';
 import '../../domain/entities/project_entity.dart';
 
-
-@Injectable(as: RemoteDataSource)
-class RemoteDataSourceImpl extends RemoteDataSource {
+@Injectable(as: RemoteDataSourceRepository)
+class RemoteDataSourceImpl extends RemoteDataSourceRepository {
   FireBaseRemoteDataSourceImpl fireBaseRemoteDataSource;
 
   RemoteDataSourceImpl({required this.fireBaseRemoteDataSource});
@@ -30,7 +31,7 @@ class RemoteDataSourceImpl extends RemoteDataSource {
       {required DataContainer dataContainer}) async {
     try {
       final result = await fireBaseRemoteDataSource.uploadSingleProjectToDB(
-          dataContainer: dataContainer );
+          dataContainer: dataContainer);
 
       return result.fold(
           (l) => Left(FunctionFailure()), (r) => Right(FunctionSuccess()));
@@ -39,5 +40,16 @@ class RemoteDataSourceImpl extends RemoteDataSource {
     }
   }
 
- 
+  @override
+  Future<Either<Failure, Map<int, Uint8List>>> downloadAssetImageData(
+      {required ProjectEntity projectEntity}) async {
+    try {
+      final result = await fireBaseRemoteDataSource.downloadAssetImageData(
+          projectEntity: projectEntity);
+
+      return result.fold((l) => Left(FunctionFailure()), (r) => Right(r));
+    } catch (error) {
+      return Left(FunctionFailure());
+    }
+  }
 }

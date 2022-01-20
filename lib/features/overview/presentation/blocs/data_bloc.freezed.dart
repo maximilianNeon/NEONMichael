@@ -20,6 +20,13 @@ class _$DataEventTearOff {
   _LoadProjectData downloadProjectData() {
     return const _LoadProjectData();
   }
+
+  _SaveOnDevice saveProjectAssetImagesOnDevice(
+      {required ProjectEntity projectEntity}) {
+    return _SaveOnDevice(
+      projectEntity: projectEntity,
+    );
+  }
 }
 
 /// @nodoc
@@ -30,32 +37,42 @@ mixin _$DataEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadProjectData,
+    required TResult Function(ProjectEntity projectEntity)
+        saveProjectAssetImagesOnDevice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SaveOnDevice value)
+        saveProjectAssetImagesOnDevice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -117,6 +134,8 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() downloadProjectData,
+    required TResult Function(ProjectEntity projectEntity)
+        saveProjectAssetImagesOnDevice,
   }) {
     return downloadProjectData();
   }
@@ -125,6 +144,8 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
   }) {
     return downloadProjectData?.call();
   }
@@ -133,6 +154,8 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? downloadProjectData,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) {
     if (downloadProjectData != null) {
@@ -145,6 +168,8 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SaveOnDevice value)
+        saveProjectAssetImagesOnDevice,
   }) {
     return downloadProjectData(this);
   }
@@ -153,6 +178,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
   }) {
     return downloadProjectData?.call(this);
   }
@@ -161,6 +187,7 @@ class _$_LoadProjectData implements _LoadProjectData {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
     required TResult orElse(),
   }) {
     if (downloadProjectData != null) {
@@ -172,6 +199,154 @@ class _$_LoadProjectData implements _LoadProjectData {
 
 abstract class _LoadProjectData implements DataEvent {
   const factory _LoadProjectData() = _$_LoadProjectData;
+}
+
+/// @nodoc
+abstract class _$SaveOnDeviceCopyWith<$Res> {
+  factory _$SaveOnDeviceCopyWith(
+          _SaveOnDevice value, $Res Function(_SaveOnDevice) then) =
+      __$SaveOnDeviceCopyWithImpl<$Res>;
+  $Res call({ProjectEntity projectEntity});
+
+  $ProjectEntityCopyWith<$Res> get projectEntity;
+}
+
+/// @nodoc
+class __$SaveOnDeviceCopyWithImpl<$Res> extends _$DataEventCopyWithImpl<$Res>
+    implements _$SaveOnDeviceCopyWith<$Res> {
+  __$SaveOnDeviceCopyWithImpl(
+      _SaveOnDevice _value, $Res Function(_SaveOnDevice) _then)
+      : super(_value, (v) => _then(v as _SaveOnDevice));
+
+  @override
+  _SaveOnDevice get _value => super._value as _SaveOnDevice;
+
+  @override
+  $Res call({
+    Object? projectEntity = freezed,
+  }) {
+    return _then(_SaveOnDevice(
+      projectEntity: projectEntity == freezed
+          ? _value.projectEntity
+          : projectEntity // ignore: cast_nullable_to_non_nullable
+              as ProjectEntity,
+    ));
+  }
+
+  @override
+  $ProjectEntityCopyWith<$Res> get projectEntity {
+    return $ProjectEntityCopyWith<$Res>(_value.projectEntity, (value) {
+      return _then(_value.copyWith(projectEntity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_SaveOnDevice implements _SaveOnDevice {
+  const _$_SaveOnDevice({required this.projectEntity});
+
+  @override
+  final ProjectEntity projectEntity;
+
+  @override
+  String toString() {
+    return 'DataEvent.saveProjectAssetImagesOnDevice(projectEntity: $projectEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _SaveOnDevice &&
+            const DeepCollectionEquality()
+                .equals(other.projectEntity, projectEntity));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(projectEntity));
+
+  @JsonKey(ignore: true)
+  @override
+  _$SaveOnDeviceCopyWith<_SaveOnDevice> get copyWith =>
+      __$SaveOnDeviceCopyWithImpl<_SaveOnDevice>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() downloadProjectData,
+    required TResult Function(ProjectEntity projectEntity)
+        saveProjectAssetImagesOnDevice,
+  }) {
+    return saveProjectAssetImagesOnDevice(projectEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? downloadProjectData,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
+  }) {
+    return saveProjectAssetImagesOnDevice?.call(projectEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? downloadProjectData,
+    TResult Function(ProjectEntity projectEntity)?
+        saveProjectAssetImagesOnDevice,
+    required TResult orElse(),
+  }) {
+    if (saveProjectAssetImagesOnDevice != null) {
+      return saveProjectAssetImagesOnDevice(projectEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjectData value) downloadProjectData,
+    required TResult Function(_SaveOnDevice value)
+        saveProjectAssetImagesOnDevice,
+  }) {
+    return saveProjectAssetImagesOnDevice(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
+  }) {
+    return saveProjectAssetImagesOnDevice?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjectData value)? downloadProjectData,
+    TResult Function(_SaveOnDevice value)? saveProjectAssetImagesOnDevice,
+    required TResult orElse(),
+  }) {
+    if (saveProjectAssetImagesOnDevice != null) {
+      return saveProjectAssetImagesOnDevice(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveOnDevice implements DataEvent {
+  const factory _SaveOnDevice({required ProjectEntity projectEntity}) =
+      _$_SaveOnDevice;
+
+  ProjectEntity get projectEntity;
+  @JsonKey(ignore: true)
+  _$SaveOnDeviceCopyWith<_SaveOnDevice> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
